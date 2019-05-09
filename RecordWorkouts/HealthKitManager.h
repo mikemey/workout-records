@@ -1,28 +1,21 @@
 #import <Foundation/Foundation.h>
+#import "WorkoutData.h"
 
 @interface HealthKitManager : NSObject
 
-// shared instance
 + (HealthKitManager *)sharedInstance;
 
-- (void)requestToWriteDataWithFinishBlock:(void (^)(NSError *error))finishBlock;
+- (void)requestHealthDataPermissions;
 
-/**
- Write Steps
- */
-- (void)writeSteps:(NSInteger)steps
+- (void)writeCycling:(float)distance
+          calories:(float)calories
          startDate:(NSDate *)startDate
            endDate:(NSDate *)endDate
-   withFinishBlock:(void (^)(NSError *error))finishBlock;
+       finishBlock:(void (^)(void))finishBlock;
 
-/**
- Request to read data
- */
-- (void)requestToReadDataWithFinishBlock:(void (^)(NSError *error))finishBlock;
+- (void)readWorkouts:(void (^)(NSArray *results))finishBlock;
 
-/**
- Read Cycling Distance
- */
-- (void)readCyclingDistanceWithFinishBlock:(void (^)(NSError *error, NSNumber *value))finishBlock;
+- (void)deleteWorkout:(WorkoutData *)workout
+          finishBlock:(void (^)(void))finishBlock;
 
 @end

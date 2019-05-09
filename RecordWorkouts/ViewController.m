@@ -1,103 +1,174 @@
 #import "ViewController.h"
 #import "HealthKitManager.h"
-
-@interface ViewController ()
-{
-    __weak IBOutlet UILabel *lblCyclingDistance;
-}
-@end
+#import "WorkoutData.h"
+#import "WorkoutTableCell.h"
 
 @implementation ViewController
+    UIDatePicker *datePicker;
+    UIDatePicker *durationPicker;
+    NSDate *selectedDate;
+    NSTimeInterval selectedDuration;
+    NSArray *workoutData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self createDatePicker];
+    [self createDurationPicker];
+    [distanceField setInputAccessoryView:[self createDoneToolbar]];
+    [caloriesField setInputAccessoryView:[self createDoneToolbar]];
+    
+    [self readCycling];
+    workoutTableView.allowsMultipleSelectionDuringEditing = NO;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+// ================= setup fields methods ======================
+// ============== date-/duration-picker + fields ===============
+// =============================================================
+
+- (void)createDatePicker {
+    datePicker = [[UIDatePicker alloc] init];
+    [datePicker addTarget:self action:@selector(updateDateField:)
+         forControlEvents:UIControlEventValueChanged];
+    
+    [dateField setInputView:datePicker];
+    [dateField setInputAccessoryView:[self createDoneToolbar]];
+    dateField.tintColor = [UIColor clearColor];
+    
+    NSDate *now = [NSDate date];
+    [self setSelectedDate:now];
+}
+
+- (void)createDurationPicker {
+    durationPicker = [[UIDatePicker alloc] init];
+    durationPicker.datePickerMode = UIDatePickerModeCountDownTimer;
+    [durationPicker addTarget:self action:@selector(updateDurationField:)
+             forControlEvents:UIControlEventValueChanged];
+    
+    [durationField setInputView:durationPicker];
+    [durationField setInputAccessoryView:[self createDoneToolbar]];
+    durationField.tintColor = [UIColor clearColor];
+    
+    NSTimeInterval hour = 3600;
+    [self setDuration:hour];
+    durationPicker.countDownDuration = hour;
+}
+
+- (UIToolbar*)createDoneToolbar {
+    UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    [toolBar setTintColor:[UIColor grayColor]];
+    UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(endEditing)];
+    UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+    return toolBar;
+}
+
+-(void)setSelectedDate:(NSDate *)date {
+    selectedDate = date;
+    dateField.text = [WorkoutTableCell formatDate:date];
+}
+
+-(void)setDuration:(NSTimeInterval)dur {
+    selectedDuration = dur;
+    durationField.text = [WorkoutTableCell formatDuration:dur];
+}
+
+-(void)updateDateField:(UIDatePicker *)sender {
+    [self setSelectedDate:sender.date];
+}
+
+-(void)updateDurationField:(UIDatePicker *)sender {
+    [self setDuration:sender.countDownDuration];
+}
+
+-(void)endEditing {
+    [self.view endEditing:YES];
+}
+
+// ================= actions methods ===========================
+// =============================================================
+
+-(void)readCycling {
+    workoutData = [[NSArray alloc] init];
+    [[HealthKitManager sharedInstance] readWorkouts:^(NSArray *results) {
+        workoutData = results;
+        [self->workoutTableView reloadData];
+    }];
+}
+
+-(void)removeWorkout:(WorkoutData *)workout {
+    [[HealthKitManager sharedInstance] deleteWorkout:workout
+     finishBlock:^(void) {
+         [self readCycling];
+     }];
 }
 
 #pragma mark - Action Events
-///**
-// On connect button action
-// */
-//- (IBAction)onConnectBtAction:(id)sender
-//{
-//    // requesting to authorize for write-permission
-//    [[HealthKitManager sharedInstance] requestToWriteDataWithFinishBlock:^(NSError *error) {
-//        if (error) {
-//            NSLog(@"error : %@",error);
-//        } else {
-//
-//        }
-//    }];
-//}
-
-/**
- On Write Steps Action
- */
-- (IBAction)onWriteStepsAction:(id)sender {
+- (IBAction)onWriteCyclingAction:(id)sender {
+    [self endEditing];
+    float distance = [distanceField.text floatValue] * 1000;
+    float calories = [caloriesField.text floatValue];
     
-    // Steps
-    NSInteger steps = 100;
+    NSDate *endDate = [selectedDate dateByAddingTimeInterval:selectedDuration];
     
-    // Get date
-    NSDate *now = [NSDate date];
-    
-    // Get startdate (before 60 seconds from now)
-    NSDate *startDate = [now dateByAddingTimeInterval:-60];
-    
-    // Set end date
-    NSDate *endDate = now;
-    
-    // Write steps with startdate, enddate
-    [[HealthKitManager sharedInstance] writeSteps:steps
-                                        startDate:startDate
-                                          endDate:endDate withFinishBlock:^(NSError *error) {
-                                              // result block
-                                              if (error) {
-                                                  // handle error
-                                                  NSLog(@"error : %@",error);
-                                              } else {
-                                                  // success writing steps
-                                              }
-    }];
+    if(distance || calories) {
+        [[HealthKitManager sharedInstance] writeCycling:distance calories:calories
+          startDate:selectedDate endDate:endDate finishBlock:^(void) {
+              [self readCycling];
+          }];
+    }
 }
 
-/**
- On Read Permission Action
- */
-- (IBAction)onReadPermissionAction:(id)sender {
-    
-    // requesting to authorize for write-permission
-    [[HealthKitManager sharedInstance] requestToReadDataWithFinishBlock:^(NSError *error) {
-        if (error) {
-            NSLog(@"error : %@",error);
-        } else {
-            
-        }
-    }];
+// ================= table-view methods ========================
+// =============================================================
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
 }
 
-/**
- Read Cycling Distance
- */
-- (IBAction)onReadCylingDistanceAction:(id)sender
-{
-    __block UILabel *lblValue = lblCyclingDistance;
-    [[HealthKitManager sharedInstance] readCyclingDistanceWithFinishBlock:^(NSError *error, NSNumber *value) {
-        if (error) {
-            // handle error
-            NSLog(@"error : %@",error);
-        } else {
-            // value
-            NSLog(@"value: %@",value);
-            lblValue.text = [NSString stringWithFormat:@"%@ miles",value.stringValue];
-        }
-    }];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [workoutData count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
+    return [self createWorkoutEntryFrom:workout];
+}
+
+-(UITableViewCell *)createWorkoutEntryFrom:(WorkoutData *)workout {
+    static NSString *cellId = @"WorkoutTableCell";
+    WorkoutTableCell *cell = (WorkoutTableCell *)[workoutTableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WorkoutTableCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    [cell setValues:workout.date duration:workout.duration distance:workout.distance calories:workout.energy];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
+        NSString *message = [NSString stringWithFormat:@"Date:  %@ \nDuration:  %@",
+                             [WorkoutTableCell formatDate:workout.date],
+                             [WorkoutTableCell formatDuration:workout.duration]];
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Delete workout entry?"
+                       message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* delete = [UIAlertAction actionWithTitle:@"Delete"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           [self removeWorkout:workout];
+                                                       }];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                         style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:delete];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 @end
