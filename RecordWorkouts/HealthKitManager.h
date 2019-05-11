@@ -6,7 +6,7 @@
 
 - (void) requestHealthDataPermissions;
 
-- (void) writeActivity:(HKQuantityTypeIdentifier) typeId
+- (void) writeWorkout:(HKQuantityTypeIdentifier) typeId
              distance:(float) distance
              calories:(float) calories
             startDate:(NSDate *) startDate
@@ -14,6 +14,6 @@
           finishBlock:(void (^)(NSError *)) finishBlock;
 
 - (void) readWorkouts:(void (^)(NSArray *results))finishBlock;
-- (void) deleteWorkout:(WorkoutData *)workout finishBlock:(void (^)(void))finishBlock;
+- (void) deleteWorkout:(WorkoutData *)workout finishBlock:(void (^)(NSError *))finishBlock;
 
 @end

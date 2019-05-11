@@ -27,7 +27,6 @@ typedef HKObjectType * (*toType) (HKQuantityTypeIdentifier *);
         self.healthStore = [[HKHealthStore alloc] init];
         self.secondsInWeek = 60 * 60 * 24 * 7;
         [self setupSupportedTypeIds];
-//            [self.healthStore authorizationStatusForType:[HKObjectType quantityTypeForIdentifier:<#(nonnull HKQuantityTypeIdentifier)#>]];
     }
     return self;
 }
@@ -81,7 +80,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
             }];
 }
 
-- (void) writeActivity:(HKQuantityTypeIdentifier) typeId
+- (void) writeWorkout:(HKQuantityTypeIdentifier) typeId
               distance:(float) distance
               calories:(float) calories
              startDate:(NSDate *) startDate
@@ -199,18 +198,17 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
     });
 }
 
-- (void)deleteWorkout:(WorkoutData *)workout finishBlock:(void (^)(void))finishBlock {
+- (void)deleteWorkout:(WorkoutData *)workout finishBlock:(void (^)(NSError * error))finishBlock {
     NSLog(@"DELETING: %@", workout.date);
     [self.healthStore deleteObjects:workout.samples
                      withCompletion:^(BOOL success, NSError * _Nullable error) {
          NSLog(@"success: %@", success ? @"YES" : @"NO");
          if (error) {
              NSLog(@"ERROR: %@",error);
-         } else {
-             dispatch_sync(dispatch_get_main_queue(), ^{
-                 finishBlock();
-             });
          }
+         dispatch_sync(dispatch_get_main_queue(), ^{
+             finishBlock(error);
+         });
     }];
 }
 

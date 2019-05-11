@@ -3,12 +3,13 @@
 #import "WorkoutData.h"
 #import "WorkoutTableCell.h"
 #import "TypePickerView.h"
+#import "WorkoutAlertBuilder.h"
 
 @implementation ViewController
     UIDatePicker *datePicker;
     UIDatePicker *durationPicker;
-    NSArray *workoutData;
 
+    NSArray *workoutData;
     HKQuantityTypeIdentifier selectedActivity;
     NSDate *selectedDate;
     NSTimeInterval selectedDuration;
@@ -36,7 +37,13 @@
 - (void) createTypePicker {
     TypePickerView *typePicker = [[TypePickerView alloc] init:typeField toolbar:[self createDoneToolbar]];
     [typePicker onPicked:^(HKQuantityTypeIdentifier typeId) {
-        selectedActivity = typeId;
+        if(typeId == HKQuantityTypeIdentifierActiveEnergyBurned) {
+            self->distanceField.enabled = false;
+            self->distanceField.text = @"";
+        } else {
+            self->distanceField.enabled = true;
+            selectedActivity = typeId;
+        }
     }];
     [typePicker setNewActivity:0];
 }
@@ -100,6 +107,15 @@
     [self.view endEditing:YES];
 }
 
+- (void) showErrorAlert: (NSString *)title error:(NSError *)error {
+    NSString *message = error.code == HKErrorAuthorizationDenied
+        ? @"Please enable access in\nSettings -> Privacy -> Health"
+        : error.userInfo[NSLocalizedDescriptionKey];
+    WorkoutAlertBuilder *alertBuilder = [[WorkoutAlertBuilder alloc] init:self title:title message:message];
+    [alertBuilder addOKAction];
+    [alertBuilder show];
+}
+
 // ================= actions methods ===========================
 // =============================================================
 
@@ -113,13 +129,17 @@
 
 -(void) removeWorkout:(WorkoutData *)workout {
     [[HealthKitManager sharedInstance] deleteWorkout:workout
-     finishBlock:^(void) {
-         [self readCycling];
+     finishBlock:^(NSError *error) {
+         if(error) {
+             [self showErrorAlert:@"Error deleting workout" error:error];
+         } else {
+             [self readCycling];
+         }
      }];
 }
 
 #pragma mark - Action Events
-- (IBAction) onWriteActivityAction:(id)sender {
+- (IBAction) onWriteWorkoutAction:(id)sender {
     [self endEditing];
     float distance = [distanceField.text floatValue] * 1000;
     float calories = [caloriesField.text floatValue];
@@ -127,19 +147,10 @@
     NSDate *endDate = [selectedDate dateByAddingTimeInterval:selectedDuration];
     
     if(distance || calories) {
-        [[HealthKitManager sharedInstance] writeActivity:selectedActivity distance:distance calories:calories
+        [[HealthKitManager sharedInstance] writeWorkout:selectedActivity distance:distance calories:calories
           startDate:selectedDate endDate:endDate finishBlock:^(NSError *error) {
               if(error) {
-                  NSString *message = error.userInfo[NSLocalizedDescriptionKey];
-                  if (error.code == HKErrorAuthorizationDenied) {
-                      message = @"Please enable access in \nSettings -> Privacy -> Health";
-                  }
-                  UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error writing activity"
-                             message:message preferredStyle:UIAlertControllerStyleAlert];
-                  UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                        handler:^(UIAlertAction * action) {}];
-                  [alert addAction:defaultAction];
-                  [self presentViewController:alert animated:YES completion:nil];
+                  [self showErrorAlert:@"Error writing workout" error:error];
               } else {
                   [self readCycling];
               }
@@ -177,21 +188,19 @@
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
-        NSString *message = [NSString stringWithFormat:@"Date:  %@ \nDuration:  %@",
+
+        NSString *title = @"Delete workout entry?";
+        NSString *message = [NSString stringWithFormat:@"%@\nDate:  %@\nDuration:  %@",
+                             @"NOT YET IMPLEMENTED!",
+//                             [TypePickerView textForType:workout.type],
                              [WorkoutTableCell formatDate:workout.date],
                              [WorkoutTableCell formatDuration:workout.duration]];
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Delete workout entry?"
-                       message:message preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* delete = [UIAlertAction actionWithTitle:@"Delete"
-                                                         style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {
-                                                           [self removeWorkout:workout];
-                                                       }];
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
-                                                         style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:delete];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
+        WorkoutAlertBuilder *alertBuilder = [[WorkoutAlertBuilder alloc] init:self title:title message:message];
+        [alertBuilder addCancelAction];
+        [alertBuilder addDefaultAction:@"Delete" handler:^(UIAlertAction * action) {
+            [self removeWorkout:workout];
+        }];
+        [alertBuilder show];
     }
 }
 

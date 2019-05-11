@@ -42,7 +42,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="distance" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="DCP-YZ-QgF">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="distance" textAlignment="center" minimumFontSize="20" background="input_background.png" disabledBackground="input_disabled_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="DCP-YZ-QgF">
                                 <rect key="frame" x="147" y="255" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
@@ -75,7 +75,7 @@
                                     </attributedString>
                                 </state>
                                 <connections>
-                                    <action selector="onWriteActivityAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M1n-9s-gzl"/>
+                                    <action selector="onWriteWorkoutAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M1n-9s-gzl"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FS7-ke-5Cr">
@@ -157,6 +157,7 @@
     </scenes>
     <resources>
         <image name="input_background.png" width="101.5" height="20"/>
+        <image name="input_disabled_background.png" width="101.5" height="20"/>
         <image name="record_btn.png" width="320" height="50"/>
     </resources>
 </document>
