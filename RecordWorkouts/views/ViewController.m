@@ -1,14 +1,11 @@
 #import "ViewController.h"
 #import "HealthKitManager.h"
 #import "WorkoutData.h"
-#import "WorkoutTableCell.h"
-#import "TypePickerView.h"
 #import "WorkoutAlertBuilder.h"
+#import "TypePickerView.h"
+#import "WorkoutTableCell.h"
 
 @implementation ViewController
-    UIDatePicker *datePicker;
-    UIDatePicker *durationPicker;
-
     NSArray *workoutData;
     HKQuantityTypeIdentifier selectedActivity;
     NSDate *selectedDate;
@@ -17,27 +14,38 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    [self createTypePicker];
-    [self createDatePicker];
-    [self createDurationPicker];
-    [distanceField setInputAccessoryView:[self createDoneToolbar]];
-    [caloriesField setInputAccessoryView:[self createDoneToolbar]];
+    UIToolbar *toolbar = [self createToolbar];
     
+    [self createTypePicker:toolbar];
+    [self createDatePicker:toolbar];
+    [self createDurationPicker:toolbar];
+    [distanceField setInputAccessoryView:toolbar];
+    [caloriesField setInputAccessoryView:toolbar];
+
     [self readCycling];
-    workoutTableView.allowsMultipleSelectionDuringEditing = NO;
 }
 
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-// =============== create pickers for fields ===================
+// =============== create fields methods =======================
 // =============================================================
+- (UIToolbar*) createToolbar {
+    UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    [toolBar setTintColor:[UIColor grayColor]];
+    UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(endEditing)];
+    UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
+    return toolBar;
+}
 
-- (void) createTypePicker {
-    TypePickerView *typePicker = [[TypePickerView alloc] init:typeField toolbar:[self createDoneToolbar]];
-    [typePicker onPicked:^(HKQuantityTypeIdentifier typeId) {
-        if(typeId == HKQuantityTypeIdentifierActiveEnergyBurned) {
+- (void) createTypePicker: (UIToolbar *) toolbar {
+    TypePickerView *typePicker = [[TypePickerView alloc]
+                                  init:typeField
+                                  toolbar:toolbar
+                                  callback:^(HKQuantityTypeIdentifier typeId) {
+        if (typeId == HKQuantityTypeIdentifierActiveEnergyBurned) {
             self->distanceField.enabled = false;
             self->distanceField.text = @"";
         } else {
@@ -48,59 +56,50 @@
     [typePicker setNewActivity:0];
 }
 
-- (void) createDatePicker {
-    datePicker = [[UIDatePicker alloc] init];
-    [datePicker addTarget:self action:@selector(updateDateField:)
+- (void) createDatePicker: (UIToolbar *) toolbar {
+    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    [datePicker addTarget:self action:@selector(updateDate:)
          forControlEvents:UIControlEventValueChanged];
-    
+
     [dateField setInputView:datePicker];
-    [dateField setInputAccessoryView:[self createDoneToolbar]];
+    [dateField setInputAccessoryView:toolbar];
     dateField.tintColor = [UIColor clearColor];
-    
+
     NSDate *now = [NSDate date];
     [self setSelectedDate:now];
 }
 
-- (void) createDurationPicker {
-    durationPicker = [[UIDatePicker alloc] init];
-    durationPicker.datePickerMode = UIDatePickerModeCountDownTimer;
-    [durationPicker addTarget:self action:@selector(updateDurationField:)
-             forControlEvents:UIControlEventValueChanged];
-    
-    [durationField setInputView:durationPicker];
-    [durationField setInputAccessoryView:[self createDoneToolbar]];
-    durationField.tintColor = [UIColor clearColor];
-    
-    NSTimeInterval hour = 3600;
-    [self setDuration:hour];
-    durationPicker.countDownDuration = hour;
+- (void) updateDate: (UIDatePicker *) sender {
+    [self setSelectedDate:sender.date];
 }
 
-- (UIToolbar*) createDoneToolbar {
-    UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    [toolBar setTintColor:[UIColor grayColor]];
-    UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(endEditing)];
-    UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
-    return toolBar;
-}
-
--(void) setSelectedDate:(NSDate *)date {
+- (void) setSelectedDate: (NSDate *) date {
     selectedDate = date;
     dateField.text = [WRFormat formatDate:date];
 }
 
--(void) setDuration:(NSTimeInterval)dur {
+- (void) createDurationPicker: (UIToolbar *) toolbar {
+    UIDatePicker *durationPicker = [[UIDatePicker alloc] init];
+    durationPicker.datePickerMode = UIDatePickerModeCountDownTimer;
+    [durationPicker addTarget:self action:@selector(updateDuration:)
+             forControlEvents:UIControlEventValueChanged];
+
+    [durationField setInputView:durationPicker];
+    [durationField setInputAccessoryView:toolbar];
+    durationField.tintColor = [UIColor clearColor];
+
+    NSTimeInterval hour = 3600;
+    [self setSelectedDuration:hour];
+    durationPicker.countDownDuration = hour;
+}
+
+- (void) updateDuration: (UIDatePicker *) sender {
+    [self setSelectedDuration:sender.countDownDuration];
+}
+
+- (void) setSelectedDuration: (NSTimeInterval) dur {
     selectedDuration = dur;
     durationField.text = [WRFormat formatDuration:dur];
-}
-
--(void) updateDateField:(UIDatePicker *)sender {
-    [self setSelectedDate:sender.date];
-}
-
--(void) updateDurationField:(UIDatePicker *)sender {
-    [self setDuration:sender.countDownDuration];
 }
 
 -(void) endEditing {

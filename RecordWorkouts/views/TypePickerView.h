@@ -6,42 +6,38 @@
     void (^_callbackHandler)(HKQuantityTypeIdentifier typeId);
 }
 
-- (id) init: (UITextField  *) field toolbar:(UIToolbar *) toolbar;
-- (void) onPicked:(void (^)(HKQuantityTypeIdentifier)) callback;
+- (id) init: (UITextField *) field
+    toolbar:(UIToolbar *) toolbar
+   callback:(void (^)(HKQuantityTypeIdentifier)) callback;
 - (void) setNewActivity:(NSInteger) index;
 @end
-
 
 @interface TypePickerView () <UIPickerViewDelegate>
 @end
 
-
 @implementation TypePickerView
 
-UITextField *field;
+UITextField *_field;
 long count;
 
-- (id)init:(UITextField  *) textField toolbar:(UIToolbar *) toolbar {
+- (id)init:(UITextField  *) field
+   toolbar:(UIToolbar *) toolbar
+  callback:(void (^)(HKQuantityTypeIdentifier)) callback {
     self = [super init];
-    field = textField;
+    _field = field;
+    _callbackHandler = callback;
     
     count = [WRFormat getAllTypeIds].count;
     [self setDelegate:self];
-    [field setInputView:self];
-    [field setInputAccessoryView:toolbar];
-    field.tintColor = [UIColor clearColor];
+    [_field setInputView:self];
+    [_field setInputAccessoryView:toolbar];
+    _field.tintColor = [UIColor clearColor];
     return self;
 }
 
-- (void) onPicked:(void (^)(HKQuantityTypeIdentifier))callback {
-    _callbackHandler = callback;
-}
-
 - (void) setNewActivity:(NSInteger) index {
-    field.text = [WRFormat typeNameAt:index];
-    if(_callbackHandler) {
-        _callbackHandler([WRFormat typeIdentifierAt:index]);
-    }
+    _field.text = [WRFormat typeNameAt:index];
+    _callbackHandler([WRFormat typeIdentifierAt:index]);
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
