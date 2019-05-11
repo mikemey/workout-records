@@ -70,7 +70,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
 
 - (void)requestHealthDataPermissions {
     NSLog(@"requesting permission");
-    NSArray *types = [self get:self.supportedTypeIds converter:objectTypeFrom];
+    NSArray *types = [self get:self.supportedTypeIds converter:sampleFrom];
     [self.healthStore requestAuthorizationToShareTypes:[NSSet setWithArray:types]
             readTypes:[NSSet setWithArray:types]
             completion:^(BOOL success, NSError * _Nullable error) {
@@ -81,19 +81,19 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
             }];
 }
 
-- (void)writeCycling:(float) distance
-           calories:(float)calories
-         startDate:(NSDate *)startDate
-           endDate:(NSDate *)endDate
-       finishBlock:(void (^)(void))finishBlock {
+- (void) writeActivity:(HKQuantityTypeIdentifier) typeId
+              distance:(float) distance
+              calories:(float) calories
+             startDate:(NSDate *) startDate
+               endDate:(NSDate *) endDate
+           finishBlock:(void (^)(NSError *)) finishBlock {
     NSMutableArray *storeObj = [[NSMutableArray alloc] init];
 
     if(distance > 0) {
-        HKQuantityType *distanceQuantityType = [HKQuantityType
-            quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceCycling];
+        HKQuantityType *distanceQuantityType = [HKQuantityType quantityTypeForIdentifier:typeId];
         HKQuantity *distanceQuantity = [HKQuantity quantityWithUnit:[HKUnit meterUnit] doubleValue:distance];
-        HKQuantitySample *cycling = [HKQuantitySample quantitySampleWithType:distanceQuantityType quantity:distanceQuantity startDate:startDate endDate:endDate];
-        [storeObj addObject:cycling];
+        HKQuantitySample *activity = [HKQuantitySample quantitySampleWithType:distanceQuantityType quantity:distanceQuantity startDate:startDate endDate:endDate];
+        [storeObj addObject:activity];
     }
     
     if(calories > 0) {
@@ -111,7 +111,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
             NSLog(@"ERROR storing: %@",error);
         }
         dispatch_sync(dispatch_get_main_queue(), ^{
-            finishBlock();
+            finishBlock(error);
         });
     }];
 }
@@ -132,7 +132,6 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
             for(HKQuantitySample *energySample in remainingEnergies) {
                 double interval = fabs([energySample.startDate timeIntervalSinceDate:distanceSample.startDate]);
                 if(interval < 2) {
-                    NSLog(@" addon-type: %@", energySample.sampleType);
                     record.energy = [energySample.quantity doubleValueForUnit:[HKUnit largeCalorieUnit]];
                     [record addSample:energySample];
                     [remainingEnergies removeObjectsInArray:@[energySample]];

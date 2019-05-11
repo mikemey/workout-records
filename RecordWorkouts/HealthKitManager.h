@@ -2,20 +2,18 @@
 #import "WorkoutData.h"
 
 @interface HealthKitManager : NSObject
++ (HealthKitManager *) sharedInstance;
 
-+ (HealthKitManager *)sharedInstance;
+- (void) requestHealthDataPermissions;
 
-- (void)requestHealthDataPermissions;
+- (void) writeActivity:(HKQuantityTypeIdentifier) typeId
+             distance:(float) distance
+             calories:(float) calories
+            startDate:(NSDate *) startDate
+              endDate:(NSDate *) endDate
+          finishBlock:(void (^)(NSError *)) finishBlock;
 
-- (void)writeCycling:(float)distance
-          calories:(float)calories
-         startDate:(NSDate *)startDate
-           endDate:(NSDate *)endDate
-       finishBlock:(void (^)(void))finishBlock;
-
-- (void)readWorkouts:(void (^)(NSArray *results))finishBlock;
-
-- (void)deleteWorkout:(WorkoutData *)workout
-          finishBlock:(void (^)(void))finishBlock;
+- (void) readWorkouts:(void (^)(NSArray *results))finishBlock;
+- (void) deleteWorkout:(WorkoutData *)workout finishBlock:(void (^)(void))finishBlock;
 
 @end

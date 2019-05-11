@@ -2,17 +2,21 @@
 #import "HealthKitManager.h"
 #import "WorkoutData.h"
 #import "WorkoutTableCell.h"
+#import "TypePickerView.h"
 
 @implementation ViewController
     UIDatePicker *datePicker;
     UIDatePicker *durationPicker;
-    NSDate *selectedDate;
-    NSTimeInterval selectedDuration;
     NSArray *workoutData;
 
-- (void)viewDidLoad {
+    HKQuantityTypeIdentifier selectedActivity;
+    NSDate *selectedDate;
+    NSTimeInterval selectedDuration;
+
+- (void) viewDidLoad {
     [super viewDidLoad];
     
+    [self createTypePicker];
     [self createDatePicker];
     [self createDurationPicker];
     [distanceField setInputAccessoryView:[self createDoneToolbar]];
@@ -22,15 +26,22 @@
     workoutTableView.allowsMultipleSelectionDuringEditing = NO;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-// ================= setup fields methods ======================
-// ============== date-/duration-picker + fields ===============
+// =============== create pickers for fields ===================
 // =============================================================
 
-- (void)createDatePicker {
+- (void) createTypePicker {
+    TypePickerView *typePicker = [[TypePickerView alloc] init:typeField toolbar:[self createDoneToolbar]];
+    [typePicker onPicked:^(HKQuantityTypeIdentifier typeId) {
+        selectedActivity = typeId;
+    }];
+    [typePicker setNewActivity:0];
+}
+
+- (void) createDatePicker {
     datePicker = [[UIDatePicker alloc] init];
     [datePicker addTarget:self action:@selector(updateDateField:)
          forControlEvents:UIControlEventValueChanged];
@@ -43,7 +54,7 @@
     [self setSelectedDate:now];
 }
 
-- (void)createDurationPicker {
+- (void) createDurationPicker {
     durationPicker = [[UIDatePicker alloc] init];
     durationPicker.datePickerMode = UIDatePickerModeCountDownTimer;
     [durationPicker addTarget:self action:@selector(updateDurationField:)
@@ -58,7 +69,7 @@
     durationPicker.countDownDuration = hour;
 }
 
-- (UIToolbar*)createDoneToolbar {
+- (UIToolbar*) createDoneToolbar {
     UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     [toolBar setTintColor:[UIColor grayColor]];
     UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(endEditing)];
@@ -67,32 +78,32 @@
     return toolBar;
 }
 
--(void)setSelectedDate:(NSDate *)date {
+-(void) setSelectedDate:(NSDate *)date {
     selectedDate = date;
     dateField.text = [WorkoutTableCell formatDate:date];
 }
 
--(void)setDuration:(NSTimeInterval)dur {
+-(void) setDuration:(NSTimeInterval)dur {
     selectedDuration = dur;
     durationField.text = [WorkoutTableCell formatDuration:dur];
 }
 
--(void)updateDateField:(UIDatePicker *)sender {
+-(void) updateDateField:(UIDatePicker *)sender {
     [self setSelectedDate:sender.date];
 }
 
--(void)updateDurationField:(UIDatePicker *)sender {
+-(void) updateDurationField:(UIDatePicker *)sender {
     [self setDuration:sender.countDownDuration];
 }
 
--(void)endEditing {
+-(void) endEditing {
     [self.view endEditing:YES];
 }
 
 // ================= actions methods ===========================
 // =============================================================
 
--(void)readCycling {
+-(void) readCycling {
     workoutData = [[NSArray alloc] init];
     [[HealthKitManager sharedInstance] readWorkouts:^(NSArray *results) {
         workoutData = results;
@@ -100,7 +111,7 @@
     }];
 }
 
--(void)removeWorkout:(WorkoutData *)workout {
+-(void) removeWorkout:(WorkoutData *)workout {
     [[HealthKitManager sharedInstance] deleteWorkout:workout
      finishBlock:^(void) {
          [self readCycling];
@@ -108,7 +119,7 @@
 }
 
 #pragma mark - Action Events
-- (IBAction)onWriteCyclingAction:(id)sender {
+- (IBAction) onWriteActivityAction:(id)sender {
     [self endEditing];
     float distance = [distanceField.text floatValue] * 1000;
     float calories = [caloriesField.text floatValue];
@@ -116,9 +127,22 @@
     NSDate *endDate = [selectedDate dateByAddingTimeInterval:selectedDuration];
     
     if(distance || calories) {
-        [[HealthKitManager sharedInstance] writeCycling:distance calories:calories
-          startDate:selectedDate endDate:endDate finishBlock:^(void) {
-              [self readCycling];
+        [[HealthKitManager sharedInstance] writeActivity:selectedActivity distance:distance calories:calories
+          startDate:selectedDate endDate:endDate finishBlock:^(NSError *error) {
+              if(error) {
+                  NSString *message = error.userInfo[NSLocalizedDescriptionKey];
+                  if (error.code == HKErrorAuthorizationDenied) {
+                      message = @"Please enable access in \nSettings -> Privacy -> Health";
+                  }
+                  UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error writing activity"
+                             message:message preferredStyle:UIAlertControllerStyleAlert];
+                  UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                        handler:^(UIAlertAction * action) {}];
+                  [alert addAction:defaultAction];
+                  [self presentViewController:alert animated:YES completion:nil];
+              } else {
+                  [self readCycling];
+              }
           }];
     }
 }
@@ -126,20 +150,20 @@
 // ================= table-view methods ========================
 // =============================================================
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [workoutData count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
     return [self createWorkoutEntryFrom:workout];
 }
 
--(UITableViewCell *)createWorkoutEntryFrom:(WorkoutData *)workout {
+-(UITableViewCell *) createWorkoutEntryFrom:(WorkoutData *)workout {
     static NSString *cellId = @"WorkoutTableCell";
     WorkoutTableCell *cell = (WorkoutTableCell *)[workoutTableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
@@ -150,7 +174,7 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
         NSString *message = [NSString stringWithFormat:@"Date:  %@ \nDuration:  %@",
