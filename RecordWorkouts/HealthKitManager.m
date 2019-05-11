@@ -59,16 +59,34 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
             }];
 }
 
-- (void) writeWorkout:(HKQuantityTypeIdentifier) typeId
+- (void) writeWorkout:(HKQuantityTypeIdentifier) activityId
               distance:(float) distance
               calories:(float) calories
              startDate:(NSDate *) startDate
                endDate:(NSDate *) endDate
            finishBlock:(void (^)(NSError *)) finishBlock {
-    NSMutableArray *storeObj = [[NSMutableArray alloc] init];
+    
+    if(!activityId || !startDate || !endDate) {
+        NSString *missingParam = @"activity";
+        if(!startDate) {
+            missingParam = @"start date";
+        }
+        if(!endDate) {
+            missingParam = @"duration";
+        }
+        NSString *msg = [[NSString alloc] initWithFormat:@"Missing %@", missingParam];
+        NSLog(@"ERROR storing: %@", msg);
+        id keys[] = { NSLocalizedDescriptionKey };
+        id objects[] = { msg };
+        NSUInteger count = sizeof(objects) / sizeof(id);
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+        finishBlock([NSError errorWithDomain:@"WorkoutRecords" code:1 userInfo:userInfo]);
+        return;
+    }
 
+    NSMutableArray *storeObj = [[NSMutableArray alloc] init];
     if(distance > 0) {
-        HKQuantityType *distanceQuantityType = [HKQuantityType quantityTypeForIdentifier:typeId];
+        HKQuantityType *distanceQuantityType = [HKQuantityType quantityTypeForIdentifier:activityId];
         HKQuantity *distanceQuantity = [HKQuantity quantityWithUnit:[HKUnit meterUnit] doubleValue:distance];
         HKQuantitySample *activity = [HKQuantitySample quantitySampleWithType:distanceQuantityType quantity:distanceQuantity startDate:startDate endDate:endDate];
         [storeObj addObject:activity];

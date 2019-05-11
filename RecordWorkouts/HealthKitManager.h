@@ -6,7 +6,7 @@
 
 - (void) requestHealthDataPermissions;
 
-- (void) writeWorkout:(HKQuantityTypeIdentifier) typeId
+- (void) writeWorkout:(HKQuantityTypeIdentifier) activityId
              distance:(float) distance
              calories:(float) calories
             startDate:(NSDate *) startDate
