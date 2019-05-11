@@ -10,9 +10,10 @@
 - (void) addCancelAction;
 @end
 
-@implementation WorkoutAlertBuilder
-UIViewController *_target;
-UIAlertController *alert;
+@implementation WorkoutAlertBuilder {
+    UIViewController *_target;
+    UIAlertController *alert;
+}
 
 - (id) init: (UIViewController  *)target title:(NSString *)title message:(NSString *)message {
     self = [super init];

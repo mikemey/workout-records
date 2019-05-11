@@ -15,10 +15,10 @@
 @interface TypePickerView () <UIPickerViewDelegate>
 @end
 
-@implementation TypePickerView
-
-UITextField *_field;
-long count;
+@implementation TypePickerView {
+    UITextField *_field;
+    long count;
+}
 
 - (id)init:(UITextField  *) field
    toolbar:(UIToolbar *) toolbar

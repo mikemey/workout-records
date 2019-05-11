@@ -21,18 +21,18 @@
 @implementation WorkoutTableCell
 static UIColor *textColor;
 
+@synthesize dateLabel;
+@synthesize durationLabel;
+@synthesize distanceLabel;
+@synthesize caloriesLabel;
+@synthesize typeImage;
+
 + (void) initialize {
     textColor = [UIColor colorWithRed:210.0f/255.0f
                                 green:210.0f/255.0f
                                  blue:210.0f/255.0f
                                 alpha:1.0f];
 }
-
-@synthesize dateLabel;
-@synthesize durationLabel;
-@synthesize distanceLabel;
-@synthesize caloriesLabel;
-@synthesize typeImage;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
