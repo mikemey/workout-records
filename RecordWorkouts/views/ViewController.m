@@ -1,15 +1,17 @@
 #import "ViewController.h"
-#import "HealthKitManager.h"
-#import "WorkoutData.h"
+#import "../HealthKitManager.h"
+#import "../WorkoutData.h"
 #import "WorkoutAlertBuilder.h"
 #import "TypePickerView.h"
 #import "WorkoutTableCell.h"
+#import "DatePickerController.h"
 
-@implementation ViewController
+@implementation ViewController {
     NSArray *workoutData;
     HKQuantityTypeIdentifier selectedActivity;
     NSDate *selectedDate;
     NSTimeInterval selectedDuration;
+}
 
 - (void) viewDidLoad {
     [super viewDidLoad];
@@ -50,32 +52,18 @@
             self->distanceField.text = @"";
         } else {
             self->distanceField.enabled = true;
-            selectedActivity = typeId;
+            self->selectedActivity = typeId;
         }
     }];
     [typePicker setNewActivity:0];
 }
 
 - (void) createDatePicker: (UIToolbar *) toolbar {
-    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
-    [datePicker addTarget:self action:@selector(updateDate:)
-         forControlEvents:UIControlEventValueChanged];
-
-    [dateField setInputView:datePicker];
-    [dateField setInputAccessoryView:toolbar];
-    dateField.tintColor = [UIColor clearColor];
-
-    NSDate *now = [NSDate date];
-    [self setSelectedDate:now];
-}
-
-- (void) updateDate: (UIDatePicker *) sender {
-    [self setSelectedDate:sender.date];
-}
-
-- (void) setSelectedDate: (NSDate *) date {
-    selectedDate = date;
-    dateField.text = [WRFormat formatDate:date];
+    DatePickerController *dateController = [[DatePickerController alloc]
+            init:dateField toolbar:toolbar callback:^(NSDate *date) {
+                self->selectedDate = date;
+             }];
+    [dateController setNewDate:[NSDate date]];
 }
 
 - (void) createDurationPicker: (UIToolbar *) toolbar {
@@ -121,7 +109,7 @@
 -(void) readCycling {
     workoutData = [[NSArray alloc] init];
     [[HealthKitManager sharedInstance] readWorkouts:^(NSArray *results) {
-        workoutData = results;
+        self->workoutData = results;
         [self->workoutTableView reloadData];
     }];
 }
@@ -188,7 +176,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
 
-        NSString *title = @"Delete workout entry?";
+        NSString *title = @"Delete workout?";
         NSString *message = [NSString stringWithFormat:@"%@\nDate:  %@\nDuration:  %@",
                              [WRFormat typeNameFor:workout.type],
                              [WRFormat formatDate:workout.date],
