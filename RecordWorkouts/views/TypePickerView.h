@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <HealthKit/HealthKit.h>
-#import "WRFormat.h"
+#import "../WRFormat.h"
 
 @interface TypePickerView : UIPickerView {
     void (^_callbackHandler)(HKQuantityTypeIdentifier typeId);

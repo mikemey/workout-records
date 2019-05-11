@@ -14,12 +14,13 @@
     _instance = self;
     _field = field;
     _callbackHandler = callback;
+    
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    [picker addTarget:_instance action:@selector(updateNewDate:) forControlEvents:UIControlEventValueChanged];
+    
     _field.tintColor = [UIColor clearColor];
     [_field setInputAccessoryView:toolbar];
-    
-    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
-    [_field setInputView:datePicker];
-    [datePicker addTarget:_instance action:@selector(updateNewDate:) forControlEvents:UIControlEventValueChanged];
+    [_field setInputView:picker];
     return self;
 }
 

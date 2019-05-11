@@ -5,6 +5,7 @@
 #import "TypePickerView.h"
 #import "WorkoutTableCell.h"
 #import "DatePickerController.h"
+#import "DurationPickerController.h"
 
 @implementation ViewController {
     NSArray *workoutData;
@@ -33,6 +34,7 @@
 
 // =============== create fields methods =======================
 // =============================================================
+
 - (UIToolbar*) createToolbar {
     UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
     [toolBar setTintColor:[UIColor grayColor]];
@@ -67,27 +69,11 @@
 }
 
 - (void) createDurationPicker: (UIToolbar *) toolbar {
-    UIDatePicker *durationPicker = [[UIDatePicker alloc] init];
-    durationPicker.datePickerMode = UIDatePickerModeCountDownTimer;
-    [durationPicker addTarget:self action:@selector(updateDuration:)
-             forControlEvents:UIControlEventValueChanged];
-
-    [durationField setInputView:durationPicker];
-    [durationField setInputAccessoryView:toolbar];
-    durationField.tintColor = [UIColor clearColor];
-
-    NSTimeInterval hour = 3600;
-    [self setSelectedDuration:hour];
-    durationPicker.countDownDuration = hour;
-}
-
-- (void) updateDuration: (UIDatePicker *) sender {
-    [self setSelectedDuration:sender.countDownDuration];
-}
-
-- (void) setSelectedDuration: (NSTimeInterval) dur {
-    selectedDuration = dur;
-    durationField.text = [WRFormat formatDuration:dur];
+    DurationPickerController *picker = [[DurationPickerController alloc]
+            init:durationField toolbar:toolbar callback:^(NSTimeInterval interval) {
+                self->selectedDuration = interval;
+            }];
+    [picker setInitialDuration:3600];
 }
 
 -(void) endEditing {
