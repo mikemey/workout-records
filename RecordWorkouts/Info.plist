@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Allow Workout Records to read workouts from Health application.</string>
+	<string>Allow Workout Records to read workouts from the Health application.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Allow Workout Records to write workouts to Health application.</string>
+	<string>Allow Workout Records to write workouts to the Health application.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
