@@ -1,16 +1,19 @@
 #import <UIKit/UIKit.h>
+#import <HealthKit/HealthKit.h>
 
 @interface WorkoutTableCell : UITableViewCell
 
 + (NSString *)formatDate:(NSDate *)date;
 + (NSString *)formatDuration:(NSTimeInterval)duration;
 
-@property (nonatomic, weak) IBOutlet UILabel *dateLabel;
-@property (nonatomic, weak) IBOutlet UILabel *durationLabel;
-@property (nonatomic, weak) IBOutlet UILabel *distanceLabel;
-@property (nonatomic, weak) IBOutlet UILabel *caloriesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *durationLabel;
+@property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *caloriesLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *typeImage;
 
-- (void)setValues:(NSDate *)date
+- (void)setValues:(HKQuantityTypeIdentifier)type
+             date:(NSDate *)date
          duration:(NSTimeInterval)duration
          distance:(double)distance
          calories:(int)calories;

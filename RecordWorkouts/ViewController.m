@@ -146,7 +146,7 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WorkoutTableCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    [cell setValues:workout.date duration:workout.duration distance:workout.distance calories:workout.energy];
+    [cell setValues:workout.type date:workout.date duration:workout.duration distance:workout.distance calories:workout.energy];
     return cell;
 }
 

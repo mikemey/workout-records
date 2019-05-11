@@ -3,6 +3,7 @@
 @implementation WorkoutTableCell
 static NSDateFormatter *dateTimeFormatter;
 static UIColor *textColor;
+static NSDictionary *iconFiles;
 
 + (void) initialize {
     dateTimeFormatter = [[NSDateFormatter alloc] init];
@@ -11,6 +12,16 @@ static UIColor *textColor;
                                 green:210.0f/255.0f
                                  blue:210.0f/255.0f
                                 alpha:1.0f];
+    
+    id keys[] = { HKQuantityTypeIdentifierActiveEnergyBurned,
+        HKQuantityTypeIdentifierDistanceCycling,
+        HKQuantityTypeIdentifierDistanceSwimming,
+        HKQuantityTypeIdentifierDistanceWheelchair,
+        HKQuantityTypeIdentifierDistanceWalkingRunning
+    };
+    id objects[] = { @"icons-energy.png", @"icons-cycling.png", @"icons-swimming.png", @"icons-wheelchair.png", @"icons-running.png"};
+    NSUInteger count = sizeof(objects) / sizeof(id);
+    iconFiles = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
 }
 
 + (NSString *)formatDate:(NSDate *)date {
@@ -44,6 +55,7 @@ static UIColor *textColor;
 @synthesize durationLabel;
 @synthesize distanceLabel;
 @synthesize caloriesLabel;
+@synthesize typeImage;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -55,7 +67,8 @@ static UIColor *textColor;
     [super setSelected:selected animated:animated];
 }
 
-- (void)setValues:(NSDate *)date
+- (void)setValues:(HKQuantityTypeIdentifier)type
+             date:(NSDate *)date
          duration:(NSTimeInterval)duration
          distance:(double)distance
          calories:(int)calories {
@@ -63,6 +76,7 @@ static UIColor *textColor;
     [self setTextOn:durationLabel text:[WorkoutTableCell formatDuration:duration] size:12];
     [self setTextOn:distanceLabel text:[WorkoutTableCell formatDistance:distance] size:18];
     [self setTextOn:caloriesLabel text:[WorkoutTableCell formatCalories:calories] size:18];
+    typeImage.image = [UIImage imageNamed:iconFiles[type]];
 }
 
 - (void)setTextOn:(UILabel *)lbl text:(NSString *)text size:(int)size {

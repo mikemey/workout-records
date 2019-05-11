@@ -1,6 +1,7 @@
 #import "WorkoutData.h"
 
 @implementation WorkoutData
+    @synthesize type;
     @synthesize date;
     @synthesize duration;
     @synthesize distance;
