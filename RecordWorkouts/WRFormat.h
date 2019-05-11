@@ -1,33 +1,17 @@
-#import <Foundation/Foundation.h>
 #import <HealthKit/HKTypeIdentifiers.h>
 
 @interface WRFormat : NSObject
-@property (class, nonatomic, assign, readonly) NSArray *supportedTypeIds;
-@property (class, nonatomic, assign, readonly) HKQuantityTypeIdentifier energyTypeId;
-@end
 
-@implementation WRFormat
-static NSArray *_supportedTypeIds = nil;
-static HKQuantityTypeIdentifier _energyTypeId = nil;
++ (NSArray *) getAllTypeIds;
++ (HKQuantityTypeIdentifier) getEnergyTypeId;
++ (HKQuantityTypeIdentifier) typeIdentifierAt:(long)index;
++ (NSString *) typeNameAt:(long)index;
++ (NSString *) typeNameFor:(HKQuantityTypeIdentifier)typeId;
++ (NSString *) getImageFileFor:(HKQuantityTypeIdentifier)type;
 
-+ (HKQuantityTypeIdentifier) energyTypeId {
-    if (_energyTypeId == nil) {
-        _energyTypeId = HKQuantityTypeIdentifierActiveEnergyBurned;
-    }
-    return _energyTypeId;
-}
-
-+ (NSArray *) supportedTypeIds {
-    if (_supportedTypeIds == nil) {
-        _supportedTypeIds = [[NSArray alloc] initWithObjects:
-                             HKQuantityTypeIdentifierDistanceCycling,
-                             HKQuantityTypeIdentifierDistanceSwimming,
-                             HKQuantityTypeIdentifierDistanceWheelchair,
-                             HKQuantityTypeIdentifierDistanceWalkingRunning,
-                             [self energyTypeId],
-                             nil];
-    }
-    return _supportedTypeIds;
-}
++ (NSString *) formatDate:(NSDate *)date;
++ (NSString *) formatDuration:(NSTimeInterval)duration;
++ (NSString *)formatDistance:(double)distance;
++ (NSString *)formatCalories:(int)calories;
 
 @end

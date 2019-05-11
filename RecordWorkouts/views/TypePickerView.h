@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <HealthKit/HealthKit.h>
+#import "WRFormat.h"
 
 @interface TypePickerView : UIPickerView {
     void (^_callbackHandler)(HKQuantityTypeIdentifier typeId);
@@ -16,27 +17,15 @@
 
 
 @implementation TypePickerView
-static NSArray *activityNames;
-static NSArray *activityTypes;
-
-+ (void) initialize {
-    activityNames = [[NSArray alloc] initWithObjects:@"Cycling", @"Swimming", @"Wheelchair", @"Walking/Running", @"Calories only", nil];
-    activityTypes = [[NSArray alloc] initWithObjects:
-                     HKQuantityTypeIdentifierDistanceCycling,
-                     HKQuantityTypeIdentifierDistanceSwimming,
-                     HKQuantityTypeIdentifierDistanceWheelchair,
-                     HKQuantityTypeIdentifierDistanceWalkingRunning,
-                     HKQuantityTypeIdentifierActiveEnergyBurned,
-                     nil];
-}
 
 UITextField *field;
-
+long count;
 
 - (id)init:(UITextField  *) textField toolbar:(UIToolbar *) toolbar {
     self = [super init];
     field = textField;
     
+    count = [WRFormat getAllTypeIds].count;
     [self setDelegate:self];
     [field setInputView:self];
     [field setInputAccessoryView:toolbar];
@@ -49,18 +38,18 @@ UITextField *field;
 }
 
 - (void) setNewActivity:(NSInteger) index {
-    field.text = activityNames[index];
+    field.text = [WRFormat typeNameAt:index];
     if(_callbackHandler) {
-        _callbackHandler(activityTypes[index]);
+        _callbackHandler([WRFormat typeIdentifierAt:index]);
     }
 }
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return activityNames.count;
+    return count;
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return activityNames[row];
+    return [WRFormat typeNameAt:row];
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {

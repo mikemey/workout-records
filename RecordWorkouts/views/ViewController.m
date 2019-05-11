@@ -87,12 +87,12 @@
 
 -(void) setSelectedDate:(NSDate *)date {
     selectedDate = date;
-    dateField.text = [WorkoutTableCell formatDate:date];
+    dateField.text = [WRFormat formatDate:date];
 }
 
 -(void) setDuration:(NSTimeInterval)dur {
     selectedDuration = dur;
-    durationField.text = [WorkoutTableCell formatDuration:dur];
+    durationField.text = [WRFormat formatDuration:dur];
 }
 
 -(void) updateDateField:(UIDatePicker *)sender {
@@ -191,10 +191,9 @@
 
         NSString *title = @"Delete workout entry?";
         NSString *message = [NSString stringWithFormat:@"%@\nDate:  %@\nDuration:  %@",
-                             @"NOT YET IMPLEMENTED!",
-//                             [TypePickerView textForType:workout.type],
-                             [WorkoutTableCell formatDate:workout.date],
-                             [WorkoutTableCell formatDuration:workout.duration]];
+                             [WRFormat typeNameFor:workout.type],
+                             [WRFormat formatDate:workout.date],
+                             [WRFormat formatDuration:workout.duration]];
         WorkoutAlertBuilder *alertBuilder = [[WorkoutAlertBuilder alloc] init:self title:title message:message];
         [alertBuilder addCancelAction];
         [alertBuilder addDefaultAction:@"Delete" handler:^(UIAlertAction * action) {

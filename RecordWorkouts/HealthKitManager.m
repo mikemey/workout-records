@@ -2,8 +2,6 @@
 #import <HealthKit/HealthKit.h>
 #import "WRFormat.h"
 
-typedef HKObjectType * (*toType) (HKQuantityTypeIdentifier *);
-
 @interface HealthKitManager ()
 @property (nonatomic, retain) HKHealthStore *healthStore;
 @property int secondsInWeek;
@@ -50,7 +48,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
 
 - (void)requestHealthDataPermissions {
     NSLog(@"requesting permission");
-    NSArray *types = [self get:WRFormat.supportedTypeIds converter:sampleFrom];
+    NSArray *types = [self get:WRFormat.getAllTypeIds converter:sampleFrom];
     [self.healthStore requestAuthorizationToShareTypes:[NSSet setWithArray:types]
             readTypes:[NSSet setWithArray:types]
             completion:^(BOOL success, NSError * _Nullable error) {
@@ -78,7 +76,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
     
     if(calories > 0) {
         HKQuantityType *caloriesQuantityType = [HKQuantityType
-            quantityTypeForIdentifier:WRFormat.energyTypeId];
+            quantityTypeForIdentifier:WRFormat.getEnergyTypeId];
         HKQuantity *caloriesQuantity = [HKQuantity quantityWithUnit:[HKUnit largeCalorieUnit] doubleValue:calories];
         HKQuantitySample *energy = [HKQuantitySample quantitySampleWithType:caloriesQuantityType quantity:caloriesQuantity startDate:startDate endDate:endDate];
         [storeObj addObject:energy];
@@ -150,8 +148,8 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
     __block NSMutableArray *distanceResults = [[NSMutableArray alloc] init];
     __block NSArray *energyResult = nil;
     
-    NSArray *types = [self get:WRFormat.supportedTypeIds converter:sampleFrom];
-    HKObjectType *energyType = objectTypeFrom(WRFormat.energyTypeId);
+    NSArray *types = [self get:WRFormat.getAllTypeIds converter:sampleFrom];
+    HKObjectType *energyType = objectTypeFrom(WRFormat.getEnergyTypeId);
     NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate
        endDate:endDate
        options:HKQueryOptionStrictStartDate];
