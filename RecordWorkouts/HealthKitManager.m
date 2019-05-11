@@ -1,14 +1,12 @@
 #import "HealthKitManager.h"
 #import <HealthKit/HealthKit.h>
-#import "WorkoutData.h"
+#import "WRFormat.h"
 
 typedef HKObjectType * (*toType) (HKQuantityTypeIdentifier *);
 
 @interface HealthKitManager ()
 @property (nonatomic, retain) HKHealthStore *healthStore;
 @property int secondsInWeek;
-@property NSArray *supportedTypeIds;
-@property HKQuantityTypeIdentifier energyTypeId;
 @end
 
 @implementation HealthKitManager
@@ -26,30 +24,13 @@ typedef HKObjectType * (*toType) (HKQuantityTypeIdentifier *);
     if (self) {
         self.healthStore = [[HKHealthStore alloc] init];
         self.secondsInWeek = 60 * 60 * 24 * 7;
-        [self setupSupportedTypeIds];
     }
     return self;
-}
-
-- (void)setupSupportedTypeIds {
-    self.energyTypeId = HKQuantityTypeIdentifierActiveEnergyBurned;
-    self.supportedTypeIds = [[NSArray alloc] initWithObjects:
-     HKQuantityTypeIdentifierDistanceCycling,
-     HKQuantityTypeIdentifierDistanceSwimming,
-     HKQuantityTypeIdentifierDistanceWheelchair,
-     HKQuantityTypeIdentifierDistanceWalkingRunning,
-     self.energyTypeId,
-     nil];
 }
 
 HKObjectType* (^objectTypeFrom)(HKQuantityTypeIdentifier type) =
     ^HKObjectType* (HKQuantityTypeIdentifier type) {
     return [HKObjectType quantityTypeForIdentifier:type];
-};
-
-HKQuantityType* (^quantityFrom)(HKQuantityTypeIdentifier type) =
-    ^HKQuantityType* (HKQuantityTypeIdentifier type) {
-    return [HKQuantityType quantityTypeForIdentifier:type];
 };
 
 HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
@@ -69,7 +50,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
 
 - (void)requestHealthDataPermissions {
     NSLog(@"requesting permission");
-    NSArray *types = [self get:self.supportedTypeIds converter:sampleFrom];
+    NSArray *types = [self get:WRFormat.supportedTypeIds converter:sampleFrom];
     [self.healthStore requestAuthorizationToShareTypes:[NSSet setWithArray:types]
             readTypes:[NSSet setWithArray:types]
             completion:^(BOOL success, NSError * _Nullable error) {
@@ -97,7 +78,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
     
     if(calories > 0) {
         HKQuantityType *caloriesQuantityType = [HKQuantityType
-            quantityTypeForIdentifier:HKQuantityTypeIdentifierActiveEnergyBurned];
+            quantityTypeForIdentifier:WRFormat.energyTypeId];
         HKQuantity *caloriesQuantity = [HKQuantity quantityWithUnit:[HKUnit largeCalorieUnit] doubleValue:calories];
         HKQuantitySample *energy = [HKQuantitySample quantitySampleWithType:caloriesQuantityType quantity:caloriesQuantity startDate:startDate endDate:endDate];
         [storeObj addObject:energy];
@@ -169,8 +150,8 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
     __block NSMutableArray *distanceResults = [[NSMutableArray alloc] init];
     __block NSArray *energyResult = nil;
     
-    NSArray *types = [self get:self.supportedTypeIds converter:sampleFrom];
-    HKObjectType *energyType = objectTypeFrom(HKQuantityTypeIdentifierActiveEnergyBurned);
+    NSArray *types = [self get:WRFormat.supportedTypeIds converter:sampleFrom];
+    HKObjectType *energyType = objectTypeFrom(WRFormat.energyTypeId);
     NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate
        endDate:endDate
        options:HKQueryOptionStrictStartDate];
