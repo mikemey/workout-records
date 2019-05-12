@@ -7,6 +7,7 @@
 @end
 
 @implementation HealthKitManager {
+    NSDate *queryStartDate;
     int secondsInWeek;
     HKUnit *deviceUnit;
 }
@@ -117,13 +118,17 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
     }];
 }
 
-- (void)readWorkouts:(void (^)(NSArray *results))finishBlock {
-    NSDate *now = [NSDate date];
-    NSDate *startDate = [now dateByAddingTimeInterval:-secondsInWeek];
-    NSDate *endDate = now;
+- (void)readWorkouts:(HKMQuerySetting) querySetting finishBlock:(void (^)(NSArray *results, NSDate *queryFromDate))finishBlock {
+    NSDate *endDate = [NSDate date];
+    if(querySetting == HKMQueryResetDate) {
+        queryStartDate = [endDate dateByAddingTimeInterval:-secondsInWeek];
+    }
+    if(querySetting == HKMQueryIncreasDate) {
+        queryStartDate = [queryStartDate dateByAddingTimeInterval:-secondsInWeek];
+    }
     
-    NSLog(@"fetching data from: %@", startDate);
-    [self fetchWorkoutData:startDate endDate:endDate completion:^(NSArray *distances, NSArray *energies) {
+    NSLog(@"fetching data from: %@", queryStartDate);
+    [self fetchWorkoutData:queryStartDate endDate:endDate completion:^(NSArray *distances, NSArray *energies) {
         NSMutableArray *workouts = [[NSMutableArray alloc] init];
         NSMutableArray *remainingEnergies = [NSMutableArray arrayWithArray:energies];
         for(HKQuantitySample *distanceSample in distances) {
@@ -152,7 +157,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
             NSDate *second = [(WorkoutData *)b date];
             return [second compare:first];
         }];
-        finishBlock(sortedResults);
+        finishBlock(sortedResults, self->queryStartDate);
     }];
 }
 

@@ -4,12 +4,14 @@
 
 #import "AlertBuilder.h"
 #import "TypePickerView.h"
-#import "WorkoutTableCell.h"
 #import "DatePickerController.h"
 #import "DurationPickerController.h"
+#import "WorkoutTableCell.h"
+#import "ShowMoreTableCell.h"
 
 @implementation ViewController {
     NSArray *workoutData;
+    NSDate *queryFromDate;
     HKQuantityTypeIdentifier selectedActivity;
     NSDate *selectedDate;
     NSTimeInterval selectedDuration;
@@ -30,7 +32,7 @@
     [self createDurationPicker:toolbar];
     [self createAdbanner];
 
-    [self reloadWorkouts];
+    [self reloadWorkouts:HKMQueryResetDate];
     [self checkCanRecord];
 }
 
@@ -100,10 +102,11 @@
     [self.view endEditing:YES];
 }
 
-- (void) reloadWorkouts {
+- (void) reloadWorkouts:(HKMQuerySetting)querySetting {
     workoutData = [[NSArray alloc] init];
-    [[HealthKitManager sharedInstance] readWorkouts:^(NSArray *results) {
+    [[HealthKitManager sharedInstance] readWorkouts:querySetting finishBlock:^(NSArray *results, NSDate *queryFromDate) {
         self->workoutData = results;
+        self->queryFromDate = queryFromDate;
         [self->workoutTableView reloadData];
     }];
 }
@@ -122,7 +125,7 @@
               if(error) {
                   [AlertBuilder showErrorAlertOn:self title:@"Error writing workout" error:error];
               } else {
-                  [self reloadWorkouts];
+                  [self reloadWorkouts:HKMQueryNone];
               }
           }];
     }
@@ -134,7 +137,7 @@
          if(error) {
              [AlertBuilder showErrorAlertOn:self title:@"Error deleting workout" error:error];
          } else {
-             [self reloadWorkouts];
+             [self reloadWorkouts:HKMQueryNone];
          }
      }];
 }
@@ -159,22 +162,24 @@
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WorkoutTableCell *cell = [self createTableCell];
+    UITableViewCell *cell;
     if([self isLastRow:indexPath]) {
-        [cell setLabel:@"Load more entries..."];
+        cell = [self createTableCell:@"LoadMoreTableCell"];
+        [(ShowMoreTableCell *)cell setQueryDate:queryFromDate onShowMore: ^(void) {
+            [self reloadWorkouts:HKMQueryIncreasDate];
+        }];
     } else {
+        cell = [self createTableCell:@"WorkoutTableCell"];
         WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
-        [cell setValues:workout.type date:workout.date duration:workout.duration distance:workout.distance calories:workout.energy];
+        [(WorkoutTableCell *)cell setWorkout:workout];
     }
-
     return cell;
 }
 
-- (WorkoutTableCell *) createTableCell {
-    static NSString *cellId = @"WorkoutTableCell";
-    WorkoutTableCell *cell = (WorkoutTableCell *)[workoutTableView dequeueReusableCellWithIdentifier:cellId];
+- (UITableViewCell *) createTableCell:(NSString *)cellId {
+    UITableViewCell *cell = [workoutTableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WorkoutTableCell" owner:self options:nil];
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:cellId owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
     return cell;
@@ -196,13 +201,6 @@
         }];
         [alertBuilder show:self];
     }
-}
-
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
-    if([self isLastRow:indexPath]) {
-        NSLog(@"load more data");
-    }
-    return NO;
 }
 
 @end
