@@ -17,6 +17,7 @@
     
     UIDatePicker *picker = [[UIDatePicker alloc] init];
     [picker addTarget:_instance action:@selector(updateNewDate:) forControlEvents:UIControlEventValueChanged];
+    picker.maximumDate = [NSDate date];
     
     _field.tintColor = [UIColor clearColor];
     [_field setInputAccessoryView:toolbar];
