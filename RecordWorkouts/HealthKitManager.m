@@ -168,15 +168,17 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
     
     NSArray *types = [self get:WRFormat.getAllTypeIds converter:sampleFrom];
     HKObjectType *energyType = objectTypeFrom(WRFormat.getEnergyTypeId);
-    NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate
-       endDate:endDate
-       options:HKQueryOptionStrictStartDate];
-    
+    NSArray *predicates = [[NSArray alloc] initWithObjects:
+                   [HKQuery predicateForObjectsFromSource:[HKSource defaultSource]],
+                   [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionStrictStartDate],
+                   nil];
+    NSPredicate *queryPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+
     dispatch_group_t serviceGroup = dispatch_group_create();
     for(HKSampleType *sampleType in types) {
         dispatch_group_enter(serviceGroup);
         HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType: sampleType
-               predicate: predicate
+               predicate: queryPredicate
                    limit: 0
          sortDescriptors: nil
           resultsHandler:^(HKSampleQuery *query, NSArray* results, NSError *error) {
