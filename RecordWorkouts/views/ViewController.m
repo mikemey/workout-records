@@ -1,7 +1,8 @@
 #import "ViewController.h"
 #import "../HealthKitManager.h"
 #import "../WorkoutData.h"
-#import "WorkoutAlertBuilder.h"
+
+#import "AlertBuilder.h"
 #import "TypePickerView.h"
 #import "WorkoutTableCell.h"
 #import "DatePickerController.h"
@@ -26,8 +27,8 @@
     [self createDatePicker:toolbar];
     [self createDurationPicker:toolbar];
     [self createAdbanner];
-    
-    [self readCycling];
+
+    [self reloadWorkouts];
 }
 
 - (void) didReceiveMemoryWarning {
@@ -89,39 +90,19 @@
     [picker setInitialDuration:3600];
 }
 
+// ================= actions methods ===========================
+// =============================================================
+
 -(void) endEditing {
     [self.view endEditing:YES];
 }
 
-- (void) showErrorAlert: (NSString *)title error:(NSError *)error {
-    NSString *message = error.code == HKErrorAuthorizationDenied
-        ? @"Please enable access in\nSettings -> Privacy -> Health"
-        : error.userInfo[NSLocalizedDescriptionKey];
-    WorkoutAlertBuilder *alertBuilder = [[WorkoutAlertBuilder alloc] init:self title:title message:message];
-    [alertBuilder addOKAction];
-    [alertBuilder show];
-}
-
-// ================= actions methods ===========================
-// =============================================================
-
--(void) readCycling {
+-(void) reloadWorkouts {
     workoutData = [[NSArray alloc] init];
     [[HealthKitManager sharedInstance] readWorkouts:^(NSArray *results) {
         self->workoutData = results;
         [self->workoutTableView reloadData];
     }];
-}
-
--(void) removeWorkout:(WorkoutData *)workout {
-    [[HealthKitManager sharedInstance] deleteWorkout:workout
-     finishBlock:^(NSError *error) {
-         if(error) {
-             [self showErrorAlert:@"Error deleting workout" error:error];
-         } else {
-             [self readCycling];
-         }
-     }];
 }
 
 #pragma mark - Action Events
@@ -136,12 +117,23 @@
         [[HealthKitManager sharedInstance] writeWorkout:selectedActivity distance:distance calories:calories
           startDate:selectedDate endDate:endDate finishBlock:^(NSError *error) {
               if(error) {
-                  [self showErrorAlert:@"Error writing workout" error:error];
+                  [AlertBuilder showErrorAlertOn:self title:@"Error writing workout" error:error];
               } else {
-                  [self readCycling];
+                  [self reloadWorkouts];
               }
           }];
     }
+}
+
+-(void) removeWorkout:(WorkoutData *)workout {
+    [[HealthKitManager sharedInstance] deleteWorkout:workout
+     finishBlock:^(NSError *error) {
+         if(error) {
+             [AlertBuilder showErrorAlertOn:self title:@"Error deleting workout" error:error];
+         } else {
+             [self reloadWorkouts];
+         }
+     }];
 }
 
 // ================= table-view methods ========================
@@ -180,12 +172,12 @@
                              [WRFormat typeNameFor:workout.type],
                              [WRFormat formatDate:workout.date],
                              [WRFormat formatDuration:workout.duration]];
-        WorkoutAlertBuilder *alertBuilder = [[WorkoutAlertBuilder alloc] init:self title:title message:message];
+        AlertBuilder *alertBuilder = [[AlertBuilder alloc] init:title message:message];
         [alertBuilder addCancelAction];
         [alertBuilder addDefaultAction:@"Delete" handler:^(UIAlertAction * action) {
             [self removeWorkout:workout];
         }];
-        [alertBuilder show];
+        [alertBuilder show:self];
     }
 }
 

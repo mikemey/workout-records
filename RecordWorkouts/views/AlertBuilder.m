@@ -1,33 +1,31 @@
-#import <Foundation/Foundation.h>
+#import "AlertBuilder.h"
+#import <HealthKit/HKTypeIdentifiers.h>
 
-@interface WorkoutAlertBuilder:NSObject {}
-
-- (id) init: (UIViewController  *)target title:(NSString *)title message:(NSString *)message;
-- (void) show;
-
-- (void) addDefaultAction: (NSString *)title handler:(void (^)(UIAlertAction * action))handler;
-- (void) addOKAction;
-- (void) addCancelAction;
-@end
-
-@implementation WorkoutAlertBuilder {
-    UIViewController *_target;
+@implementation AlertBuilder {
     UIAlertController *alert;
 }
 
-- (id) init: (UIViewController  *)target title:(NSString *)title message:(NSString *)message {
++ (void) showErrorAlertOn: (UIViewController *)delegate title:(NSString *)title error: (NSError *)error {
+    NSString *message = error.code == HKErrorAuthorizationDenied
+    ? @"Please enable access in\nSettings -> Privacy -> Health"
+    : error.userInfo[NSLocalizedDescriptionKey];
+    AlertBuilder *alertBuilder = [[AlertBuilder alloc] init:title message:message];
+    [alertBuilder addOKAction];
+    [alertBuilder show:delegate];
+}
+
+- (id) init: (NSString *)title message: (NSString *)message {
     self = [super init];
     
-    _target = target;
     alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     return self;
 }
 
-- (void) show {
-    [_target presentViewController:alert animated:YES completion:nil];
+- (void) show: (UIViewController *)target {
+    [target presentViewController:alert animated:YES completion:nil];
 }
 
-- (void) addDefaultAction: (NSString *)title handler:(void (^)(UIAlertAction * action))handler {
+- (void) addDefaultAction: (NSString *)title handler: (void (^)(UIAlertAction * action))handler {
     UIAlertAction* action = [UIAlertAction actionWithTitle:title
                                                      style:UIAlertActionStyleDefault
                                                    handler:handler];
