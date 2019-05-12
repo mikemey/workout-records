@@ -8,5 +8,5 @@
 
 - (void) addDefaultAction: (NSString *)title handler: (void (^)(UIAlertAction * action))handler;
 - (void) addOKAction;
-- (void) addCancelAction;
+- (void) addCancelAction: (void (^)(UIAlertAction * action))handler;
 @end

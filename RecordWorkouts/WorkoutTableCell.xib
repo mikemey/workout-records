@@ -80,6 +80,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="caloriesLabel" destination="0eA-fK-lwQ" id="fRW-Da-dV6"/>
+                <outlet property="cellView" destination="8Y2-VT-iQG" id="CKj-Nd-Lef"/>
                 <outlet property="dateLabel" destination="K5u-v9-LpI" id="eH7-lF-fbG"/>
                 <outlet property="distanceLabel" destination="qS2-OT-Aun" id="Wef-Fl-pMn"/>
                 <outlet property="distanceUnitLabel" destination="rcC-zv-iZB" id="1lk-yS-oGr"/>

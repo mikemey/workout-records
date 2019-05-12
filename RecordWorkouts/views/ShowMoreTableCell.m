@@ -11,9 +11,9 @@ static UIColor *defaultTextColor;
 @synthesize showMoreButton;
 
 + (void) initialize {
-    defaultTextColor = [UIColor colorWithRed:210.0f/255.0f
-                                       green:210.0f/255.0f
-                                        blue:210.0f/255.0f
+    defaultTextColor = [UIColor colorWithRed:180/255.0f
+                                       green:180/255.0f
+                                        blue:180/255.0f
                                        alpha:1.0f];
 }
 

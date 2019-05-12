@@ -36,9 +36,10 @@
     [self addDefaultAction:@"OK" handler:nil];
 }
 
-- (void) addCancelAction {
+- (void) addCancelAction: (void (^)(UIAlertAction * action))handler {
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
-                                                     style:UIAlertActionStyleCancel handler:nil];
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:handler];
     [alert addAction:cancel];
 }
 

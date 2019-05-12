@@ -119,7 +119,7 @@
      }];
 }
 
-- (void) removeWorkout:(WorkoutData *)workout {
+- (void) deleteWorkout:(WorkoutData *)workout {
     [[HealthKitManager sharedInstance]
      deleteWorkout:workout
      finishBlock:^(NSError *error) {
@@ -159,7 +159,7 @@
             storeHandler(nil);
         } else {
             AlertBuilder *alertBuilder = [[AlertBuilder alloc] init:@"" message:@"No distance set.\nRecord as 'Calories only' ?"];
-            [alertBuilder addCancelAction];
+            [alertBuilder addCancelAction:nil];
             [alertBuilder addDefaultAction:@"Record" handler:storeHandler];
             [alertBuilder show:self];
         }
@@ -208,6 +208,8 @@
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        WorkoutTableCell *workoutCell = (WorkoutTableCell *)[tableView cellForRowAtIndexPath:indexPath];
+        [workoutCell markForDeletion:true];
         WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
 
         NSString *title = @"Delete workout?";
@@ -216,9 +218,11 @@
                              [WRFormat formatDate:workout.date],
                              [WRFormat formatDuration:workout.duration]];
         AlertBuilder *alertBuilder = [[AlertBuilder alloc] init:title message:message];
-        [alertBuilder addCancelAction];
+        [alertBuilder addCancelAction:^(UIAlertAction * action) {
+            [workoutCell markForDeletion:false];
+        }];
         [alertBuilder addDefaultAction:@"Delete" handler:^(UIAlertAction * action) {
-            [self removeWorkout:workout];
+            [self deleteWorkout:workout];
         }];
         [alertBuilder show:self];
     }

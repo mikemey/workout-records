@@ -5,6 +5,7 @@
 
 @interface WorkoutTableCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UIView *cellView;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *durationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
@@ -13,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *distanceUnitLabel;
 @property (strong, nonatomic) IBOutlet UILabel *energyUnitLabel;
 
-- (void) setWorkout:(WorkoutData *)workout;
+- (void) setWorkout: (WorkoutData *)workout;
+- (void) markForDeletion: (Boolean)enable;
 @end
