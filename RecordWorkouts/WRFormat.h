@@ -11,7 +11,10 @@
 
 + (NSString *) formatDate:(NSDate *)date;
 + (NSString *) formatDuration:(NSTimeInterval)duration;
++ (float) distanceForWriting: (float) distance;
 + (NSString *)formatDistance:(double)distance;
 + (NSString *)formatCalories:(int)calories;
+
++ (Boolean) isMetric;
 
 @end

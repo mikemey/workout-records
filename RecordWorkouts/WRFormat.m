@@ -6,6 +6,7 @@ static HKQuantityTypeIdentifier _energyTypeId = nil;
 static NSArray *_typeNames = nil;
 static NSArray *_iconFiles = nil;
 static NSDateFormatter *_dateTimeFormatter;
+static NSNumber *_isMetric;
 
 + (HKQuantityTypeIdentifier) getEnergyTypeId {
     if (_energyTypeId == nil) {
@@ -71,7 +72,7 @@ static NSDateFormatter *_dateTimeFormatter;
     return [_dateTimeFormatter stringFromDate:date];
 }
 
-+ (NSString *)formatDuration:(NSTimeInterval)duration {
++ (NSString *) formatDuration:(NSTimeInterval)duration {
     NSInteger ti = (NSInteger)duration;
     NSInteger minutes = (ti / 60) % 60;
     NSInteger hours = (ti / 3600);
@@ -84,14 +85,31 @@ static NSDateFormatter *_dateTimeFormatter;
     return [NSString stringWithFormat:@"%@  %2ld min", hoursString, minutes];
 }
 
-+ (NSString *)formatDistance:(double)distance {
-    return distance >= 100000
-    ? [NSString stringWithFormat:@"%.f", distance / 1000]
-    : [NSString stringWithFormat:@"%.1f", distance / 1000];
++ (float) distanceForWriting: (float) distance {
+    if([WRFormat isMetric]) {
+        distance = distance * 1000;
+    }
+    return distance;
 }
 
-+ (NSString *)formatCalories:(int)calories {
++ (NSString *) formatDistance:(double)distance {
+    if([self isMetric]) {
+        distance = distance / 1000;
+    }
+    return distance >= 100
+        ? [NSString stringWithFormat:@"%.f", distance]
+        : [NSString stringWithFormat:@"%.1f", distance];
+}
+
++ (NSString *) formatCalories:(int)calories {
     return [NSString stringWithFormat:@"%d", calories];
+}
+
++ (Boolean) isMetric {
+    if(_isMetric == nil) {
+       _isMetric = [[NSLocale currentLocale] objectForKey:NSLocaleUsesMetricSystem];
+    }
+    return [_isMetric intValue] == 1;
 }
 
 @end

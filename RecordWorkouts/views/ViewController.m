@@ -16,6 +16,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    [self updateWithLocales];
     
     UIToolbar *toolbar = [self createToolbar];
     [distanceField setInputAccessoryView:toolbar];
@@ -33,6 +34,11 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void) updateWithLocales {
+    if(![WRFormat isMetric]) {
+        distanceLabel.text = @"Distance (mi)";
+    }
+}
 // =============== create fields methods =======================
 // =============================================================
 
@@ -121,7 +127,7 @@
 #pragma mark - Action Events
 - (IBAction) onWriteWorkoutAction:(id)sender {
     [self endEditing];
-    float distance = [distanceField.text floatValue] * 1000;
+    float distance = [distanceField.text floatValue];
     float calories = [caloriesField.text floatValue];
     
     NSDate *endDate = [selectedDate dateByAddingTimeInterval:selectedDuration];

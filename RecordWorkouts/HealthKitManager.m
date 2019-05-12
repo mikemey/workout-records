@@ -4,10 +4,13 @@
 
 @interface HealthKitManager ()
 @property (nonatomic, retain) HKHealthStore *healthStore;
-@property int secondsInWeek;
 @end
 
-@implementation HealthKitManager
+@implementation HealthKitManager {
+    int secondsInWeek;
+    HKUnit *deviceUnit;
+}
+
 + (HealthKitManager *)sharedInstance {
     static HealthKitManager *instance = nil;
     static dispatch_once_t onceToken;
@@ -21,7 +24,8 @@
     self = [super init];
     if (self) {
         self.healthStore = [[HKHealthStore alloc] init];
-        self.secondsInWeek = 60 * 60 * 24 * 7;
+        secondsInWeek = 60 * 60 * 24 * 7;
+        deviceUnit = [WRFormat isMetric] ? [HKUnit meterUnit] : [HKUnit mileUnit];
     }
     return self;
 }
@@ -86,8 +90,9 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
 
     NSMutableArray *storeObj = [[NSMutableArray alloc] init];
     if(distance > 0) {
+        distance = [WRFormat distanceForWriting:distance];
         HKQuantityType *distanceQuantityType = [HKQuantityType quantityTypeForIdentifier:activityId];
-        HKQuantity *distanceQuantity = [HKQuantity quantityWithUnit:[HKUnit meterUnit] doubleValue:distance];
+        HKQuantity *distanceQuantity = [HKQuantity quantityWithUnit:deviceUnit doubleValue:distance];
         HKQuantitySample *activity = [HKQuantitySample quantitySampleWithType:distanceQuantityType quantity:distanceQuantity startDate:startDate endDate:endDate];
         [storeObj addObject:activity];
     }
@@ -114,7 +119,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
 
 - (void)readWorkouts:(void (^)(NSArray *results))finishBlock {
     NSDate *now = [NSDate date];
-    NSDate *startDate = [now dateByAddingTimeInterval:-self.secondsInWeek];
+    NSDate *startDate = [now dateByAddingTimeInterval:-secondsInWeek];
     NSDate *endDate = now;
     
     NSLog(@"fetching data from: %@", startDate);
@@ -123,7 +128,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
         NSMutableArray *remainingEnergies = [NSMutableArray arrayWithArray:energies];
         for(HKQuantitySample *distanceSample in distances) {
             WorkoutData *record = [self createBasicWorkoutFrom:distanceSample];
-            record.distance = [distanceSample.quantity doubleValueForUnit:[HKUnit meterUnit]];
+            record.distance = [distanceSample.quantity doubleValueForUnit:self->deviceUnit];
             
             for(HKQuantitySample *energySample in remainingEnergies) {
                 double interval = fabs([energySample.startDate timeIntervalSinceDate:distanceSample.startDate]);

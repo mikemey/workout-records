@@ -9,6 +9,7 @@
     __weak IBOutlet UITextField *distanceField;
     __weak IBOutlet UITextField *caloriesField;
     IBOutlet UITableView *workoutTableView;
+    IBOutlet UILabel *distanceLabel;
 }
 
 @end

@@ -197,6 +197,7 @@
                         <outlet property="caloriesField" destination="ed7-bC-3SH" id="jw4-0e-m7a"/>
                         <outlet property="dateField" destination="Aeq-2K-GYS" id="Ay9-i1-84X"/>
                         <outlet property="distanceField" destination="DCP-YZ-QgF" id="8Cn-ZR-bJP"/>
+                        <outlet property="distanceLabel" destination="oat-oA-kAK" id="ZCK-mN-VZc"/>
                         <outlet property="durationField" destination="etK-2X-9gM" id="LUR-Vg-8Z1"/>
                         <outlet property="typeField" destination="elr-DX-IQy" id="1f3-Q9-XAq"/>
                         <outlet property="workoutTableView" destination="FS7-ke-5Cr" id="jhn-xP-Tk3"/>

@@ -9,6 +9,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *caloriesLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *typeImage;
+@property (strong, nonatomic) IBOutlet UILabel *distanceUnitLabel;
 
 - (void) setValues:(HKQuantityTypeIdentifier)type
              date:(NSDate *)date
@@ -26,6 +27,7 @@ static UIColor *textColor;
 @synthesize distanceLabel;
 @synthesize caloriesLabel;
 @synthesize typeImage;
+@synthesize distanceUnitLabel;
 
 + (void) initialize {
     textColor = [UIColor colorWithRed:210.0f/255.0f
@@ -51,6 +53,10 @@ static UIColor *textColor;
     [self setTextOn:durationLabel text:[WRFormat formatDuration:duration] size:12];
     [self setTextOn:distanceLabel text:[WRFormat formatDistance:distance] size:18];
     [self setTextOn:caloriesLabel text:[WRFormat formatCalories:calories] size:18];
+    
+    if(![WRFormat isMetric]) {
+        distanceUnitLabel.text = @"mi";
+    }
     typeImage.image = [UIImage imageNamed:[WRFormat getImageFileFor:type]];
 }
 
