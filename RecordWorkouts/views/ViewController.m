@@ -18,13 +18,14 @@
     [super viewDidLoad];
     
     UIToolbar *toolbar = [self createToolbar];
+    [distanceField setInputAccessoryView:toolbar];
+    [caloriesField setInputAccessoryView:toolbar];
     
     [self createTypePicker:toolbar];
     [self createDatePicker:toolbar];
     [self createDurationPicker:toolbar];
-    [distanceField setInputAccessoryView:toolbar];
-    [caloriesField setInputAccessoryView:toolbar];
-
+    [self createAdbanner];
+    
     [self readCycling];
 }
 
@@ -34,6 +35,12 @@
 
 // =============== create fields methods =======================
 // =============================================================
+
+- (void) createAdbanner {
+    bannerView.adUnitID = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"AdUnitId"];
+    bannerView.rootViewController = self;
+    [bannerView loadRequest:[GADRequest request]];
+}
 
 - (UIToolbar*) createToolbar {
     UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];

@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "HealthKitManager.h"
+@import GoogleMobileAds;
 
 @interface AppDelegate ()
 
@@ -9,6 +10,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[HealthKitManager sharedInstance] requestHealthDataPermissions];
+    [[GADMobileAds sharedInstance] startWithCompletionHandler:nil];
     return YES;
 }
 
