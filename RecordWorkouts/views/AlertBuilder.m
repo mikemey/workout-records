@@ -33,8 +33,7 @@
 }
 
 - (void) addOKAction {
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-    [alert addAction:ok];
+    [self addDefaultAction:@"OK" handler:nil];
 }
 
 - (void) addCancelAction {

@@ -23,9 +23,9 @@
     
     UIToolbar *toolbar = [self createToolbar];
     [distanceField setInputAccessoryView:toolbar];
-    [distanceField addTarget:self action:@selector(checkCanRecord) forControlEvents:UIControlEventAllEditingEvents];
+    [distanceField addTarget:self action:@selector(checkRecordButtonState) forControlEvents:UIControlEventAllEditingEvents];
     [caloriesField setInputAccessoryView:toolbar];
-    [caloriesField addTarget:self action:@selector(checkCanRecord) forControlEvents:UIControlEventEditingChanged];
+    [caloriesField addTarget:self action:@selector(checkRecordButtonState) forControlEvents:UIControlEventEditingChanged];
 
     [self createTypePicker:toolbar];
     [self createDatePicker:toolbar];
@@ -33,7 +33,7 @@
     [self createAdbanner];
 
     [self reloadWorkouts:HKMQueryResetDate];
-    [self checkCanRecord];
+    [self checkRecordButtonState];
 }
 
 - (void) didReceiveMemoryWarning {
@@ -65,17 +65,16 @@
 
 - (void) createTypePicker: (UIToolbar *) toolbar {
     TypePickerView *typePicker = [[TypePickerView alloc]
-                                  init:typeField
-                                  toolbar:toolbar
-                                  callback:^(HKQuantityTypeIdentifier typeId) {
-        if (typeId == HKQuantityTypeIdentifierActiveEnergyBurned) {
-            self->distanceField.enabled = false;
-            self->distanceField.text = @"";
-        } else {
-            self->distanceField.enabled = true;
+          init:typeField toolbar:toolbar callback:^(HKQuantityTypeIdentifier typeId) {
             self->selectedActivity = typeId;
-        }
-    }];
+            if (typeId == HKQuantityTypeIdentifierActiveEnergyBurned) {
+                self->distanceField.enabled = false;
+                self->distanceField.text = @"";
+                [self checkRecordButtonState];
+            } else {
+                self->distanceField.enabled = true;
+            }
+          }];
     [typePicker setNewActivity:0];
 }
 
@@ -95,12 +94,8 @@
     [picker setInitialDuration:3600];
 }
 
-// ================= actions methods ===========================
+// ============== workout action methods =======================
 // =============================================================
-
-- (void) endEditing {
-    [self.view endEditing:YES];
-}
 
 - (void) reloadWorkouts:(HKMQuerySetting)querySetting {
     workoutData = [[NSArray alloc] init];
@@ -111,28 +106,22 @@
     }];
 }
 
-#pragma mark - Action Events
-- (IBAction) onWriteWorkoutAction:(id)sender {
-    [self endEditing];
-    float distance = [distanceField.text floatValue];
-    float calories = [caloriesField.text floatValue];
-
-    NSDate *endDate = [selectedDate dateByAddingTimeInterval:selectedDuration];
-
-    if(distance || calories) {
-        [[HealthKitManager sharedInstance] writeWorkout:selectedActivity distance:distance calories:calories
-          startDate:selectedDate endDate:endDate finishBlock:^(NSError *error) {
-              if(error) {
-                  [AlertBuilder showErrorAlertOn:self title:@"Error writing workout" error:error];
-              } else {
-                  [self reloadWorkouts:HKMQueryNone];
-              }
-          }];
-    }
+- (void) storeWorkout:(HKQuantityTypeIdentifier) activityId
+             distance:(float)distance calories:(float)calories startDate:(NSDate *)startDate endDate:(NSDate *)endDate {
+    [[HealthKitManager sharedInstance]
+     writeWorkout:activityId distance:distance calories:calories
+     startDate:selectedDate endDate:endDate finishBlock:^(NSError *error) {
+         if(error) {
+             [AlertBuilder showErrorAlertOn:self title:@"Error writing workout" error:error];
+         } else {
+             [self reloadWorkouts:HKMQueryNone];
+         }
+     }];
 }
 
 - (void) removeWorkout:(WorkoutData *)workout {
-    [[HealthKitManager sharedInstance] deleteWorkout:workout
+    [[HealthKitManager sharedInstance]
+     deleteWorkout:workout
      finishBlock:^(NSError *error) {
          if(error) {
              [AlertBuilder showErrorAlertOn:self title:@"Error deleting workout" error:error];
@@ -142,8 +131,40 @@
      }];
 }
 
-- (void) checkCanRecord {
+// ==================== view methods ===========================
+// =============================================================
+
+- (void) endEditing {
+    [self.view endEditing:YES];
+}
+
+- (void) checkRecordButtonState {
     recordButton.enabled = ![distanceField.text isEqualToString:@""] || ![caloriesField.text isEqualToString:@""];
+}
+
+#pragma mark - Action Events
+- (IBAction) onWriteWorkoutAction:(id)sender {
+    [self endEditing];
+    float distance = [distanceField.text floatValue];
+    float calories = [caloriesField.text floatValue];
+    NSDate *endDate = [selectedDate dateByAddingTimeInterval:selectedDuration];
+
+    void (^storeHandler)(UIAlertAction * action) = ^(UIAlertAction * action) {
+        [self storeWorkout:self->selectedActivity distance:distance calories:calories
+                 startDate:self->selectedDate endDate:endDate];
+    };
+    
+    if(distance || calories) {
+        if( distance > 0 || selectedActivity == [WRFormat getEnergyTypeId] ) {
+            storeHandler(nil);
+        } else {
+            AlertBuilder *alertBuilder = [[AlertBuilder alloc] init:@"" message:@"No distance set.\nRecord as 'Calories only' ?"];
+            [alertBuilder addCancelAction];
+            [alertBuilder addDefaultAction:@"Record" handler:storeHandler];
+            [alertBuilder show:self];
+        }
+        
+    }
 }
 
 // ================= table-view methods ========================
