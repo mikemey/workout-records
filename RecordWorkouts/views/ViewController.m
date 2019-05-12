@@ -21,14 +21,17 @@
     
     UIToolbar *toolbar = [self createToolbar];
     [distanceField setInputAccessoryView:toolbar];
+    [distanceField addTarget:self action:@selector(checkCanRecord) forControlEvents:UIControlEventAllEditingEvents];
     [caloriesField setInputAccessoryView:toolbar];
-    
+    [caloriesField addTarget:self action:@selector(checkCanRecord) forControlEvents:UIControlEventEditingChanged];
+
     [self createTypePicker:toolbar];
     [self createDatePicker:toolbar];
     [self createDurationPicker:toolbar];
     [self createAdbanner];
 
     [self reloadWorkouts];
+    [self checkCanRecord];
 }
 
 - (void) didReceiveMemoryWarning {
@@ -93,11 +96,11 @@
 // ================= actions methods ===========================
 // =============================================================
 
--(void) endEditing {
+- (void) endEditing {
     [self.view endEditing:YES];
 }
 
--(void) reloadWorkouts {
+- (void) reloadWorkouts {
     workoutData = [[NSArray alloc] init];
     [[HealthKitManager sharedInstance] readWorkouts:^(NSArray *results) {
         self->workoutData = results;
@@ -110,9 +113,9 @@
     [self endEditing];
     float distance = [distanceField.text floatValue];
     float calories = [caloriesField.text floatValue];
-    
+
     NSDate *endDate = [selectedDate dateByAddingTimeInterval:selectedDuration];
-    
+
     if(distance || calories) {
         [[HealthKitManager sharedInstance] writeWorkout:selectedActivity distance:distance calories:calories
           startDate:selectedDate endDate:endDate finishBlock:^(NSError *error) {
@@ -125,7 +128,7 @@
     }
 }
 
--(void) removeWorkout:(WorkoutData *)workout {
+- (void) removeWorkout:(WorkoutData *)workout {
     [[HealthKitManager sharedInstance] deleteWorkout:workout
      finishBlock:^(NSError *error) {
          if(error) {
@@ -134,6 +137,10 @@
              [self reloadWorkouts];
          }
      }];
+}
+
+- (void) checkCanRecord {
+    recordButton.enabled = ![distanceField.text isEqualToString:@""] || ![caloriesField.text isEqualToString:@""];
 }
 
 // ================= table-view methods ========================

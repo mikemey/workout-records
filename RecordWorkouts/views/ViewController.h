@@ -10,6 +10,7 @@
     __weak IBOutlet UITextField *caloriesField;
     IBOutlet UITableView *workoutTableView;
     IBOutlet UILabel *distanceLabel;
+    IBOutlet UIButton *recordButton;
 }
 
 @end

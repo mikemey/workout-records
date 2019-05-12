@@ -199,6 +199,7 @@
                         <outlet property="distanceField" destination="DCP-YZ-QgF" id="8Cn-ZR-bJP"/>
                         <outlet property="distanceLabel" destination="oat-oA-kAK" id="ZCK-mN-VZc"/>
                         <outlet property="durationField" destination="etK-2X-9gM" id="LUR-Vg-8Z1"/>
+                        <outlet property="recordButton" destination="uaU-zP-L8F" id="qGF-Mm-n0n"/>
                         <outlet property="typeField" destination="elr-DX-IQy" id="1f3-Q9-XAq"/>
                         <outlet property="workoutTableView" destination="FS7-ke-5Cr" id="jhn-xP-Tk3"/>
                     </connections>
