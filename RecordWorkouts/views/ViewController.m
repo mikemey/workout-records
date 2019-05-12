@@ -146,27 +146,37 @@
 // ================= table-view methods ========================
 // =============================================================
 
+- (BOOL) isLastRow:(NSIndexPath *)indexPath {
+    return indexPath.row == [workoutData count];
+}
+
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+    return indexPath.row != [workoutData count];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [workoutData count];
+    return [workoutData count] + 1;
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
-    return [self createWorkoutEntryFrom:workout];
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    WorkoutTableCell *cell = [self createTableCell];
+    if([self isLastRow:indexPath]) {
+        [cell setLabel:@"Load more entries..."];
+    } else {
+        WorkoutData *workout = [workoutData objectAtIndex:indexPath.row];
+        [cell setValues:workout.type date:workout.date duration:workout.duration distance:workout.distance calories:workout.energy];
+    }
+
+    return cell;
 }
 
--(UITableViewCell *) createWorkoutEntryFrom:(WorkoutData *)workout {
+- (WorkoutTableCell *) createTableCell {
     static NSString *cellId = @"WorkoutTableCell";
     WorkoutTableCell *cell = (WorkoutTableCell *)[workoutTableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"WorkoutTableCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    [cell setValues:workout.type date:workout.date duration:workout.duration distance:workout.distance calories:workout.energy];
     return cell;
 }
 
@@ -186,6 +196,13 @@
         }];
         [alertBuilder show:self];
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    if([self isLastRow:indexPath]) {
+        NSLog(@"load more data");
+    }
+    return NO;
 }
 
 @end

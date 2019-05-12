@@ -84,6 +84,7 @@
                 <outlet property="distanceLabel" destination="qS2-OT-Aun" id="Wef-Fl-pMn"/>
                 <outlet property="distanceUnitLabel" destination="rcC-zv-iZB" id="1lk-yS-oGr"/>
                 <outlet property="durationLabel" destination="Koo-y4-35s" id="4uk-Rm-yG4"/>
+                <outlet property="energyUnitLabel" destination="fLJ-7z-vpx" id="6P5-Vd-hls"/>
                 <outlet property="typeImage" destination="vYs-z3-VEf" id="qx4-s9-KvY"/>
             </connections>
             <point key="canvasLocation" x="52.898550724637687" y="38.839285714285715"/>
