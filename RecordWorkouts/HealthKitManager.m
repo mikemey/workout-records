@@ -12,6 +12,8 @@
     HKUnit *deviceUnit;
 }
 
+NSString *METADATA_WR_ID = @"WR-ID";
+
 + (HealthKitManager *)sharedInstance {
     static HealthKitManager *instance = nil;
     static dispatch_once_t onceToken;
@@ -30,6 +32,29 @@
     }
     return self;
 }
+
+NSDictionary* (^createNewMetadata)(void) = ^NSDictionary*() {
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    return [NSDictionary dictionaryWithObject:uuid forKey:METADATA_WR_ID];
+};
+
+NSString* (^getWorkoutId)(HKSample *sample) = ^NSString* (HKSample *sample) {
+    NSDictionary *metadata = [sample metadata];
+    if(metadata) {
+        return [metadata objectForKey:METADATA_WR_ID];
+    }
+    return nil;
+};
+
+HKQuantitySample* (^findSampleById)(NSArray *samples, NSString *uuid) = ^HKQuantitySample* (NSArray *samples, NSString *uuid) {
+    for (HKQuantitySample *sample in samples) {
+        NSString *wrid = getWorkoutId(sample);
+        if ([uuid isEqualToString:wrid]) {
+            return sample;
+        }
+    }
+    return nil;
+};
 
 HKObjectType* (^objectTypeFrom)(HKQuantityTypeIdentifier type) =
     ^HKObjectType* (HKQuantityTypeIdentifier type) {
@@ -64,6 +89,9 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
             }];
 }
 
+// ==========================   write workouts    ===========================================
+// ==========================================================================================
+
 - (void) writeWorkout:(HKQuantityTypeIdentifier) activityId
               distance:(float) distance
               calories:(float) calories
@@ -71,38 +99,25 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
                endDate:(NSDate *) endDate
            finishBlock:(void (^)(NSError *)) finishBlock {
     
-    if(!activityId || !startDate || !endDate) {
-        NSString *missingParam = @"activity";
-        if(!startDate) {
-            missingParam = @"start date";
-        }
-        if(!endDate) {
-            missingParam = @"duration";
-        }
-        NSString *msg = [[NSString alloc] initWithFormat:@"Missing %@", missingParam];
-        NSLog(@"ERROR storing: %@", msg);
-        id keys[] = { NSLocalizedDescriptionKey };
-        id objects[] = { msg };
-        NSUInteger count = sizeof(objects) / sizeof(id);
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
-        finishBlock([NSError errorWithDomain:@"WorkoutRecords" code:1 userInfo:userInfo]);
+    if ([self missingWorkoutParams:activityId startDate:startDate endDate:endDate finishBlock:finishBlock]) {
         return;
     }
 
+    NSDictionary *metadata = createNewMetadata();
     NSMutableArray *storeObj = [[NSMutableArray alloc] init];
-    if(distance > 0) {
+    if (distance > 0) {
         distance = [WRFormat distanceForWriting:distance];
         HKQuantityType *distanceQuantityType = [HKQuantityType quantityTypeForIdentifier:activityId];
         HKQuantity *distanceQuantity = [HKQuantity quantityWithUnit:deviceUnit doubleValue:distance];
-        HKQuantitySample *activity = [HKQuantitySample quantitySampleWithType:distanceQuantityType quantity:distanceQuantity startDate:startDate endDate:endDate];
+        HKQuantitySample *activity = [HKQuantitySample quantitySampleWithType:distanceQuantityType quantity:distanceQuantity startDate:startDate endDate:endDate metadata:metadata];
         [storeObj addObject:activity];
     }
     
-    if(calories > 0) {
+    if (calories > 0) {
         HKQuantityType *caloriesQuantityType = [HKQuantityType
             quantityTypeForIdentifier:WRFormat.getEnergyTypeId];
         HKQuantity *caloriesQuantity = [HKQuantity quantityWithUnit:[HKUnit largeCalorieUnit] doubleValue:calories];
-        HKQuantitySample *energy = [HKQuantitySample quantitySampleWithType:caloriesQuantityType quantity:caloriesQuantity startDate:startDate endDate:endDate];
+        HKQuantitySample *energy = [HKQuantitySample quantitySampleWithType:caloriesQuantityType quantity:caloriesQuantity startDate:startDate endDate:endDate metadata:metadata];
         [storeObj addObject:energy];
     }
     
@@ -117,6 +132,33 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
         });
     }];
 }
+
+- (Boolean) missingWorkoutParams: (HKQuantityTypeIdentifier)activityId
+                       startDate:(NSDate *)startDate
+                         endDate:(NSDate *)endDate
+                     finishBlock:(void (^)(NSError *)) finishBlock {
+    if (activityId && startDate && endDate) {
+        return false;
+    }
+    NSString *missingParam = @"activity";
+    if(!startDate) {
+        missingParam = @"start date";
+    }
+    if (!endDate) {
+        missingParam = @"duration";
+    }
+    NSString *msg = [[NSString alloc] initWithFormat:@"Missing %@", missingParam];
+    NSLog(@"ERROR storing: %@", msg);
+    id keys[] = { NSLocalizedDescriptionKey };
+    id objects[] = { msg };
+    NSUInteger count = sizeof(objects) / sizeof(id);
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys count:count];
+    finishBlock([NSError errorWithDomain:@"WorkoutRecords" code:1 userInfo:userInfo]);
+    return true;
+}
+
+// ==========================   read workouts     ===========================================
+// ==========================================================================================
 
 - (void)readWorkouts:(HKMQuerySetting) querySetting finishBlock:(void (^)(NSArray *results, NSDate *queryFromDate))finishBlock {
     NSDate *endDate = [NSDate date];
@@ -135,13 +177,13 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
             WorkoutData *record = [self createBasicWorkoutFrom:distanceSample];
             record.distance = [distanceSample.quantity doubleValueForUnit:self->deviceUnit];
             
-            for(HKQuantitySample *energySample in remainingEnergies) {
-                double interval = fabs([energySample.startDate timeIntervalSinceDate:distanceSample.startDate]);
-                if(interval < 2) {
+            NSString *distanceWrid = getWorkoutId(distanceSample);
+            if (distanceWrid) {
+                HKQuantitySample *energySample = findSampleById(remainingEnergies, distanceWrid);
+                if(energySample) {
                     record.energy = [energySample.quantity doubleValueForUnit:[HKUnit largeCalorieUnit]];
                     [record addSample:energySample];
                     [remainingEnergies removeObjectsInArray:@[energySample]];
-                    break;
                 }
             }
             [workouts addObject:record];
@@ -191,7 +233,7 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
                predicate: queryPredicate
                    limit: 0
          sortDescriptors: nil
-          resultsHandler:^(HKSampleQuery *query, NSArray* results, NSError *error) {
+          resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
               if ([[query objectType] isEqual:energyType]){
                   energyResult = results;
               } else {
@@ -206,6 +248,9 @@ HKSampleType* (^sampleFrom)(HKQuantityTypeIdentifier type) =
         completion(distanceResults, energyResult);
     });
 }
+
+// ==========================   read workouts     ===========================================
+// ==========================================================================================
 
 - (void)deleteWorkout:(WorkoutData *)workout finishBlock:(void (^)(NSError * error))finishBlock {
     NSLog(@"DELETING: %@", workout.date);

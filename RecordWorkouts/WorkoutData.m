@@ -13,7 +13,7 @@
     return self;
 }
 
-- (void)addSample:(HKQuantitySample *)sample {
+- (void)addSample:(HKSample *)sample {
     [samples addObject:sample];
 }
 

@@ -9,6 +9,6 @@
 @property(nonatomic, readwrite) int energy;
 @property(nonatomic, readwrite) NSMutableArray *samples;
 
-- (void)addSample:(HKQuantitySample *)sample;
+- (void)addSample:(HKSample *)sample;
 
 @end
