@@ -18,7 +18,6 @@ toolbarBuilder: (ToolbarBuilder *)toolbarBuilder
     
     picker = [[UIDatePicker alloc] init];
     [picker addTarget:_instance action:@selector(updateNewDate:) forControlEvents:UIControlEventValueChanged];
-    picker.maximumDate = [NSDate date];
     
     _field.tintColor = [UIColor clearColor];
     [_field setInputAccessoryView:[self createToolbar:toolbarBuilder]];
@@ -34,7 +33,9 @@ toolbarBuilder: (ToolbarBuilder *)toolbarBuilder
 }
 
  - (void) setDateNow {
-     [self setNewDate:[NSDate date]];
+     NSDate *now = [NSDate date];
+     picker.maximumDate = now;
+     [self setNewDate:now];
  }
 
 - (void) updateNewDate: (UIDatePicker *) sender {
