@@ -6,6 +6,7 @@
 #import "TypePickerView.h"
 #import "DatePickerController.h"
 #import "DurationPickerController.h"
+#import "ToolbarBuilder.h"
 #import "WorkoutTableCell.h"
 #import "ShowMoreTableCell.h"
 
@@ -21,14 +22,14 @@
     [super viewDidLoad];
     [self updateWithLocales];
     
-    UIToolbar *toolbar = [self createToolbar];
+    UIToolbar *toolbar = [[self newToolbarBuilder] createDefault];
     [distanceField setInputAccessoryView:toolbar];
     [distanceField addTarget:self action:@selector(checkRecordButtonState) forControlEvents:UIControlEventAllEditingEvents];
     [caloriesField setInputAccessoryView:toolbar];
     [caloriesField addTarget:self action:@selector(checkRecordButtonState) forControlEvents:UIControlEventEditingChanged];
 
     [self createTypePicker:toolbar];
-    [self createDatePicker:toolbar];
+    [self createDatePicker];
     [self createDurationPicker:toolbar];
     [self createAdbanner];
 
@@ -54,13 +55,9 @@
     [bannerView loadRequest:[GADRequest request]];
 }
 
-- (UIToolbar*) createToolbar {
-    UIToolbar *toolBar=[[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-    [toolBar setTintColor:[UIColor grayColor]];
-    UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(endEditing)];
-    UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    [toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];
-    return toolBar;
+- (ToolbarBuilder*) newToolbarBuilder {
+    return [[ToolbarBuilder alloc] init:CGRectMake(0, 0, self.view.frame.size.width, 44)
+         target:self doneAction:@selector(endEditing)];
 }
 
 - (void) createTypePicker: (UIToolbar *) toolbar {
@@ -78,12 +75,13 @@
     [typePicker setNewActivity:0];
 }
 
-- (void) createDatePicker: (UIToolbar *) toolbar {
+- (void) createDatePicker {
+    ToolbarBuilder *toolbarBuilder = [self newToolbarBuilder];
     DatePickerController *dateController = [[DatePickerController alloc]
-            init:dateField toolbar:toolbar callback:^(NSDate *date) {
+        init:dateField toolbarBuilder:toolbarBuilder callback:^(NSDate *date) {
                 self->selectedDate = date;
              }];
-    [dateController setNewDate:[NSDate date]];
+    [dateController setDateNow];
 }
 
 - (void) createDurationPicker: (UIToolbar *) toolbar {

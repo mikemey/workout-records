@@ -1,10 +1,10 @@
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ToolbarBuilder.h"
 
 @interface DatePickerController : NSObject {}
 
-- (id) init: (UITextField *) field
-    toolbar: (UIToolbar *) toolbar
-   callback: (void (^)(NSDate *)) callback;
-- (void) setNewDate: (NSDate *) date;
+- (id) init: (UITextField *)field
+toolbarBuilder: (ToolbarBuilder *)toolbarBuilder
+   callback: (void (^)(NSDate *))callback;
+- (void) setDateNow;
 @end
