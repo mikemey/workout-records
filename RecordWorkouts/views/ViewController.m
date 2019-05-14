@@ -137,7 +137,13 @@
 }
 
 - (void) checkRecordButtonState {
-    recordButton.enabled = ![distanceField.text isEqualToString:@""] || ![caloriesField.text isEqualToString:@""];
+    if([distanceField.text isEqualToString:@""] && [caloriesField.text isEqualToString:@""]) {
+        recordButton.enabled = false;
+        recordButton.alpha = 0.5;
+    } else {
+        recordButton.enabled = true;
+        recordButton.alpha = 1;
+    }
 }
 
 #pragma mark - Action Events

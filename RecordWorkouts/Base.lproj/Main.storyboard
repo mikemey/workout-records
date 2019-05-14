@@ -44,7 +44,7 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="duration" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="etK-2X-9gM">
@@ -55,7 +55,7 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="distance" textAlignment="center" minimumFontSize="20" background="input_background.png" disabledBackground="input_disabled_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="DCP-YZ-QgF">
@@ -66,7 +66,7 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="calories" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="ed7-bC-3SH">
@@ -77,10 +77,10 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaU-zP-L8F">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaU-zP-L8F">
                                 <rect key="frame" x="27.5" y="360.5" width="320" height="50"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.59999999999999998" height="1"/>
                                 <constraints>
@@ -92,8 +92,8 @@
                                     <attributedString key="attributedTitle">
                                         <fragment content="Record">
                                             <attributes>
-                                                <color key="NSColor" red="0.25876668095588684" green="0.25869366526603699" blue="0.26694759726524353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="24" name="Verdana-BoldItalic"/>
+                                                <color key="NSColor" white="0.19932693406327129" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="28" name="GillSans-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -142,8 +142,8 @@
                                 <color key="textColor" red="0.25992451309999998" green="0.25833138480000001" blue="0.26659660530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record your Workout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ye-t5-VeU">
-                                <rect key="frame" x="19.5" y="76" width="336" height="34.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record my Workout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ye-t5-VeU">
+                                <rect key="frame" x="31.5" y="76" width="312.5" height="34.5"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="28"/>
                                 <color key="textColor" red="0.25992451309999998" green="0.25833138480000001" blue="0.26659660530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
