@@ -27,6 +27,7 @@
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="date" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="Aeq-2K-GYS">
                                 <rect key="frame" x="150" y="166.5" width="200" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="date"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eJQ-Mq-phD"/>
                                     <constraint firstAttribute="width" constant="200" id="lif-lm-C3T"/>
@@ -38,6 +39,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="activity" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="elr-DX-IQy">
                                 <rect key="frame" x="150" y="118.5" width="200" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="activity"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dpm-z1-LIi"/>
                                     <constraint firstAttribute="width" constant="200" id="f2Y-Fc-ez7"/>
@@ -49,6 +51,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="duration" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="etK-2X-9gM">
                                 <rect key="frame" x="150" y="214.5" width="200" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="duration"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="qZs-cl-IiC"/>
                                     <constraint firstAttribute="height" constant="40" id="rtO-E8-Nle"/>
@@ -60,6 +63,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="distance" textAlignment="center" minimumFontSize="20" background="input_background.png" disabledBackground="input_disabled_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="DCP-YZ-QgF">
                                 <rect key="frame" x="150" y="262.5" width="200" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="distance"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="YPw-6k-fse"/>
                                     <constraint firstAttribute="width" constant="200" id="r8Y-5p-rXA"/>
@@ -71,6 +75,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="calories" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="ed7-bC-3SH">
                                 <rect key="frame" x="150" y="310.5" width="200" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="calories"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="cof-zf-VXk"/>
                                     <constraint firstAttribute="height" constant="40" id="u2K-k6-gq8"/>
