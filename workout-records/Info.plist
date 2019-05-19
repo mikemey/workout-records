@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AdUnitId</key>
+	<string>${ADMOB_UNIT_ID}</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -20,12 +22,10 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>GADApplicationIdentifier</key>
+	<string>${ADMOB_APP_ID}</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Allow Workout Records to read workouts from the Health application.</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Allow Workout Records to write workouts to the Health application.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -45,9 +45,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>GADApplicationIdentifier</key>
-	<string>${ADMOB_APP_ID}</string>
-	<key>AdUnitId</key>
-	<string>${ADMOB_UNIT_ID}</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Allow Workout Records to read workouts from the Health application.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Allow Workout Records to write workouts to the Health application.</string>
 </dict>
 </plist>
