@@ -1,46 +1,52 @@
 import UIKit
 
 class DatePickerController {
-    private var callbackHandler: ((_ date: Date) -> Void)
-    private var picker: UIDatePicker
-    private var field: UITextField
-//    private var instance: DatePickerController
+    static var pickerInstance: PickerTarget?
     
-    init(_ field: UITextField, _ toolbarBuilder: ToolbarBuilder, callback: @escaping (Date) -> Void) {
-//        instance = self
-        self.field = field
-        callbackHandler = callback
+    static func wrap(_ field: UITextField, _ toolbarBuilder: ToolbarBuilder, callback: @escaping (Date) -> Void) {
+        let picker = UIDatePicker()
+        pickerInstance = PickerTarget(field, picker, callback)
+        let target = pickerInstance!
         
-        picker = UIDatePicker()
-//        picker.addTarget(instance, action: #selector(DatePickerController.updateNewDate(_:)), for: .valueChanged)
-        picker.addTarget(self, action: #selector(updateNewDate(_:)), for: .valueChanged)
-        
-        self.field.tintColor = UIColor.clear
-        self.field.inputAccessoryView = createToolbar(toolbarBuilder)
-        self.field.inputView = picker
-        setDateNow()
-    }
-    
-    private func createToolbar(_ toolbarBuilder: ToolbarBuilder) -> UIToolbar {
-        toolbarBuilder.addActionButton("Now", target: self, action: #selector(setDateNow))
+        toolbarBuilder.addActionButton("Now", target: target, action: #selector(PickerTarget.setDateNow))
         toolbarBuilder.addButton(toolbarBuilder.spacer)
         toolbarBuilder.addButton(toolbarBuilder.doneButton)
-        return toolbarBuilder.create()
+        
+        field.tintColor = UIColor.clear
+        field.inputAccessoryView = toolbarBuilder.create()
+        field.inputView = picker
+        
+        picker.datePickerMode = .dateAndTime
+        picker.addTarget(target, action: #selector(PickerTarget.updateNewDate(_:)), for: .valueChanged)
+        target.setDateNow()
     }
     
-    @objc func setDateNow() {
-        let now = Date()
-        picker.maximumDate = now
-        setNewDate(now)
-    }
-    
-    @objc private func updateNewDate(_ sender: UIDatePicker) {
-        setNewDate(sender.date)
-    }
-    
-    private func setNewDate(_ date: Date) {
-        field.text = WRFormat.formatDate(date)
-        picker.date = date
-        callbackHandler(date)
+    class PickerTarget {
+        let field: UITextField
+        let picker: UIDatePicker
+        let callbackHandler: ((_ date: Date) -> Void)
+        
+        init(_ field: UITextField, _ picker: UIDatePicker, _ callback: @escaping (Date) -> Void) {
+            self.field = field
+            self.picker = picker
+            self.callbackHandler = callback
+        }
+        
+        @objc func setDateNow() {
+            let now = Date()
+            picker.maximumDate = now
+            setNewDate(now)
+        }
+        
+        private func setNewDate(_ date: Date) {
+            field.text = WRFormat.formatDate(date)
+            picker.date = date
+            callbackHandler(date)
+        }
+        
+        @objc func updateNewDate(_ sender: UIDatePicker) {
+            print(">> update date: ", sender.date)
+            setNewDate(sender.date)
+        }
     }
 }

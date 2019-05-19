@@ -76,13 +76,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func createDatePicker() {
-        _ = DatePickerController(dateField, newToolbarBuilder(), callback: { date in
+        DatePickerController.wrap(dateField, newToolbarBuilder(), callback: { date in
             self.selectedDate = date
         })
     }
     
     func createDurationPicker(_ toolbar: UIToolbar) {
-        _ = DurationPickerController(durationField, 3600, toolbar, callback: { interval in
+        DurationPickerController.wrap(durationField, 3600, toolbar, callback: { interval in
             self.selectedDuration = interval
         })
     }
@@ -129,7 +129,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         endEditing()
         let newWorkout = WorkoutData(selectedDate, selectedActivity)
         newWorkout.distance = distanceField.text.flatMap(Double.init) ?? 0
-        newWorkout.calories = distanceField.text.flatMap(Int.init) ?? 0
+        newWorkout.calories = caloriesField.text.flatMap(Int.init) ?? 0
         newWorkout.duration = selectedDuration
         
         let storeHandler: (_ action: UIAlertAction?) -> Void = { action in

@@ -4,9 +4,9 @@ import UIKit
 
 
 class WorkoutTableCell: UITableViewCell {
-    private static let defaultTextColor = UIColor(white: 210, alpha: 1.0)
-    private static let defaultBackgroundColor = UIColor(red: 205 / 255.0, green: 120 / 255.0, blue: 95 / 255.0, alpha: 1.0)
-    private static let deleteBackgroundColor = UIColor(red: 255 / 255.0, green: 59 / 255.0, blue: 48 / 255.0, alpha: 1.0)
+    private static let defaultTextColor = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
+    private static let defaultBackgroundColor = UIColor(red: 205/255, green: 120/255, blue: 95/255, alpha: 1)
+    private static let deleteBackgroundColor = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)
 
     @IBOutlet var cellView: UIView!
     @IBOutlet var dateLabel: UILabel!
