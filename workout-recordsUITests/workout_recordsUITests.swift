@@ -1,50 +1,47 @@
 import XCTest
 
 class workout_recordsUITests: XCTestCase {
-    var appOpt: XCUIApplication?
-    var mainPageOpt: MainPageObject?
-    
-    override func setUp() {
-        continueAfterFailure = false
-        appOpt = XCUIApplication()
-        appOpt!.launch()
-        mainPageOpt = MainPageObject(appOpt!, self)
-    }
-    
-    func app() -> XCUIApplication { return appOpt! }
-    func mainPage() -> MainPageObject { return mainPageOpt! }
+    private var mpOpt: MainPageObject?
+    private func mainPage() -> MainPageObject { return mpOpt! }
 
-    override func tearDown() {
+    override func setUp() {
+        let app = XCUIApplication()
+        app.launch()
+        self.mpOpt = MainPageObject(app, self)
         mainPage().deleteAllRecords()
     }
-
+    
+    private static let dayInterval = 60 * 60 * 24
+    private static func pastDate(_ daysPast: Int, _ hour: Int, _ mins: Int) -> Date {
+        let date = Date().addingTimeInterval(TimeInterval(-1 * daysPast * dayInterval))
+        return Calendar.current.date(bySettingHour: hour, minute: mins, second: 0, of: date)!
+    }
+    private let swimDate = { return MainPageObject.formatDateTime(pastDate(2, 11, 11)) }()
+    private let cycleDate = { return MainPageObject.formatDateTime(pastDate(1, 12, 12)) }()
+    private let caloriesDate = { return MainPageObject.formatDateHour(Date()) }()
+    
     func testCreateWorkouts() {
-        let dayInterval = 60 * 60 * 24
-        let twoDaysAgo = Date().addingTimeInterval(TimeInterval(-2 * dayInterval))
-        let swimDate = Calendar.current.date(bySettingHour: 11, minute: 11, second: 0, of: twoDaysAgo)!
-        let oneDayAgo = Date().addingTimeInterval(TimeInterval(-dayInterval))
-        let cycleDate = Calendar.current.date(bySettingHour: 12, minute: 12, second: 0, of: oneDayAgo)!
-        
         mainPage().createWorkout(activity: "Swimming", date: (2, 11, (11)), distance: 1.1, calories: 11)
-        mainPage().assertWorkout(0, MainPageObject.formatDateTime(swimDate), "1 h   0 min", "1.1", "11")
+        mainPage().assertWorkout(0, swimDate, "1 h   0 min", "1.1", "11")
         
-        mainPage().createWorkout(activity: "Cycling", setNow: true, date: (1, 12, (12)), duration: (0, 22), distance: 2.2, calories: 0)
-        mainPage().assertWorkout(0, MainPageObject.formatDateTime(cycleDate), "  22 min", "2.2", "0")
+        mainPage().createWorkout(activity: "Cycling", setNow: true, date: (1, 12, (12)), duration: (0, 22), distance: 2.2)
+        mainPage().assertWorkout(0, cycleDate, "  22 min", "2.2", "0")
         
         mainPage().createWorkout(activity: "Calories only", setNow: true, duration: (1, 11), calories: 33)
-        mainPage().assertWorkout(0, MainPageObject.formatDateHour(Date()), "1 h  11 min", "0.0", "33")
+        mainPage().assertWorkout(0, caloriesDate, "1 h  11 min", "0.0", "33")
         
         XCTAssertEqual(mainPage().workoutCount(), 3)
     }
     
-    func testDistanceAllowsOnyOneComma() {
+    func testDeleteSecondItem() {
+        mainPage().deleteWorkoutRecord(1)
+        XCTAssertEqual(mainPage().workoutCount(), 2)
+        XCTAssertEqual(mainPage().getWorkout(0).getCalories(), "33")
+        XCTAssertEqual(mainPage().getWorkout(1).getCalories(), "11")
     }
     
-    func testDeleteThirdItem() {
-//        mainPage().create(activity: "Swimming", distance: 1.1, calories: 11)
-//        mainPage().createWorkout(activity: "Cycling", duration: (0, 55), distance: 2.2)
-//        mainPage().create(activity: "Calories only", calories: 33)
-//       tableViewMemberNameINmainviewcontroller "workoutTableView"
-        XCTAssertEqual(mainPage().workoutCount(), 3)
+    func testXXXLastDeleteAllRecords() {
+        mainPage().deleteAllRecords()
+        XCTAssertEqual(mainPage().workoutCount(), 0)
     }
 }

@@ -1,7 +1,8 @@
 import XCTest
 
 extension XCUIElement {
-    func clearAndEnter(_ newText: String) {
+    func clear() {
+        if !self.isEnabled { return }
         guard let stringValue = self.value as? String else {
             XCTFail("Tried to clear and enter text into a non string value")
             return
@@ -10,10 +11,16 @@ extension XCUIElement {
         
         let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
         self.typeText(deleteString)
+    }
+    
+    func clearAndEnter(_ newText: String) {
+        if !self.isEnabled { return }
+        self.clear()
         self.typeText(newText)
     }
     
     func oneUp() {
+        if !self.isEnabled { return }
         let startCoord = self.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
         let endCoord = startCoord.withOffset(CGVector(dx: 0.0, dy: -35.0))
         endCoord.tap()
@@ -22,14 +29,14 @@ extension XCUIElement {
 }
 
 class MainPageObject {
-    let app: XCUIApplication
-    let test: XCTestCase
+    private let app: XCUIApplication
+    private let test: XCTestCase
     
-    let exist = NSPredicate(format: "exists == TRUE")
-    let notExist = NSPredicate(format: "exists == FALSE")
-    let enabled = NSPredicate(format: "enabled == TRUE")
+    private let exist = NSPredicate(format: "exists == TRUE")
+    private let notExist = NSPredicate(format: "exists == FALSE")
+    private let enabled = NSPredicate(format: "enabled == TRUE")
     
-    let deleteWorkoutTitle = "Delete workout?"
+    private let deleteWorkoutTitle = "Delete workout?"
     
     init(_ app: XCUIApplication, _ test: XCTestCase) {
         self.app = app
@@ -57,20 +64,19 @@ class MainPageObject {
         return WorkoutPageObject(getWorkoutCell(index))
     }
     
-    func createWorkout(activity: String? = nil, setNow: Bool = false,
+    func createWorkout(activity: String, setNow: Bool = false,
                 date: (Int, Int, (Int))? = nil, duration: (Int, Int)? = nil,
                 distance: Double? = nil, calories: Int? = nil) {
         
-        if let activity = activity {
-            selectActivity(activity)
-        }
+        app.textFields["activity"].tap()
+        app.pickerWheels.firstMatch.adjust(toPickerWheelValue: activity)
+        tapDone()
         
         if setNow {
             app.textFields["date"].tap()
             app.buttons["Now"].tap()
             tapDone()
         }
-        
         if let date = date {
             app.textFields["date"].tap()
             for _ in 1...date.0 {
@@ -88,24 +94,29 @@ class MainPageObject {
             tapDone()
         }
 
-        if let distance = distance {
-            app.textFields["distance"].clearAndEnter(String(distance))
+        let distanceField = app.textFields["distance"]
+        if distanceField.isEnabled {
+            if let distance = distance {
+                distanceField.clearAndEnter(String(distance))
+            } else {
+                distanceField.clear()
+            }
             tapDone()
         }
-
-        if let calories = calories {
-            app.textFields["calories"].clearAndEnter(String(calories))
+        
+        let caloriesField = app.textFields["calories"]
+        if caloriesField.isEnabled {
+            if let calories = calories {
+                caloriesField.clearAndEnter(String(calories))
+            } else {
+                caloriesField.clear()
+            }
             tapDone()
         }
+        
         app.buttons["Record"].tap()
-        let alert = test.expectation(for: enabled, evaluatedWith: app.buttons["Record"], handler: nil)
-        test.wait(for: [ alert ], timeout: 5)
-    }
-    
-    func selectActivity(_ activity: String) {
-        app.textFields["activity"].tap()
-        app.pickerWheels.firstMatch.adjust(toPickerWheelValue: activity)
-        tapDone()
+        let recBtnEnabled = test.expectation(for: enabled, evaluatedWith: app.buttons["Record"])
+        test.wait(for: [ recBtnEnabled ], timeout: 5)
     }
     
     func workoutCount() -> Int {
@@ -139,7 +150,7 @@ class MainPageObject {
     private func getAlert(_ title: String) -> XCUIElement { return app.alerts[title] }
     
     private func waitFor(alertTitle title: String, to predicate: NSPredicate) {
-        let alert = test.expectation(for: predicate, evaluatedWith: getAlert(title), handler: nil)
+        let alert = test.expectation(for: predicate, evaluatedWith: getAlert(title))
         test.wait(for: [ alert ], timeout: 5)
     }
 }
