@@ -170,28 +170,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return isLastRow(indexPath)
-            ? createShowMoreTableCell()
-            : createWorkoutTableCell(workoutData[indexPath.row])
+            ? createShowMoreTableCell(indexPath.row)
+            : createWorkoutTableCell(indexPath.row)
     }
     
-    func createWorkoutTableCell(_ workout: WorkoutData) -> UITableViewCell {
-        let cell = createTableCell("WorkoutTableCell") as! WorkoutTableCell
-        cell.setWorkout(workout)
+    func createWorkoutTableCell(_ index: Int) -> UITableViewCell {
+        let cell = createTableCell("WorkoutTableCell", index) as! WorkoutTableCell
+        cell.setWorkout(workoutData[index])
         return cell
     }
     
-    func createShowMoreTableCell() -> UITableViewCell {
-        let cell = self.createTableCell("ShowMoreTableCell") as! ShowMoreTableCell
+    func createShowMoreTableCell(_ index: Int) -> UITableViewCell {
+        let cell = self.createTableCell("ShowMoreTableCell", index) as! ShowMoreTableCell
         cell.setQueryDate(self.queryFromDate, onShowMore: { self.reloadWorkouts(.increasDate) })
         return cell
     }
     
-    func createTableCell(_ cellId: String) -> UITableViewCell {
+    func createTableCell(_ cellId: String, _ index: Int) -> UITableViewCell {
         var cell: UITableViewCell? = workoutTableView.dequeueReusableCell(withIdentifier: cellId)
         if cell == nil {
             let nib = Bundle.main.loadNibNamed(cellId, owner: self, options: nil)
             cell = nib?[0] as? UITableViewCell
         }
+        cell!.accessibilityIdentifier = "\(cellId)_\(index)"
         return cell!
     }
     

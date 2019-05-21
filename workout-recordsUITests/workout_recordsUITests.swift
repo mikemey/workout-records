@@ -1,92 +1,50 @@
-//
-//  workout_recordsUITests.swift
-//  workout-recordsUITests
-//
-//  Created by Michael on 18/05/2019.
-//  Copyright © 2019 mmi. All rights reserved.
-//
-
 import XCTest
 
 class workout_recordsUITests: XCTestCase {
-    var app: XCUIApplication?
+    var appOpt: XCUIApplication?
+    var mainPageOpt: MainPageObject?
     
     override func setUp() {
         continueAfterFailure = false
-        app = XCUIApplication()
-        app!.launch()
-    }
-
-    override func tearDown() {
-        
-    }
-
-    func testExample2() {
-        let a = app!
-//        a.textFields["distance"].tap()
-//        a/*@START_MENU_TOKEN@*/.keys["1"]/*[[".keyboards.keys[\"1\"]",".keys[\"1\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        a.keys["2"].tap()
-//        a/*@START_MENU_TOKEN@*/.keys["."]/*[[".keyboards.keys[\".\"]",".keys[\".\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        a/*@START_MENU_TOKEN@*/.keys["3"]/*[[".keyboards.keys[\"3\"]",".keys[\"3\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//
-//        a.textFields["calories"].tap()
-//        a/*@START_MENU_TOKEN@*/.keys["4"]/*[[".keyboards.keys[\"4\"]",".keys[\"4\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        a/*@START_MENU_TOKEN@*/.keys["5"]/*[[".keyboards.keys[\"5\"]",".keys[\"5\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-//        a.buttons["Record"].tap()
-        
-//        let cell = a.tables["workoutTableCell"].cells.element(boundBy: 0)
-//        let children = a.tables["workoutTableCell"].children(matching: .textField)
-//        let workoutTable = a.tables["workoutTableCell"]
-//        let cell = workoutTable.cells.element(boundBy: 0)
-        let tableCell = a.tables.children(matching: .cell).element(boundBy: 2)
-        print("=============  TABLE CELL ============================")
-        print(tableCell)
-        print("=============  Labels ============================")
-        let whatever = tableCell.children(matching: .any).count
-        print(tableCell.staticTexts["distance"].label)
-        print("=============  Labels ============================")
-//        print(cell.children(matching: .any).count)
-//        print("=============  Label? ============================")
-//        print("=============  cell.textFields ============================")
-//        print(cell.children(matching: .textField))
-//        XCTAssertTrue(cell.textFields["distance"].label == "12.3")
-//        XCTAssertTrue(cell.textFields["calories"].label == "46")
+        appOpt = XCUIApplication()
+        appOpt!.launch()
+        mainPageOpt = MainPageObject(appOpt!, self)
     }
     
-    func testSelectPicker() {
-        let a = app!
-        a.textFields["activity"].tap()
-        a/*@START_MENU_TOKEN@*/.pickerWheels["Cycling"]/*[[".pickers.pickerWheels[\"Cycling\"]",".pickerWheels[\"Cycling\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.adjust(toPickerWheelValue: "Wheelchair")
-        a.textFields["distance"].tap()
-        
-        let key = a/*@START_MENU_TOKEN@*/.keys["2"]/*[[".keyboards.keys[\"2\"]",".keys[\"2\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        key.tap()
-        
-        let key2 = a/*@START_MENU_TOKEN@*/.keys["5"]/*[[".keyboards.keys[\"5\"]",".keys[\"5\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        key2.tap()
-        a.textFields["calories"].tap()
-        let key3 = a/*@START_MENU_TOKEN@*/.keys["3"]/*[[".keyboards.keys[\"3\"]",".keys[\"3\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        key3.tap()
-        a.buttons["Record"].tap()
-        
+    func app() -> XCUIApplication { return appOpt! }
+    func mainPage() -> MainPageObject { return mainPageOpt! }
+
+    override func tearDown() {
+        mainPage().deleteAllRecords()
     }
 
-    func testDeleteItem() {
-        let a = app!
-        let entriesQuery = a.tables.children(matching: .cell)
-        print("====> BEFORE:", entriesQuery.count)
-        let cell = entriesQuery.element(boundBy: 0)
-        cell.swipeLeft()
-        entriesQuery.buttons["Delete"].tap()
-        a.alerts["Delete workout?"].buttons["Delete"].tap()
+    func testCreateWorkouts() {
+        let dayInterval = 60 * 60 * 24
+        let twoDaysAgo = Date().addingTimeInterval(TimeInterval(-2 * dayInterval))
+        let swimDate = Calendar.current.date(bySettingHour: 11, minute: 11, second: 0, of: twoDaysAgo)!
+        let oneDayAgo = Date().addingTimeInterval(TimeInterval(-dayInterval))
+        let cycleDate = Calendar.current.date(bySettingHour: 12, minute: 12, second: 0, of: oneDayAgo)!
         
-        let removed = NSPredicate(format: "exists == 0")
+        mainPage().createWorkout(activity: "Swimming", date: (2, 11, (11)), distance: 1.1, calories: 11)
+        mainPage().assertWorkout(0, MainPageObject.formatDateTime(swimDate), "1 h   0 min", "1.1", "11")
         
-        let alertRemoved = expectation(for: removed, evaluatedWith: a.alerts["Delete workout?"], handler: nil)
-        wait(for: [ alertRemoved], timeout: 10.0)
-        let cellRemoved = expectation(for: removed, evaluatedWith: cell, handler: nil)
-        wait(for: [cellRemoved], timeout: 10.0)
+        mainPage().createWorkout(activity: "Cycling", setNow: true, date: (1, 12, (12)), duration: (0, 22), distance: 2.2, calories: 0)
+        mainPage().assertWorkout(0, MainPageObject.formatDateTime(cycleDate), "  22 min", "2.2", "0")
         
-        print("====>  AFTER:", a.tables.children(matching: .cell).count)
+        mainPage().createWorkout(activity: "Calories only", setNow: true, duration: (1, 11), calories: 33)
+        mainPage().assertWorkout(0, MainPageObject.formatDateHour(Date()), "1 h  11 min", "0.0", "33")
+        
+        XCTAssertEqual(mainPage().workoutCount(), 3)
+    }
+    
+    func testDistanceAllowsOnyOneComma() {
+    }
+    
+    func testDeleteThirdItem() {
+//        mainPage().create(activity: "Swimming", distance: 1.1, calories: 11)
+//        mainPage().createWorkout(activity: "Cycling", duration: (0, 55), distance: 2.2)
+//        mainPage().create(activity: "Calories only", calories: 33)
+//       tableViewMemberNameINmainviewcontroller "workoutTableView"
+        XCTAssertEqual(mainPage().workoutCount(), 3)
     }
 }

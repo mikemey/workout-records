@@ -36,7 +36,9 @@
                         <rect key="frame" x="13" y="27" width="27" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <accessibility key="accessibilityConfiguration" identifier="activity"/>
+                        <accessibility key="accessibilityConfiguration" identifier="activity">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eA-fK-lwQ">
                         <rect key="frame" x="280" y="16" width="54" height="16"/>
