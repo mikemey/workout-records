@@ -133,12 +133,19 @@ class MainPageObject {
         return getWorkoutCell(0).exists
     }
     
-    func deleteWorkoutRecord(_ index: Int) {
+    func deleteWorkoutRecord(_ index: Int, _ dialogText: [String]? = nil) {
         let cell = getWorkoutCell(index)
         cell.swipeLeft()
         cell.buttons["Delete"].tap()
         waitFor(alertTitle: deleteWorkoutTitle, to: exist)
-        getAlert(deleteWorkoutTitle).buttons["Delete"].tap()
+        let alert = getAlert(deleteWorkoutTitle)
+        if let expectedDialog = dialogText {
+            let text = alert.staticTexts.element(boundBy: 1).label
+            for expected in expectedDialog {
+                XCTAssertTrue(text.contains(expected), "Dialog text assertion (expected / dialog-text)\n\(expected)\n\(text)")
+            }
+        }
+        alert.buttons["Delete"].tap()
         waitFor(alertTitle: deleteWorkoutTitle, to: notExist)
     }
     

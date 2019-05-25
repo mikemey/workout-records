@@ -5,10 +5,10 @@ class workout_recordsUITests: XCTestCase {
     private func mainPage() -> MainPageObject { return mpOpt! }
 
     override func setUp() {
+        continueAfterFailure = false
         let app = XCUIApplication()
         app.launch()
         self.mpOpt = MainPageObject(app, self)
-        mainPage().deleteAllRecords()
     }
     
     private static let dayInterval = 60 * 60 * 24
@@ -21,6 +21,7 @@ class workout_recordsUITests: XCTestCase {
     private let caloriesDate = { return MainPageObject.formatDateHour(Date()) }()
     
     func testCreateWorkouts() {
+        mainPage().deleteAllRecords()
         mainPage().createWorkout(activity: "Swimming", date: (2, 11, (11)), distance: 1.1, calories: 11)
         mainPage().assertWorkout(0, swimDate, "1 h   0 min", "1.1", "11")
         
@@ -34,13 +35,14 @@ class workout_recordsUITests: XCTestCase {
     }
     
     func testDeleteSecondItem() {
-        mainPage().deleteWorkoutRecord(1)
+        mainPage().deleteWorkoutRecord(1, ["Cycling", cycleDate, "22 min"])
         XCTAssertEqual(mainPage().workoutCount(), 2)
         XCTAssertEqual(mainPage().getWorkout(0).getCalories(), "33")
         XCTAssertEqual(mainPage().getWorkout(1).getCalories(), "11")
     }
     
     func testXXXLastDeleteAllRecords() {
+        XCTAssertEqual(mainPage().workoutCount(), 2)
         mainPage().deleteAllRecords()
         XCTAssertEqual(mainPage().workoutCount(), 0)
     }
