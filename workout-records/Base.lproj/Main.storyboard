@@ -61,7 +61,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="distance" textAlignment="center" minimumFontSize="20" background="input_background.png" disabledBackground="input_disabled_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="DCP-YZ-QgF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="distance" textAlignment="center" minimumFontSize="20" background="input_background.png" disabledBackground="input_disabled_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="DCP-YZ-QgF" customClass="CheckingTextField" customModule="workout_records" customModuleProvider="target">
                                 <rect key="frame" x="150" y="262.5" width="200" height="40"/>
                                 <accessibility key="accessibilityConfiguration" identifier="distance"/>
                                 <constraints>
@@ -73,7 +73,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="calories" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="ed7-bC-3SH">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="calories" textAlignment="center" minimumFontSize="20" background="input_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="ed7-bC-3SH" customClass="CheckingTextField" customModule="workout_records" customModuleProvider="target">
                                 <rect key="frame" x="150" y="310.5" width="200" height="40"/>
                                 <accessibility key="accessibilityConfiguration" identifier="calories"/>
                                 <constraints>

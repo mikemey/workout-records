@@ -1,6 +1,6 @@
 import XCTest
 
-class workout_recordsUITests: XCTestCase {
+class mainView_workoutTests: XCTestCase {
     private var mpOpt: MainPageObject?
     private func mainPage() -> MainPageObject { return mpOpt! }
 

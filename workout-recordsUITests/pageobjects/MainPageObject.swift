@@ -43,6 +43,9 @@ class MainPageObject {
         self.test = test
     }
     
+    private func getDistanceField() -> XCUIElement { return app.textFields["distance"] }
+    private func getCaloriesField() -> XCUIElement { return app.textFields["calories"] }
+    
     static func formatDateTime(_ date: Date) -> String {
         return String(WRFormat.formatDate(date).prefix(16))
     }
@@ -96,7 +99,7 @@ class MainPageObject {
             tapDone()
         }
 
-        let distanceField = app.textFields["distance"]
+        let distanceField = getDistanceField()
         if distanceField.isEnabled {
             if let distance = distance {
                 distanceField.clearAndEnter(String(distance))
@@ -106,7 +109,7 @@ class MainPageObject {
             tapDone()
         }
         
-        let caloriesField = app.textFields["calories"]
+        let caloriesField = getCaloriesField()
         if caloriesField.isEnabled {
             if let calories = calories {
                 caloriesField.clearAndEnter(String(calories))
@@ -153,6 +156,30 @@ class MainPageObject {
     
     func showMore() {
         app.buttons["showMore"].tap()
+    }
+    
+    func getDistanceValue() -> String {
+        return getDistanceField().value as! String
+    }
+    
+    func sendToDistanceField(_ keys: [String]) {
+        return keysIntoField(getDistanceField(), keys: keys)
+    }
+    
+    func getCaloriesValue() -> String {
+        return getCaloriesField().value as! String
+    }
+    
+    func sendToCaloriesField(_ keys: [String]) {
+        return keysIntoField(getCaloriesField(), keys: keys)
+    }
+    
+    private func keysIntoField(_ field: XCUIElement, keys: [String]) {
+        field.tap()
+        for key in keys {
+            app.keys[key].tap()
+        }
+        tapDone()
     }
     
     private func getWorkoutCell(_ index: Int) -> XCUIElement {
