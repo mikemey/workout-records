@@ -65,8 +65,10 @@ class MainPageObject {
     }
     
     func createWorkout(activity: String, setNow: Bool = false,
-                date: (Int, Int, (Int))? = nil, duration: (Int, Int)? = nil,
-                distance: Double? = nil, calories: Int? = nil) {
+                       _ date: (daysPast: Int, hour: Int, min: (Int))? = nil,
+                       duration: (Int, Int)? = nil,
+                       distance: Double? = nil,
+                       calories: Int? = nil) {
         
         app.textFields["activity"].tap()
         app.pickerWheels.firstMatch.adjust(toPickerWheelValue: activity)
@@ -79,11 +81,11 @@ class MainPageObject {
         }
         if let date = date {
             app.textFields["date"].tap()
-            for _ in 1...date.0 {
+            for _ in 1...date.daysPast {
                 app.pickerWheels.element(boundBy: 0).oneUp()
             }
-            app.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: String(date.1))
-            app.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: String(date.2))
+            app.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: String(date.hour))
+            app.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: String(date.min))
             tapDone()
         }
 
@@ -147,6 +149,10 @@ class MainPageObject {
         }
         alert.buttons["Delete"].tap()
         waitFor(alertTitle: deleteWorkoutTitle, to: notExist)
+    }
+    
+    func showMore() {
+        app.buttons["showMore"].tap()
     }
     
     private func getWorkoutCell(_ index: Int) -> XCUIElement {

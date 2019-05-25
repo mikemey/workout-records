@@ -19,13 +19,14 @@ class workout_recordsUITests: XCTestCase {
     private let swimDate = { return MainPageObject.formatDateTime(pastDate(2, 11, 11)) }()
     private let cycleDate = { return MainPageObject.formatDateTime(pastDate(1, 12, 12)) }()
     private let caloriesDate = { return MainPageObject.formatDateHour(Date()) }()
+    private let weeksPastDate = { return MainPageObject.formatDateTime(pastDate(8, 10, 14)) }()
     
     func testCreateWorkouts() {
         mainPage().deleteAllRecords()
-        mainPage().createWorkout(activity: "Swimming", date: (2, 11, (11)), distance: 1.1, calories: 11)
+        mainPage().createWorkout(activity: "Swimming", (daysPast: 2, hour: 11, min: (11)), distance: 1.1, calories: 11)
         mainPage().assertWorkout(0, swimDate, "1 h   0 min", "1.1", "11")
         
-        mainPage().createWorkout(activity: "Cycling", setNow: true, date: (1, 12, (12)), duration: (0, 22), distance: 2.2)
+        mainPage().createWorkout(activity: "Cycling", setNow: true, (daysPast: 1, hour: 12, min: (12)), duration: (0, 22), distance: 2.2)
         mainPage().assertWorkout(0, cycleDate, "  22 min", "2.2", "0")
         
         mainPage().createWorkout(activity: "Calories only", setNow: true, duration: (1, 11), calories: 33)
@@ -41,8 +42,17 @@ class workout_recordsUITests: XCTestCase {
         XCTAssertEqual(mainPage().getWorkout(1).getCalories(), "11")
     }
     
+    func testShowMoreWorkouts() {
+        mainPage().createWorkout(activity: "Cycling", (daysPast: 8, hour: 10, min: (14)), distance: 4.4, calories: 44)
+        XCTAssertEqual(mainPage().workoutCount(), 2)
+        mainPage().showMore()
+        XCTAssertEqual(mainPage().workoutCount(), 3)
+        mainPage().assertWorkout(2, weeksPastDate, "1 h   0 min", "4.4", "44")
+    }
+    
     func testXXXLastDeleteAllRecords() {
         XCTAssertEqual(mainPage().workoutCount(), 2)
+        mainPage().showMore()
         mainPage().deleteAllRecords()
         XCTAssertEqual(mainPage().workoutCount(), 0)
     }
