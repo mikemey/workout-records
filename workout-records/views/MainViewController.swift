@@ -4,7 +4,8 @@ import HealthKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var bannerView: GADBannerView!
-    @IBOutlet weak var typeField: UITextField!
+    @IBOutlet var activitiesField: UIButton!
+    
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var durationField: UITextField!
     @IBOutlet weak var distanceField: UITextField!
@@ -12,10 +13,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var workoutTableView: UITableView!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var recordButton: UIButton!
+    @IBOutlet var activitiesView: UIView!
     
     private var workoutData: [WorkoutData] = []
     private var queryFromDate = Date()
-    private var selectedActivity: HKQuantityTypeIdentifier = WRFormat.typeIdentifiers[0]
+//    private var selectedActivity: HKQuantityTypeIdentifier = WRFormat.typeIdentifiers[0]
     private var selectedDate = Date()
     private var selectedDuration: TimeInterval = 0.0
     
@@ -23,6 +25,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWithLocales()
+        activitiesView.isHidden = true
         
         let toolbar = newToolbarBuilder().createDefault()
         distanceField.inputAccessoryView = toolbar
@@ -62,17 +65,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func createTypePicker(_ toolbar: UIToolbar) {
-        let typePicker = TypePickerView(typeField, toolbar: toolbar, callback: { typeId in
-            self.selectedActivity = typeId
-            if typeId == .activeEnergyBurned {
-                self.distanceField.isEnabled = false
-                self.distanceField.text = ""
-                self.checkRecordButtonState()
-            } else {
-                self.distanceField.isEnabled = true
-            }
-        })
-        typePicker.setNewActivity(0)
+        activitiesField.addTarget(self, action: #selector(openActivities), for: .touchDown)
+//        let typePicker = TypePickerView(typeField, toolbar: toolbar, callback: { typeId in
+//            self.selectedActivity = typeId
+//            if typeId == .activeEnergyBurned {
+//                self.distanceField.isEnabled = false
+//                self.distanceField.text = ""
+//                self.checkRecordButtonState()
+//            } else {
+//                self.distanceField.isEnabled = true
+//            }
+//        })
+//        typePicker.setNewActivity(0)
+    }
+    
+    @objc func openActivities(textField: UITextField) {
+        activitiesView.isHidden = false
     }
     
     func createDatePicker() {
@@ -127,30 +135,30 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func onWriteWorkoutAction(_ sender: Any) {
         endEditing()
-        let newWorkout = WorkoutData(selectedDate, selectedActivity)
-        newWorkout.distance = distanceField.text.flatMap(Double.init) ?? 0
-        newWorkout.calories = caloriesField.text.flatMap(Int.init) ?? 0
-        newWorkout.duration = selectedDuration
-        
-        let storeHandler: (_ action: UIAlertAction?) -> Void = { action in
-            HealthKitManager.sharedInstance().writeWorkout(newWorkout, finishBlock: { error in
-                if let error = error {
-                    AlertBuilder.showErrorAlert(on: self, title: "Error writing workout", error: error)
-                } else {
-                    self.reloadWorkouts(nil)
-                }
-            })
-        }
-        if newWorkout.distance > 0 || newWorkout.calories > 0 {
-            if newWorkout.distance > 0 || selectedActivity == WRFormat.energyTypeId {
-                storeHandler(nil)
-            } else {
-                let alertBuilder = AlertBuilder("", message: "No distance set.\nRecord as 'Calories only' ?")
-                alertBuilder.addCancelAction(nil)
-                alertBuilder.addDefaultAction("Record", handler: storeHandler)
-                alertBuilder.show(self)
-            }
-        }
+//        let newWorkout = WorkoutData(selectedDate, selectedActivity)
+//        newWorkout.distance = distanceField.text.flatMap(Double.init) ?? 0
+//        newWorkout.calories = caloriesField.text.flatMap(Int.init) ?? 0
+//        newWorkout.duration = selectedDuration
+//
+//        let storeHandler: (_ action: UIAlertAction?) -> Void = { action in
+//            HealthKitManager.sharedInstance().writeWorkout(newWorkout, finishBlock: { error in
+//                if let error = error {
+//                    AlertBuilder.showErrorAlert(on: self, title: "Error writing workout", error: error)
+//                } else {
+//                    self.reloadWorkouts(nil)
+//                }
+//            })
+//        }
+//        if newWorkout.distance > 0 || newWorkout.calories > 0 {
+//            if newWorkout.distance > 0 || selectedActivity == WRFormat.energyTypeId {
+//                storeHandler(nil)
+//            } else {
+//                let alertBuilder = AlertBuilder("", message: "No distance set.\nRecord as 'Calories only' ?")
+//                alertBuilder.addCancelAction(nil)
+//                alertBuilder.addDefaultAction("Record", handler: storeHandler)
+//                alertBuilder.show(self)
+//            }
+//        }
     }
     
     // ================= table-view methods ========================
@@ -203,7 +211,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let workout = workoutData[indexPath.row]
             
             let title = "Delete workout?"
-            let message = "\(WRFormat.typeName(for: workout.type))"
+            let message = "\(workout.type.hrName)"
                 + "\nDate:  \(WRFormat.formatDate(workout.date))"
                 + "\nDuration:  \(WRFormat.formatDuration(workout.duration))"
             let alertBuilder = AlertBuilder(title, message: message)

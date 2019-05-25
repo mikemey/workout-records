@@ -4,7 +4,7 @@ import HealthKit
 class TypePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     private var callbackHandler: ((_ typeId: HKQuantityTypeIdentifier) -> Void)
     private var field: UITextField
-    private var count: Int = WRFormat.typeIdentifiers.count
+//    private var count: Int = WRFormat.typeIdentifiers.count
     
     init(_ field: UITextField, toolbar: UIToolbar, callback: @escaping (HKQuantityTypeIdentifier) -> Void) {
         self.field = field
@@ -24,8 +24,8 @@ class TypePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func setNewActivity(_ index: Int) {
-        field.text = WRFormat.typeNames[index]
-        callbackHandler(WRFormat.typeIdentifiers[index])
+//        field.text = WRFormat.typeNames[index]
+//        callbackHandler(WRFormat.typeIdentifiers[index])
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -33,12 +33,13 @@ class TypePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return count
+//        return count
+        return 0
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return WRFormat.typeNames[row]
-    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return WRFormat.typeNames[row]
+//    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         setNewActivity(row)

@@ -1,7 +1,7 @@
 import HealthKit
 
 class WorkoutData {
-    var type: HKQuantityTypeIdentifier
+    var type: Activity
     var date: Date
     var duration: TimeInterval = 0.0
     var distance: Double = 0.0
@@ -10,7 +10,8 @@ class WorkoutData {
     
     init(_ pDate: Date, _ pType: HKQuantityTypeIdentifier) {
         date = pDate
-        type = pType
+//        type = WorkoutType(quantityType: pType)
+        type = WRFormat.singleActivities[0]
     }
     
     func add(_ sample: HKSample) {

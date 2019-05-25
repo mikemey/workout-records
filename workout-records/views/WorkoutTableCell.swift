@@ -34,7 +34,7 @@ class WorkoutTableCell: UITableViewCell {
         setTextOn(distanceLabel, text: WRFormat.formatDistance(workout.distance), size: 18)
         setTextOn(caloriesLabel, text: WRFormat.formatCalories(workout.calories), size: 18)
         setTextOn(distanceUnitLabel, text: WRFormat.isMetric ? "km" : "mi", size: 11)
-        typeImage.image = UIImage(named: WRFormat.getImageFile(for: workout.type))
+//        typeImage.image = UIImage(named: WRFormat.getImageFile(for: workout.type))
         cellView.backgroundColor = WorkoutTableCell.defaultBackgroundColor
     }
     

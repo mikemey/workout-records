@@ -44,49 +44,64 @@ class HealthKitManager {
 
     func requestHealthDataPermissions() {
         print("requesting permission")
-        let types = WRFormat.typeIdentifiers.map(sampleFrom)
-        healthStore.requestAuthorization(toShare: Set(types), read: Set(types)) { success, error in
-            print("success requesting permission: \(success ? "YES" : "NO")")
-            if let error = error {
-                print("ERROR requesting permission: \(error)")
-            }
-        }
+//        let types = WRFormat.typeIdentifiers.map(sampleFrom)
+//        healthStore.requestAuthorization(toShare: Set(types), read: Set(types)) { success, error in
+//            print("success requesting permission: \(success ? "YES" : "NO")")
+//            if let error = error {
+//                print("ERROR requesting permission: \(error)")
+//            }
+//        }
     }
     
 // ==========================   write workouts    ===========================================
 // =========================================================================================
     
-    func writeWorkout(_ workout: WorkoutData, finishBlock: @escaping (Error?) -> Void) {
-        let metadata = createNewMetadata()
-        let endDate = workout.date.addingTimeInterval(workout.duration)
-        var storeObj: [HKSample] = []
-        
-        if workout.distance > 0 {
-            let type = HKQuantityType.quantityType(forIdentifier: workout.type)
-            let quantity = HKQuantity(unit: deviceUnit, doubleValue: WRFormat.distanceForWriting(workout.distance))
-            let sample = HKQuantitySample(type: type!, quantity: quantity,
-                                          start: workout.date, end: endDate, metadata: metadata)
-            storeObj.append(sample)
-        }
-        if workout.calories > 0 {
-            let type = HKQuantityType.quantityType(forIdentifier: WRFormat.energyTypeId)
-            let quantity = HKQuantity(unit: energyUnit, doubleValue: Double(workout.calories))
-            let sample = HKQuantitySample(type: type!, quantity: quantity,
-                                          start: workout.date, end: endDate, metadata: metadata)
-            storeObj.append(sample)
-        }
-        print(String(format: "STORING: %@, samples: %lu", workout.date as CVarArg, storeObj.count))
-        if storeObj.count > 0 {
-            healthStore.save(storeObj, withCompletion: { success, error in
-                print("success storing: \(success ? "YES" : "NO")")
-                if let error = error {
-                    print("ERROR storing: \(error)")
-                }
-                DispatchQueue.main.sync(execute: {
-                    finishBlock(error)
-                })
-            })
-        }
+    func writeWorkout(_ workout: WorkoutData, asWorkout: Bool = false, finishBlock: @escaping (Error?) -> Void) {
+//        let metadata = createNewMetadata()
+//        let endDate = workout.date.addingTimeInterval(workout.duration)
+//
+//        let distanceQuantity: HKQuantity? = workout.distance > 0
+//            ? HKQuantity(unit: deviceUnit, doubleValue: WRFormat.distanceForWriting(workout.distance))
+//            : nil
+//        let energyQuantity: HKQuantity? = workout.calories > 0
+//            ? HKQuantity(unit: energyUnit, doubleValue: Double(workout.calories))
+//            : nil
+//
+//        var storeObj: [HKSample] = []
+//        if asWorkout {
+//            let workoutType: HKWorkoutActivityType = HKWorkoutActivityType.cycling
+//            let storeWorkout = HKWorkout(activityType: workoutType,
+//                                         start: workout.date, end: endDate, duration: workout.duration,
+//                                         totalEnergyBurned: energyQuantity, totalDistance: distanceQuantity,
+//                                         metadata: metadata)
+//            storeObj.append(storeWorkout)
+//        } else {
+//            if let distanceQuantity = distanceQuantity {
+//                let type = HKQuantityType.quantityType(forIdentifier: workout.type.quantityType!)
+//                let sample = HKQuantitySample(type: type!, quantity: distanceQuantity,
+//                                              start: workout.date, end: endDate, metadata: metadata)
+//                storeObj.append(sample)
+//            }
+//            if let energyQuantity = energyQuantity {
+//                let type = HKQuantityType.quantityType(forIdentifier: WRFormat.energyTypeId)
+//                let sample = HKQuantitySample(type: type!, quantity: energyQuantity,
+//                                              start: workout.date, end: endDate, metadata: metadata)
+//                storeObj.append(sample)
+//            }
+//        }
+//
+//        print(String(format: "STORING: %@, samples: %lu", workout.date as CVarArg, storeObj.count))
+//        if storeObj.count > 0 {
+//            healthStore.save(storeObj, withCompletion: { success, error in
+//                print("success storing: \(success ? "YES" : "NO")")
+//                if let error = error {
+//                    print("ERROR storing: \(error)")
+//                }
+//                DispatchQueue.main.sync(execute: {
+//                    finishBlock(error)
+//                })
+//            })
+//        }
     }
     
 // ==========================   read workouts     ===========================================
@@ -142,34 +157,34 @@ class HealthKitManager {
         var distanceResults: [HKSample] = []
         var energyResult: [HKSample] = []
 
-        let types = WRFormat.typeIdentifiers.map(sampleFrom)
-        let energyType = objectTypeFrom(WRFormat.energyTypeId)
-        let samplePredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        let queryPredicate: NSPredicate? = NSCompoundPredicate(andPredicateWithSubpredicates: [appSourcePredicate, samplePredicate])
-
-        let serviceGroup = DispatchGroup()
-        for sampleType in types {
-            serviceGroup.enter()
-            
-            let resultsHandler: ((_ query: HKSampleQuery, _ results: [HKSample]?, _ error: Error?) -> Void) = {
-                query, results, error in
-                if let results = results {
-                    if query.objectType == energyType {
-                        energyResult = results
-                    } else {
-                        distanceResults.append(contentsOf: results)
-                    }
-                }
-                serviceGroup.leave()
-            }
-            let query = HKSampleQuery(sampleType: sampleType, predicate: queryPredicate,
-                                  limit: 0, sortDescriptors: nil, resultsHandler: resultsHandler)
-            healthStore.execute(query)
-        }
+//        let types = WRFormat.typeIdentifiers.map(sampleFrom)
+//        let energyType = objectTypeFrom(WRFormat.energyTypeId)
+//        let samplePredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+//        let queryPredicate: NSPredicate? = NSCompoundPredicate(andPredicateWithSubpredicates: [appSourcePredicate, samplePredicate])
+//
+//        let serviceGroup = DispatchGroup()
+//        for sampleType in types {
+//            serviceGroup.enter()
+//
+//            let resultsHandler: ((_ query: HKSampleQuery, _ results: [HKSample]?, _ error: Error?) -> Void) = {
+//                query, results, error in
+//                if let results = results {
+//                    if query.objectType == energyType {
+//                        energyResult = results
+//                    } else {
+//                        distanceResults.append(contentsOf: results)
+//                    }
+//                }
+//                serviceGroup.leave()
+//            }
+//            let query = HKSampleQuery(sampleType: sampleType, predicate: queryPredicate,
+//                                  limit: 0, sortDescriptors: nil, resultsHandler: resultsHandler)
+//            healthStore.execute(query)
+//        }
         
-        serviceGroup.notify(queue: .main) {
+//        serviceGroup.notify(queue: .main) {
             completion(distanceResults, energyResult)
-        }
+//        }
     }
 
 // ==========================   delete workouts     ===========================================
