@@ -1,8 +1,13 @@
 import UIKit
 
 class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet var activitiesTableView: UITableView!
     private typealias W = WRFormat
+    
+    @IBOutlet var selectButton: UIButton!
+    
+    var selectAction: ((Activity?) -> Void)? = nil
+    private var selectedActivity: Activity? = nil
+    private var previousIndexPath: IndexPath? = nil
     
     private let sections = [
         W.singleActivitiesLabel, W.individualSportsLabel, W.teamSportsLabel, W.exerciseFitnessLabel, W.studioLabel,
@@ -13,15 +18,38 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         W.racketSportsActivities, W.outdoorActivities, W.snowIceSportsActivities, W.waterActivities, W.martialArtsActivities, W.otherActivities
     ]
     
+    private func findActivity(at index: IndexPath) -> Activity { return activities[index.section][index.row] }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectButton.isEnabled = false
+        
+        view.layer.borderWidth = 0.5
+        view.layer.shadowOpacity = 0.9
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0,height: 5)
+        view.layer.shadowRadius = 10
+    }
+    
+    @IBAction func onSelectClick(_ sender: Any) {
+        endView(with: selectedActivity)
+    }
+    
+    @IBAction func onCloseClick(_ sender: Any) {
+        endView(with: nil)
+    }
+    
+    private func endView(with activity: Activity?) {
+        if let selectAction = selectAction {
+            selectAction(activity)
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
@@ -34,14 +62,17 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         if cell == nil {
             cell = UITableViewCell(style: .value1, reuseIdentifier: "activityCell")
         }
-        let hrName = activities[indexPath.section][indexPath.row].hrName
+        let hrName = findActivity(at: indexPath).hrName
         cell!.textLabel?.text = hrName
         return cell!
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
-//        print("setting name: \(hrName)")
-
-//        return cell
-//        return hrName
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let prevPath = previousIndexPath, prevPath == indexPath {
+            return onSelectClick(self)
+        }
+        previousIndexPath = indexPath
+        selectButton.isEnabled = true
+        selectedActivity = findActivity(at: indexPath)
     }
 }

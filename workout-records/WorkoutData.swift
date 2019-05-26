@@ -1,17 +1,21 @@
 import HealthKit
 
 class WorkoutData {
-    var type: Activity
+    var activity: Activity
     var date: Date
-    var duration: TimeInterval = 0.0
-    var distance: Double = 0.0
-    var calories: Int = 0
+    var duration: TimeInterval
+    var distance: Double?
+    var calories: Int?
     var samples: [HKSample] = []
     
-    init(_ pDate: Date, _ pType: HKQuantityTypeIdentifier) {
-        date = pDate
-//        type = WorkoutType(quantityType: pType)
-        type = WRFormat.singleActivities[0]
+    init(_ date: Date, _ duration: TimeInterval, _ activity: Activity) {
+        self.date = date
+        self.duration = duration
+        self.activity = activity
+    }
+    
+    convenience init(_ startDate: Date, _ endDate: Date, _ activity: Activity) {
+        self.init(startDate, endDate.timeIntervalSince(startDate), activity)
     }
     
     func add(_ sample: HKSample) {

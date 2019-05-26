@@ -2,10 +2,23 @@ import GoogleMobileAds
 import UIKit
 import HealthKit
 
+extension UIView {
+    func findViewController() -> UIViewController? {
+        if let nextResponder = self.next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = self.next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
+        }
+    }
+}
+
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var bannerView: GADBannerView!
-    @IBOutlet var activitiesField: UIButton!
+    @IBOutlet var activitiesView: UIView!
     
+    @IBOutlet var activitiesButton: UIButton!
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var durationField: UITextField!
     @IBOutlet weak var distanceField: UITextField!
@@ -13,11 +26,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var workoutTableView: UITableView!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var recordButton: UIButton!
-    @IBOutlet var activitiesView: UIView!
     
     private var workoutData: [WorkoutData] = []
     private var queryFromDate = Date()
-//    private var selectedActivity: HKQuantityTypeIdentifier = WRFormat.typeIdentifiers[0]
+    private var selectedActivity: Activity = WRFormat.singleActivities[0]
     private var selectedDate = Date()
     private var selectedDuration: TimeInterval = 0.0
     
@@ -65,18 +77,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func createTypePicker(_ toolbar: UIToolbar) {
-        activitiesField.addTarget(self, action: #selector(openActivities), for: .touchDown)
-//        let typePicker = TypePickerView(typeField, toolbar: toolbar, callback: { typeId in
-//            self.selectedActivity = typeId
-//            if typeId == .activeEnergyBurned {
-//                self.distanceField.isEnabled = false
-//                self.distanceField.text = ""
-//                self.checkRecordButtonState()
-//            } else {
-//                self.distanceField.isEnabled = true
-//            }
-//        })
-//        typePicker.setNewActivity(0)
+        activitiesButton.setTitle(selectedActivity.hrName, for: .normal)
+        let activitiesController = activitiesView.subviews[0].findViewController() as! ActivitiesViewController
+        activitiesController.selectAction = { activity in
+            self.activitiesView.isHidden = true
+            if let activity = activity {
+                self.activitiesButton.setTitle(activity.hrName, for: .normal)
+                self.selectedActivity = activity
+            }
+        }
+        activitiesButton.addTarget(self, action: #selector(openActivities), for: .touchDown)
     }
     
     @objc func openActivities(textField: UITextField) {
@@ -84,36 +94,36 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func createDatePicker() {
-        DatePickerController.wrap(dateField, newToolbarBuilder(), callback: { date in
+        DatePickerController.wrap(dateField, newToolbarBuilder()) { date in
             self.selectedDate = date
-        })
+        }
     }
     
     func createDurationPicker(_ toolbar: UIToolbar) {
-        DurationPickerController.wrap(durationField, 3600, toolbar, callback: { interval in
+        DurationPickerController.wrap(durationField, 3600, toolbar) { interval in
             self.selectedDuration = interval
-        })
+        }
     }
 
 // ============== workout action methods =======================
 // =============================================================
 
     func reloadWorkouts(_ querySetting: HKMQuerySetting?) {
-        HealthKitManager.sharedInstance().readWorkouts(querySetting, finishBlock: { results, queryFromDate in
+        HealthKitManager.sharedInstance().readWorkouts(querySetting) { results, queryFromDate in
             self.workoutData = results
             self.queryFromDate = queryFromDate
             self.workoutTableView.reloadData()
-        })
+        }
     }
     
     func deleteWorkout(_ workout: WorkoutData) {
-        HealthKitManager.sharedInstance().deleteWorkout(workout, finishBlock: { error in
+        HealthKitManager.sharedInstance().deleteWorkout(workout) { error in
             if let error = error {
                 AlertBuilder.showErrorAlert(on: self, title: "Error deleting workout", error: error)
             } else {
                 self.reloadWorkouts(nil)
             }
-        })
+        }
     }
     
 // ==================== view methods ===========================
@@ -135,30 +145,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func onWriteWorkoutAction(_ sender: Any) {
         endEditing()
-//        let newWorkout = WorkoutData(selectedDate, selectedActivity)
-//        newWorkout.distance = distanceField.text.flatMap(Double.init) ?? 0
-//        newWorkout.calories = caloriesField.text.flatMap(Int.init) ?? 0
-//        newWorkout.duration = selectedDuration
-//
-//        let storeHandler: (_ action: UIAlertAction?) -> Void = { action in
-//            HealthKitManager.sharedInstance().writeWorkout(newWorkout, finishBlock: { error in
-//                if let error = error {
-//                    AlertBuilder.showErrorAlert(on: self, title: "Error writing workout", error: error)
-//                } else {
-//                    self.reloadWorkouts(nil)
-//                }
-//            })
-//        }
-//        if newWorkout.distance > 0 || newWorkout.calories > 0 {
-//            if newWorkout.distance > 0 || selectedActivity == WRFormat.energyTypeId {
-//                storeHandler(nil)
-//            } else {
-//                let alertBuilder = AlertBuilder("", message: "No distance set.\nRecord as 'Calories only' ?")
-//                alertBuilder.addCancelAction(nil)
-//                alertBuilder.addDefaultAction("Record", handler: storeHandler)
-//                alertBuilder.show(self)
-//            }
-//        }
+        let newWorkout = WorkoutData(selectedDate, selectedDuration, selectedActivity)
+        newWorkout.distance = distanceField.text.flatMap(Double.init)
+        newWorkout.calories = caloriesField.text.flatMap(Int.init)
+        
+        let storeHandler: (_ action: UIAlertAction?) -> Void = { action in
+            HealthKitManager.sharedInstance().writeWorkout(newWorkout) { error in
+                if let error = error {
+                    AlertBuilder.showErrorAlert(on: self, title: "Error writing workout", error: error)
+                } else {
+                    self.reloadWorkouts(nil)
+                }
+            }
+        }
+
+        if newWorkout.distance == nil && WRFormat.isDistanceActivity(selectedActivity) {
+            let message = "No distance set.\nRecord as '\(WRFormat.energyActivity.hrName)' ?"
+            let alertBuilder = AlertBuilder("", message: message)
+            alertBuilder.addCancelAction(nil)
+            alertBuilder.addDefaultAction("Record", handler: storeHandler)
+            alertBuilder.show(self)
+        } else {
+            storeHandler(nil)
+        }
     }
     
     // ================= table-view methods ========================
@@ -211,7 +220,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let workout = workoutData[indexPath.row]
             
             let title = "Delete workout?"
-            let message = "\(workout.type.hrName)"
+            let message = "\(workout.activity.hrName)"
                 + "\nDate:  \(WRFormat.formatDate(workout.date))"
                 + "\nDuration:  \(WRFormat.formatDuration(workout.duration))"
             let alertBuilder = AlertBuilder(title, message: message)

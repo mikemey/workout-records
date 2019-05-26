@@ -1,14 +1,25 @@
 import HealthKit
 
-enum ActivityType<A, B>{
+enum EitherActivity<A, B> {
     case Quantity(A)
     case Workout(B)
 }
 
-struct Activity {
-    let type: ActivityType<HKQuantityTypeIdentifier, HKWorkoutActivityType>
+struct Activity: Equatable {
+    let type: EitherActivity<HKQuantityTypeIdentifier, HKWorkoutActivityType>
     let hrName: String
     let icon: String
+    
+    static func == (lhs: Activity, rhs: Activity) -> Bool {
+        switch (lhs.type, rhs.type) {
+        case (let .Quantity(quantityId1), let .Quantity(quantityId2)):
+            return quantityId1 == quantityId2
+        case (let .Workout(workoutId1), let .Workout(workoutId2)):
+            return workoutId1 == workoutId2
+        default:
+            return false
+        }
+    }
 }
 
 class WRFormat {
@@ -18,27 +29,33 @@ class WRFormat {
         fmt.dateFormat = "eee d LLL hh:mm a"
         return fmt
     }()
+
+    private static let distanceSampleTypes: [HKSampleType] = {
+        return [.distanceCycling, .distanceSwimming, .distanceWheelchair, .distanceWalkingRunning]
+            .map { HKSampleType.quantityType(forIdentifier: $0)! }
+    }()
     
-//    static let typeIdentifiers = [.distanceCycling, .distanceSwimming, .distanceWheelchair, .distanceWalkingRunning, energyTypeId]
-//    static let typeNames = ["Cycling", "Swimming", "Wheelchair", "Walking/Running", "Calories only"]
-//    static let iconFiles = ["icons-cycling.png", "icons-swimming.png", "icons-wheelchair.png", "icons-running.png", "icons-energy.png"]
+    static let energyTypeId = HKQuantityTypeIdentifier.activeEnergyBurned
+    private static let energySampleType: HKSampleType = HKSampleType.quantityType(forIdentifier: energyTypeId)!
+    static let workoutType: HKSampleType = HKObjectType.workoutType()
+    static let allSampleTypes = distanceSampleTypes + [energySampleType, workoutType]
     
-    static let energyTypeId: HKQuantityTypeIdentifier = .activeEnergyBurned
+    static let energyActivity = Activity(type: .Quantity(energyTypeId), hrName: "Energy only", icon: "icons-energy.png")
     static let singleActivitiesLabel = "Record as individual activities"
-    static let singleActivities: [Activity] = [
+    private static let distanceActivities: [Activity] = [
         Activity(type: .Quantity(.distanceCycling), hrName: "Cycling distance + energy", icon: "icons-cycling.png"),
         Activity(type: .Quantity(.distanceSwimming), hrName: "Swimming distance + energy", icon: "icons-swimming.png"),
         Activity(type: .Quantity(.distanceWalkingRunning), hrName: "Walking, Running distance + energy", icon: "icons-running.png"),
         Activity(type: .Quantity(.distanceWheelchair), hrName: "Wheelchair distance + energy", icon: "icons-wheelchair.png"),
-        Activity(type: .Quantity(energyTypeId), hrName: "Calories only", icon: "icons-energy.png")
     ]
+    static let singleActivities: [Activity] = distanceActivities + [energyActivity]
 
     static let individualSportsLabel = "Individual Sports"
     static let individualSportsActivities: [Activity] = [
-        Activity(type: .Workout(.archery), hrName: "Archery", icon: "icons-generic.png"),
+        Activity(type: .Workout(.archery), hrName: "Archery", icon: "icons-archery.png"),
         Activity(type: .Workout(.bowling), hrName: "Bowling", icon: "icons-generic.png"),
         Activity(type: .Workout(.fencing), hrName: "Fencing", icon: "icons-generic.png"),
-        Activity(type: .Workout(.gymnastics), hrName: "Performing gymnastics", icon: "icons-generic.png"),
+        Activity(type: .Workout(.gymnastics), hrName: "Performing gymnastics", icon: "icons-gymnastics.png"),
         Activity(type: .Workout(.trackAndField), hrName: "Track + field events", icon: "icons-generic.png")
     ]
 
@@ -65,7 +82,7 @@ class WRFormat {
         Activity(type: .Workout(.running), hrName: "Running, Jogging", icon: "icons-running.png"),
         Activity(type: .Workout(.walking), hrName: "Walking", icon: "icons-generic.png"),
         Activity(type: .Workout(.wheelchairRunPace), hrName: "Wheelchair workout (running pace)", icon: "icons-wheelchair.png"),
-        Activity(type: .Workout(.wheelchairWalkPace), hrName: "Wheelchair workout (walking pace)", icon: "icons-generic.png"),
+        Activity(type: .Workout(.wheelchairWalkPace), hrName: "Wheelchair workout (walking pace)", icon: "icons-wheelchair.png"),
         Activity(type: .Workout(.cycling), hrName: "Cycling", icon: "icons-cycling.png"),
         Activity(type: .Workout(.handCycling), hrName: "Hand cycling", icon: "icons-generic.png"),
         Activity(type: .Workout(.coreTraining), hrName: "Core training", icon: "icons-generic.png"),
@@ -141,14 +158,32 @@ class WRFormat {
     static let otherActivities: [Activity] = [
         Activity(type: .Workout(.other), hrName: "Other", icon: "icons-generic.png")
     ]
-//    static activityTypes = []
-//    static func typeName(for typeId: HKQuantityTypeIdentifier) -> String {
-//        return typeNames[typeIdentifiers.firstIndex(of: typeId)!]
-//    }
-//
-//    static func getImageFile(for typeId: HKQuantityTypeIdentifier) -> String {
-//        return iconFiles[typeIdentifiers.firstIndex(of: typeId)!]
-//    }
+    
+    private static let allWorkoutActivities: [Activity] =
+        individualSportsActivities + teamSportsActivities + exerciseFitnessActivities + studioActivities +
+        racketSportsActivities + outdoorActivities + snowIceSportsActivities + waterActivities + martialArtsActivities + otherActivities
+    
+    static func findActivity(with workoutType: HKWorkoutActivityType) -> Activity {
+        return allWorkoutActivities.first(where: { activity in
+            switch (activity.type) {
+            case let .Workout(type): return workoutType == type
+            default: return false
+            }
+        })!
+    }
+    
+    static func findActivity(with quantityTypeId: HKQuantityTypeIdentifier) -> Activity {
+        return singleActivities.first(where: { activity in
+            switch (activity.type) {
+            case let .Quantity(quantityIdentifier): return quantityIdentifier == quantityTypeId
+            default: return false
+            }
+        })!
+    }
+    
+    static func isDistanceActivity(_ activity: Activity) -> Bool {
+        return distanceActivities.contains(activity)
+    }
     
     static func formatDate(_ date: Date) -> String {
         return dateTimeFormatter.string(from: date)
