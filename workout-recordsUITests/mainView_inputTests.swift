@@ -35,7 +35,7 @@ class mainView_inputTests: XCTestCase {
     }
     
     func checkFields_when_singleDistanceActivity() {
-        mainPage().selectActivity("Walking, Running distance + energy")
+        mainPage().selectActivity("Walking, Running (distance + energy)")
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
         mainPage().clearDistanceField()
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)

@@ -43,10 +43,10 @@ class WRFormat {
     static let energyActivity = Activity(type: .Quantity(energyTypeId), hrName: "Energy only", icon: "icons-energy.png")
     static let singleActivitiesLabel = "Record as individual activities"
     private static let distanceActivities: [Activity] = [
-        Activity(type: .Quantity(.distanceCycling), hrName: "Cycling distance + energy", icon: "icons-cycling.png"),
-        Activity(type: .Quantity(.distanceSwimming), hrName: "Swimming distance + energy", icon: "icons-swimming.png"),
-        Activity(type: .Quantity(.distanceWalkingRunning), hrName: "Walking, Running distance + energy", icon: "icons-running.png"),
-        Activity(type: .Quantity(.distanceWheelchair), hrName: "Wheelchair distance + energy", icon: "icons-wheelchair.png"),
+        Activity(type: .Quantity(.distanceCycling), hrName: "Cycling (distance + energy)", icon: "icons-cycling.png"),
+        Activity(type: .Quantity(.distanceSwimming), hrName: "Swimming (distance + energy)", icon: "icons-swimming.png"),
+        Activity(type: .Quantity(.distanceWalkingRunning), hrName: "Walking, Running (distance + energy)", icon: "icons-running.png"),
+        Activity(type: .Quantity(.distanceWheelchair), hrName: "Wheelchair (distance + energy)", icon: "icons-wheelchair.png"),
     ]
     static let singleActivities: [Activity] = distanceActivities + [energyActivity]
 
