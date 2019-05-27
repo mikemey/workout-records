@@ -94,6 +94,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 } else {
                     self.distanceField.isEnabled = true
                 }
+                self.checkRecordButtonState()
             }
         }
         activitiesButton.addTarget(self, action: #selector(openActivities), for: .touchDown)
@@ -146,12 +147,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func checkRecordButtonState() {
-        if (distanceField.text == "") && (caloriesField.text == "") {
-            recordButton.isEnabled = false
-            recordButton.alpha = 0.5
+        if WRFormat.isDistanceActivity(selectedActivity) {
+           disableButtonIf((distanceField.text == "") && (caloriesField.text == ""))
+        } else if WRFormat.energyActivity == selectedActivity {
+            disableButtonIf((caloriesField.text == ""))
         } else {
-            recordButton.isEnabled = true
-            recordButton.alpha = 1
+            disableButtonIf(false)
+        }
+    }
+
+    private func disableButtonIf(_ shouldDisable: Bool) {
+        if shouldDisable {
+            self.recordButton.isEnabled = false
+            self.recordButton.alpha = 0.5
+        } else {
+            self.recordButton.isEnabled = true
+            self.recordButton.alpha = 1
         }
     }
     
