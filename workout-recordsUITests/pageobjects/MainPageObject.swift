@@ -47,7 +47,7 @@ class MainPageObject {
     private func getActivitySelect() -> XCUIElement { return app.buttons["activity_select"] }
     private func getActivityClose() -> XCUIElement { return app.buttons["activity_close"] }
     func getDistanceField() -> XCUIElement { return app.textFields["distance"] }
-    private func getCaloriesField() -> XCUIElement { return app.textFields["calories"] }
+    private func getEnergyField() -> XCUIElement { return app.textFields["energy"] }
     func getRecordButton() -> XCUIElement { return app.buttons["Record"] }
     
     static func formatDateTime(_ date: Date) -> String {
@@ -59,12 +59,12 @@ class MainPageObject {
     }
     
     func assertWorkout(_ index: Int, _ datePrefix: String, _ duration: String,
-                       _ distance: String, _ calories: String) {
+                       _ distance: String, _ energy: String) {
         let wopo = WorkoutPageObject(getWorkoutCell(index))
         XCTAssertTrue(wopo.getDate().starts(with: datePrefix), "date mismatch (expected prefix / actual date)\n\(datePrefix)\n\(wopo.getDate())")
         XCTAssertEqual(wopo.getDuration(), duration)
         XCTAssertEqual(wopo.getDistance(), distance)
-        XCTAssertEqual(wopo.getCalories(), calories)
+        XCTAssertEqual(wopo.getEnergy(), energy)
     }
     
     func getWorkout(_ index: Int) -> WorkoutPageObject {
@@ -75,7 +75,7 @@ class MainPageObject {
                        _ date: (daysPast: Int, hour: Int, min: (Int))? = nil,
                        duration: (Int, Int)? = nil,
                        distance: Double? = nil,
-                       calories: Int? = nil) {
+                       energy: Int? = nil) {
         selectActivity(activity)
         if setNow {
             app.textFields["date"].tap()
@@ -109,12 +109,12 @@ class MainPageObject {
             tapDone()
         }
 
-        let caloriesField = getCaloriesField()
-        if caloriesField.isEnabled {
-            if let calories = calories {
-                caloriesField.clearAndEnter(String(calories))
+        let energyField = getEnergyField()
+        if energyField.isEnabled {
+            if let energy = energy {
+                energyField.clearAndEnter(String(energy))
             } else {
-                caloriesField.clear()
+                energyField.clear()
             }
             tapDone()
         }
@@ -179,16 +179,16 @@ class MainPageObject {
         getDistanceField().clear()
     }
     
-    func getCaloriesValue() -> String {
-        return getCaloriesField().value as! String
+    func getEnergyValue() -> String {
+        return getEnergyField().value as! String
     }
     
-    func sendToCaloriesField(_ keys: [String]) {
-        keysIntoField(getCaloriesField(), keys: keys)
+    func sendToEnergyField(_ keys: [String]) {
+        keysIntoField(getEnergyField(), keys: keys)
     }
     
-    func clearCaloriesField() {
-        getCaloriesField().clear()
+    func clearEnergyField() {
+        getEnergyField().clear()
     }
     
     private func keysIntoField(_ field: XCUIElement, keys: [String]) {

@@ -12,7 +12,7 @@ class WorkoutTableCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var durationLabel: UILabel!
     @IBOutlet var distanceLabel: UILabel!
-    @IBOutlet var caloriesLabel: UILabel!
+    @IBOutlet var energyLabel: UILabel!
     @IBOutlet var typeImage: UIImageView!
     @IBOutlet var distanceUnitLabel: UILabel!
     @IBOutlet var energyUnitLabel: UILabel!
@@ -32,7 +32,7 @@ class WorkoutTableCell: UITableViewCell {
         setTextOn(dateLabel, text: WRFormat.formatDate(workout.date), size: 16)
         setTextOn(durationLabel, text: WRFormat.formatDuration(workout.duration), size: 12)
         setTextOn(distanceLabel, text: WRFormat.formatDistance(workout.distance ?? 0.0), size: 18)
-        setTextOn(caloriesLabel, text: WRFormat.formatCalories(workout.calories ?? 0), size: 18)
+        setTextOn(energyLabel, text: WRFormat.formatEnergy(workout.energy ?? 0), size: 18)
         setTextOn(distanceUnitLabel, text: WRFormat.isMetric ? "km" : "mi", size: 11)
         typeImage.image = UIImage(named: workout.activity.icon)
         cellView.backgroundColor = WorkoutTableCell.defaultBackgroundColor

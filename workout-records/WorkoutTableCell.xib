@@ -43,7 +43,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eA-fK-lwQ">
                         <rect key="frame" x="280" y="16" width="54" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <accessibility key="accessibilityConfiguration" identifier="calories"/>
+                        <accessibility key="accessibilityConfiguration" identifier="energy"/>
                         <attributedString key="attributedText"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -87,12 +87,12 @@
                 <color key="backgroundColor" red="0.80515018907295266" green="0.47117609516858072" blue="0.37127649351878689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="caloriesLabel" destination="0eA-fK-lwQ" id="fRW-Da-dV6"/>
                 <outlet property="cellView" destination="8Y2-VT-iQG" id="CKj-Nd-Lef"/>
                 <outlet property="dateLabel" destination="K5u-v9-LpI" id="eH7-lF-fbG"/>
                 <outlet property="distanceLabel" destination="qS2-OT-Aun" id="Wef-Fl-pMn"/>
                 <outlet property="distanceUnitLabel" destination="rcC-zv-iZB" id="1lk-yS-oGr"/>
                 <outlet property="durationLabel" destination="Koo-y4-35s" id="4uk-Rm-yG4"/>
+                <outlet property="energyLabel" destination="0eA-fK-lwQ" id="fRW-Da-dV6"/>
                 <outlet property="energyUnitLabel" destination="fLJ-7z-vpx" id="6P5-Vd-hls"/>
                 <outlet property="typeImage" destination="vYs-z3-VEf" id="qx4-s9-KvY"/>
             </connections>

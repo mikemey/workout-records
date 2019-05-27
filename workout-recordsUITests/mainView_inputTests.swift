@@ -14,7 +14,7 @@ class mainView_inputTests: XCTestCase {
     func testInputFields() {
         checkRecordButton_initialState()
         allowOnlyOneComma_in_distanceField()
-        allowOnlyUpToMaximum_in_caloriesField()
+        allowOnlyUpToMaximum_in_energyField()
         checkFields_when_singleDistanceActivity()
         checkFields_when_energyOnlyActivity()
         checkFields_when_workoutActivity()
@@ -29,9 +29,9 @@ class mainView_inputTests: XCTestCase {
         XCTAssertEqual(mainPage().getDistanceValue(), "1.1")
     }
     
-    func allowOnlyUpToMaximum_in_caloriesField() {
-        mainPage().sendToCaloriesField(["1", "0", "1", "0", "0"])
-        XCTAssertEqual(mainPage().getCaloriesValue(), "1010")
+    func allowOnlyUpToMaximum_in_energyField() {
+        mainPage().sendToEnergyField(["1", "0", "1", "0", "0"])
+        XCTAssertEqual(mainPage().getEnergyValue(), "1010")
     }
     
     func checkFields_when_singleDistanceActivity() {
@@ -40,7 +40,7 @@ class mainView_inputTests: XCTestCase {
         mainPage().clearDistanceField()
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
         mainPage().sendToDistanceField(["5"])
-        mainPage().clearCaloriesField()
+        mainPage().clearEnergyField()
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
         mainPage().clearDistanceField()
         XCTAssertFalse(mainPage().getRecordButton().isEnabled)
@@ -52,12 +52,12 @@ class mainView_inputTests: XCTestCase {
         mainPage().selectActivity("Energy only")
         XCTAssertFalse(mainPage().getRecordButton().isEnabled)
         XCTAssertFalse(mainPage().getDistanceField().isEnabled)
-        mainPage().sendToCaloriesField(["5"])
+        mainPage().sendToEnergyField(["5"])
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
     }
     
     func checkFields_when_workoutActivity() {
-        mainPage().clearCaloriesField()
+        mainPage().clearEnergyField()
         mainPage().selectActivity("Strength training (free/body weights)")
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
         XCTAssertTrue(mainPage().getDistanceField().isEnabled)

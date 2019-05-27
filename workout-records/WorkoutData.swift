@@ -5,7 +5,7 @@ class WorkoutData {
     var date: Date
     var duration: TimeInterval
     var distance: Double?
-    var calories: Int?
+    var energy: Int?
     var samples: [HKSample] = []
     
     init(_ date: Date, _ duration: TimeInterval, _ activity: Activity) {

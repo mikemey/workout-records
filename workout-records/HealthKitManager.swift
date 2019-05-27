@@ -59,8 +59,8 @@ class HealthKitManager {
         let distanceQuantity: HKQuantity? = workout.distance.map { distance in
             return HKQuantity(unit: deviceUnit, doubleValue: WRFormat.distanceForWriting(distance))
         }
-        let energyQuantity: HKQuantity? = workout.calories.map { calories in
-            return HKQuantity(unit: energyUnit, doubleValue: Double(calories))
+        let energyQuantity: HKQuantity? = workout.energy.map { energy in
+            return HKQuantity(unit: energyUnit, doubleValue: Double(energy))
         }
 
         var storeObj: [HKSample] = []
@@ -123,7 +123,7 @@ class HealthKitManager {
                 if let distanceWrid = wrid {
                     let es = findSampleById(energies, distanceWrid) as? HKQuantitySample
                     if let energySample = es {
-                        record.calories = Int(energySample.quantity.doubleValue(for: self.energyUnit))
+                        record.energy = Int(energySample.quantity.doubleValue(for: self.energyUnit))
                         record.add(energySample)
                         remainingEnergies = remainingEnergies.filter({ ![energySample].contains($0) })
                     }
@@ -133,7 +133,7 @@ class HealthKitManager {
 
             for energySample in remainingEnergies as! [HKQuantitySample] {
                 let record = self.createQuantityRecord(from: energySample)
-                record.calories = Int(energySample.quantity.doubleValue(for: self.energyUnit))
+                record.energy = Int(energySample.quantity.doubleValue(for: self.energyUnit))
                 workoutData.append(record)
             }
             
@@ -152,7 +152,7 @@ class HealthKitManager {
         record.distance = sample.totalDistance.map { distanceSample in
             distanceSample.doubleValue(for: self.deviceUnit)
         }
-        record.calories = sample.totalEnergyBurned.map { energySample in
+        record.energy = sample.totalEnergyBurned.map { energySample in
             Int(energySample.doubleValue(for: self.energyUnit))
         }
         return record

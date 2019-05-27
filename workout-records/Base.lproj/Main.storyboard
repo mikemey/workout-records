@@ -92,10 +92,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="calories" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="ed7-bC-3SH" customClass="CheckingTextField" customModule="workout_records" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="energy" textAlignment="right" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="ed7-bC-3SH" customClass="CheckingTextField" customModule="workout_records" customModuleProvider="target">
                                 <rect key="frame" x="215" y="262" width="90" height="60"/>
                                 <color key="backgroundColor" white="0.96762628419999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <accessibility key="accessibilityConfiguration" identifier="calories"/>
+                                <accessibility key="accessibilityConfiguration" identifier="energy"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="u2K-k6-gq8"/>
                                 </constraints>
@@ -198,12 +198,12 @@
                         <outlet property="activitiesButton" destination="BEc-xe-EJp" id="ONU-Kz-h03"/>
                         <outlet property="activitiesView" destination="jA6-cq-2EL" id="8mD-ix-V1o"/>
                         <outlet property="bannerView" destination="bvT-gB-RNp" id="3aB-et-KfZ"/>
-                        <outlet property="caloriesField" destination="ed7-bC-3SH" id="jw4-0e-m7a"/>
-                        <outlet property="caloriesLabel" destination="6Gi-XN-2gv" id="g6f-Vd-WyA"/>
                         <outlet property="dateField" destination="Aeq-2K-GYS" id="Ay9-i1-84X"/>
                         <outlet property="distanceField" destination="DCP-YZ-QgF" id="8Cn-ZR-bJP"/>
                         <outlet property="distanceLabel" destination="oat-oA-kAK" id="ZCK-mN-VZc"/>
                         <outlet property="durationField" destination="etK-2X-9gM" id="LUR-Vg-8Z1"/>
+                        <outlet property="energyField" destination="ed7-bC-3SH" id="jw4-0e-m7a"/>
+                        <outlet property="energyLabel" destination="6Gi-XN-2gv" id="g6f-Vd-WyA"/>
                         <outlet property="recordButton" destination="uaU-zP-L8F" id="qGF-Mm-n0n"/>
                         <outlet property="workoutTableView" destination="FS7-ke-5Cr" id="jhn-xP-Tk3"/>
                     </connections>

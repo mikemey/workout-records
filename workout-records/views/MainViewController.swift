@@ -11,8 +11,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var durationField: UITextField!
     @IBOutlet weak var distanceField: UITextField!
-    @IBOutlet weak var caloriesField: UITextField!
-    @IBOutlet var caloriesLabel: UILabel!
+    @IBOutlet weak var energyField: UITextField!
+    @IBOutlet var energyLabel: UILabel!
     @IBOutlet var workoutTableView: UITableView!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var recordButton: UIButton!
@@ -37,9 +37,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         distanceField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
         distanceField.setRightPadding(5)
         
-        caloriesField.inputAccessoryView = toolbar
-        caloriesField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
-        caloriesField.setRightPadding(5)
+        energyField.inputAccessoryView = toolbar
+        energyField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
+        energyField.setRightPadding(5)
         
         createInputBorders()
         createActivitiesPicker(toolbar)
@@ -71,8 +71,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         distanceField.layer.addBorder([.bottom], borderColor, 1)
         distanceLabel.layer.addBorder([.bottom, .right], borderColor, 1)
         durationField.layer.addBorder([.left, .bottom, .right], borderColor, 1)
-        caloriesField.layer.addBorder([.bottom], borderColor, 1)
-        caloriesLabel.layer.addBorder([.bottom, .right], borderColor, 1)
+        energyField.layer.addBorder([.bottom], borderColor, 1)
+        energyLabel.layer.addBorder([.bottom, .right], borderColor, 1)
     }
     
     func createAdbanner() {
@@ -168,9 +168,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func checkRecordButtonState() {
         if WRFormat.isDistanceActivity(selectedActivity) {
-           disableButtonIf((distanceField.text == "") && (caloriesField.text == ""))
+           disableButtonIf((distanceField.text == "") && (energyField.text == ""))
         } else if WRFormat.energyActivity == selectedActivity {
-            disableButtonIf((caloriesField.text == ""))
+            disableButtonIf((energyField.text == ""))
         } else {
             disableButtonIf(false)
         }
@@ -190,7 +190,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.endEditing(nil)
         let newWorkout = WorkoutData(selectedDate, selectedDuration, selectedActivity)
         newWorkout.distance = distanceField.text.flatMap(Double.init)
-        newWorkout.calories = caloriesField.text.flatMap(Int.init)
+        newWorkout.energy = energyField.text.flatMap(Int.init)
         
         let storeHandler: (_ action: UIAlertAction?) -> Void = { action in
             HealthKitManager.sharedInstance().writeWorkout(newWorkout) { error in

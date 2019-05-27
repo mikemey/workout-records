@@ -216,7 +216,7 @@ class WRFormat {
         return distance >= 100 ? String(format: "%.f", distance) : String(format: "%.1f", distance)
     }
     
-    static func formatCalories(_ calories: Int) -> String {
-        return "\(calories)"
+    static func formatEnergy(_ energy: Int) -> String {
+        return "\(energy)"
     }
 }

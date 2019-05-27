@@ -19,8 +19,8 @@ class WorkoutPageObject {
         return getLabel("distance")
     }
     
-    func getCalories() -> String {
-        return getLabel("calories")
+    func getEnergy() -> String {
+        return getLabel("energy")
     }
     
     private func getLabel(_ identifier: String) -> String {
