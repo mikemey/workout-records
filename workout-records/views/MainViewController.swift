@@ -33,11 +33,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var selectedDate = Date()
     private var selectedDuration: TimeInterval = 0.0
     private var tapGesture: UITapGestureRecognizer? = nil
+    private let transitionDuration = 0.2
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWithLocales()
         activitiesView.isHidden = true
+        activitiesView.alpha = 0
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.endEditing(_:)))
         self.view.addGestureRecognizer(tapGesture!)
@@ -48,7 +50,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         caloriesField.inputAccessoryView = toolbar
         caloriesField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
         
-        createTypePicker(toolbar)
+        createActivitiesPicker(toolbar)
         createDatePicker()
         createDurationPicker(toolbar)
         createAdbanner()
@@ -79,12 +81,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return ToolbarBuilder(CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44), target: self, doneAction: #selector(endEditing))
     }
     
-    func createTypePicker(_ toolbar: UIToolbar) {
+    func createActivitiesPicker(_ toolbar: UIToolbar) {
         activitiesButton.setTitle(selectedActivity.hrName, for: .normal)
         let activitiesController = activitiesView.subviews[0].findViewController() as! ActivitiesViewController
         activitiesController.selectAction = { activity in
-            self.activitiesView.isHidden = true
-            self.view.addGestureRecognizer(self.tapGesture!)
+            self.closeActivitiesPicker()
             if let activity = activity {
                 self.activitiesButton.setTitle(activity.hrName, for: .normal)
                 self.selectedActivity = activity
@@ -97,13 +98,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.checkRecordButtonState()
             }
         }
-        activitiesButton.addTarget(self, action: #selector(openActivities), for: .touchDown)
-    }
-    
-    @objc func openActivities(textField: UITextField) {
-        self.endEditing(nil)
-        self.view.removeGestureRecognizer(tapGesture!)
-        activitiesView.isHidden = false
+        activitiesButton.addTarget(self, action: #selector(openActivitiesPicker), for: .touchDown)
     }
     
     func createDatePicker() {
@@ -144,6 +139,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func endEditing(_ sender: Any?) {
         view.endEditing(true)
+    }
+    
+    @objc func openActivitiesPicker(textField: UITextField) {
+        endEditing(nil)
+        view.removeGestureRecognizer(tapGesture!)
+        activitiesView.isHidden = false
+        UIView.animate(withDuration: transitionDuration, animations: {
+            self.activitiesView.alpha = 1
+        })
+    }
+    
+    func closeActivitiesPicker() {
+        view.addGestureRecognizer(tapGesture!)
+        UIView.animate(withDuration: transitionDuration, animations: {
+            self.activitiesView.alpha = 0
+        }) { _ in self.activitiesView.isHidden = true }
     }
     
     @objc func checkRecordButtonState() {

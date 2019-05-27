@@ -28,6 +28,8 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         selectButton.isEnabled = false
+        selectButton.alpha = 0.35
+        
         view.layer.borderWidth = 1
         view.layer.borderColor = ActivitiesViewController.borderColor
         view.layer.shadowOpacity = 0.95
@@ -84,6 +86,7 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = ActivitiesViewController.selectionColor
         previousIndexPath = indexPath
         selectButton.isEnabled = true
+        selectButton.alpha = 1
         selectedActivity = findActivity(at: indexPath)
     }
 
