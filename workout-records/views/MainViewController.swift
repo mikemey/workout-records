@@ -32,12 +32,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var selectedActivity: Activity = WRFormat.singleActivities[0]
     private var selectedDate = Date()
     private var selectedDuration: TimeInterval = 0.0
-    
+    private var tapGesture: UITapGestureRecognizer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWithLocales()
         activitiesView.isHidden = true
+        
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.endEditing(_:)))
+        self.view.addGestureRecognizer(tapGesture!)
         
         let toolbar = newToolbarBuilder().createDefault()
         distanceField.inputAccessoryView = toolbar
@@ -81,6 +84,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let activitiesController = activitiesView.subviews[0].findViewController() as! ActivitiesViewController
         activitiesController.selectAction = { activity in
             self.activitiesView.isHidden = true
+            self.view.addGestureRecognizer(self.tapGesture!)
             if let activity = activity {
                 self.activitiesButton.setTitle(activity.hrName, for: .normal)
                 self.selectedActivity = activity
@@ -90,6 +94,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func openActivities(textField: UITextField) {
+        self.endEditing(nil)
+        self.view.removeGestureRecognizer(tapGesture!)
         activitiesView.isHidden = false
     }
     
@@ -129,7 +135,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 // ==================== view methods ===========================
 // =============================================================
     
-    @objc func endEditing() {
+    @objc func endEditing(_ sender: Any?) {
         view.endEditing(true)
     }
     
@@ -144,7 +150,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func onWriteWorkoutAction(_ sender: Any) {
-        endEditing()
+        self.endEditing(nil)
         let newWorkout = WorkoutData(selectedDate, selectedDuration, selectedActivity)
         newWorkout.distance = distanceField.text.flatMap(Double.init)
         newWorkout.calories = caloriesField.text.flatMap(Int.init)
