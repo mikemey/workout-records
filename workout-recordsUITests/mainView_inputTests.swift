@@ -12,17 +12,54 @@ class mainView_inputTests: XCTestCase {
     }
     
     func testInputFields() {
-        allowOnlyOneComma_In_DistanceField()
-        allowOnlyUpToMaximum_in_CaloriesField()
+        checkRecordButton_initialState()
+        allowOnlyOneComma_in_distanceField()
+        allowOnlyUpToMaximum_in_caloriesField()
+        checkFields_when_singleDistanceActivity()
+        checkFields_when_energyOnlyActivity()
+        checkFields_when_workoutActivity()
     }
     
-    func allowOnlyOneComma_In_DistanceField() {
+    func checkRecordButton_initialState() {
+        XCTAssertFalse(mainPage().getRecordButton().isEnabled)
+    }
+    
+    func allowOnlyOneComma_in_distanceField() {
         mainPage().sendToDistanceField(["1", ".", "1", "."])
         XCTAssertEqual(mainPage().getDistanceValue(), "1.1")
     }
     
-    func allowOnlyUpToMaximum_in_CaloriesField() {
+    func allowOnlyUpToMaximum_in_caloriesField() {
         mainPage().sendToCaloriesField(["1", "0", "1", "0", "0"])
         XCTAssertEqual(mainPage().getCaloriesValue(), "1010")
+    }
+    
+    func checkFields_when_singleDistanceActivity() {
+        mainPage().selectActivity("Walking, Running distance + energy")
+        XCTAssertTrue(mainPage().getRecordButton().isEnabled)
+        mainPage().clearDistanceField()
+        XCTAssertTrue(mainPage().getRecordButton().isEnabled)
+        mainPage().sendToDistanceField(["5"])
+        mainPage().clearCaloriesField()
+        XCTAssertTrue(mainPage().getRecordButton().isEnabled)
+        mainPage().clearDistanceField()
+        XCTAssertFalse(mainPage().getRecordButton().isEnabled)
+        mainPage().sendToDistanceField(["5"])
+        XCTAssertTrue(mainPage().getRecordButton().isEnabled)
+    }
+    
+    func checkFields_when_energyOnlyActivity() {
+        mainPage().selectActivity("Energy only")
+        XCTAssertFalse(mainPage().getRecordButton().isEnabled)
+        XCTAssertFalse(mainPage().getDistanceField().isEnabled)
+        mainPage().sendToCaloriesField(["5"])
+        XCTAssertTrue(mainPage().getRecordButton().isEnabled)
+    }
+    
+    func checkFields_when_workoutActivity() {
+        mainPage().clearCaloriesField()
+        mainPage().selectActivity("Strength training (free/body weights)")
+        XCTAssertTrue(mainPage().getRecordButton().isEnabled)
+        XCTAssertTrue(mainPage().getDistanceField().isEnabled)
     }
 }

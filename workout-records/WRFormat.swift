@@ -87,7 +87,7 @@ class WRFormat {
         Activity(type: .Workout(.handCycling), hrName: "Hand cycling", icon: "icons-generic.png"),
         Activity(type: .Workout(.coreTraining), hrName: "Core training", icon: "icons-generic.png"),
         Activity(type: .Workout(.elliptical), hrName: "Elliptical machine", icon: "icons-generic.png"),
-        Activity(type: .Workout(.functionalStrengthTraining), hrName: "Strength training (free/body weight)", icon: "icons-generic.png"),
+        Activity(type: .Workout(.functionalStrengthTraining), hrName: "Strength training (free/body weights)", icon: "icons-generic.png"),
         Activity(type: .Workout(.traditionalStrengthTraining), hrName: "Strength training (using machines)", icon: "icons-generic.png"),
         Activity(type: .Workout(.crossTraining), hrName: "Cross training", icon: "icons-generic.png"),
         Activity(type: .Workout(.mixedCardio), hrName: "Cardio exercise machine", icon: "icons-generic.png"),

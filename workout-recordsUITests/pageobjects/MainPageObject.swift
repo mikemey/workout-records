@@ -43,11 +43,12 @@ class MainPageObject {
         self.test = test
     }
     
-    private func getDistanceField() -> XCUIElement { return app.textFields["distance"] }
-    private func getCaloriesField() -> XCUIElement { return app.textFields["calories"] }
     private func getActivityButton() -> XCUIElement { return app.buttons["activity"] }
     private func getActivitySelect() -> XCUIElement { return app.buttons["activity_select"] }
     private func getActivityClose() -> XCUIElement { return app.buttons["activity_close"] }
+    func getDistanceField() -> XCUIElement { return app.textFields["distance"] }
+    private func getCaloriesField() -> XCUIElement { return app.textFields["calories"] }
+    func getRecordButton() -> XCUIElement { return app.buttons["Record"] }
     
     static func formatDateTime(_ date: Date) -> String {
         return String(WRFormat.formatDate(date).prefix(16))
@@ -75,14 +76,7 @@ class MainPageObject {
                        duration: (Int, Int)? = nil,
                        distance: Double? = nil,
                        calories: Int? = nil) {
-        
-        getActivityButton().tap()
-        let activityOpen = test.expectation(for: exist, evaluatedWith: getActivitySelect())
-        test.wait(for: [ activityOpen ], timeout: 5)
-        app.staticTexts[activity].tap()
-        getActivitySelect().tap()
-        print("button label: \(getActivityButton().label)")
-        
+        selectActivity(activity)
         if setNow {
             app.textFields["date"].tap()
             app.buttons["Now"].tap()
@@ -125,9 +119,18 @@ class MainPageObject {
             tapDone()
         }
 
-        app.buttons["Record"].tap()
+        getRecordButton().tap()
         let recBtnEnabled = test.expectation(for: enabled, evaluatedWith: app.buttons["Record"])
         test.wait(for: [ recBtnEnabled ], timeout: 5)
+    }
+    
+    func selectActivity(_ activity: String) {
+        getActivityButton().tap()
+        let activityOpen = test.expectation(for: exist, evaluatedWith: getActivitySelect())
+        test.wait(for: [ activityOpen ], timeout: 5)
+        app.staticTexts[activity].tap()
+        getActivitySelect().tap()
+        XCTAssertEqual(getActivityButton().label, activity)
     }
     
     func workoutCount() -> Int {
@@ -169,7 +172,11 @@ class MainPageObject {
     }
     
     func sendToDistanceField(_ keys: [String]) {
-        return keysIntoField(getDistanceField(), keys: keys)
+        keysIntoField(getDistanceField(), keys: keys)
+    }
+    
+    func clearDistanceField() {
+        getDistanceField().clear()
     }
     
     func getCaloriesValue() -> String {
@@ -177,7 +184,11 @@ class MainPageObject {
     }
     
     func sendToCaloriesField(_ keys: [String]) {
-        return keysIntoField(getCaloriesField(), keys: keys)
+        keysIntoField(getCaloriesField(), keys: keys)
+    }
+    
+    func clearCaloriesField() {
+        getCaloriesField().clear()
     }
     
     private func keysIntoField(_ field: XCUIElement, keys: [String]) {
