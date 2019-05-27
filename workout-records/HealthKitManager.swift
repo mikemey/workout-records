@@ -67,7 +67,7 @@ class HealthKitManager {
         
         switch(workout.activity.type) {
         case let .Quantity(quantityIdentifier):
-            if let distanceQuantity = distanceQuantity {
+            if let distanceQuantity = distanceQuantity, quantityIdentifier != WRFormat.energyTypeId {
                 let sample = HKQuantitySample(type: quantityTypeFrom(quantityIdentifier), quantity: distanceQuantity,
                                               start: workout.date, end: endDate, metadata: metadata)
                 storeObj.append(sample)

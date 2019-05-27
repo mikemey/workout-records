@@ -88,6 +88,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let activity = activity {
                 self.activitiesButton.setTitle(activity.hrName, for: .normal)
                 self.selectedActivity = activity
+                if activity == WRFormat.energyActivity {
+                    self.distanceField.text = ""
+                    self.distanceField.isEnabled = false
+                } else {
+                    self.distanceField.isEnabled = true
+                }
             }
         }
         activitiesButton.addTarget(self, action: #selector(openActivities), for: .touchDown)
