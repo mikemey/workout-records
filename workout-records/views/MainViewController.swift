@@ -2,17 +2,6 @@ import GoogleMobileAds
 import UIKit
 import HealthKit
 
-extension UIView {
-    func findViewController() -> UIViewController? {
-        if let nextResponder = self.next as? UIViewController {
-            return nextResponder
-        } else if let nextResponder = self.next as? UIView {
-            return nextResponder.findViewController()
-        } else {
-            return nil
-        }
-    }
-}
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var bannerView: GADBannerView!
@@ -23,6 +12,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var durationField: UITextField!
     @IBOutlet weak var distanceField: UITextField!
     @IBOutlet weak var caloriesField: UITextField!
+    @IBOutlet var caloriesLabel: UILabel!
     @IBOutlet var workoutTableView: UITableView!
     @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var recordButton: UIButton!
@@ -38,8 +28,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWithLocales()
-        activitiesView.isHidden = true
-        activitiesView.alpha = 0
         
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.endEditing(_:)))
         self.view.addGestureRecognizer(tapGesture!)
@@ -47,9 +35,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let toolbar = newToolbarBuilder().createDefault()
         distanceField.inputAccessoryView = toolbar
         distanceField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
+        distanceField.setRightPadding(5)
+        
         caloriesField.inputAccessoryView = toolbar
         caloriesField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
+        caloriesField.setRightPadding(5)
         
+        createInputBorders()
         createActivitiesPicker(toolbar)
         createDatePicker()
         createDurationPicker(toolbar)
@@ -64,13 +56,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func updateWithLocales() {
         if !WRFormat.isMetric {
-            distanceLabel.text = "Distance (mi)"
+            distanceLabel.text = "mi"
         }
     }
     
 // =============== create fields methods =======================
 // =============================================================
 
+    func createInputBorders() {
+        let borderColor = UIColor.lightGray
+        activitiesButton.layer.borderWidth = 1
+        activitiesButton.layer.borderColor = borderColor.cgColor
+        dateField.layer.addBorder([.left, .bottom, .right], borderColor, 1)
+        distanceField.layer.addBorder([.bottom], borderColor, 1)
+        distanceLabel.layer.addBorder([.bottom, .right], borderColor, 1)
+        durationField.layer.addBorder([.left, .bottom, .right], borderColor, 1)
+        caloriesField.layer.addBorder([.bottom], borderColor, 1)
+        caloriesLabel.layer.addBorder([.bottom, .right], borderColor, 1)
+    }
+    
     func createAdbanner() {
         bannerView.adUnitID = Bundle.main.object(forInfoDictionaryKey: "AdUnitId")! as? String
         bannerView.rootViewController = self
@@ -82,7 +86,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func createActivitiesPicker(_ toolbar: UIToolbar) {
+        activitiesView.isHidden = true
+        activitiesView.alpha = 0
+        
+        activitiesButton.titleLabel?.font = .systemFont(ofSize: 16)
         activitiesButton.setTitle(selectedActivity.hrName, for: .normal)
+        activitiesButton.setTitleColor(UIColor.black, for: .normal)
         let activitiesController = activitiesView.subviews[0].findViewController() as! ActivitiesViewController
         activitiesController.selectAction = { activity in
             self.closeActivitiesPicker()
