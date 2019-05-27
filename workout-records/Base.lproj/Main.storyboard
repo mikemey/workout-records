@@ -28,6 +28,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BEc-xe-EJp">
                                 <rect key="frame" x="150" y="118.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="activity"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Epl-dD-soR"/>
                                     <constraint firstAttribute="height" constant="40" id="JcD-50-GUI"/>
@@ -260,6 +261,7 @@
                                 <rect key="frame" x="145" y="477" width="150" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="activity_select"/>
                                 <state key="normal" title="SELECT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -271,6 +273,7 @@
                                 <rect key="frame" x="0.0" y="477" width="145" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="activity_close"/>
                                 <state key="normal" title="CLOSE"/>
                                 <connections>
                                     <action selector="onCloseClick:" destination="h4c-xA-oxm" eventType="touchUpInside" id="huF-wO-j5E"/>

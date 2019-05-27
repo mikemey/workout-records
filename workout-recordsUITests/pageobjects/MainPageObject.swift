@@ -45,6 +45,9 @@ class MainPageObject {
     
     private func getDistanceField() -> XCUIElement { return app.textFields["distance"] }
     private func getCaloriesField() -> XCUIElement { return app.textFields["calories"] }
+    private func getActivityButton() -> XCUIElement { return app.buttons["activity"] }
+    private func getActivitySelect() -> XCUIElement { return app.buttons["activity_select"] }
+    private func getActivityClose() -> XCUIElement { return app.buttons["activity_close"] }
     
     static func formatDateTime(_ date: Date) -> String {
         return String(WRFormat.formatDate(date).prefix(16))
@@ -73,9 +76,12 @@ class MainPageObject {
                        distance: Double? = nil,
                        calories: Int? = nil) {
         
-        app.textFields["activity"].tap()
-        app.pickerWheels.firstMatch.adjust(toPickerWheelValue: activity)
-        tapDone()
+        getActivityButton().tap()
+        let activityOpen = test.expectation(for: exist, evaluatedWith: getActivitySelect())
+        test.wait(for: [ activityOpen ], timeout: 5)
+        app.staticTexts[activity].tap()
+        getActivitySelect().tap()
+        print("button label: \(getActivityButton().label)")
         
         if setNow {
             app.textFields["date"].tap()
@@ -108,7 +114,7 @@ class MainPageObject {
             }
             tapDone()
         }
-        
+
         let caloriesField = getCaloriesField()
         if caloriesField.isEnabled {
             if let calories = calories {
@@ -118,7 +124,7 @@ class MainPageObject {
             }
             tapDone()
         }
-        
+
         app.buttons["Record"].tap()
         let recBtnEnabled = test.expectation(for: enabled, evaluatedWith: app.buttons["Record"])
         test.wait(for: [ recBtnEnabled ], timeout: 5)

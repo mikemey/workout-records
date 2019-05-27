@@ -23,27 +23,27 @@ class mainView_workoutTests: XCTestCase {
     
     func testCreateWorkouts() {
         mainPage().deleteAllRecords()
-        mainPage().createWorkout(activity: "Swimming", (daysPast: 2, hour: 11, min: (11)), distance: 1.1, calories: 11)
+        mainPage().createWorkout(activity: "Swimming distance + energy", (daysPast: 2, hour: 11, min: (11)), distance: 1.1, calories: 11)
         mainPage().assertWorkout(0, swimDate, "1 h   0 min", "1.1", "11")
         
-        mainPage().createWorkout(activity: "Cycling", setNow: true, (daysPast: 1, hour: 12, min: (12)), duration: (0, 22), distance: 2.2)
+        mainPage().createWorkout(activity: "Cycling distance + energy", setNow: true, (daysPast: 1, hour: 12, min: (12)), duration: (0, 22), distance: 2.2)
         mainPage().assertWorkout(0, cycleDate, "  22 min", "2.2", "0")
         
-        mainPage().createWorkout(activity: "Calories only", setNow: true, duration: (1, 11), calories: 33)
+        mainPage().createWorkout(activity: "Energy only", setNow: true, duration: (1, 11), calories: 33)
         mainPage().assertWorkout(0, caloriesDate, "1 h  11 min", "0.0", "33")
         
         XCTAssertEqual(mainPage().workoutCount(), 3)
     }
     
     func testDeleteSecondItem() {
-        mainPage().deleteWorkoutRecord(1, ["Cycling", cycleDate, "22 min"])
+        mainPage().deleteWorkoutRecord(1, ["Cycling distance + energy", cycleDate, "22 min"])
         XCTAssertEqual(mainPage().workoutCount(), 2)
         XCTAssertEqual(mainPage().getWorkout(0).getCalories(), "33")
         XCTAssertEqual(mainPage().getWorkout(1).getCalories(), "11")
     }
     
     func testShowMoreWorkouts() {
-        mainPage().createWorkout(activity: "Cycling", (daysPast: 8, hour: 10, min: (14)), distance: 4.4, calories: 44)
+        mainPage().createWorkout(activity: "Cycling distance + energy", (daysPast: 8, hour: 10, min: (14)), distance: 4.4, calories: 44)
         XCTAssertEqual(mainPage().workoutCount(), 2)
         mainPage().showMore()
         XCTAssertEqual(mainPage().workoutCount(), 3)
