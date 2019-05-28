@@ -30,19 +30,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWithLocales()
-        
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.endEditing(_:)))
         self.view.addGestureRecognizer(tapGesture!)
         
         let toolbar = newToolbarBuilder().createDefault()
-        distanceField.inputAccessoryView = toolbar
-        distanceField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
-        distanceField.setRightPadding(5)
-        
-        energyField.inputAccessoryView = toolbar
-        energyField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
-        energyField.setRightPadding(5)
-        
+        setupDistanceAndEnergyFields(toolbar)
         createInputBorders()
         createActivitiesPicker(toolbar)
         createDatePicker()
@@ -65,7 +57,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 // =============== create fields methods =======================
 // =============================================================
 
-    func createInputBorders() {
+    private func setupDistanceAndEnergyFields(_ toolbar: UIToolbar) {
+        let placeholderAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
+            NSAttributedString.Key.baselineOffset: NSNumber(-1)
+        ]
+        
+        distanceField.inputAccessoryView = toolbar
+        distanceField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
+        distanceField.setRightPadding(5)
+        distanceField.attributedPlaceholder = NSAttributedString(string: "distance", attributes: placeholderAttributes)
+        
+        energyField.inputAccessoryView = toolbar
+        energyField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
+        energyField.setRightPadding(5)
+        energyField.attributedPlaceholder = NSAttributedString(string: "energy", attributes: placeholderAttributes)
+    }
+
+    private func createInputBorders() {
         let borderColor = UIColor.lightGray
         activitiesButton.layer.borderWidth = 1
         activitiesButton.layer.borderColor = borderColor.cgColor
@@ -77,17 +87,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         energyLabel.layer.addBorder([.bottom, .right], borderColor, 1)
     }
     
-    func createAdbanner() {
+    private func createAdbanner() {
         bannerView.adUnitID = Bundle.main.object(forInfoDictionaryKey: "AdUnitId")! as? String
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
     }
     
-    func newToolbarBuilder() -> ToolbarBuilder {
+    private func newToolbarBuilder() -> ToolbarBuilder {
         return ToolbarBuilder(CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44), target: self, doneAction: #selector(endEditing))
     }
     
-    func createActivitiesPicker(_ toolbar: UIToolbar) {
+    private func createActivitiesPicker(_ toolbar: UIToolbar) {
         activitiesView.isHidden = true
         activitiesView.alpha = 0
         
@@ -107,13 +117,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         activitiesButton.addTarget(self, action: #selector(openActivitiesPicker), for: .touchDown)
     }
     
-    func createDatePicker() {
+    private func createDatePicker() {
         DatePickerController.wrap(dateField, newToolbarBuilder()) { date in
             self.selectedDate = date
         }
     }
     
-    func createDurationPicker(_ toolbar: UIToolbar) {
+    private func createDurationPicker(_ toolbar: UIToolbar) {
         DurationPickerController.wrap(durationField, 3600, toolbar) { interval in
             self.selectedDuration = interval
         }
@@ -122,7 +132,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 // ============== workout action methods =======================
 // =============================================================
 
-    func reloadWorkouts(_ querySetting: HKMQuerySetting?) {
+    private func reloadWorkouts(_ querySetting: HKMQuerySetting?) {
         HealthKitManager.sharedInstance().readWorkouts(querySetting) { results, queryFromDate in
             self.workoutData = results
             self.queryFromDate = queryFromDate
@@ -130,7 +140,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func deleteWorkout(_ workout: WorkoutData) {
+    private func deleteWorkout(_ workout: WorkoutData) {
         HealthKitManager.sharedInstance().deleteWorkout(workout) { error in
             if let error = error {
                 AlertBuilder.showErrorAlert(on: self, title: "Error deleting workout", error: error)
@@ -143,11 +153,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 // ==================== view methods ===========================
 // =============================================================
     
-    @objc func endEditing(_ sender: Any?) {
+    @objc private func endEditing(_ sender: Any?) {
         view.endEditing(true)
     }
     
-    @objc func openActivitiesPicker(textField: UITextField) {
+    @objc private func openActivitiesPicker(textField: UITextField) {
         endEditing(nil)
         view.removeGestureRecognizer(tapGesture!)
         activitiesView.isHidden = false
@@ -156,14 +166,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     
-    func closeActivitiesPicker() {
+    private func closeActivitiesPicker() {
         view.addGestureRecognizer(tapGesture!)
         UIView.animate(withDuration: transitionDuration, animations: {
             self.activitiesView.alpha = 0
         }) { _ in self.activitiesView.isHidden = true }
     }
     
-    @objc func checkRecordButtonState() {
+    @objc private func checkRecordButtonState() {
         if WRFormat.isDistanceActivity(selectedActivity) {
            disableButtonIf((distanceField.text == "") && (energyField.text == ""))
         } else if WRFormat.energyActivity == selectedActivity {
@@ -184,13 +194,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func setDistanceFields(enabledWhen enable: Bool) {
+        self.distanceField.isEnabled = enable
         if enable {
-            self.distanceField.isEnabled = true
             self.distanceField.backgroundColor = enableBackgroundColor
             self.distanceLabel.backgroundColor = enableBackgroundColor
         } else {
             self.distanceField.text = ""
-            self.distanceField.isEnabled = false
             self.distanceField.backgroundColor = disableBackgroundColor
             self.distanceLabel.backgroundColor = disableBackgroundColor
         }
@@ -226,7 +235,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     // ================= table-view methods ========================
     // =============================================================
 
-    func isLastRow(_ indexPath: IndexPath) -> Bool {
+    private func isLastRow(_ indexPath: IndexPath) -> Bool {
         return indexPath.row == workoutData.count
     }
     
@@ -244,19 +253,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             : createWorkoutTableCell(indexPath.row)
     }
     
-    func createWorkoutTableCell(_ index: Int) -> UITableViewCell {
+    private func createWorkoutTableCell(_ index: Int) -> UITableViewCell {
         let cell = createTableCell("WorkoutTableCell", index) as! WorkoutTableCell
         cell.setWorkout(workoutData[index])
         return cell
     }
     
-    func createShowMoreTableCell(_ index: Int) -> UITableViewCell {
+    private func createShowMoreTableCell(_ index: Int) -> UITableViewCell {
         let cell = self.createTableCell("ShowMoreTableCell", index) as! ShowMoreTableCell
         cell.setQueryDate(self.queryFromDate, onShowMore: { self.reloadWorkouts(.increasDate) })
         return cell
     }
     
-    func createTableCell(_ cellId: String, _ index: Int) -> UITableViewCell {
+    private func createTableCell(_ cellId: String, _ index: Int) -> UITableViewCell {
         var cell: UITableViewCell? = workoutTableView.dequeueReusableCell(withIdentifier: cellId)
         if cell == nil {
             let nib = Bundle.main.loadNibNamed(cellId, owner: self, options: nil)
