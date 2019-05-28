@@ -24,6 +24,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var selectedDuration: TimeInterval = 0.0
     private var tapGesture: UITapGestureRecognizer? = nil
     private let transitionDuration = 0.2
+    private let enableBackgroundColor = UIColor(white: 0.97, alpha: 1)
+    private let disableBackgroundColor = UIColor(white: 0.80, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,14 +98,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         activitiesController.selectAction = { activity in
             self.closeActivitiesPicker()
             if let activity = activity {
-                self.activitiesButton.setTitle(activity.hrName, for: .normal)
                 self.selectedActivity = activity
-                if activity == WRFormat.energyActivity {
-                    self.distanceField.text = ""
-                    self.distanceField.isEnabled = false
-                } else {
-                    self.distanceField.isEnabled = true
-                }
+                self.activitiesButton.setTitle(activity.hrName, for: .normal)
+                self.setDistanceFields(enabledWhen: activity != WRFormat.energyActivity)
                 self.checkRecordButtonState()
             }
         }
@@ -183,6 +180,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             self.recordButton.isEnabled = true
             self.recordButton.alpha = 1
+        }
+    }
+    
+    private func setDistanceFields(enabledWhen enable: Bool) {
+        if enable {
+            self.distanceField.isEnabled = true
+            self.distanceField.backgroundColor = enableBackgroundColor
+            self.distanceLabel.backgroundColor = enableBackgroundColor
+        } else {
+            self.distanceField.text = ""
+            self.distanceField.isEnabled = false
+            self.distanceField.backgroundColor = disableBackgroundColor
+            self.distanceLabel.backgroundColor = disableBackgroundColor
         }
     }
     
