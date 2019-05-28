@@ -63,12 +63,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
             NSAttributedString.Key.baselineOffset: NSNumber(-1)
         ]
-        
+        let distanceTap = UITapGestureRecognizer(target: self, action: #selector(focusOnDistanceField))
+        distanceLabel.isUserInteractionEnabled = true
+        distanceLabel.addGestureRecognizer(distanceTap)
         distanceField.inputAccessoryView = toolbar
         distanceField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
         distanceField.setRightPadding(5)
         distanceField.attributedPlaceholder = NSAttributedString(string: "distance", attributes: placeholderAttributes)
         
+        let energyTap = UITapGestureRecognizer(target: self, action: #selector(focusOnEnergyField))
+        energyLabel.isUserInteractionEnabled = true
+        energyLabel.addGestureRecognizer(energyTap)
         energyField.inputAccessoryView = toolbar
         energyField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
         energyField.setRightPadding(5)
@@ -171,6 +176,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         UIView.animate(withDuration: transitionDuration, animations: {
             self.activitiesView.alpha = 0
         }) { _ in self.activitiesView.isHidden = true }
+    }
+    
+    @objc private func focusOnDistanceField() {
+        distanceField.becomeFirstResponder()
+    }
+    
+    @objc private func focusOnEnergyField() {
+        energyField.becomeFirstResponder()
     }
     
     @objc private func checkRecordButtonState() {

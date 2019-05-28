@@ -6,8 +6,14 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
     }
+    
     func setRightPadding(_ amount:CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(becomeFirstResponder))
+        paddingView.isUserInteractionEnabled = true
+        paddingView.addGestureRecognizer(tap)
+        
         self.rightView = paddingView
         self.rightViewMode = .always
     }
