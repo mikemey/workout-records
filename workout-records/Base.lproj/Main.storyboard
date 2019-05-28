@@ -115,12 +115,12 @@
                                 <color key="textColor" red="0.25992451309999998" green="0.25833138480000001" blue="0.26659660530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaU-zP-L8F">
-                                <rect key="frame" x="27.5" y="332" width="320" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaU-zP-L8F">
+                                <rect key="frame" x="102.5" y="332" width="170" height="50"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.59999999999999998" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5vg-xH-axD"/>
-                                    <constraint firstAttribute="width" constant="320" id="LwP-Qt-Kp4"/>
+                                    <constraint firstAttribute="width" constant="170" id="LwP-Qt-Kp4"/>
                                 </constraints>
                                 <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <state key="normal" backgroundImage="record_btn.png">
@@ -128,6 +128,17 @@
                                         <fragment content="Record">
                                             <attributes>
                                                 <color key="NSColor" white="0.19932693406327129" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="28" name="GillSans-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <state key="highlighted" backgroundImage="record_btn_highlight.png">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Record">
+                                            <attributes>
+                                                <color key="NSColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <font key="NSFont" size="28" name="GillSans-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
@@ -315,5 +326,6 @@
     </scenes>
     <resources>
         <image name="record_btn.png" width="320" height="50"/>
+        <image name="record_btn_highlight.png" width="320" height="50"/>
     </resources>
 </document>

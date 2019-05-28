@@ -10,6 +10,7 @@
 		4C2F7D0F229AF56900A09FBC /* icons-gymnastics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D0C229AF56900A09FBC /* icons-gymnastics.png */; };
 		4C2F7D10229AF56900A09FBC /* icons-archery.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D0D229AF56900A09FBC /* icons-archery.png */; };
 		4C2F7D13229AF58A00A09FBC /* icons-generic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D12229AF58A00A09FBC /* icons-generic.png */; };
+		4C34A041229DE07700F76308 /* record_btn_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C34A040229DE07700F76308 /* record_btn_highlight.png */; };
 		4C38B77B2299908500A417FF /* mainView_inputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77A2299908500A417FF /* mainView_inputTests.swift */; };
 		4C38B77D2299984000A417FF /* CheckingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77C2299984000A417FF /* CheckingTextField.swift */; };
 		4C43820B22929A52009613C6 /* WorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */; };
@@ -44,8 +45,6 @@
 		4CD1FD522290A34C00EFEF81 /* WorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */; };
 		4CD1FD5C2290A3A000EFEF81 /* icons-running.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD542290A39F00EFEF81 /* icons-running.png */; };
 		4CD1FD5D2290A3A000EFEF81 /* icons-wheelchair.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD552290A39F00EFEF81 /* icons-wheelchair.png */; };
-		4CD1FD5E2290A3A000EFEF81 /* input_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD562290A39F00EFEF81 /* input_background.png */; };
-		4CD1FD5F2290A3A000EFEF81 /* input_disabled_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD572290A39F00EFEF81 /* input_disabled_background.png */; };
 		4CD1FD602290A3A000EFEF81 /* icons-energy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD582290A39F00EFEF81 /* icons-energy.png */; };
 		4CD1FD612290A3A000EFEF81 /* icons-cycling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD592290A39F00EFEF81 /* icons-cycling.png */; };
 		4CD1FD622290A3A000EFEF81 /* icons-swimming.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD5A2290A39F00EFEF81 /* icons-swimming.png */; };
@@ -66,6 +65,7 @@
 		4C2F7D0C229AF56900A09FBC /* icons-gymnastics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-gymnastics.png"; sourceTree = "<group>"; };
 		4C2F7D0D229AF56900A09FBC /* icons-archery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-archery.png"; sourceTree = "<group>"; };
 		4C2F7D12229AF58A00A09FBC /* icons-generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-generic.png"; sourceTree = "<group>"; };
+		4C34A040229DE07700F76308 /* record_btn_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_btn_highlight.png; sourceTree = "<group>"; };
 		4C38B77A2299908500A417FF /* mainView_inputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView_inputTests.swift; sourceTree = "<group>"; };
 		4C38B77C2299984000A417FF /* CheckingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingTextField.swift; sourceTree = "<group>"; };
 		4C4382112292A15D009613C6 /* MainPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageObject.swift; sourceTree = "<group>"; };
@@ -102,8 +102,6 @@
 		4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableCell.swift; sourceTree = "<group>"; };
 		4CD1FD542290A39F00EFEF81 /* icons-running.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-running.png"; sourceTree = "<group>"; };
 		4CD1FD552290A39F00EFEF81 /* icons-wheelchair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-wheelchair.png"; sourceTree = "<group>"; };
-		4CD1FD562290A39F00EFEF81 /* input_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input_background.png; sourceTree = "<group>"; };
-		4CD1FD572290A39F00EFEF81 /* input_disabled_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input_disabled_background.png; sourceTree = "<group>"; };
 		4CD1FD582290A39F00EFEF81 /* icons-energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-energy.png"; sourceTree = "<group>"; };
 		4CD1FD592290A39F00EFEF81 /* icons-cycling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-cycling.png"; sourceTree = "<group>"; };
 		4CD1FD5A2290A39F00EFEF81 /* icons-swimming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-swimming.png"; sourceTree = "<group>"; };
@@ -233,9 +231,8 @@
 				4CD1FD542290A39F00EFEF81 /* icons-running.png */,
 				4CD1FD5A2290A39F00EFEF81 /* icons-swimming.png */,
 				4CD1FD552290A39F00EFEF81 /* icons-wheelchair.png */,
-				4CD1FD562290A39F00EFEF81 /* input_background.png */,
-				4CD1FD572290A39F00EFEF81 /* input_disabled_background.png */,
 				4CD1FD5B2290A39F00EFEF81 /* record_btn.png */,
+				4C34A040229DE07700F76308 /* record_btn_highlight.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -332,14 +329,13 @@
 				4CD1FD5D2290A3A000EFEF81 /* icons-wheelchair.png in Resources */,
 				4CB6091022905C6A00B683E0 /* LaunchScreen.storyboard in Resources */,
 				4CD1FD5C2290A3A000EFEF81 /* icons-running.png in Resources */,
+				4C34A041229DE07700F76308 /* record_btn_highlight.png in Resources */,
 				4CAEDB95229063B6007D07B2 /* ShowMoreTableCell.xib in Resources */,
 				4C2F7D10229AF56900A09FBC /* icons-archery.png in Resources */,
 				4CB6090D22905C6A00B683E0 /* Assets.xcassets in Resources */,
-				4CD1FD5E2290A3A000EFEF81 /* input_background.png in Resources */,
 				4C2F7D13229AF58A00A09FBC /* icons-generic.png in Resources */,
 				4CB6090B22905C6A00B683E0 /* Main.storyboard in Resources */,
 				4CD1FD622290A3A000EFEF81 /* icons-swimming.png in Resources */,
-				4CD1FD5F2290A3A000EFEF81 /* input_disabled_background.png in Resources */,
 				4C2F7D0F229AF56900A09FBC /* icons-gymnastics.png in Resources */,
 				4CD1FD612290A3A000EFEF81 /* icons-cycling.png in Resources */,
 			);

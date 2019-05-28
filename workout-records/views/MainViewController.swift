@@ -26,12 +26,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let transitionDuration = 0.2
     private let enableBackgroundColor = UIColor(white: 0.97, alpha: 1)
     private let disableBackgroundColor = UIColor(white: 0.80, alpha: 1)
+    private let recBtnDefaultInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    private let recBtnSelectedInset = UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateWithLocales()
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.endEditing(_:)))
         self.view.addGestureRecognizer(tapGesture!)
+        
+        recordButton.addTarget(self, action: #selector(recordButtonSelected(_:)), for: .touchDown)
+        recordButton.addTarget(self, action: #selector(recordButtonDeselected(_:)),
+                               for: [.touchUpInside, .touchUpOutside])
         
         let toolbar = newToolbarBuilder().createDefault()
         setupDistanceAndEnergyFields(toolbar)
@@ -184,6 +190,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc private func focusOnEnergyField() {
         energyField.becomeFirstResponder()
+    }
+    
+    @objc private func recordButtonSelected(_ sender: Any?) {
+        if let sender = sender as? UIButton {
+            sender.titleEdgeInsets = recBtnSelectedInset
+        }
+    }
+    
+    @objc private func recordButtonDeselected(_ sender: Any?) {
+        if let sender = sender as? UIButton {
+            sender.titleEdgeInsets = recBtnDefaultInset
+        }
     }
     
     @objc private func checkRecordButtonState() {
