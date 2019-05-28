@@ -10,13 +10,20 @@ extension XCUIElement {
         self.tap()
         
         let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
-        self.typeText(deleteString)
+        self.safeTypeText(deleteString)
     }
     
     func clearAndEnter(_ newText: String) {
         if !self.isEnabled { return }
         self.clear()
-        self.typeText(newText)
+        self.safeTypeText(newText)
+    }
+    
+    private func safeTypeText(_ text: String) {
+        if let hasFocus = self.value(forKey: "hasKeyboardFocus") as? Bool, hasFocus == false {
+            self.tap()
+        }
+        self.typeText(text)
     }
     
     func oneUp() {
@@ -47,7 +54,7 @@ class MainPageObject {
     private func getActivitySelect() -> XCUIElement { return app.buttons["activity_select"] }
     private func getActivityClose() -> XCUIElement { return app.buttons["activity_close"] }
     func getDistanceField() -> XCUIElement { return app.textFields["distance"] }
-    private func getEnergyField() -> XCUIElement { return app.textFields["energy"] }
+    func getEnergyField() -> XCUIElement { return app.textFields["energy"] }
     func getRecordButton() -> XCUIElement { return app.buttons["Record"] }
     
     static func formatDateTime(_ date: Date) -> String {

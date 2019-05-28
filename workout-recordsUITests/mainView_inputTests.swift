@@ -39,12 +39,12 @@ class mainView_inputTests: XCTestCase {
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
         mainPage().clearDistanceField()
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
-        mainPage().sendToDistanceField(["5"])
+        mainPage().getDistanceField().clearAndEnter("5")
         mainPage().clearEnergyField()
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
         mainPage().clearDistanceField()
         XCTAssertFalse(mainPage().getRecordButton().isEnabled)
-        mainPage().sendToDistanceField(["5"])
+        mainPage().getDistanceField().clearAndEnter("5")
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
     }
     
@@ -52,13 +52,14 @@ class mainView_inputTests: XCTestCase {
         mainPage().selectActivity("Energy only")
         XCTAssertFalse(mainPage().getRecordButton().isEnabled)
         XCTAssertFalse(mainPage().getDistanceField().isEnabled)
-        mainPage().sendToEnergyField(["5"])
+        mainPage().getEnergyField().clearAndEnter("5")
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
     }
     
     func checkFields_when_workoutActivity() {
-        mainPage().clearEnergyField()
         mainPage().selectActivity("Strength training (free/body weights)")
+        mainPage().clearDistanceField()
+        mainPage().clearEnergyField()
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
         XCTAssertTrue(mainPage().getDistanceField().isEnabled)
     }
