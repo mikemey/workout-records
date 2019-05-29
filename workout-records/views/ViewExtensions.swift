@@ -1,24 +1,5 @@
 import UIKit
 
-extension UITextField {
-    func setLeftPadding(_ amount:CGFloat){
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        self.leftView = paddingView
-        self.leftViewMode = .always
-    }
-    
-    func setRightPadding(_ amount:CGFloat) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(becomeFirstResponder))
-        paddingView.isUserInteractionEnabled = true
-        paddingView.addGestureRecognizer(tap)
-        
-        self.rightView = paddingView
-        self.rightViewMode = .always
-    }
-}
-
 extension UIView {
     func findViewController() -> UIViewController? {
         if let nextResponder = self.next as? UIViewController {
