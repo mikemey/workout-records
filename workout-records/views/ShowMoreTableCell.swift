@@ -11,7 +11,7 @@ class ShowMoreTableCell: UITableViewCell {
     }
     
     func setQueryDate(_ queryFromDate: Date, onShowMore: @escaping () -> Void) {
-        setTextOn(dateLabel, text: WRFormat.formatDate(queryFromDate), size: 12)
+        setTextOn(dateLabel, text: WRFormat.formatDate(queryFromDate), size: 14)
         callbackHandler = onShowMore
     }
     
