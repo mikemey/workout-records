@@ -36,7 +36,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let toolbar = newToolbarBuilder().createDefault()
         setupDistanceAndEnergyFields(toolbar)
-        createInputBorders()
         createActivitiesPicker(toolbar)
         createDatePicker()
         createDurationPicker(toolbar)
@@ -196,6 +195,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.recordButton.isEnabled = true
             self.recordButton.alpha = 1
         }
+    }
+
+    override func viewDidLayoutSubviews() {
+        createInputBorders()
     }
     
     @IBAction func onWriteWorkoutAction(_ sender: Any) {
