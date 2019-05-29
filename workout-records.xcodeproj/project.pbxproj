@@ -12,7 +12,7 @@
 		4C2F7D13229AF58A00A09FBC /* icons-generic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D12229AF58A00A09FBC /* icons-generic.png */; };
 		4C34A041229DE07700F76308 /* record_btn_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C34A040229DE07700F76308 /* record_btn_highlight.png */; };
 		4C38B77B2299908500A417FF /* mainView_inputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77A2299908500A417FF /* mainView_inputTests.swift */; };
-		4C38B77D2299984000A417FF /* CheckingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77C2299984000A417FF /* CheckingTextField.swift */; };
+		4C38B77D2299984000A417FF /* UnitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77C2299984000A417FF /* UnitTextField.swift */; };
 		4C43820B22929A52009613C6 /* WorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */; };
 		4C43820C22929B89009613C6 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */; };
 		4C43820D22929B89009613C6 /* WRFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB90229063B6007D07B2 /* WRFormat.swift */; };
@@ -67,7 +67,7 @@
 		4C2F7D12229AF58A00A09FBC /* icons-generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-generic.png"; sourceTree = "<group>"; };
 		4C34A040229DE07700F76308 /* record_btn_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_btn_highlight.png; sourceTree = "<group>"; };
 		4C38B77A2299908500A417FF /* mainView_inputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView_inputTests.swift; sourceTree = "<group>"; };
-		4C38B77C2299984000A417FF /* CheckingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckingTextField.swift; sourceTree = "<group>"; };
+		4C38B77C2299984000A417FF /* UnitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTextField.swift; sourceTree = "<group>"; };
 		4C4382112292A15D009613C6 /* MainPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageObject.swift; sourceTree = "<group>"; };
 		4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageObject.swift; sourceTree = "<group>"; };
 		4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 				4CD1FD412290A34C00EFEF81 /* DurationPickerController.swift */,
 				4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */,
 				4CD1FD432290A34C00EFEF81 /* ShowMoreTableCell.swift */,
-				4C38B77C2299984000A417FF /* CheckingTextField.swift */,
+				4C38B77C2299984000A417FF /* UnitTextField.swift */,
 				4CD02994229C8238007DB0A0 /* ViewExtensions.swift */,
 			);
 			path = views;
@@ -364,7 +364,7 @@
 				4CD1FD4E2290A34C00EFEF81 /* TypePickerView.swift in Sources */,
 				4CD1FD4D2290A34C00EFEF81 /* AlertBuilder.swift in Sources */,
 				4CD1FD522290A34C00EFEF81 /* WorkoutTableCell.swift in Sources */,
-				4C38B77D2299984000A417FF /* CheckingTextField.swift in Sources */,
+				4C38B77D2299984000A417FF /* UnitTextField.swift in Sources */,
 				4CD1FD4C2290A34C00EFEF81 /* ShowMoreTableCell.swift in Sources */,
 				4CD1FD4A2290A34C00EFEF81 /* DurationPickerController.swift in Sources */,
 				4CAEDB96229063B6007D07B2 /* WRFormat.swift in Sources */,

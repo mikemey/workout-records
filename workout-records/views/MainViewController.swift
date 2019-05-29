@@ -10,11 +10,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var activitiesButton: UIButton!
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var durationField: UITextField!
-    @IBOutlet weak var distanceField: UITextField!
-    @IBOutlet weak var energyField: UITextField!
-    @IBOutlet var energyLabel: UILabel!
+    @IBOutlet weak var distanceField: UnitTextField!
+    @IBOutlet weak var energyField: UnitTextField!
     @IBOutlet var workoutTableView: UITableView!
-    @IBOutlet var distanceLabel: UILabel!
     @IBOutlet var recordButton: UIButton!
     
     private var workoutData: [WorkoutData] = []
@@ -24,14 +22,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var selectedDuration: TimeInterval = 0.0
     private var tapGesture: UITapGestureRecognizer? = nil
     private let transitionDuration = 0.2
-    private let enableBackgroundColor = UIColor(white: 0.97, alpha: 1)
-    private let disableBackgroundColor = UIColor(white: 0.80, alpha: 1)
     private let recBtnDefaultInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     private let recBtnSelectedInset = UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateWithLocales()
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.endEditing(_:)))
         self.view.addGestureRecognizer(tapGesture!)
         
@@ -54,36 +49,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.didReceiveMemoryWarning()
     }
     
-    private func updateWithLocales() {
-        if !WRFormat.isMetric {
-            distanceLabel.text = "mi"
-        }
-    }
-    
 // =============== create fields methods =======================
 // =============================================================
 
     private func setupDistanceAndEnergyFields(_ toolbar: UIToolbar) {
-        let placeholderAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.lightGray,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
-            NSAttributedString.Key.baselineOffset: NSNumber(-1)
-        ]
-        let distanceTap = UITapGestureRecognizer(target: self, action: #selector(focusOnDistanceField))
-        distanceLabel.isUserInteractionEnabled = true
-        distanceLabel.addGestureRecognizer(distanceTap)
         distanceField.inputAccessoryView = toolbar
+        distanceField.setProperties(unitText: WRFormat.isMetric ? "km" : "mi", placeholder: "distance")
         distanceField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
-        distanceField.setRightPadding(5)
-        distanceField.attributedPlaceholder = NSAttributedString(string: "distance", attributes: placeholderAttributes)
         
-        let energyTap = UITapGestureRecognizer(target: self, action: #selector(focusOnEnergyField))
-        energyLabel.isUserInteractionEnabled = true
-        energyLabel.addGestureRecognizer(energyTap)
         energyField.inputAccessoryView = toolbar
+        energyField.setProperties(unitText: "kcal", placeholder: "energy")
         energyField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
-        energyField.setRightPadding(5)
-        energyField.attributedPlaceholder = NSAttributedString(string: "energy", attributes: placeholderAttributes)
     }
 
     private func createInputBorders() {
@@ -91,11 +67,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         activitiesButton.layer.borderWidth = 1
         activitiesButton.layer.borderColor = borderColor.cgColor
         dateField.layer.addBorder([.left, .bottom, .right], borderColor, 1)
-        distanceField.layer.addBorder([.bottom], borderColor, 1)
-        distanceLabel.layer.addBorder([.bottom, .right], borderColor, 1)
+        distanceField.layer.addBorder([.bottom, .right], borderColor, 1)
         durationField.layer.addBorder([.left, .bottom, .right], borderColor, 1)
-        energyField.layer.addBorder([.bottom], borderColor, 1)
-        energyLabel.layer.addBorder([.bottom, .right], borderColor, 1)
+        energyField.layer.addBorder([.bottom, .right], borderColor, 1)
     }
     
     private func createAdbanner() {
@@ -121,7 +95,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let activity = activity {
                 self.selectedActivity = activity
                 self.activitiesButton.setTitle(activity.hrName, for: .normal)
-                self.setDistanceFields(enabledWhen: activity != WRFormat.energyActivity)
+                self.distanceField.enable(when: activity != WRFormat.energyActivity)
                 self.checkRecordButtonState()
             }
         }
@@ -221,18 +195,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             self.recordButton.isEnabled = true
             self.recordButton.alpha = 1
-        }
-    }
-    
-    private func setDistanceFields(enabledWhen enable: Bool) {
-        self.distanceField.isEnabled = enable
-        if enable {
-            self.distanceField.backgroundColor = enableBackgroundColor
-            self.distanceLabel.backgroundColor = enableBackgroundColor
-        } else {
-            self.distanceField.text = ""
-            self.distanceField.backgroundColor = disableBackgroundColor
-            self.distanceLabel.backgroundColor = disableBackgroundColor
         }
     }
     
