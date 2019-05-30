@@ -19,9 +19,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAj-rS-OSy">
-                        <rect key="frame" x="202" y="0.0" width="173" height="48"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAj-rS-OSy">
+                        <rect key="frame" x="207.5" y="0.0" width="167.5" height="44.5"/>
                         <color key="backgroundColor" red="0.57019841670000004" green="0.45901176690000001" blue="0.3865528848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" identifier="showMore"/>
                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
@@ -35,22 +34,49 @@
                             <action selector="onShowMoreClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bDX-5T-YrJ"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sun 22 May 33:33 pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBp-2k-tEF">
-                        <rect key="frame" x="18" y="27" width="169" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
-                        <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="showing since:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Iv-Ar-lYy">
-                        <rect key="frame" x="18" y="12" width="83" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="11"/>
-                        <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5RI-qj-wLy">
+                        <rect key="frame" x="0.0" y="0.0" width="207.5" height="44.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="since:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Iv-Ar-lYy">
+                                <rect key="frame" x="24" y="10.5" width="36" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="HWV-YY-U5K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
+                                <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun 22 May 33:33 pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBp-2k-tEF">
+                                <rect key="frame" x="24" y="24.5" width="160" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="Qyx-ix-BDl"/>
+                                    <constraint firstAttribute="height" constant="18" id="tjp-aZ-f9N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
+                                <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FBp-2k-tEF" firstAttribute="leading" secondItem="3Iv-Ar-lYy" secondAttribute="leading" id="Aod-Yb-6wE"/>
+                            <constraint firstAttribute="bottom" secondItem="FBp-2k-tEF" secondAttribute="bottom" constant="2" id="DUA-bm-dHb"/>
+                            <constraint firstItem="FBp-2k-tEF" firstAttribute="top" secondItem="3Iv-Ar-lYy" secondAttribute="bottom" id="XWn-4g-5kg"/>
+                            <constraint firstItem="FBp-2k-tEF" firstAttribute="centerX" secondItem="5RI-qj-wLy" secondAttribute="centerX" id="ohs-tZ-SGo"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.80515018910000002" green="0.47117609519999998" blue="0.37127649350000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="AAj-rS-OSy" firstAttribute="width" secondItem="5RI-qj-wLy" secondAttribute="width" constant="-40" id="A5N-4x-KdP"/>
+                    <constraint firstItem="AAj-rS-OSy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WN1-7f-EYm"/>
+                    <constraint firstAttribute="bottom" secondItem="AAj-rS-OSy" secondAttribute="bottom" id="atz-y6-ybm"/>
+                    <constraint firstItem="5RI-qj-wLy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eIR-Fk-DBQ"/>
+                    <constraint firstItem="AAj-rS-OSy" firstAttribute="leading" secondItem="5RI-qj-wLy" secondAttribute="trailing" id="g1n-g7-t4W"/>
+                    <constraint firstItem="5RI-qj-wLy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="odu-au-pYE"/>
+                    <constraint firstAttribute="trailing" secondItem="AAj-rS-OSy" secondAttribute="trailing" id="pCb-oM-OAr"/>
+                    <constraint firstAttribute="bottom" secondItem="5RI-qj-wLy" secondAttribute="bottom" id="uJC-SY-jnG"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
