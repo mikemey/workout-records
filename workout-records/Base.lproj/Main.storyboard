@@ -125,7 +125,7 @@
                                     <action selector="onWriteWorkoutAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M1n-9s-gzl"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FS7-ke-5Cr">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FS7-ke-5Cr">
                                 <rect key="frame" x="0.0" y="392" width="375" height="275"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -160,7 +160,6 @@
                             <constraint firstItem="uaU-zP-L8F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SMW-Nv-nzZ"/>
                             <constraint firstItem="DCP-YZ-QgF" firstAttribute="top" secondItem="BEc-xe-EJp" secondAttribute="bottom" id="VCg-wG-jni"/>
                             <constraint firstItem="0ye-t5-VeU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Vkj-7A-nH5"/>
-                            <constraint firstItem="bvT-gB-RNp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WY4-kA-dcC"/>
                             <constraint firstItem="FS7-ke-5Cr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YJ5-2v-W3y"/>
                             <constraint firstItem="ed7-bC-3SH" firstAttribute="trailing" secondItem="BEc-xe-EJp" secondAttribute="trailing" id="ZHF-E0-4Xj"/>
                             <constraint firstItem="etK-2X-9gM" firstAttribute="top" secondItem="Aeq-2K-GYS" secondAttribute="bottom" id="bZu-we-aNy"/>
@@ -247,7 +246,7 @@
                                 <rect key="frame" x="7" y="50" width="321" height="447"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" id="5Dm-VI-Xbh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" id="5Dm-VI-Xbh">
                                         <rect key="frame" x="0.0" y="55.5" width="321" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Dm-VI-Xbh" id="2cx-hQ-7ya">

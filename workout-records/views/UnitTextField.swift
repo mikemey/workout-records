@@ -24,12 +24,13 @@ class UnitTextField: UITextField, UITextFieldDelegate {
         unitView.addGestureRecognizer(tap)
 
         let spacer = UILabel(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.size.height))
+        unitView.addSubview(spacer)
+        
         let unitOffsetY = CGFloat(2)
         let unitLabel = UILabel(frame: CGRect(x: 10, y: unitOffsetY, width: 40, height: self.frame.size.height - unitOffsetY))
         unitLabel.text = text
         unitLabel.font = .systemFont(ofSize: 14)
         unitView.addSubview(unitLabel)
-        unitView.addSubview(spacer)
         
         self.rightView = unitView
         self.rightViewMode = .always
