@@ -135,7 +135,7 @@
                                 </connections>
                             </tableView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jA6-cq-2EL">
-                                <rect key="frame" x="20" y="90" width="335" height="557"/>
+                                <rect key="frame" x="10" y="90" width="355" height="557"/>
                                 <connections>
                                     <segue destination="h4c-xA-oxm" kind="embed" id="h3h-NH-W7r"/>
                                 </connections>
@@ -144,7 +144,7 @@
                         <color key="backgroundColor" red="1" green="0.73214830108199136" blue="0.55562163257143138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ed7-bC-3SH" firstAttribute="leading" secondItem="etK-2X-9gM" secondAttribute="trailing" id="3Bh-h4-g6q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jA6-cq-2EL" secondAttribute="trailing" constant="20" id="3op-3O-vhL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jA6-cq-2EL" secondAttribute="trailing" constant="10" id="3op-3O-vhL"/>
                             <constraint firstItem="DCP-YZ-QgF" firstAttribute="trailing" secondItem="BEc-xe-EJp" secondAttribute="trailing" id="3u5-Fi-nXT"/>
                             <constraint firstItem="BEc-xe-EJp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5E6-z0-KNA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jA6-cq-2EL" secondAttribute="bottom" constant="20" id="8OC-L7-7lV"/>
@@ -163,7 +163,7 @@
                             <constraint firstItem="FS7-ke-5Cr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YJ5-2v-W3y"/>
                             <constraint firstItem="ed7-bC-3SH" firstAttribute="trailing" secondItem="BEc-xe-EJp" secondAttribute="trailing" id="ZHF-E0-4Xj"/>
                             <constraint firstItem="etK-2X-9gM" firstAttribute="top" secondItem="Aeq-2K-GYS" secondAttribute="bottom" id="bZu-we-aNy"/>
-                            <constraint firstItem="jA6-cq-2EL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gbi-jM-wdB"/>
+                            <constraint firstItem="jA6-cq-2EL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="gbi-jM-wdB"/>
                             <constraint firstItem="uaU-zP-L8F" firstAttribute="top" secondItem="etK-2X-9gM" secondAttribute="bottom" constant="10" id="o59-7N-RMp"/>
                             <constraint firstItem="FS7-ke-5Cr" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pdf-FM-rHc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0ye-t5-VeU" secondAttribute="trailing" constant="20" id="qwS-WQ-zcT"/>
@@ -199,14 +199,14 @@
             <objects>
                 <viewController id="h4c-xA-oxm" customClass="ActivitiesViewController" customModule="workout_records" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="utm-gL-9cS">
-                        <rect key="frame" x="0.0" y="0.0" width="335" height="557"/>
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="557"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4N-i7-1Sw">
-                                <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="355" height="65"/>
+                                <color key="backgroundColor" red="0.90895463298955947" green="0.81213773733856143" blue="0.77073930136806446" alpha="0.33951400162337664" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Tdr-Uk-KIT"/>
+                                    <constraint firstAttribute="height" constant="65" id="Tdr-Uk-KIT"/>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="↑ back to top ↑">
@@ -217,11 +217,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB4-yv-Gqh">
-                                <rect key="frame" x="167.5" y="497" width="167.5" height="60"/>
+                                <rect key="frame" x="177.5" y="492" width="177.5" height="65"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="activity_select"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="6UA-wt-KCE"/>
+                                    <constraint firstAttribute="height" constant="65" id="6UA-wt-KCE"/>
                                 </constraints>
                                 <state key="normal" title="SELECT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,11 +231,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmd-JM-zJX">
-                                <rect key="frame" x="0.0" y="497" width="167.5" height="60"/>
-                                <color key="backgroundColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="492" width="177.5" height="65"/>
+                                <color key="backgroundColor" red="0.82352941180000006" green="0.80392156862745101" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="activity_close"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="ZsN-Ad-ito"/>
+                                    <constraint firstAttribute="height" constant="65" id="ZsN-Ad-ito"/>
                                 </constraints>
                                 <state key="normal" title="CLOSE"/>
                                 <connections>
@@ -243,15 +243,16 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="1mp-NM-RIk">
-                                <rect key="frame" x="7" y="50" width="321" height="447"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <rect key="frame" x="7" y="65" width="341" height="427"/>
+                                <color key="backgroundColor" red="0.90895463298955947" green="0.81213773733856143" blue="0.77073930136806446" alpha="0.33951400162337664" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" id="5Dm-VI-Xbh">
-                                        <rect key="frame" x="0.0" y="55.5" width="321" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" id="5Dm-VI-Xbh">
+                                        <rect key="frame" x="0.0" y="55.5" width="341" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Dm-VI-Xbh" id="2cx-hQ-7ya">
-                                            <rect key="frame" x="0.0" y="0.0" width="321" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="activityCell">
                                             <bool key="isElement" value="YES"/>
@@ -265,7 +266,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.86274509803921573" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lTW-C6-BzM" firstAttribute="bottom" secondItem="TB4-yv-Gqh" secondAttribute="bottom" id="2mQ-5l-RfD"/>
                             <constraint firstItem="t4N-i7-1Sw" firstAttribute="leading" secondItem="lTW-C6-BzM" secondAttribute="leading" id="6Dx-oN-yZI"/>
