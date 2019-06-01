@@ -5,6 +5,7 @@ class UnitTextField: UITextField, UITextFieldDelegate {
     private static let maxFractionLen: Int = 3
     private static let enabledBGColor = UIColor(white: 0.97, alpha: 1)
     private static let disabledBGColor = UIColor(white: 0.80, alpha: 1)
+    private static let widthRatios: [CGFloat] = [0.55, 0.6, 1]
 
     
     required init?(coder aDecoder: NSCoder) {
@@ -18,16 +19,17 @@ class UnitTextField: UITextField, UITextFieldDelegate {
     }
     
     private func setUnitText(_ text: String) {
+        let widths = UnitTextField.widthRatios.map({ v in v * self.frame.size.width })
         let tap = UITapGestureRecognizer(target: self, action: #selector(becomeFirstResponder))
-        let unitView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: self.frame.size.height))
+        let unitView = UIView(frame: CGRect(x: 0, y: 0, width: widths[2] - widths[0], height: self.frame.size.height))
         unitView.isUserInteractionEnabled = true
         unitView.addGestureRecognizer(tap)
-
-        let spacer = UILabel(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.size.height))
+        
+        let spacer = UILabel(frame: CGRect(x: 0, y: 0, width: widths[1] - widths[0], height: self.frame.size.height))
         unitView.addSubview(spacer)
         
         let unitOffsetY = CGFloat(2)
-        let unitLabel = UILabel(frame: CGRect(x: 10, y: unitOffsetY, width: 40, height: self.frame.size.height - unitOffsetY))
+        let unitLabel = UILabel(frame: CGRect(x: widths[1] - widths[0], y: unitOffsetY, width: widths[2] - widths[1], height: self.frame.size.height - unitOffsetY))
         unitLabel.text = text
         unitLabel.font = .systemFont(ofSize: 14)
         unitView.addSubview(unitLabel)
