@@ -61,14 +61,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         energyField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
     }
 
-    private func createInputBorders() {
+    private func createBorders() {
         let borderColor = UIColor.lightGray
-        activitiesButton.layer.borderWidth = 1
-        activitiesButton.layer.borderColor = borderColor.cgColor
-        dateField.layer.addBorder([.left, .bottom, .right], borderColor, 1)
-        distanceField.layer.addBorder([.bottom, .right], borderColor, 1)
-        durationField.layer.addBorder([.left, .bottom, .right], borderColor, 1)
-        energyField.layer.addBorder([.bottom, .right], borderColor, 1)
+        let outerWidth: CGFloat = 2
+        activitiesButton.layer.addBorder([.top], borderColor, 1)
+        activitiesButton.layer.addBorder([.left, .right], borderColor, outerWidth)
+        activitiesButton.layer.addBorder([.bottom], borderColor, 1)
+        dateField.layer.addBorder([.bottom, .right], borderColor, 1)
+        dateField.layer.addBorder([.left], borderColor, outerWidth)
+        distanceField.layer.addBorder([.bottom], borderColor, 1)
+        distanceField.layer.addBorder([.right], borderColor, outerWidth)
+        durationField.layer.addBorder([.bottom, .right], borderColor, 1)
+        durationField.layer.addBorder([.left], borderColor, outerWidth)
+        energyField.layer.addBorder([.bottom], borderColor, 1)
+        energyField.layer.addBorder([.right], borderColor, outerWidth)
+        workoutTableView.layer.addBorder([.top], borderColor, 1)
     }
     
     private func createAdbanner() {
@@ -198,7 +205,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     override func viewDidLayoutSubviews() {
-        createInputBorders()
+        createBorders()
     }
     
     @IBAction func onWriteWorkoutAction(_ sender: Any) {
