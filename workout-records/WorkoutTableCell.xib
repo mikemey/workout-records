@@ -72,11 +72,11 @@
                                 <rect key="frame" x="212.5" y="0.0" width="162.5" height="45"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ue-Me-C7r" userLabel="DistanceView" customClass="WorkoutUnitView" customModule="workout_records" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="71.5" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfC-2M-oRm" userLabel="EnergyView" customClass="WorkoutUnitView" customModule="workout_records" customModuleProvider="target">
-                                        <rect key="frame" x="84" y="0.0" width="78.5" height="45"/>
+                                        <rect key="frame" x="71.5" y="0.0" width="91" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
@@ -85,7 +85,7 @@
                                     <constraint firstItem="6ue-Me-C7r" firstAttribute="leading" secondItem="MyK-2P-8n1" secondAttribute="leading" id="Dbe-s8-h4U"/>
                                     <constraint firstItem="AfC-2M-oRm" firstAttribute="top" secondItem="MyK-2P-8n1" secondAttribute="top" id="Klq-iL-f3H"/>
                                     <constraint firstAttribute="bottom" secondItem="6ue-Me-C7r" secondAttribute="bottom" id="N7a-G6-MAK"/>
-                                    <constraint firstItem="AfC-2M-oRm" firstAttribute="width" secondItem="6ue-Me-C7r" secondAttribute="width" constant="-5" id="P03-7o-oiM"/>
+                                    <constraint firstItem="AfC-2M-oRm" firstAttribute="width" secondItem="6ue-Me-C7r" secondAttribute="width" constant="20" id="P03-7o-oiM"/>
                                     <constraint firstAttribute="bottom" secondItem="AfC-2M-oRm" secondAttribute="bottom" id="hwg-OR-hia"/>
                                     <constraint firstItem="6ue-Me-C7r" firstAttribute="top" secondItem="MyK-2P-8n1" secondAttribute="top" id="icG-zN-hfR"/>
                                     <constraint firstItem="AfC-2M-oRm" firstAttribute="leading" secondItem="6ue-Me-C7r" secondAttribute="trailing" id="kfe-z5-QPs"/>

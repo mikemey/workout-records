@@ -18,6 +18,8 @@ class WorkoutTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        distanceView.create([0.67, 0.72, 1])
+        energyView.create([0.55, 0.6, 1])
         distanceView.setUnitText(WRFormat.isMetric ? "km" : "mi", size: 11)
         energyView.setUnitText("kcal", size: 11)
         dateLabel.accessibilityIdentifier = "date"
@@ -54,10 +56,8 @@ class WorkoutUnitView: UIView {
     private var textLabel: UILabel? = nil
     private var unitLabel: UILabel? = nil
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    func create(_ widthRatios: [CGFloat]) {
         let height = self.frame.size.height
-        let widthRatios: [CGFloat] = [0.57, 0.62, 1]
         let unitOffsetY: CGFloat = 5
         
         let widths = widthRatios.map({ v in v * self.frame.size.width })
@@ -67,11 +67,11 @@ class WorkoutUnitView: UIView {
         textLabel!.textAlignment = .right
         
         let spacer = UIView(frame: CGRect(x: widths[0], y: 0, width: widths[1] - widths[0], height: height))
-        
+
         unitLabel = UILabel(frame: CGRect(x: widths[1], y: unitOffsetY, width: widths[2] - widths[1], height: height - unitOffsetY))
         unitLabel!.textColor = WorkoutTableColors.defaultTextColor
         unitLabel!.font = .systemFont(ofSize: 11)
-        
+
         self.addSubview(textLabel!)
         self.addSubview(spacer)
         self.addSubview(unitLabel!)
