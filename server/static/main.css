@@ -1,0 +1,12 @@
+body {
+  background-color: #fefdf7;
+  line-height: 1.4;
+}
+
+.title {
+  font-family: 'Arial', serif, sans-serif;
+  font-weight: bold;
+  letter-spacing: 2pt;
+  background-color: #fdefdb;
+  box-shadow: 35px 0px #fdefdb, -35px 0px #fdefdb;
+}
