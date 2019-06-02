@@ -44,6 +44,8 @@ class WorkoutTableCell: UITableViewCell {
         typeImage.image = UIImage(named: workout.activity.icon)
         if WRFormat.isDistanceActivity(workout.activity) && workout.energy != nil {
             subtypeImage.image = UIImage(named: WRFormat.energyActivity.icon)
+        } else {
+            subtypeImage.image = nil
         }
         
         cellView.backgroundColor = WorkoutTableColors.defaultBackgroundColor
