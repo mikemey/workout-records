@@ -22,6 +22,7 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         W.singleActivities, W.individualSportsActivities, W.teamSportsActivities, W.exerciseFitnessActivities, W.studioActivities,
         W.racketSportsActivities, W.outdoorActivities, W.snowIceSportsActivities, W.waterActivities, W.martialArtsActivities, W.otherActivities
     ]
+    private let activityImageSize: CGFloat = 10
     
     private func findActivity(at index: IndexPath) -> Activity { return activities[index.section][index.row] }
     
@@ -73,8 +74,9 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         if cell == nil {
             cell = UITableViewCell(style: .value1, reuseIdentifier: "activityCell")
         }
-        let hrName = findActivity(at: indexPath).hrName
-        setTextOn(cell!.textLabel!, text: hrName, size: 14)
+        let activity = findActivity(at: indexPath)
+        cell?.imageView?.image = UIImage(named: "\(activity.icon)-black")
+        setTextOn(cell!.textLabel!, text: activity.hrName, size: 14)
         cell!.backgroundColor = ActivitiesViewController.tableBackgroundColor
         return cell!
     }

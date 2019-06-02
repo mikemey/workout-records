@@ -40,11 +40,9 @@
 		4C942B4C22A413A4002778A6 /* icon-softball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4122A413A4002778A6 /* icon-softball.png */; };
 		4C942B4D22A413A4002778A6 /* icon-cricket.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4222A413A4002778A6 /* icon-cricket.png */; };
 		4C942B4E22A413A4002778A6 /* icon-basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4322A413A4002778A6 /* icon-basketball.png */; };
-		4C942B5D22A413C6002778A6 /* icon-step-bench.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4F22A413C5002778A6 /* icon-step-bench.png */; };
 		4C942B5E22A413C6002778A6 /* icon-cardio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5022A413C5002778A6 /* icon-cardio.png */; };
 		4C942B5F22A413C6002778A6 /* icon-stair-drill.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5122A413C6002778A6 /* icon-stair-drill.png */; };
 		4C942B6022A413C6002778A6 /* icon-core.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5222A413C6002778A6 /* icon-core.png */; };
-		4C942B6122A413C6002778A6 /* icon-jumping-rope.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5322A413C6002778A6 /* icon-jumping-rope.png */; };
 		4C942B6222A413C6002778A6 /* icon-strength-free.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5422A413C6002778A6 /* icon-strength-free.png */; };
 		4C942B6322A413C6002778A6 /* icon-spinner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5522A413C6002778A6 /* icon-spinner.png */; };
 		4C942B6422A413C6002778A6 /* icon-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5622A413C6002778A6 /* icon-cross.png */; };
@@ -55,7 +53,6 @@
 		4C942B6922A413C6002778A6 /* icon-flexibility.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5B22A413C6002778A6 /* icon-flexibility.png */; };
 		4C942B6A22A413C6002778A6 /* icon-stepper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5C22A413C6002778A6 /* icon-stepper.png */; };
 		4C942B7022A41A7C002778A6 /* icon-pilates.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B6B22A41A7B002778A6 /* icon-pilates.png */; };
-		4C942B7122A41A7C002778A6 /* icon-yoga.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B6C22A41A7B002778A6 /* icon-yoga.png */; };
 		4C942B7222A41A7C002778A6 /* icon-barre.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B6D22A41A7B002778A6 /* icon-barre.png */; };
 		4C942B7322A41A7C002778A6 /* icon-dancing.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B6E22A41A7B002778A6 /* icon-dancing.png */; };
 		4C942B7422A41A7C002778A6 /* icon-mindful.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B6F22A41A7C002778A6 /* icon-mindful.png */; };
@@ -86,6 +83,80 @@
 		4C942BA822A44A7A002778A6 /* icon-martial-art.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BA422A44A7A002778A6 /* icon-martial-art.png */; };
 		4C942BA922A44A7A002778A6 /* icon-kickboxing.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BA522A44A7A002778A6 /* icon-kickboxing.png */; };
 		4C942BAA22A44A7A002778A6 /* icon-wrestling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BA622A44A7A002778A6 /* icon-wrestling.png */; };
+		4C942BAE22A450ED002778A6 /* icon-yoga.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BAD22A450ED002778A6 /* icon-yoga.png */; };
+		4C942BB022A45163002778A6 /* icon-step-bench.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BAF22A45163002778A6 /* icon-step-bench.png */; };
+		4C942BB222A463D1002778A6 /* icon-jumping-rope.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BB122A463D0002778A6 /* icon-jumping-rope.png */; };
+		4C942BB822A4675C002778A6 /* icon-bench-press-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BB722A4675C002778A6 /* icon-bench-press-black.png */; };
+		4C942BBE22A47168002778A6 /* icon-energy-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BB922A47167002778A6 /* icon-energy-black.png */; };
+		4C942BBF22A47168002778A6 /* icon-individual-wheelchair-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BBA22A47167002778A6 /* icon-individual-wheelchair-black.png */; };
+		4C942BC022A47168002778A6 /* icon-individual-cycling-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BBB22A47167002778A6 /* icon-individual-cycling-black.png */; };
+		4C942BC122A47168002778A6 /* icon-individual-swimming-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BBC22A47167002778A6 /* icon-individual-swimming-black.png */; };
+		4C942BC222A47168002778A6 /* icon-individual-running-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BBD22A47167002778A6 /* icon-individual-running-black.png */; };
+		4C942BDC22A471AB002778A6 /* icon-bowling-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BD722A471AB002778A6 /* icon-bowling-black.png */; };
+		4C942BDD22A471AB002778A6 /* icon-fencing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BD822A471AB002778A6 /* icon-fencing-black.png */; };
+		4C942BDE22A471AB002778A6 /* icon-gymnastics-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BD922A471AB002778A6 /* icon-gymnastics-black.png */; };
+		4C942BDF22A471AB002778A6 /* icon-track-field-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BDA22A471AB002778A6 /* icon-track-field-black.png */; };
+		4C942BE022A471AB002778A6 /* icon-archery-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BDB22A471AB002778A6 /* icon-archery-black.png */; };
+		4C942BE522A471B5002778A6 /* icon-wrestling-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BE122A471B5002778A6 /* icon-wrestling-black.png */; };
+		4C942BE622A471B5002778A6 /* icon-martial-art-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BE222A471B5002778A6 /* icon-martial-art-black.png */; };
+		4C942BE722A471B5002778A6 /* icon-kickboxing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BE322A471B5002778A6 /* icon-kickboxing-black.png */; };
+		4C942BE822A471B5002778A6 /* icon-boxing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BE422A471B5002778A6 /* icon-boxing-black.png */; };
+		4C942BF122A471C4002778A6 /* icon-swimming-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BE922A471C3002778A6 /* icon-swimming-black.png */; };
+		4C942BF222A471C4002778A6 /* icon-water-polo-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BEA22A471C3002778A6 /* icon-water-polo-black.png */; };
+		4C942BF322A471C4002778A6 /* icon-canoe-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BEB22A471C3002778A6 /* icon-canoe-black.png */; };
+		4C942BF422A471C4002778A6 /* icon-rowing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BEC22A471C3002778A6 /* icon-rowing-black.png */; };
+		4C942BF522A471C4002778A6 /* icon-surfing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BED22A471C3002778A6 /* icon-surfing-black.png */; };
+		4C942BF622A471C4002778A6 /* icon-water-aerobics-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BEE22A471C3002778A6 /* icon-water-aerobics-black.png */; };
+		4C942BF722A471C4002778A6 /* icon-waterskiing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BEF22A471C3002778A6 /* icon-waterskiing-black.png */; };
+		4C942BF822A471C4002778A6 /* icon-sail-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BF022A471C3002778A6 /* icon-sail-black.png */; };
+		4C942BFF22A471D3002778A6 /* icon-snowboarding-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BF922A471D3002778A6 /* icon-snowboarding-black.png */; };
+		4C942C0022A471D3002778A6 /* icon-ice-skate-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BFA22A471D3002778A6 /* icon-ice-skate-black.png */; };
+		4C942C0122A471D3002778A6 /* icon-cross-country-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BFB22A471D3002778A6 /* icon-cross-country-black.png */; };
+		4C942C0222A471D3002778A6 /* icon-curling-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BFC22A471D3002778A6 /* icon-curling-black.png */; };
+		4C942C0322A471D3002778A6 /* icon-skiing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BFD22A471D3002778A6 /* icon-skiing-black.png */; };
+		4C942C0422A471D3002778A6 /* icon-sledge-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942BFE22A471D3002778A6 /* icon-sledge-black.png */; };
+		4C942C0922A471DC002778A6 /* icon-golf-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C0522A471DB002778A6 /* icon-golf-black.png */; };
+		4C942C0A22A471DC002778A6 /* icon-climbing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C0622A471DB002778A6 /* icon-climbing-black.png */; };
+		4C942C0B22A471DC002778A6 /* icon-hiking-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C0722A471DB002778A6 /* icon-hiking-black.png */; };
+		4C942C0C22A471DC002778A6 /* icon-play-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C0822A471DB002778A6 /* icon-play-black.png */; };
+		4C942C1222A471E6002778A6 /* icon-tennis-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C0D22A471E6002778A6 /* icon-tennis-black.png */; };
+		4C942C1322A471E6002778A6 /* icon-squash-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C0E22A471E6002778A6 /* icon-squash-black.png */; };
+		4C942C1422A471E6002778A6 /* icon-badminton-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C0F22A471E6002778A6 /* icon-badminton-black.png */; };
+		4C942C1522A471E6002778A6 /* icon-raquet-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C1022A471E6002778A6 /* icon-raquet-black.png */; };
+		4C942C1622A471E6002778A6 /* icon-table-tennis-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C1122A471E6002778A6 /* icon-table-tennis-black.png */; };
+		4C942C1C22A471F0002778A6 /* icon-pilates-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C1722A471EF002778A6 /* icon-pilates-black.png */; };
+		4C942C1D22A471F0002778A6 /* icon-dancing-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C1822A471EF002778A6 /* icon-dancing-black.png */; };
+		4C942C1E22A471F0002778A6 /* icon-yoga-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C1922A471EF002778A6 /* icon-yoga-black.png */; };
+		4C942C1F22A471F0002778A6 /* icon-barre-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C1A22A471F0002778A6 /* icon-barre-black.png */; };
+		4C942C2022A471F0002778A6 /* icon-mindful-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C1B22A471F0002778A6 /* icon-mindful-black.png */; };
+		4C942C3222A47204002778A6 /* icon-stair-drill-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2122A47202002778A6 /* icon-stair-drill-black.png */; };
+		4C942C3322A47204002778A6 /* icon-handcycle-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2222A47202002778A6 /* icon-handcycle-black.png */; };
+		4C942C3422A47204002778A6 /* icon-cross-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2322A47202002778A6 /* icon-cross-black.png */; };
+		4C942C3522A47204002778A6 /* icon-cardio-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2422A47203002778A6 /* icon-cardio-black.png */; };
+		4C942C3622A47204002778A6 /* icon-cycling-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2522A47203002778A6 /* icon-cycling-black.png */; };
+		4C942C3722A47204002778A6 /* icon-walking-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2622A47203002778A6 /* icon-walking-black.png */; };
+		4C942C3822A47204002778A6 /* icon-flexibility-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2722A47203002778A6 /* icon-flexibility-black.png */; };
+		4C942C3922A47204002778A6 /* icon-step-bench-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2822A47203002778A6 /* icon-step-bench-black.png */; };
+		4C942C3A22A47204002778A6 /* icon-jumping-rope-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2922A47203002778A6 /* icon-jumping-rope-black.png */; };
+		4C942C3B22A47204002778A6 /* icon-core-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2A22A47203002778A6 /* icon-core-black.png */; };
+		4C942C3C22A47204002778A6 /* icon-strength-free-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2B22A47203002778A6 /* icon-strength-free-black.png */; };
+		4C942C3D22A47204002778A6 /* icon-wheelchair-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2C22A47204002778A6 /* icon-wheelchair-black.png */; };
+		4C942C3E22A47204002778A6 /* icon-high-intense-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2D22A47204002778A6 /* icon-high-intense-black.png */; };
+		4C942C3F22A47204002778A6 /* icon-running-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2E22A47204002778A6 /* icon-running-black.png */; };
+		4C942C4022A47204002778A6 /* icon-stepper-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C2F22A47204002778A6 /* icon-stepper-black.png */; };
+		4C942C4122A47204002778A6 /* icon-spinner-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C3022A47204002778A6 /* icon-spinner-black.png */; };
+		4C942C4222A47204002778A6 /* icon-warm-up-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C3122A47204002778A6 /* icon-warm-up-black.png */; };
+		4C942C4E22A47214002778A6 /* icon-soccer-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4322A47213002778A6 /* icon-soccer-black.png */; };
+		4C942C4F22A47214002778A6 /* icon-lacrosse-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4422A47213002778A6 /* icon-lacrosse-black.png */; };
+		4C942C5022A47214002778A6 /* icon-handball-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4522A47213002778A6 /* icon-handball-black.png */; };
+		4C942C5122A47214002778A6 /* icon-cricket-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4622A47213002778A6 /* icon-cricket-black.png */; };
+		4C942C5222A47214002778A6 /* icon-baseball-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4722A47213002778A6 /* icon-baseball-black.png */; };
+		4C942C5322A47214002778A6 /* icon-basketball-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4822A47213002778A6 /* icon-basketball-black.png */; };
+		4C942C5422A47214002778A6 /* icon-rugby-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4922A47214002778A6 /* icon-rugby-black.png */; };
+		4C942C5522A47214002778A6 /* icon-hockey-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4A22A47214002778A6 /* icon-hockey-black.png */; };
+		4C942C5622A47214002778A6 /* icon-softball-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4B22A47214002778A6 /* icon-softball-black.png */; };
+		4C942C5722A47214002778A6 /* icon-volleyball-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4C22A47214002778A6 /* icon-volleyball-black.png */; };
+		4C942C5822A47214002778A6 /* icon-american-football-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4D22A47214002778A6 /* icon-american-football-black.png */; };
 		4CAEDB91229063B6007D07B2 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */; };
 		4CAEDB93229063B6007D07B2 /* WorkoutTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8D229063B6007D07B2 /* WorkoutTableCell.xib */; };
 		4CAEDB95229063B6007D07B2 /* ShowMoreTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8F229063B6007D07B2 /* ShowMoreTableCell.xib */; };
@@ -155,11 +226,9 @@
 		4C942B4122A413A4002778A6 /* icon-softball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-softball.png"; sourceTree = "<group>"; };
 		4C942B4222A413A4002778A6 /* icon-cricket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cricket.png"; sourceTree = "<group>"; };
 		4C942B4322A413A4002778A6 /* icon-basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-basketball.png"; sourceTree = "<group>"; };
-		4C942B4F22A413C5002778A6 /* icon-step-bench.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-step-bench.png"; sourceTree = "<group>"; };
 		4C942B5022A413C5002778A6 /* icon-cardio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cardio.png"; sourceTree = "<group>"; };
 		4C942B5122A413C6002778A6 /* icon-stair-drill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-stair-drill.png"; sourceTree = "<group>"; };
 		4C942B5222A413C6002778A6 /* icon-core.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-core.png"; sourceTree = "<group>"; };
-		4C942B5322A413C6002778A6 /* icon-jumping-rope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jumping-rope.png"; sourceTree = "<group>"; };
 		4C942B5422A413C6002778A6 /* icon-strength-free.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-strength-free.png"; sourceTree = "<group>"; };
 		4C942B5522A413C6002778A6 /* icon-spinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-spinner.png"; sourceTree = "<group>"; };
 		4C942B5622A413C6002778A6 /* icon-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cross.png"; sourceTree = "<group>"; };
@@ -170,7 +239,6 @@
 		4C942B5B22A413C6002778A6 /* icon-flexibility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-flexibility.png"; sourceTree = "<group>"; };
 		4C942B5C22A413C6002778A6 /* icon-stepper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-stepper.png"; sourceTree = "<group>"; };
 		4C942B6B22A41A7B002778A6 /* icon-pilates.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pilates.png"; sourceTree = "<group>"; };
-		4C942B6C22A41A7B002778A6 /* icon-yoga.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-yoga.png"; sourceTree = "<group>"; };
 		4C942B6D22A41A7B002778A6 /* icon-barre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-barre.png"; sourceTree = "<group>"; };
 		4C942B6E22A41A7B002778A6 /* icon-dancing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dancing.png"; sourceTree = "<group>"; };
 		4C942B6F22A41A7C002778A6 /* icon-mindful.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mindful.png"; sourceTree = "<group>"; };
@@ -201,6 +269,80 @@
 		4C942BA422A44A7A002778A6 /* icon-martial-art.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-martial-art.png"; sourceTree = "<group>"; };
 		4C942BA522A44A7A002778A6 /* icon-kickboxing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-kickboxing.png"; sourceTree = "<group>"; };
 		4C942BA622A44A7A002778A6 /* icon-wrestling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-wrestling.png"; sourceTree = "<group>"; };
+		4C942BAD22A450ED002778A6 /* icon-yoga.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-yoga.png"; sourceTree = "<group>"; };
+		4C942BAF22A45163002778A6 /* icon-step-bench.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-step-bench.png"; sourceTree = "<group>"; };
+		4C942BB122A463D0002778A6 /* icon-jumping-rope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jumping-rope.png"; sourceTree = "<group>"; };
+		4C942BB722A4675C002778A6 /* icon-bench-press-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-bench-press-black.png"; sourceTree = "<group>"; };
+		4C942BB922A47167002778A6 /* icon-energy-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-energy-black.png"; sourceTree = "<group>"; };
+		4C942BBA22A47167002778A6 /* icon-individual-wheelchair-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-wheelchair-black.png"; sourceTree = "<group>"; };
+		4C942BBB22A47167002778A6 /* icon-individual-cycling-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-cycling-black.png"; sourceTree = "<group>"; };
+		4C942BBC22A47167002778A6 /* icon-individual-swimming-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-swimming-black.png"; sourceTree = "<group>"; };
+		4C942BBD22A47167002778A6 /* icon-individual-running-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-running-black.png"; sourceTree = "<group>"; };
+		4C942BD722A471AB002778A6 /* icon-bowling-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-bowling-black.png"; sourceTree = "<group>"; };
+		4C942BD822A471AB002778A6 /* icon-fencing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-fencing-black.png"; sourceTree = "<group>"; };
+		4C942BD922A471AB002778A6 /* icon-gymnastics-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-gymnastics-black.png"; sourceTree = "<group>"; };
+		4C942BDA22A471AB002778A6 /* icon-track-field-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-track-field-black.png"; sourceTree = "<group>"; };
+		4C942BDB22A471AB002778A6 /* icon-archery-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-archery-black.png"; sourceTree = "<group>"; };
+		4C942BE122A471B5002778A6 /* icon-wrestling-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-wrestling-black.png"; sourceTree = "<group>"; };
+		4C942BE222A471B5002778A6 /* icon-martial-art-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-martial-art-black.png"; sourceTree = "<group>"; };
+		4C942BE322A471B5002778A6 /* icon-kickboxing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-kickboxing-black.png"; sourceTree = "<group>"; };
+		4C942BE422A471B5002778A6 /* icon-boxing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-boxing-black.png"; sourceTree = "<group>"; };
+		4C942BE922A471C3002778A6 /* icon-swimming-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-swimming-black.png"; sourceTree = "<group>"; };
+		4C942BEA22A471C3002778A6 /* icon-water-polo-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-water-polo-black.png"; sourceTree = "<group>"; };
+		4C942BEB22A471C3002778A6 /* icon-canoe-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-canoe-black.png"; sourceTree = "<group>"; };
+		4C942BEC22A471C3002778A6 /* icon-rowing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-rowing-black.png"; sourceTree = "<group>"; };
+		4C942BED22A471C3002778A6 /* icon-surfing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-surfing-black.png"; sourceTree = "<group>"; };
+		4C942BEE22A471C3002778A6 /* icon-water-aerobics-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-water-aerobics-black.png"; sourceTree = "<group>"; };
+		4C942BEF22A471C3002778A6 /* icon-waterskiing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-waterskiing-black.png"; sourceTree = "<group>"; };
+		4C942BF022A471C3002778A6 /* icon-sail-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-sail-black.png"; sourceTree = "<group>"; };
+		4C942BF922A471D3002778A6 /* icon-snowboarding-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-snowboarding-black.png"; sourceTree = "<group>"; };
+		4C942BFA22A471D3002778A6 /* icon-ice-skate-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-ice-skate-black.png"; sourceTree = "<group>"; };
+		4C942BFB22A471D3002778A6 /* icon-cross-country-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cross-country-black.png"; sourceTree = "<group>"; };
+		4C942BFC22A471D3002778A6 /* icon-curling-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-curling-black.png"; sourceTree = "<group>"; };
+		4C942BFD22A471D3002778A6 /* icon-skiing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-skiing-black.png"; sourceTree = "<group>"; };
+		4C942BFE22A471D3002778A6 /* icon-sledge-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-sledge-black.png"; sourceTree = "<group>"; };
+		4C942C0522A471DB002778A6 /* icon-golf-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-golf-black.png"; sourceTree = "<group>"; };
+		4C942C0622A471DB002778A6 /* icon-climbing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-climbing-black.png"; sourceTree = "<group>"; };
+		4C942C0722A471DB002778A6 /* icon-hiking-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-hiking-black.png"; sourceTree = "<group>"; };
+		4C942C0822A471DB002778A6 /* icon-play-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-play-black.png"; sourceTree = "<group>"; };
+		4C942C0D22A471E6002778A6 /* icon-tennis-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-tennis-black.png"; sourceTree = "<group>"; };
+		4C942C0E22A471E6002778A6 /* icon-squash-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-squash-black.png"; sourceTree = "<group>"; };
+		4C942C0F22A471E6002778A6 /* icon-badminton-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-badminton-black.png"; sourceTree = "<group>"; };
+		4C942C1022A471E6002778A6 /* icon-raquet-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-raquet-black.png"; sourceTree = "<group>"; };
+		4C942C1122A471E6002778A6 /* icon-table-tennis-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-table-tennis-black.png"; sourceTree = "<group>"; };
+		4C942C1722A471EF002778A6 /* icon-pilates-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-pilates-black.png"; sourceTree = "<group>"; };
+		4C942C1822A471EF002778A6 /* icon-dancing-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dancing-black.png"; sourceTree = "<group>"; };
+		4C942C1922A471EF002778A6 /* icon-yoga-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-yoga-black.png"; sourceTree = "<group>"; };
+		4C942C1A22A471F0002778A6 /* icon-barre-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-barre-black.png"; sourceTree = "<group>"; };
+		4C942C1B22A471F0002778A6 /* icon-mindful-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-mindful-black.png"; sourceTree = "<group>"; };
+		4C942C2122A47202002778A6 /* icon-stair-drill-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-stair-drill-black.png"; sourceTree = "<group>"; };
+		4C942C2222A47202002778A6 /* icon-handcycle-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-handcycle-black.png"; sourceTree = "<group>"; };
+		4C942C2322A47202002778A6 /* icon-cross-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cross-black.png"; sourceTree = "<group>"; };
+		4C942C2422A47203002778A6 /* icon-cardio-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cardio-black.png"; sourceTree = "<group>"; };
+		4C942C2522A47203002778A6 /* icon-cycling-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cycling-black.png"; sourceTree = "<group>"; };
+		4C942C2622A47203002778A6 /* icon-walking-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-walking-black.png"; sourceTree = "<group>"; };
+		4C942C2722A47203002778A6 /* icon-flexibility-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-flexibility-black.png"; sourceTree = "<group>"; };
+		4C942C2822A47203002778A6 /* icon-step-bench-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-step-bench-black.png"; sourceTree = "<group>"; };
+		4C942C2922A47203002778A6 /* icon-jumping-rope-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jumping-rope-black.png"; sourceTree = "<group>"; };
+		4C942C2A22A47203002778A6 /* icon-core-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-core-black.png"; sourceTree = "<group>"; };
+		4C942C2B22A47203002778A6 /* icon-strength-free-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-strength-free-black.png"; sourceTree = "<group>"; };
+		4C942C2C22A47204002778A6 /* icon-wheelchair-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-wheelchair-black.png"; sourceTree = "<group>"; };
+		4C942C2D22A47204002778A6 /* icon-high-intense-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-high-intense-black.png"; sourceTree = "<group>"; };
+		4C942C2E22A47204002778A6 /* icon-running-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-running-black.png"; sourceTree = "<group>"; };
+		4C942C2F22A47204002778A6 /* icon-stepper-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-stepper-black.png"; sourceTree = "<group>"; };
+		4C942C3022A47204002778A6 /* icon-spinner-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-spinner-black.png"; sourceTree = "<group>"; };
+		4C942C3122A47204002778A6 /* icon-warm-up-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-warm-up-black.png"; sourceTree = "<group>"; };
+		4C942C4322A47213002778A6 /* icon-soccer-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-soccer-black.png"; sourceTree = "<group>"; };
+		4C942C4422A47213002778A6 /* icon-lacrosse-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-lacrosse-black.png"; sourceTree = "<group>"; };
+		4C942C4522A47213002778A6 /* icon-handball-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-handball-black.png"; sourceTree = "<group>"; };
+		4C942C4622A47213002778A6 /* icon-cricket-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cricket-black.png"; sourceTree = "<group>"; };
+		4C942C4722A47213002778A6 /* icon-baseball-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-baseball-black.png"; sourceTree = "<group>"; };
+		4C942C4822A47213002778A6 /* icon-basketball-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-basketball-black.png"; sourceTree = "<group>"; };
+		4C942C4922A47214002778A6 /* icon-rugby-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-rugby-black.png"; sourceTree = "<group>"; };
+		4C942C4A22A47214002778A6 /* icon-hockey-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-hockey-black.png"; sourceTree = "<group>"; };
+		4C942C4B22A47214002778A6 /* icon-softball-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-softball-black.png"; sourceTree = "<group>"; };
+		4C942C4C22A47214002778A6 /* icon-volleyball-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-volleyball-black.png"; sourceTree = "<group>"; };
+		4C942C4D22A47214002778A6 /* icon-american-football-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-american-football-black.png"; sourceTree = "<group>"; };
 		4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		4CAEDB8D229063B6007D07B2 /* WorkoutTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutTableCell.xib; sourceTree = "<group>"; };
 		4CAEDB8F229063B6007D07B2 /* ShowMoreTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowMoreTableCell.xib; sourceTree = "<group>"; };
@@ -269,6 +411,11 @@
 		4C942B0922A3B70D002778A6 /* icons-individual-sports */ = {
 			isa = PBXGroup;
 			children = (
+				4C942BDB22A471AB002778A6 /* icon-archery-black.png */,
+				4C942BD722A471AB002778A6 /* icon-bowling-black.png */,
+				4C942BD822A471AB002778A6 /* icon-fencing-black.png */,
+				4C942BD922A471AB002778A6 /* icon-gymnastics-black.png */,
+				4C942BDA22A471AB002778A6 /* icon-track-field-black.png */,
 				4C2F7D0D229AF56900A09FBC /* icon-archery.png */,
 				4C942B1322A3DBFA002778A6 /* icon-bowling.png */,
 				4C942B3422A4138D002778A6 /* icon-fencing.png */,
@@ -281,6 +428,17 @@
 		4C942B0A22A3B72A002778A6 /* icons-team-sports */ = {
 			isa = PBXGroup;
 			children = (
+				4C942C4D22A47214002778A6 /* icon-american-football-black.png */,
+				4C942C4722A47213002778A6 /* icon-baseball-black.png */,
+				4C942C4822A47213002778A6 /* icon-basketball-black.png */,
+				4C942C4622A47213002778A6 /* icon-cricket-black.png */,
+				4C942C4522A47213002778A6 /* icon-handball-black.png */,
+				4C942C4A22A47214002778A6 /* icon-hockey-black.png */,
+				4C942C4422A47213002778A6 /* icon-lacrosse-black.png */,
+				4C942C4922A47214002778A6 /* icon-rugby-black.png */,
+				4C942C4322A47213002778A6 /* icon-soccer-black.png */,
+				4C942C4B22A47214002778A6 /* icon-softball-black.png */,
+				4C942C4C22A47214002778A6 /* icon-volleyball-black.png */,
 				4C942B3B22A413A4002778A6 /* icon-american-football.png */,
 				4C942B3C22A413A4002778A6 /* icon-baseball.png */,
 				4C942B4322A413A4002778A6 /* icon-basketball.png */,
@@ -299,6 +457,25 @@
 		4C942B0B22A3B732002778A6 /* icons-exercise-fitness */ = {
 			isa = PBXGroup;
 			children = (
+				4C942C2422A47203002778A6 /* icon-cardio-black.png */,
+				4C942C2A22A47203002778A6 /* icon-core-black.png */,
+				4C942C2322A47202002778A6 /* icon-cross-black.png */,
+				4C942C2522A47203002778A6 /* icon-cycling-black.png */,
+				4C942C2722A47203002778A6 /* icon-flexibility-black.png */,
+				4C942C2222A47202002778A6 /* icon-handcycle-black.png */,
+				4C942C2D22A47204002778A6 /* icon-high-intense-black.png */,
+				4C942C2922A47203002778A6 /* icon-jumping-rope-black.png */,
+				4C942C2E22A47204002778A6 /* icon-running-black.png */,
+				4C942C3022A47204002778A6 /* icon-spinner-black.png */,
+				4C942C2122A47202002778A6 /* icon-stair-drill-black.png */,
+				4C942C2822A47203002778A6 /* icon-step-bench-black.png */,
+				4C942C2F22A47204002778A6 /* icon-stepper-black.png */,
+				4C942C2B22A47203002778A6 /* icon-strength-free-black.png */,
+				4C942C2622A47203002778A6 /* icon-walking-black.png */,
+				4C942C3122A47204002778A6 /* icon-warm-up-black.png */,
+				4C942C2C22A47204002778A6 /* icon-wheelchair-black.png */,
+				4C942BB722A4675C002778A6 /* icon-bench-press-black.png */,
+				4C942BAF22A45163002778A6 /* icon-step-bench.png */,
 				4C942B5822A413C6002778A6 /* icon-warm-up.png */,
 				4C942B5B22A413C6002778A6 /* icon-flexibility.png */,
 				4C942B2E22A3FF5E002778A6 /* icon-running.png */,
@@ -313,10 +490,9 @@
 				4C942B5622A413C6002778A6 /* icon-cross.png */,
 				4C942B5022A413C5002778A6 /* icon-cardio.png */,
 				4C942B5A22A413C6002778A6 /* icon-high-intense.png */,
-				4C942B5322A413C6002778A6 /* icon-jumping-rope.png */,
+				4C942BB122A463D0002778A6 /* icon-jumping-rope.png */,
 				4C942B5C22A413C6002778A6 /* icon-stepper.png */,
 				4C942B5122A413C6002778A6 /* icon-stair-drill.png */,
-				4C942B4F22A413C5002778A6 /* icon-step-bench.png */,
 			);
 			path = "icons-exercise-fitness";
 			sourceTree = "<group>";
@@ -324,11 +500,16 @@
 		4C942B0C22A3B742002778A6 /* icons-studio-activities */ = {
 			isa = PBXGroup;
 			children = (
+				4C942C1A22A471F0002778A6 /* icon-barre-black.png */,
+				4C942C1822A471EF002778A6 /* icon-dancing-black.png */,
+				4C942C1B22A471F0002778A6 /* icon-mindful-black.png */,
+				4C942C1722A471EF002778A6 /* icon-pilates-black.png */,
+				4C942C1922A471EF002778A6 /* icon-yoga-black.png */,
+				4C942BAD22A450ED002778A6 /* icon-yoga.png */,
 				4C942B6D22A41A7B002778A6 /* icon-barre.png */,
 				4C942B6E22A41A7B002778A6 /* icon-dancing.png */,
 				4C942B6F22A41A7C002778A6 /* icon-mindful.png */,
 				4C942B6B22A41A7B002778A6 /* icon-pilates.png */,
-				4C942B6C22A41A7B002778A6 /* icon-yoga.png */,
 			);
 			path = "icons-studio-activities";
 			sourceTree = "<group>";
@@ -336,6 +517,11 @@
 		4C942B0D22A3B74E002778A6 /* icons-racket-sports */ = {
 			isa = PBXGroup;
 			children = (
+				4C942C0F22A471E6002778A6 /* icon-badminton-black.png */,
+				4C942C1022A471E6002778A6 /* icon-raquet-black.png */,
+				4C942C0E22A471E6002778A6 /* icon-squash-black.png */,
+				4C942C1122A471E6002778A6 /* icon-table-tennis-black.png */,
+				4C942C0D22A471E6002778A6 /* icon-tennis-black.png */,
 				4C942B7522A42F54002778A6 /* icon-badminton.png */,
 				4C942B7922A42F54002778A6 /* icon-raquet.png */,
 				4C942B7722A42F54002778A6 /* icon-squash.png */,
@@ -348,6 +534,10 @@
 		4C942B0E22A3B75E002778A6 /* icons-outdoor-activities */ = {
 			isa = PBXGroup;
 			children = (
+				4C942C0622A471DB002778A6 /* icon-climbing-black.png */,
+				4C942C0522A471DB002778A6 /* icon-golf-black.png */,
+				4C942C0722A471DB002778A6 /* icon-hiking-black.png */,
+				4C942C0822A471DB002778A6 /* icon-play-black.png */,
 				4C942B8122A43AD3002778A6 /* icon-climbing.png */,
 				4C942B7F22A43AD3002778A6 /* icon-golf.png */,
 				4C942B8222A43AD3002778A6 /* icon-hiking.png */,
@@ -359,6 +549,12 @@
 		4C942B0F22A3B767002778A6 /* icons-snow-ice-sports */ = {
 			isa = PBXGroup;
 			children = (
+				4C942BFB22A471D3002778A6 /* icon-cross-country-black.png */,
+				4C942BFC22A471D3002778A6 /* icon-curling-black.png */,
+				4C942BFA22A471D3002778A6 /* icon-ice-skate-black.png */,
+				4C942BFD22A471D3002778A6 /* icon-skiing-black.png */,
+				4C942BFE22A471D3002778A6 /* icon-sledge-black.png */,
+				4C942BF922A471D3002778A6 /* icon-snowboarding-black.png */,
 				4C942B8A22A44244002778A6 /* icon-cross-country.png */,
 				4C942B8922A44244002778A6 /* icon-curling.png */,
 				4C942B8722A44244002778A6 /* icon-skiing.png */,
@@ -372,6 +568,14 @@
 		4C942B1022A3B783002778A6 /* icons-water-activities */ = {
 			isa = PBXGroup;
 			children = (
+				4C942BEB22A471C3002778A6 /* icon-canoe-black.png */,
+				4C942BEC22A471C3002778A6 /* icon-rowing-black.png */,
+				4C942BF022A471C3002778A6 /* icon-sail-black.png */,
+				4C942BED22A471C3002778A6 /* icon-surfing-black.png */,
+				4C942BE922A471C3002778A6 /* icon-swimming-black.png */,
+				4C942BEE22A471C3002778A6 /* icon-water-aerobics-black.png */,
+				4C942BEA22A471C3002778A6 /* icon-water-polo-black.png */,
+				4C942BEF22A471C3002778A6 /* icon-waterskiing-black.png */,
 				4C942B9722A44939002778A6 /* icon-swimming.png */,
 				4C942B9522A44939002778A6 /* icon-canoe.png */,
 				4C942B9622A44939002778A6 /* icon-rowing.png */,
@@ -387,6 +591,10 @@
 		4C942B1122A3B791002778A6 /* icons-martial-arts */ = {
 			isa = PBXGroup;
 			children = (
+				4C942BE422A471B5002778A6 /* icon-boxing-black.png */,
+				4C942BE322A471B5002778A6 /* icon-kickboxing-black.png */,
+				4C942BE222A471B5002778A6 /* icon-martial-art-black.png */,
+				4C942BE122A471B5002778A6 /* icon-wrestling-black.png */,
 				4C942BA322A44A7A002778A6 /* icon-boxing.png */,
 				4C942BA522A44A7A002778A6 /* icon-kickboxing.png */,
 				4C942BA422A44A7A002778A6 /* icon-martial-art.png */,
@@ -398,6 +606,11 @@
 		4C942B1222A3B799002778A6 /* icons-individual-activities */ = {
 			isa = PBXGroup;
 			children = (
+				4C942BB922A47167002778A6 /* icon-energy-black.png */,
+				4C942BBB22A47167002778A6 /* icon-individual-cycling-black.png */,
+				4C942BBD22A47167002778A6 /* icon-individual-running-black.png */,
+				4C942BBC22A47167002778A6 /* icon-individual-swimming-black.png */,
+				4C942BBA22A47167002778A6 /* icon-individual-wheelchair-black.png */,
 				4C942B1D22A3E3D0002778A6 /* icon-energy.png */,
 				4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */,
 				4C942B1F22A3E458002778A6 /* icon-individual-swimming.png */,
@@ -594,63 +807,116 @@
 			files = (
 				4CD1FD632290A3A000EFEF81 /* record_btn.png in Resources */,
 				4C942B4722A413A4002778A6 /* icon-baseball.png in Resources */,
+				4C942C1522A471E6002778A6 /* icon-raquet-black.png in Resources */,
 				4CAEDB93229063B6007D07B2 /* WorkoutTableCell.xib in Resources */,
 				4C942B5F22A413C6002778A6 /* icon-stair-drill.png in Resources */,
 				4C942B3022A3FF5E002778A6 /* icon-cycling.png in Resources */,
+				4C942BE722A471B5002778A6 /* icon-kickboxing-black.png in Resources */,
 				4C942B1E22A3E3D0002778A6 /* icon-energy.png in Resources */,
 				4C942B8322A43AD3002778A6 /* icon-golf.png in Resources */,
-				4C942B7122A41A7C002778A6 /* icon-yoga.png in Resources */,
 				4C942BAA22A44A7A002778A6 /* icon-wrestling.png in Resources */,
 				4C942B4C22A413A4002778A6 /* icon-softball.png in Resources */,
+				4C942C0122A471D3002778A6 /* icon-cross-country-black.png in Resources */,
 				4C942B3222A3FF5E002778A6 /* icon-wheelchair.png in Resources */,
 				4C942B9022A44245002778A6 /* icon-cross-country.png in Resources */,
 				4C942B8622A43AD3002778A6 /* icon-hiking.png in Resources */,
+				4C942BF322A471C4002778A6 /* icon-canoe-black.png in Resources */,
 				4C942B9C22A44939002778A6 /* icon-water-aerobics.png in Resources */,
+				4C942C5322A47214002778A6 /* icon-basketball-black.png in Resources */,
+				4C942C0422A471D3002778A6 /* icon-sledge-black.png in Resources */,
+				4C942C3F22A47204002778A6 /* icon-running-black.png in Resources */,
+				4C942BDC22A471AB002778A6 /* icon-bowling-black.png in Resources */,
+				4C942C3D22A47204002778A6 /* icon-wheelchair-black.png in Resources */,
 				4C942BA922A44A7A002778A6 /* icon-kickboxing.png in Resources */,
+				4C942BC122A47168002778A6 /* icon-individual-swimming-black.png in Resources */,
 				4C942B9B22A44939002778A6 /* icon-surfing.png in Resources */,
 				4C942B8422A43AD3002778A6 /* icon-play.png in Resources */,
+				4C942BDE22A471AB002778A6 /* icon-gymnastics-black.png in Resources */,
 				4CB6091022905C6A00B683E0 /* LaunchScreen.storyboard in Resources */,
 				4C942B6522A413C6002778A6 /* icon-walking.png in Resources */,
 				4C34A041229DE07700F76308 /* record_btn_highlight.png in Resources */,
+				4C942C5222A47214002778A6 /* icon-baseball-black.png in Resources */,
+				4C942BC022A47168002778A6 /* icon-individual-cycling-black.png in Resources */,
+				4C942BB022A45163002778A6 /* icon-step-bench.png in Resources */,
 				4C942B3722A4138D002778A6 /* icon-fencing.png in Resources */,
+				4C942BFF22A471D3002778A6 /* icon-snowboarding-black.png in Resources */,
 				4C942BA822A44A7A002778A6 /* icon-martial-art.png in Resources */,
 				4C942B9122A44245002778A6 /* icon-sledge.png in Resources */,
+				4C942C0322A471D3002778A6 /* icon-skiing-black.png in Resources */,
 				4C942B6022A413C6002778A6 /* icon-core.png in Resources */,
+				4C942BE822A471B5002778A6 /* icon-boxing-black.png in Resources */,
+				4C942C3222A47204002778A6 /* icon-stair-drill-black.png in Resources */,
+				4C942C5522A47214002778A6 /* icon-hockey-black.png in Resources */,
 				4C942B8F22A44245002778A6 /* icon-curling.png in Resources */,
 				4C942B6922A413C6002778A6 /* icon-flexibility.png in Resources */,
 				4C942B7D22A42F54002778A6 /* icon-table-tennis.png in Resources */,
+				4C942BF222A471C4002778A6 /* icon-water-polo-black.png in Resources */,
+				4C942BF422A471C4002778A6 /* icon-rowing-black.png in Resources */,
+				4C942BB222A463D1002778A6 /* icon-jumping-rope.png in Resources */,
 				4C942B7B22A42F54002778A6 /* icon-tennis.png in Resources */,
+				4C942C1322A471E6002778A6 /* icon-squash-black.png in Resources */,
 				4C942BA222A44939002778A6 /* icon-sail.png in Resources */,
 				4C942B9222A44245002778A6 /* icon-snowboarding.png in Resources */,
 				4C942B7A22A42F54002778A6 /* icon-badminton.png in Resources */,
+				4C942C5822A47214002778A6 /* icon-american-football-black.png in Resources */,
 				4C942B8D22A44245002778A6 /* icon-skiing.png in Resources */,
+				4C942C1622A471E6002778A6 /* icon-table-tennis-black.png in Resources */,
+				4C942C3822A47204002778A6 /* icon-flexibility-black.png in Resources */,
 				4C942B3622A4138D002778A6 /* icon-track-field.png in Resources */,
+				4C942BBE22A47168002778A6 /* icon-energy-black.png in Resources */,
 				4CAEDB95229063B6007D07B2 /* ShowMoreTableCell.xib in Resources */,
+				4C942C3422A47204002778A6 /* icon-cross-black.png in Resources */,
 				4C942B7022A41A7C002778A6 /* icon-pilates.png in Resources */,
+				4C942C3922A47204002778A6 /* icon-step-bench-black.png in Resources */,
+				4C942C5722A47214002778A6 /* icon-volleyball-black.png in Resources */,
+				4C942C0222A471D3002778A6 /* icon-curling-black.png in Resources */,
+				4C942C4022A47204002778A6 /* icon-stepper-black.png in Resources */,
+				4C942BB822A4675C002778A6 /* icon-bench-press-black.png in Resources */,
 				4C2F7D10229AF56900A09FBC /* icon-archery.png in Resources */,
+				4C942C0C22A471DC002778A6 /* icon-play-black.png in Resources */,
 				4C942BA722A44A7A002778A6 /* icon-boxing.png in Resources */,
+				4C942C4E22A47214002778A6 /* icon-soccer-black.png in Resources */,
+				4C942BDD22A471AB002778A6 /* icon-fencing-black.png in Resources */,
 				4C942B4622A413A4002778A6 /* icon-american-football.png in Resources */,
 				4C942B6822A413C6002778A6 /* icon-high-intense.png in Resources */,
+				4C942C0A22A471DC002778A6 /* icon-climbing-black.png in Resources */,
 				4C942B7322A41A7C002778A6 /* icon-dancing.png in Resources */,
+				4C942BF822A471C4002778A6 /* icon-sail-black.png in Resources */,
 				4C942B4422A413A4002778A6 /* icon-soccer.png in Resources */,
+				4C942C0022A471D3002778A6 /* icon-ice-skate-black.png in Resources */,
 				4C942B4B22A413A4002778A6 /* icon-lacrosse.png in Resources */,
+				4C942C2022A471F0002778A6 /* icon-mindful-black.png in Resources */,
+				4C942BE622A471B5002778A6 /* icon-martial-art-black.png in Resources */,
+				4C942C1C22A471F0002778A6 /* icon-pilates-black.png in Resources */,
 				4C942B2322A3E5DD002778A6 /* icon-individual-wheelchair.png in Resources */,
+				4C942BF722A471C4002778A6 /* icon-waterskiing-black.png in Resources */,
+				4C942C5122A47214002778A6 /* icon-cricket-black.png in Resources */,
 				4C942B4E22A413A4002778A6 /* icon-basketball.png in Resources */,
+				4C942C3C22A47204002778A6 /* icon-strength-free-black.png in Resources */,
+				4C942C3722A47204002778A6 /* icon-walking-black.png in Resources */,
 				4CB6090D22905C6A00B683E0 /* Assets.xcassets in Resources */,
 				4C942B6222A413C6002778A6 /* icon-strength-free.png in Resources */,
 				4C942B9D22A44939002778A6 /* icon-canoe.png in Resources */,
+				4C942C1F22A471F0002778A6 /* icon-barre-black.png in Resources */,
+				4C942C5022A47214002778A6 /* icon-handball-black.png in Resources */,
+				4C942BF522A471C4002778A6 /* icon-surfing-black.png in Resources */,
 				4C942B2422A3E5DD002778A6 /* icon-individual-running.png in Resources */,
 				4C942B7C22A42F54002778A6 /* icon-squash.png in Resources */,
+				4C942C3522A47204002778A6 /* icon-cardio-black.png in Resources */,
 				4C942B9E22A44939002778A6 /* icon-rowing.png in Resources */,
+				4C942C3A22A47204002778A6 /* icon-jumping-rope-black.png in Resources */,
 				4C942B1422A3DBFB002778A6 /* icon-bowling.png in Resources */,
+				4C942BDF22A471AB002778A6 /* icon-track-field-black.png in Resources */,
 				4C942B4522A413A4002778A6 /* icon-volleyball.png in Resources */,
-				4C942B5D22A413C6002778A6 /* icon-step-bench.png in Resources */,
+				4C942C3B22A47204002778A6 /* icon-core-black.png in Resources */,
+				4C942BC222A47168002778A6 /* icon-individual-running-black.png in Resources */,
 				4C942B3822A4138D002778A6 /* icon-gymnastics.png in Resources */,
-				4C942B6122A413C6002778A6 /* icon-jumping-rope.png in Resources */,
+				4C942BBF22A47168002778A6 /* icon-individual-wheelchair-black.png in Resources */,
 				4C942B4A22A413A4002778A6 /* icon-rugby.png in Resources */,
 				4C942B6A22A413C6002778A6 /* icon-stepper.png in Resources */,
 				4CB6090B22905C6A00B683E0 /* Main.storyboard in Resources */,
 				4C942B2022A3E458002778A6 /* icon-individual-swimming.png in Resources */,
+				4C942C3E22A47204002778A6 /* icon-high-intense-black.png in Resources */,
 				4C942B7E22A42F54002778A6 /* icon-raquet.png in Resources */,
 				4C942B7222A41A7C002778A6 /* icon-barre.png in Resources */,
 				4C942B9F22A44939002778A6 /* icon-swimming.png in Resources */,
@@ -659,16 +925,34 @@
 				4C942B6622A413C6002778A6 /* icon-warm-up.png in Resources */,
 				4C942B8E22A44245002778A6 /* icon-ice-skate.png in Resources */,
 				4C942BA122A44939002778A6 /* icon-waterskiing.png in Resources */,
+				4C942BF122A471C4002778A6 /* icon-swimming-black.png in Resources */,
 				4C942B6422A413C6002778A6 /* icon-cross.png in Resources */,
+				4C942C3622A47204002778A6 /* icon-cycling-black.png in Resources */,
 				4C942BA022A44939002778A6 /* icon-water-polo.png in Resources */,
+				4C942C1422A471E6002778A6 /* icon-badminton-black.png in Resources */,
+				4C942BF622A471C4002778A6 /* icon-water-aerobics-black.png in Resources */,
+				4C942C4222A47204002778A6 /* icon-warm-up-black.png in Resources */,
 				4C942B6722A413C6002778A6 /* icon-bench-press.png in Resources */,
 				4C942B3122A3FF5E002778A6 /* icon-running.png in Resources */,
+				4C942C4122A47204002778A6 /* icon-spinner-black.png in Resources */,
 				4C942B5E22A413C6002778A6 /* icon-cardio.png in Resources */,
+				4C942BE022A471AB002778A6 /* icon-archery-black.png in Resources */,
+				4C942BE522A471B5002778A6 /* icon-wrestling-black.png in Resources */,
 				4C942B1C22A3E2ED002778A6 /* icon-individual-cycling.png in Resources */,
+				4C942BAE22A450ED002778A6 /* icon-yoga.png in Resources */,
 				4C942B7422A41A7C002778A6 /* icon-mindful.png in Resources */,
+				4C942C1E22A471F0002778A6 /* icon-yoga-black.png in Resources */,
+				4C942C1222A471E6002778A6 /* icon-tennis-black.png in Resources */,
+				4C942C5622A47214002778A6 /* icon-softball-black.png in Resources */,
+				4C942C5422A47214002778A6 /* icon-rugby-black.png in Resources */,
+				4C942C3322A47204002778A6 /* icon-handcycle-black.png in Resources */,
 				4C942B4822A413A4002778A6 /* icon-handball.png in Resources */,
 				4C942B8522A43AD3002778A6 /* icon-climbing.png in Resources */,
+				4C942C0B22A471DC002778A6 /* icon-hiking-black.png in Resources */,
 				4C942B2C22A3FF16002778A6 /* icon-handcycle.png in Resources */,
+				4C942C1D22A471F0002778A6 /* icon-dancing-black.png in Resources */,
+				4C942C0922A471DC002778A6 /* icon-golf-black.png in Resources */,
+				4C942C4F22A47214002778A6 /* icon-lacrosse-black.png in Resources */,
 				4C942B6322A413C6002778A6 /* icon-spinner.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
