@@ -57,10 +57,24 @@
                                         </constraints>
                                         <viewLayoutGuide key="safeArea" id="kY6-2z-sk0"/>
                                     </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O36-Wb-UMv" userLabel="Subtype Image">
+                                        <rect key="frame" x="39.5" y="24.5" width="18" height="18"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="activity">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="QJd-sm-3T5"/>
+                                            <constraint firstAttribute="width" constant="18" id="yPo-Hg-4vo"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="safeArea" id="lKg-Xw-fd0"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Koo-y4-35s" firstAttribute="top" secondItem="K5u-v9-LpI" secondAttribute="bottom" id="Cya-qg-Uze"/>
+                                    <constraint firstItem="O36-Wb-UMv" firstAttribute="leading" secondItem="vYs-z3-VEf" secondAttribute="trailing" id="FJJ-ad-zE3"/>
+                                    <constraint firstItem="O36-Wb-UMv" firstAttribute="top" secondItem="vYs-z3-VEf" secondAttribute="top" id="Lha-P4-OFv"/>
                                     <constraint firstItem="vYs-z3-VEf" firstAttribute="top" secondItem="K5u-v9-LpI" secondAttribute="bottom" constant="1" id="XBx-cN-dNJ"/>
                                     <constraint firstItem="vYs-z3-VEf" firstAttribute="leading" secondItem="K5u-v9-LpI" secondAttribute="leading" constant="15" id="XGw-YT-nga"/>
                                     <constraint firstItem="K5u-v9-LpI" firstAttribute="top" secondItem="i4t-Ry-kzr" secondAttribute="top" constant="2" id="fG3-FW-uQr"/>
@@ -121,6 +135,7 @@
                 <outlet property="distanceView" destination="6ue-Me-C7r" id="0ck-Iw-Rj9"/>
                 <outlet property="durationLabel" destination="Koo-y4-35s" id="4uk-Rm-yG4"/>
                 <outlet property="energyView" destination="AfC-2M-oRm" id="8pu-VD-78W"/>
+                <outlet property="subtypeImage" destination="O36-Wb-UMv" id="pYg-mx-apm"/>
                 <outlet property="typeImage" destination="vYs-z3-VEf" id="qx4-s9-KvY"/>
             </connections>
             <point key="canvasLocation" x="-5.0724637681159424" y="11.71875"/>

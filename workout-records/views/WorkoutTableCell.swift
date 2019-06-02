@@ -15,6 +15,7 @@ class WorkoutTableCell: UITableViewCell {
     @IBOutlet var distanceView: WorkoutUnitView!
     @IBOutlet var energyView: WorkoutUnitView!
     @IBOutlet var typeImage: UIImageView!
+    @IBOutlet var subtypeImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,7 +42,10 @@ class WorkoutTableCell: UITableViewCell {
         distanceView.setText(WRFormat.formatDistance(workout.distance ?? 0.0))
         energyView.setText(WRFormat.formatEnergy(workout.energy ?? 0))
         typeImage.image = UIImage(named: workout.activity.icon)
-    
+        if WRFormat.isDistanceActivity(workout.activity) && workout.energy != nil {
+            subtypeImage.image = UIImage(named: WRFormat.energyActivity.icon)
+        }
+        
         cellView.backgroundColor = WorkoutTableColors.defaultBackgroundColor
     }
     
