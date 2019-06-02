@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C2F7D0F229AF56900A09FBC /* icons-gymnastics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D0C229AF56900A09FBC /* icons-gymnastics.png */; };
-		4C2F7D10229AF56900A09FBC /* icons-archery.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D0D229AF56900A09FBC /* icons-archery.png */; };
-		4C2F7D13229AF58A00A09FBC /* icons-generic.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D12229AF58A00A09FBC /* icons-generic.png */; };
+		4C2F7D10229AF56900A09FBC /* icon-archery.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D0D229AF56900A09FBC /* icon-archery.png */; };
 		4C34A041229DE07700F76308 /* record_btn_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C34A040229DE07700F76308 /* record_btn_highlight.png */; };
 		4C38B77B2299908500A417FF /* mainView_inputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77A2299908500A417FF /* mainView_inputTests.swift */; };
 		4C38B77D2299984000A417FF /* UnitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77C2299984000A417FF /* UnitTextField.swift */; };
@@ -18,6 +16,44 @@
 		4C43820D22929B89009613C6 /* WRFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB90229063B6007D07B2 /* WRFormat.swift */; };
 		4C4382122292A15D009613C6 /* MainPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382112292A15D009613C6 /* MainPageObject.swift */; };
 		4C4382142292CAF8009613C6 /* WorkoutPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */; };
+		4C942B1422A3DBFB002778A6 /* icon-bowling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1322A3DBFA002778A6 /* icon-bowling.png */; };
+		4C942B1C22A3E2ED002778A6 /* icon-individual-cycling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */; };
+		4C942B1E22A3E3D0002778A6 /* icon-energy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1D22A3E3D0002778A6 /* icon-energy.png */; };
+		4C942B2022A3E458002778A6 /* icon-individual-swimming.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1F22A3E458002778A6 /* icon-individual-swimming.png */; };
+		4C942B2322A3E5DD002778A6 /* icon-individual-wheelchair.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B2122A3E5DD002778A6 /* icon-individual-wheelchair.png */; };
+		4C942B2422A3E5DD002778A6 /* icon-individual-running.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B2222A3E5DD002778A6 /* icon-individual-running.png */; };
+		4C942B2C22A3FF16002778A6 /* icon-handcycle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B2B22A3FF16002778A6 /* icon-handcycle.png */; };
+		4C942B3022A3FF5E002778A6 /* icon-cycling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B2D22A3FF5E002778A6 /* icon-cycling.png */; };
+		4C942B3122A3FF5E002778A6 /* icon-running.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B2E22A3FF5E002778A6 /* icon-running.png */; };
+		4C942B3222A3FF5E002778A6 /* icon-wheelchair.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B2F22A3FF5E002778A6 /* icon-wheelchair.png */; };
+		4C942B3622A4138D002778A6 /* icon-track-field.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3322A4138D002778A6 /* icon-track-field.png */; };
+		4C942B3722A4138D002778A6 /* icon-fencing.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3422A4138D002778A6 /* icon-fencing.png */; };
+		4C942B3822A4138D002778A6 /* icon-gymnastics.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3522A4138D002778A6 /* icon-gymnastics.png */; };
+		4C942B4422A413A4002778A6 /* icon-soccer.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3922A413A4002778A6 /* icon-soccer.png */; };
+		4C942B4522A413A4002778A6 /* icon-volleyball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3A22A413A4002778A6 /* icon-volleyball.png */; };
+		4C942B4622A413A4002778A6 /* icon-american-football.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3B22A413A4002778A6 /* icon-american-football.png */; };
+		4C942B4722A413A4002778A6 /* icon-baseball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3C22A413A4002778A6 /* icon-baseball.png */; };
+		4C942B4822A413A4002778A6 /* icon-handball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3D22A413A4002778A6 /* icon-handball.png */; };
+		4C942B4922A413A4002778A6 /* icon-hockey.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3E22A413A4002778A6 /* icon-hockey.png */; };
+		4C942B4A22A413A4002778A6 /* icon-rugby.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B3F22A413A4002778A6 /* icon-rugby.png */; };
+		4C942B4B22A413A4002778A6 /* icon-lacrosse.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4022A413A4002778A6 /* icon-lacrosse.png */; };
+		4C942B4C22A413A4002778A6 /* icon-softball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4122A413A4002778A6 /* icon-softball.png */; };
+		4C942B4D22A413A4002778A6 /* icon-cricket.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4222A413A4002778A6 /* icon-cricket.png */; };
+		4C942B4E22A413A4002778A6 /* icon-basketball.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4322A413A4002778A6 /* icon-basketball.png */; };
+		4C942B5D22A413C6002778A6 /* icon-step-bench.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B4F22A413C5002778A6 /* icon-step-bench.png */; };
+		4C942B5E22A413C6002778A6 /* icon-cardio.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5022A413C5002778A6 /* icon-cardio.png */; };
+		4C942B5F22A413C6002778A6 /* icon-stair-drill.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5122A413C6002778A6 /* icon-stair-drill.png */; };
+		4C942B6022A413C6002778A6 /* icon-core.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5222A413C6002778A6 /* icon-core.png */; };
+		4C942B6122A413C6002778A6 /* icon-jumping-rope.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5322A413C6002778A6 /* icon-jumping-rope.png */; };
+		4C942B6222A413C6002778A6 /* icon-strength-free.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5422A413C6002778A6 /* icon-strength-free.png */; };
+		4C942B6322A413C6002778A6 /* icon-spinner.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5522A413C6002778A6 /* icon-spinner.png */; };
+		4C942B6422A413C6002778A6 /* icon-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5622A413C6002778A6 /* icon-cross.png */; };
+		4C942B6522A413C6002778A6 /* icon-walking.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5722A413C6002778A6 /* icon-walking.png */; };
+		4C942B6622A413C6002778A6 /* icon-warm-up.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5822A413C6002778A6 /* icon-warm-up.png */; };
+		4C942B6722A413C6002778A6 /* icon-bench-press.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5922A413C6002778A6 /* icon-bench-press.png */; };
+		4C942B6822A413C6002778A6 /* icon-high-intense.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5A22A413C6002778A6 /* icon-high-intense.png */; };
+		4C942B6922A413C6002778A6 /* icon-flexibility.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5B22A413C6002778A6 /* icon-flexibility.png */; };
+		4C942B6A22A413C6002778A6 /* icon-stepper.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B5C22A413C6002778A6 /* icon-stepper.png */; };
 		4CAEDB91229063B6007D07B2 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */; };
 		4CAEDB93229063B6007D07B2 /* WorkoutTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8D229063B6007D07B2 /* WorkoutTableCell.xib */; };
 		4CAEDB95229063B6007D07B2 /* ShowMoreTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8F229063B6007D07B2 /* ShowMoreTableCell.xib */; };
@@ -43,11 +79,6 @@
 		4CD1FD502290A34C00EFEF81 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD472290A34C00EFEF81 /* DatePickerController.swift */; };
 		4CD1FD512290A34C00EFEF81 /* ToolbarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD482290A34C00EFEF81 /* ToolbarBuilder.swift */; };
 		4CD1FD522290A34C00EFEF81 /* WorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */; };
-		4CD1FD5C2290A3A000EFEF81 /* icons-running.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD542290A39F00EFEF81 /* icons-running.png */; };
-		4CD1FD5D2290A3A000EFEF81 /* icons-wheelchair.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD552290A39F00EFEF81 /* icons-wheelchair.png */; };
-		4CD1FD602290A3A000EFEF81 /* icons-energy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD582290A39F00EFEF81 /* icons-energy.png */; };
-		4CD1FD612290A3A000EFEF81 /* icons-cycling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD592290A39F00EFEF81 /* icons-cycling.png */; };
-		4CD1FD622290A3A000EFEF81 /* icons-swimming.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD5A2290A39F00EFEF81 /* icons-swimming.png */; };
 		4CD1FD632290A3A000EFEF81 /* record_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD5B2290A39F00EFEF81 /* record_btn.png */; };
 /* End PBXBuildFile section */
 
@@ -62,14 +93,50 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C2F7D0C229AF56900A09FBC /* icons-gymnastics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-gymnastics.png"; sourceTree = "<group>"; };
-		4C2F7D0D229AF56900A09FBC /* icons-archery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-archery.png"; sourceTree = "<group>"; };
-		4C2F7D12229AF58A00A09FBC /* icons-generic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-generic.png"; sourceTree = "<group>"; };
+		4C2F7D0D229AF56900A09FBC /* icon-archery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-archery.png"; sourceTree = "<group>"; };
 		4C34A040229DE07700F76308 /* record_btn_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_btn_highlight.png; sourceTree = "<group>"; };
 		4C38B77A2299908500A417FF /* mainView_inputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView_inputTests.swift; sourceTree = "<group>"; };
 		4C38B77C2299984000A417FF /* UnitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTextField.swift; sourceTree = "<group>"; };
 		4C4382112292A15D009613C6 /* MainPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageObject.swift; sourceTree = "<group>"; };
 		4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageObject.swift; sourceTree = "<group>"; };
+		4C942B1322A3DBFA002778A6 /* icon-bowling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-bowling.png"; sourceTree = "<group>"; };
+		4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-cycling.png"; sourceTree = "<group>"; };
+		4C942B1D22A3E3D0002778A6 /* icon-energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-energy.png"; sourceTree = "<group>"; };
+		4C942B1F22A3E458002778A6 /* icon-individual-swimming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-swimming.png"; sourceTree = "<group>"; };
+		4C942B2122A3E5DD002778A6 /* icon-individual-wheelchair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-wheelchair.png"; sourceTree = "<group>"; };
+		4C942B2222A3E5DD002778A6 /* icon-individual-running.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-running.png"; sourceTree = "<group>"; };
+		4C942B2B22A3FF16002778A6 /* icon-handcycle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-handcycle.png"; sourceTree = "<group>"; };
+		4C942B2D22A3FF5E002778A6 /* icon-cycling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cycling.png"; sourceTree = "<group>"; };
+		4C942B2E22A3FF5E002778A6 /* icon-running.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-running.png"; sourceTree = "<group>"; };
+		4C942B2F22A3FF5E002778A6 /* icon-wheelchair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-wheelchair.png"; sourceTree = "<group>"; };
+		4C942B3322A4138D002778A6 /* icon-track-field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-track-field.png"; sourceTree = "<group>"; };
+		4C942B3422A4138D002778A6 /* icon-fencing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-fencing.png"; sourceTree = "<group>"; };
+		4C942B3522A4138D002778A6 /* icon-gymnastics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-gymnastics.png"; sourceTree = "<group>"; };
+		4C942B3922A413A4002778A6 /* icon-soccer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-soccer.png"; sourceTree = "<group>"; };
+		4C942B3A22A413A4002778A6 /* icon-volleyball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-volleyball.png"; sourceTree = "<group>"; };
+		4C942B3B22A413A4002778A6 /* icon-american-football.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-american-football.png"; sourceTree = "<group>"; };
+		4C942B3C22A413A4002778A6 /* icon-baseball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-baseball.png"; sourceTree = "<group>"; };
+		4C942B3D22A413A4002778A6 /* icon-handball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-handball.png"; sourceTree = "<group>"; };
+		4C942B3E22A413A4002778A6 /* icon-hockey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-hockey.png"; sourceTree = "<group>"; };
+		4C942B3F22A413A4002778A6 /* icon-rugby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-rugby.png"; sourceTree = "<group>"; };
+		4C942B4022A413A4002778A6 /* icon-lacrosse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-lacrosse.png"; sourceTree = "<group>"; };
+		4C942B4122A413A4002778A6 /* icon-softball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-softball.png"; sourceTree = "<group>"; };
+		4C942B4222A413A4002778A6 /* icon-cricket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cricket.png"; sourceTree = "<group>"; };
+		4C942B4322A413A4002778A6 /* icon-basketball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-basketball.png"; sourceTree = "<group>"; };
+		4C942B4F22A413C5002778A6 /* icon-step-bench.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-step-bench.png"; sourceTree = "<group>"; };
+		4C942B5022A413C5002778A6 /* icon-cardio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cardio.png"; sourceTree = "<group>"; };
+		4C942B5122A413C6002778A6 /* icon-stair-drill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-stair-drill.png"; sourceTree = "<group>"; };
+		4C942B5222A413C6002778A6 /* icon-core.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-core.png"; sourceTree = "<group>"; };
+		4C942B5322A413C6002778A6 /* icon-jumping-rope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-jumping-rope.png"; sourceTree = "<group>"; };
+		4C942B5422A413C6002778A6 /* icon-strength-free.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-strength-free.png"; sourceTree = "<group>"; };
+		4C942B5522A413C6002778A6 /* icon-spinner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-spinner.png"; sourceTree = "<group>"; };
+		4C942B5622A413C6002778A6 /* icon-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cross.png"; sourceTree = "<group>"; };
+		4C942B5722A413C6002778A6 /* icon-walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-walking.png"; sourceTree = "<group>"; };
+		4C942B5822A413C6002778A6 /* icon-warm-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-warm-up.png"; sourceTree = "<group>"; };
+		4C942B5922A413C6002778A6 /* icon-bench-press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-bench-press.png"; sourceTree = "<group>"; };
+		4C942B5A22A413C6002778A6 /* icon-high-intense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-high-intense.png"; sourceTree = "<group>"; };
+		4C942B5B22A413C6002778A6 /* icon-flexibility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-flexibility.png"; sourceTree = "<group>"; };
+		4C942B5C22A413C6002778A6 /* icon-stepper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-stepper.png"; sourceTree = "<group>"; };
 		4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		4CAEDB8D229063B6007D07B2 /* WorkoutTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutTableCell.xib; sourceTree = "<group>"; };
 		4CAEDB8F229063B6007D07B2 /* ShowMoreTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowMoreTableCell.xib; sourceTree = "<group>"; };
@@ -100,11 +167,6 @@
 		4CD1FD472290A34C00EFEF81 /* DatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		4CD1FD482290A34C00EFEF81 /* ToolbarBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarBuilder.swift; sourceTree = "<group>"; };
 		4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableCell.swift; sourceTree = "<group>"; };
-		4CD1FD542290A39F00EFEF81 /* icons-running.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-running.png"; sourceTree = "<group>"; };
-		4CD1FD552290A39F00EFEF81 /* icons-wheelchair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-wheelchair.png"; sourceTree = "<group>"; };
-		4CD1FD582290A39F00EFEF81 /* icons-energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-energy.png"; sourceTree = "<group>"; };
-		4CD1FD592290A39F00EFEF81 /* icons-cycling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-cycling.png"; sourceTree = "<group>"; };
-		4CD1FD5A2290A39F00EFEF81 /* icons-swimming.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-swimming.png"; sourceTree = "<group>"; };
 		4CD1FD5B2290A39F00EFEF81 /* record_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_btn.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +200,115 @@
 				4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */,
 			);
 			path = pageobjects;
+			sourceTree = "<group>";
+		};
+		4C942B0922A3B70D002778A6 /* icons-individual-sports */ = {
+			isa = PBXGroup;
+			children = (
+				4C2F7D0D229AF56900A09FBC /* icon-archery.png */,
+				4C942B1322A3DBFA002778A6 /* icon-bowling.png */,
+				4C942B3422A4138D002778A6 /* icon-fencing.png */,
+				4C942B3522A4138D002778A6 /* icon-gymnastics.png */,
+				4C942B3322A4138D002778A6 /* icon-track-field.png */,
+			);
+			path = "icons-individual-sports";
+			sourceTree = "<group>";
+		};
+		4C942B0A22A3B72A002778A6 /* icons-team-sports */ = {
+			isa = PBXGroup;
+			children = (
+				4C942B3B22A413A4002778A6 /* icon-american-football.png */,
+				4C942B3C22A413A4002778A6 /* icon-baseball.png */,
+				4C942B4322A413A4002778A6 /* icon-basketball.png */,
+				4C942B4222A413A4002778A6 /* icon-cricket.png */,
+				4C942B3D22A413A4002778A6 /* icon-handball.png */,
+				4C942B3E22A413A4002778A6 /* icon-hockey.png */,
+				4C942B4022A413A4002778A6 /* icon-lacrosse.png */,
+				4C942B3F22A413A4002778A6 /* icon-rugby.png */,
+				4C942B3922A413A4002778A6 /* icon-soccer.png */,
+				4C942B4122A413A4002778A6 /* icon-softball.png */,
+				4C942B3A22A413A4002778A6 /* icon-volleyball.png */,
+			);
+			path = "icons-team-sports";
+			sourceTree = "<group>";
+		};
+		4C942B0B22A3B732002778A6 /* icons-exercise-fitness */ = {
+			isa = PBXGroup;
+			children = (
+				4C942B5822A413C6002778A6 /* icon-warm-up.png */,
+				4C942B5B22A413C6002778A6 /* icon-flexibility.png */,
+				4C942B2E22A3FF5E002778A6 /* icon-running.png */,
+				4C942B5722A413C6002778A6 /* icon-walking.png */,
+				4C942B2F22A3FF5E002778A6 /* icon-wheelchair.png */,
+				4C942B2D22A3FF5E002778A6 /* icon-cycling.png */,
+				4C942B2B22A3FF16002778A6 /* icon-handcycle.png */,
+				4C942B5222A413C6002778A6 /* icon-core.png */,
+				4C942B5522A413C6002778A6 /* icon-spinner.png */,
+				4C942B5422A413C6002778A6 /* icon-strength-free.png */,
+				4C942B5922A413C6002778A6 /* icon-bench-press.png */,
+				4C942B5622A413C6002778A6 /* icon-cross.png */,
+				4C942B5022A413C5002778A6 /* icon-cardio.png */,
+				4C942B5A22A413C6002778A6 /* icon-high-intense.png */,
+				4C942B5322A413C6002778A6 /* icon-jumping-rope.png */,
+				4C942B5C22A413C6002778A6 /* icon-stepper.png */,
+				4C942B5122A413C6002778A6 /* icon-stair-drill.png */,
+				4C942B4F22A413C5002778A6 /* icon-step-bench.png */,
+			);
+			path = "icons-exercise-fitness";
+			sourceTree = "<group>";
+		};
+		4C942B0C22A3B742002778A6 /* icons-studio-activities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "icons-studio-activities";
+			sourceTree = "<group>";
+		};
+		4C942B0D22A3B74E002778A6 /* icons-racket-sports */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "icons-racket-sports";
+			sourceTree = "<group>";
+		};
+		4C942B0E22A3B75E002778A6 /* icons-outdoor-activities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "icons-outdoor-activities";
+			sourceTree = "<group>";
+		};
+		4C942B0F22A3B767002778A6 /* icons-snow-ice-sports */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "icons-snow-ice-sports";
+			sourceTree = "<group>";
+		};
+		4C942B1022A3B783002778A6 /* icons-water-activities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "icons-water-activities";
+			sourceTree = "<group>";
+		};
+		4C942B1122A3B791002778A6 /* icons-martial-arts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "icons-martial-arts";
+			sourceTree = "<group>";
+		};
+		4C942B1222A3B799002778A6 /* icons-individual-activities */ = {
+			isa = PBXGroup;
+			children = (
+				4C942B1D22A3E3D0002778A6 /* icon-energy.png */,
+				4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */,
+				4C942B1F22A3E458002778A6 /* icon-individual-swimming.png */,
+				4C942B2222A3E5DD002778A6 /* icon-individual-running.png */,
+				4C942B2122A3E5DD002778A6 /* icon-individual-wheelchair.png */,
+			);
+			path = "icons-individual-activities";
 			sourceTree = "<group>";
 		};
 		4CB608F922905C6A00B683E0 = {
@@ -223,14 +394,16 @@
 		4CD1FD532290A38700EFEF81 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4C2F7D12229AF58A00A09FBC /* icons-generic.png */,
-				4C2F7D0D229AF56900A09FBC /* icons-archery.png */,
-				4C2F7D0C229AF56900A09FBC /* icons-gymnastics.png */,
-				4CD1FD592290A39F00EFEF81 /* icons-cycling.png */,
-				4CD1FD582290A39F00EFEF81 /* icons-energy.png */,
-				4CD1FD542290A39F00EFEF81 /* icons-running.png */,
-				4CD1FD5A2290A39F00EFEF81 /* icons-swimming.png */,
-				4CD1FD552290A39F00EFEF81 /* icons-wheelchair.png */,
+				4C942B1222A3B799002778A6 /* icons-individual-activities */,
+				4C942B0922A3B70D002778A6 /* icons-individual-sports */,
+				4C942B0A22A3B72A002778A6 /* icons-team-sports */,
+				4C942B0B22A3B732002778A6 /* icons-exercise-fitness */,
+				4C942B0C22A3B742002778A6 /* icons-studio-activities */,
+				4C942B0D22A3B74E002778A6 /* icons-racket-sports */,
+				4C942B0E22A3B75E002778A6 /* icons-outdoor-activities */,
+				4C942B0F22A3B767002778A6 /* icons-snow-ice-sports */,
+				4C942B1022A3B783002778A6 /* icons-water-activities */,
+				4C942B1122A3B791002778A6 /* icons-martial-arts */,
 				4CD1FD5B2290A39F00EFEF81 /* record_btn.png */,
 				4C34A040229DE07700F76308 /* record_btn_highlight.png */,
 			);
@@ -323,21 +496,52 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CD1FD602290A3A000EFEF81 /* icons-energy.png in Resources */,
 				4CD1FD632290A3A000EFEF81 /* record_btn.png in Resources */,
+				4C942B4722A413A4002778A6 /* icon-baseball.png in Resources */,
 				4CAEDB93229063B6007D07B2 /* WorkoutTableCell.xib in Resources */,
-				4CD1FD5D2290A3A000EFEF81 /* icons-wheelchair.png in Resources */,
+				4C942B5F22A413C6002778A6 /* icon-stair-drill.png in Resources */,
+				4C942B3022A3FF5E002778A6 /* icon-cycling.png in Resources */,
+				4C942B1E22A3E3D0002778A6 /* icon-energy.png in Resources */,
+				4C942B4C22A413A4002778A6 /* icon-softball.png in Resources */,
+				4C942B3222A3FF5E002778A6 /* icon-wheelchair.png in Resources */,
 				4CB6091022905C6A00B683E0 /* LaunchScreen.storyboard in Resources */,
-				4CD1FD5C2290A3A000EFEF81 /* icons-running.png in Resources */,
+				4C942B6522A413C6002778A6 /* icon-walking.png in Resources */,
 				4C34A041229DE07700F76308 /* record_btn_highlight.png in Resources */,
+				4C942B3722A4138D002778A6 /* icon-fencing.png in Resources */,
+				4C942B6022A413C6002778A6 /* icon-core.png in Resources */,
+				4C942B6922A413C6002778A6 /* icon-flexibility.png in Resources */,
+				4C942B3622A4138D002778A6 /* icon-track-field.png in Resources */,
 				4CAEDB95229063B6007D07B2 /* ShowMoreTableCell.xib in Resources */,
-				4C2F7D10229AF56900A09FBC /* icons-archery.png in Resources */,
+				4C2F7D10229AF56900A09FBC /* icon-archery.png in Resources */,
+				4C942B4622A413A4002778A6 /* icon-american-football.png in Resources */,
+				4C942B6822A413C6002778A6 /* icon-high-intense.png in Resources */,
+				4C942B4422A413A4002778A6 /* icon-soccer.png in Resources */,
+				4C942B4B22A413A4002778A6 /* icon-lacrosse.png in Resources */,
+				4C942B2322A3E5DD002778A6 /* icon-individual-wheelchair.png in Resources */,
+				4C942B4E22A413A4002778A6 /* icon-basketball.png in Resources */,
 				4CB6090D22905C6A00B683E0 /* Assets.xcassets in Resources */,
-				4C2F7D13229AF58A00A09FBC /* icons-generic.png in Resources */,
+				4C942B6222A413C6002778A6 /* icon-strength-free.png in Resources */,
+				4C942B2422A3E5DD002778A6 /* icon-individual-running.png in Resources */,
+				4C942B1422A3DBFB002778A6 /* icon-bowling.png in Resources */,
+				4C942B4522A413A4002778A6 /* icon-volleyball.png in Resources */,
+				4C942B5D22A413C6002778A6 /* icon-step-bench.png in Resources */,
+				4C942B3822A4138D002778A6 /* icon-gymnastics.png in Resources */,
+				4C942B6122A413C6002778A6 /* icon-jumping-rope.png in Resources */,
+				4C942B4A22A413A4002778A6 /* icon-rugby.png in Resources */,
+				4C942B6A22A413C6002778A6 /* icon-stepper.png in Resources */,
 				4CB6090B22905C6A00B683E0 /* Main.storyboard in Resources */,
-				4CD1FD622290A3A000EFEF81 /* icons-swimming.png in Resources */,
-				4C2F7D0F229AF56900A09FBC /* icons-gymnastics.png in Resources */,
-				4CD1FD612290A3A000EFEF81 /* icons-cycling.png in Resources */,
+				4C942B2022A3E458002778A6 /* icon-individual-swimming.png in Resources */,
+				4C942B4D22A413A4002778A6 /* icon-cricket.png in Resources */,
+				4C942B4922A413A4002778A6 /* icon-hockey.png in Resources */,
+				4C942B6622A413C6002778A6 /* icon-warm-up.png in Resources */,
+				4C942B6422A413C6002778A6 /* icon-cross.png in Resources */,
+				4C942B6722A413C6002778A6 /* icon-bench-press.png in Resources */,
+				4C942B3122A3FF5E002778A6 /* icon-running.png in Resources */,
+				4C942B5E22A413C6002778A6 /* icon-cardio.png in Resources */,
+				4C942B1C22A3E2ED002778A6 /* icon-individual-cycling.png in Resources */,
+				4C942B4822A413A4002778A6 /* icon-handball.png in Resources */,
+				4C942B2C22A3FF16002778A6 /* icon-handcycle.png in Resources */,
+				4C942B6322A413C6002778A6 /* icon-spinner.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
