@@ -78,11 +78,11 @@ class WRFormat {
     static let exerciseFitnessLabel = "Workouts - Exercise and Fitness"
     static let exerciseFitnessActivities: [Activity] = [
         Activity(type: .Workout(.preparationAndRecovery), hrName: "Warm-up, cool down, stretching", icon: "icon-warm-up.png"),
-        Activity(type: .Workout(.flexibility), hrName: "Flexibility workout", icon: "icon-flexibility.png"),
+        Activity(type: .Workout(.flexibility), hrName: "Flexibility", icon: "icon-flexibility.png"),
         Activity(type: .Workout(.running), hrName: "Running, Jogging", icon: "icon-running.png"),
         Activity(type: .Workout(.walking), hrName: "Walking", icon: "icon-walking.png"),
-        Activity(type: .Workout(.wheelchairRunPace), hrName: "Wheelchair workout (running pace)", icon: "icon-wheelchair.png"),
-        Activity(type: .Workout(.wheelchairWalkPace), hrName: "Wheelchair workout (walking pace)", icon: "icon-wheelchair.png"),
+        Activity(type: .Workout(.wheelchairRunPace), hrName: "Wheelchair (running pace)", icon: "icon-wheelchair.png"),
+        Activity(type: .Workout(.wheelchairWalkPace), hrName: "Wheelchair (walking pace)", icon: "icon-wheelchair.png"),
         Activity(type: .Workout(.cycling), hrName: "Cycling", icon: "icon-cycling.png"),
         Activity(type: .Workout(.handCycling), hrName: "Hand cycling", icon: "icon-handcycle.png"),
         Activity(type: .Workout(.coreTraining), hrName: "Core training", icon: "icon-core.png"),
@@ -100,63 +100,63 @@ class WRFormat {
 
     static let studioLabel = "Workouts - Studio Activities"
     static let studioActivities: [Activity] = [
-        Activity(type: .Workout(.barre), hrName: "Barre workout", icon: "icon-generic.png"),
-        Activity(type: .Workout(.dance), hrName: "Dancing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.mindAndBody), hrName: "Mind + body, meditation", icon: "icon-generic.png"),
-        Activity(type: .Workout(.pilates), hrName: "Pilates workout", icon: "icon-generic.png"),
-        Activity(type: .Workout(.yoga), hrName: "Practicing yoga", icon: "icon-generic.png")
+        Activity(type: .Workout(.barre), hrName: "Barre", icon: "icon-barre.png"),
+        Activity(type: .Workout(.dance), hrName: "Dancing", icon: "icon-dancing.png"),
+        Activity(type: .Workout(.mindAndBody), hrName: "Mind + body, meditation", icon: "icon-mindful.png"),
+        Activity(type: .Workout(.pilates), hrName: "Pilates", icon: "icon-pilates.png"),
+        Activity(type: .Workout(.yoga), hrName: "Practicing yoga", icon: "icon-yoga.png")
     ]
 
     static let racketSportsLabel = "Workouts - Racket Sports"
     static let racketSportsActivities: [Activity] = [
-        Activity(type: .Workout(.badminton), hrName: "Badminton", icon: "icon-generic.png"),
-        Activity(type: .Workout(.racquetball), hrName: "Racquetball", icon: "icon-generic.png"),
-        Activity(type: .Workout(.squash), hrName: "Squash", icon: "icon-generic.png"),
-        Activity(type: .Workout(.tableTennis), hrName: "Table tennis", icon: "icon-generic.png"),
-        Activity(type: .Workout(.tennis), hrName: "Tennis", icon: "icon-generic.png")
+        Activity(type: .Workout(.badminton), hrName: "Badminton", icon: "icon-badminton.png"),
+        Activity(type: .Workout(.racquetball), hrName: "Racquetball", icon: "icon-raquet.png"),
+        Activity(type: .Workout(.squash), hrName: "Squash", icon: "icon-squash.png"),
+        Activity(type: .Workout(.tableTennis), hrName: "Table tennis", icon: "icon-table-tennis.png"),
+        Activity(type: .Workout(.tennis), hrName: "Tennis", icon: "icon-tennis.png")
     ]
 
     static let outdoorLabel = "Workouts - Outdoor Activities"
     static let outdoorActivities: [Activity] = [
-        Activity(type: .Workout(.climbing), hrName: "Climbing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.golf), hrName: "Playing golf", icon: "icon-generic.png"),
-        Activity(type: .Workout(.hiking), hrName: "Hiking", icon: "icon-generic.png"),
-        Activity(type: .Workout(.play), hrName: "Play-based activities", icon: "icon-generic.png")
+        Activity(type: .Workout(.climbing), hrName: "Climbing", icon: "icon-climbing.png"),
+        Activity(type: .Workout(.golf), hrName: "Playing golf", icon: "icon-golf.png"),
+        Activity(type: .Workout(.hiking), hrName: "Hiking", icon: "icon-hiking.png"),
+        Activity(type: .Workout(.play), hrName: "Play-based activities", icon: "icon-play.png")
     ]
 
     static let snowIceSportsLabel = "Workouts - Snow and Ice Sports"
     static let snowIceSportsActivities: [Activity] = [
-        Activity(type: .Workout(.crossCountrySkiing), hrName: "Cross country skiing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.curling), hrName: "Curling", icon: "icon-generic.png"),
-        Activity(type: .Workout(.downhillSkiing), hrName: "Dwnhill skiing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.skatingSports), hrName: "Skating activities", icon: "icon-generic.png"),
-        Activity(type: .Workout(.snowboarding), hrName: "Snowboarding", icon: "icon-generic.png"),
-        Activity(type: .Workout(.snowSports), hrName: "Snow sports, sledding", icon: "icon-generic.png")
+        Activity(type: .Workout(.crossCountrySkiing), hrName: "Cross country skiing", icon: "icon-cross-country.png"),
+        Activity(type: .Workout(.curling), hrName: "Curling", icon: "icon-curling.png"),
+        Activity(type: .Workout(.downhillSkiing), hrName: "Downhill skiing", icon: "icon-skiing.png"),
+        Activity(type: .Workout(.skatingSports), hrName: "Skating activities", icon: "icon-ice-skate.png"),
+        Activity(type: .Workout(.snowboarding), hrName: "Snowboarding", icon: "icon-snowboarding.png"),
+        Activity(type: .Workout(.snowSports), hrName: "Snow sports, sledding", icon: "icon-sledge.png")
     ]
 
     static let waterLabel = "Workouts - Water Activities"
     static let waterActivities: [Activity] = [
         Activity(type: .Workout(.swimming), hrName: "Swimming", icon: "icon-swimming.png"),
-        Activity(type: .Workout(.paddleSports), hrName: "Canoeing, kayaking, paddling", icon: "icon-generic.png"),
-        Activity(type: .Workout(.rowing), hrName: "Rowing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.sailing), hrName: "Sailing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.surfingSports), hrName: "Surfing, kite/wind surfing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.waterFitness), hrName: "Aerobic exercises", icon: "icon-generic.png"),
-        Activity(type: .Workout(.waterPolo), hrName: "Playing water polo", icon: "icon-generic.png"),
-        Activity(type: .Workout(.waterSports), hrName: "Water sports", icon: "icon-generic.png")
+        Activity(type: .Workout(.paddleSports), hrName: "Canoeing, kayaking, paddling", icon: "icon-canoe.png"),
+        Activity(type: .Workout(.rowing), hrName: "Rowing", icon: "icon-rowing.png"),
+        Activity(type: .Workout(.sailing), hrName: "Sailing", icon: "icon-sail.png"),
+        Activity(type: .Workout(.surfingSports), hrName: "Surfing, kite/wind surfing", icon: "icon-surfing.png"),
+        Activity(type: .Workout(.waterFitness), hrName: "Water aerobics", icon: "icon-water-aerobics.png"),
+        Activity(type: .Workout(.waterPolo), hrName: "Playing water polo", icon: "icon-water-polo.png"),
+        Activity(type: .Workout(.waterSports), hrName: "Water skiing, water sports", icon: "icon-waterskiing.png")
     ]
 
     static let martialArtsLabel = "Workouts - Martial Arts"
     static let martialArtsActivities: [Activity] = [
-        Activity(type: .Workout(.boxing), hrName: "Boxing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.kickboxing), hrName: "Kickboxing", icon: "icon-generic.png"),
-        Activity(type: .Workout(.martialArts), hrName: "Practicing martial arts", icon: "icon-generic.png"),
-        Activity(type: .Workout(.wrestling), hrName: "Wrestling", icon: "icon-generic.png")
+        Activity(type: .Workout(.boxing), hrName: "Boxing", icon: "icon-boxing.png"),
+        Activity(type: .Workout(.kickboxing), hrName: "Kickboxing", icon: "icon-kickboxing.png"),
+        Activity(type: .Workout(.martialArts), hrName: "Practicing martial arts", icon: "icon-martial-art.png"),
+        Activity(type: .Workout(.wrestling), hrName: "Wrestling", icon: "icon-wrestling.png")
     ]
     
     static let otherLabel = "Workouts - Others"
     static let otherActivities: [Activity] = [
-        Activity(type: .Workout(.other), hrName: "Other", icon: "icon-generic.png")
+        Activity(type: .Workout(.other), hrName: "Other", icon: "icon-gymnastics.png")
     ]
     
     private static let allWorkoutActivities: [Activity] =
