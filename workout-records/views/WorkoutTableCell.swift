@@ -60,7 +60,7 @@ class WorkoutUnitView: UIView {
         let height = self.frame.size.height
         let unitOffsetY: CGFloat = 5
         
-        let widths = widthRatios.map({ v in v * self.frame.size.width })
+        let widths = widthRatios.map { $0 * self.frame.size.width }
         textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: widths[0], height: height))
         textLabel!.textColor = WorkoutTableColors.defaultTextColor
         textLabel!.font = .systemFont(ofSize: 18)

@@ -19,7 +19,7 @@ class UnitTextField: UITextField, UITextFieldDelegate {
     }
     
     private func setUnitText(_ text: String) {
-        let widths = UnitTextField.widthRatios.map({ v in v * self.frame.size.width })
+        let widths = UnitTextField.widthRatios.map { $0 * self.frame.size.width }
         let tap = UITapGestureRecognizer(target: self, action: #selector(becomeFirstResponder))
         let unitView = UIView(frame: CGRect(x: 0, y: 0, width: widths[2] - widths[0], height: self.frame.size.height))
         unitView.isUserInteractionEnabled = true

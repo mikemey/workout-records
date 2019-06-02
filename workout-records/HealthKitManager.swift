@@ -56,12 +56,8 @@ class HealthKitManager {
         let metadata = createNewMetadata()
         let endDate = workout.date.addingTimeInterval(workout.duration)
 
-        let distanceQuantity: HKQuantity? = workout.distance.map { distance in
-            return HKQuantity(unit: deviceUnit, doubleValue: WRFormat.distanceForWriting(distance))
-        }
-        let energyQuantity: HKQuantity? = workout.energy.map { energy in
-            return HKQuantity(unit: energyUnit, doubleValue: Double(energy))
-        }
+        let distanceQuantity: HKQuantity? = workout.distance.map { HKQuantity(unit: deviceUnit, doubleValue: WRFormat.distanceForWriting($0)) }
+        let energyQuantity: HKQuantity? = workout.energy.map { HKQuantity(unit: energyUnit, doubleValue: Double($0)) }
 
         var storeObj: [HKSample] = []
         
@@ -149,12 +145,8 @@ class HealthKitManager {
     private func createWorkoutRecord(from sample: HKWorkout) -> WorkoutData {
         let activity = WRFormat.findActivity(with: sample.workoutActivityType)
         let record = createBasicRecord(from: sample, activity)
-        record.distance = sample.totalDistance.map { distanceSample in
-            distanceSample.doubleValue(for: self.deviceUnit)
-        }
-        record.energy = sample.totalEnergyBurned.map { energySample in
-            Int(energySample.doubleValue(for: self.energyUnit))
-        }
+        record.distance = sample.totalDistance.map { $0.doubleValue(for: self.deviceUnit) }
+        record.energy = sample.totalEnergyBurned.map { Int($0.doubleValue(for: self.energyUnit)) }
         return record
     }
     
