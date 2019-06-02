@@ -95,12 +95,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         activitiesButton.titleLabel?.font = .systemFont(ofSize: 16)
         activitiesButton.setTitle(selectedActivity.hrName, for: .normal)
         activitiesButton.setTitleColor(UIColor.black, for: .normal)
+        activitiesButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        let imgView = UIImageView(frame: CGRect(x: 30, y: 0, width: 25, height: activitiesButton.frame.height))
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(named: "\(selectedActivity.icon)-black")
+        
+        activitiesButton.addSubview(imgView)
         let activitiesController = activitiesView.subviews[0].findViewController() as! ActivitiesViewController
         activitiesController.selectAction = { activity in
             self.closeActivitiesPicker()
             if let activity = activity {
                 self.selectedActivity = activity
                 self.activitiesButton.setTitle(activity.hrName, for: .normal)
+                imgView.image = UIImage(named: "\(activity.icon)-black")
+                
                 self.distanceField.enable(when: activity != WRFormat.energyActivity)
                 self.checkRecordButtonState()
             }
