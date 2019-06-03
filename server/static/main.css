@@ -1,12 +1,48 @@
 body {
-  background-color: #fefdf7;
-  line-height: 1.4;
+  background-color: #fffdf2;
+}
+
+img {
+  margin-bottom: 16px;
+  width: 310px;
 }
 
 .title {
-  font-family: 'Arial', serif, sans-serif;
   font-weight: bold;
   letter-spacing: 2pt;
   background-color: #fdefdb;
-  box-shadow: 35px 0px #fdefdb, -35px 0px #fdefdb;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+body>ul {
+  padding-left: 1rem;
+}
+
+.card * button {
+  display: block;
+  width: 100%;
+  color: #0056b3;
+}
+
+.card * ul {
+  margin: 0;
+}
+.card * li {
+  margin-top: 0.4rem;
+  text-align: left;
+}
+
+.card * button:hover {
+  color: beige;
+  background-color: cornflowerblue;
+}
+
+.card p {
+  margin-bottom: 0.5rem;
+  margin-left: 1.4rem;
+  line-height: 1.2rem;
+  text-align: justify;
 }
