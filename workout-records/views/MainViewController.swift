@@ -233,7 +233,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
 
         if newWorkout.distance == nil && WRFormat.isDistanceActivity(selectedActivity) {
-            let message = "No distance set.\nRecord as '\(WRFormat.energyActivity.hrName)' ?"
+            let message = "No distance set.\nRecord as \"\(WRFormat.energyActivity.hrName)\"?"
             let alertBuilder = AlertBuilder("", message: message)
             alertBuilder.addCancelAction(nil)
             alertBuilder.addDefaultAction("Record", handler: storeHandler)
