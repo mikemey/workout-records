@@ -15,10 +15,15 @@ img {
 
 h4 {
   font-weight: bold;
+  margin-top: 2rem;
 }
 
-body>ul {
-  padding-left: 1rem;
+.main-content > p {
+  margin-top: 1rem;
+}
+
+ul.workout-type-list {
+  padding-left: 1.25rem;
 }
 
 .card * button {
