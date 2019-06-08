@@ -40,9 +40,13 @@ h4 {
   text-align: left;
 }
 
+.card * button{
+  color: #e68231;
+}
+
 .card * button:hover {
-  color: beige;
-  background-color: cornflowerblue;
+  color: white;
+  background-color: #e68231;
 }
 
 .card p {

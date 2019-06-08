@@ -6,10 +6,10 @@ const highlightCurrentPageLink = () => {
   $(`#footer a[href='${page}']`).addClass('selected')
 }
 
-window.onload = () => {
+$(() => {
   $.get('template/header.html', data => $('#header').html(data))
   $.get('template/footer.html', data => {
     $('#footer').html(data)
     highlightCurrentPageLink()
   })
-}
+})
