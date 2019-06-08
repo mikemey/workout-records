@@ -22,7 +22,7 @@ h4 {
   margin-top: 1rem;
 }
 
-ul.workout-type-list {
+.main-content > ul {
   padding-left: 1.25rem;
 }
 

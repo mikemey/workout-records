@@ -27,6 +27,9 @@
     "standard": "^12.0.1"
   },
   "standard": {
-    "env": []
+    "env": [],
+    "globals": [
+      "$"
+    ]
   }
 }
