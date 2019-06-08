@@ -51,3 +51,8 @@ h4 {
   line-height: 1.2rem;
   text-align: justify;
 }
+
+a.selected {
+  color: white;
+  background-color: #ff8851;
+}

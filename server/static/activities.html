@@ -9,9 +9,10 @@
   <link rel="stylesheet" href="index.css">
   <script src="vendor/jquery.min.js"></script>
   <script src="vendor/bootstrap.min.js"></script>
+  <script src="template/header-footer.js"></script>
 </head>
 
-<body class="pb-5">
+<body>
 <div id="header"></div>
 <div class="container-fluid">
   <div class="main-content p-3 text-justify">
@@ -326,12 +327,6 @@
 
   </div>
 </div>
-<script>
-  window.onload = () => {
-   $.get( "header.html", function( data ) {
-    $( "#header" ).html(data)
-  })
-  }
-</script>
+<div id="footer"></div>
 </body>
 </html>
