@@ -53,11 +53,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     private func setupDistanceAndEnergyFields(_ toolbar: UIToolbar) {
         distanceField.inputAccessoryView = toolbar
-        distanceField.setProperties(unitText: WRFormat.isMetric ? "km" : "mi", placeholder: "distance")
+        distanceField.setProperties(unitText: WRFormat.isMetric ? "km" : "mi", placeholder: "distance", fractions: true)
         distanceField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
         
         energyField.inputAccessoryView = toolbar
-        energyField.setProperties(unitText: "kcal", placeholder: "energy")
+        energyField.setProperties(unitText: "kcal", placeholder: "energy", fractions: false)
         energyField.addTarget(self, action: #selector(checkRecordButtonState), for: .editingChanged)
     }
 

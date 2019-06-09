@@ -1,21 +1,22 @@
 import UIKit
 
 class UnitTextField: UITextField, UITextFieldDelegate {
-    private static let maxDistance: Double = 10000
+    private static let maxValue: Double = 10000
     private static let maxFractionLen: Int = 3
     private static let enabledBGColor = UIColor(white: 0.97, alpha: 1)
     private static let disabledBGColor = UIColor(white: 0.80, alpha: 1)
     private static let widthRatios: [CGFloat] = [0.55, 0.6, 1]
-
+    private var fractions = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.delegate = self
     }
     
-    func setProperties(unitText: String, placeholder: String) {
+    func setProperties(unitText: String, placeholder: String, fractions: Bool) {
         setUnitText(unitText)
         setPlaceholder(placeholder)
+        self.fractions = fractions
     }
     
     private func setUnitText(_ text: String) {
@@ -37,7 +38,7 @@ class UnitTextField: UITextField, UITextFieldDelegate {
         self.rightView = unitView
         self.rightViewMode = .always
     }
-
+    
     private func setPlaceholder(_ placeholder: String) {
         let placeholderAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.lightGray,
@@ -62,15 +63,33 @@ class UnitTextField: UITextField, UITextFieldDelegate {
         let currentText = textField.text ?? ""
         let newtext = (currentText as NSString).replacingCharacters(in: range, with: string)
         
-        let newnum = Double(newtext)
-        var tooManyFractions = false
-        if let dotIndex = newtext.firstIndex(of: ".") {
-            tooManyFractions = newtext.count - dotIndex.utf16Offset(in: newtext) > UnitTextField.maxFractionLen
+        if self.fractions && currentText == "" && newtext == "." {
+            textField.text = "0."
+            return false
         }
         
+        let newnum = Double(newtext)
         return newnum != nil
-            && newnum! < UnitTextField.maxDistance
-            && newnum! > 0
-            && !tooManyFractions
+            && newnum! < UnitTextField.maxValue
+            && (self.fractions
+            ? checkFractions(textField, newtext, currentText)
+            : checkInteger(newnum!))
+    }
+    
+    private func checkFractions(_ textField: UITextField, _ newtext: String, _ currentText: String) -> Bool {
+        if let dotIndex = newtext.firstIndex(of: ".") {
+            let fractionLen = newtext.count - dotIndex.utf16Offset(in: newtext)
+            if fractionLen > UnitTextField.maxFractionLen {
+                return false
+            }
+        }
+        if currentText == "0" && newtext != "0." {
+            return false
+        }
+        return true
+    }
+    
+    private func checkInteger(_ newnum: Double) -> Bool {
+        return newnum > 0
     }
 }
