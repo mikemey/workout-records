@@ -19,4 +19,8 @@ $(() => {
     $('#footer').html(data)
     highlightCurrentPageLink()
   })
+
+  $('.breadcrumb').click(function () {
+    $('html, body').animate({ scrollTop: 0 }, 'fast')
+  })
 })
