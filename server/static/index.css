@@ -1,6 +1,6 @@
 body {
   background-color: #fffdf2;
-  font-family: 'Helvetica Neue';
+  font-family: 'Helvetica';
 }
 
 img {
@@ -14,17 +14,17 @@ img {
   background-color: #fdefdb;
 }
 
-h5 {
+h5.page-title {
   font-weight: bold;
   margin-top: 1rem;
   letter-spacing: 1.3pt;
 }
 
-.main-content > p {
+.main-content>p {
   margin-top: 1rem;
 }
 
-.main-content > ul {
+.main-content>ul, .main-content > ol {
   padding-left: 1.25rem;
 }
 
@@ -34,15 +34,13 @@ h5 {
   color: #0056b3;
 }
 
-.card * ul {
-  margin: 0;
-}
 .card * li {
-  margin-top: 0.4rem;
+  margin-top: 0.1rem;
+  font-size: 90%;
   text-align: left;
 }
 
-.card * button{
+.card * button {
   color: #e68231;
 }
 
@@ -58,16 +56,11 @@ h5 {
   text-align: justify;
 }
 
+.card a {
+  font-size: 85%;
+}
+
 a.selected {
   color: white;
   background-color: #ff8851;
-}
-
-a.wr-link {
-  color: #f75c14;
-  font-weight: bold;
-}
-a.wr-link::after {
-  content: ' \2907 ';
-  font-weight: normal;
 }
