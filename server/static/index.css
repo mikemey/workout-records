@@ -11,13 +11,13 @@ img {
 
 .app-title {
   font-weight: bold;
-  letter-spacing: 2pt;
-  background-color: #fdefdb;
+  letter-spacing: 1.5pt;
 }
 
-#header a.nav-link {
+.app-title a.nav-link {
   padding: 0.5rem 2rem;
   border-top: 1px lightgray solid;
+  letter-spacing: 1pt;
 }
 
 .navbar-nav {
@@ -27,7 +27,7 @@ img {
 .page-title {
   font-weight: bold;
   margin-top: 1rem;
-  letter-spacing: 1.3pt;
+  letter-spacing: 1pt;
 }
 
 .breadcrumb {
