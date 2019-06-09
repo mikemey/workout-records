@@ -1,4 +1,6 @@
 /* global $ location */
+const appleHealthUrl = 'https://www.apple.com/uk/ios/health/'
+const iosHealthUrl = 'x-apple-health://'
 
 const highlightCurrentPageLink = () => {
   const url = $(location).attr('href')
@@ -7,6 +9,10 @@ const highlightCurrentPageLink = () => {
 }
 
 $(() => {
+  const isiPhone = /iphone/i.test(navigator.userAgent.toLowerCase())
+  $('a.health').each(function (i, healthAnchor) {
+    $(healthAnchor).attr('href', isiPhone ? iosHealthUrl : appleHealthUrl)
+  })
   $.get('template/header.html', data => $('#header').html(data))
   $.get('template/footer.html', data => {
     $('#footer').html(data)

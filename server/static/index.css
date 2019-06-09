@@ -1,5 +1,6 @@
 body {
   background-color: #fffdf2;
+  font-family: 'Helvetica Neue';
 }
 
 img {
@@ -13,9 +14,10 @@ img {
   background-color: #fdefdb;
 }
 
-h4 {
+h5 {
   font-weight: bold;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  letter-spacing: 1.3pt;
 }
 
 .main-content > p {
@@ -59,4 +61,13 @@ h4 {
 a.selected {
   color: white;
   background-color: #ff8851;
+}
+
+a.wr-link {
+  color: #f75c14;
+  font-weight: bold;
+}
+a.wr-link::after {
+  content: ' \2907 ';
+  font-weight: normal;
 }
