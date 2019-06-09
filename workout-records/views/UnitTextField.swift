@@ -70,6 +70,7 @@ class UnitTextField: UITextField, UITextFieldDelegate {
         
         return newnum != nil
             && newnum! < UnitTextField.maxDistance
+            && newnum! > 0
             && !tooManyFractions
     }
 }

@@ -26,11 +26,11 @@ class mainView_workoutTests: XCTestCase {
         mainPage().createWorkout(activity: "Swimming (distance + energy)", (daysPast: 2, hour: 11, min: (11)), distance: 1.1, energy: 11)
         mainPage().assertWorkout(0, swimDate, "1 h   0 min", "1.1", "11")
         
-        mainPage().createWorkout(activity: "Cycling (distance + energy)", setNow: true, (daysPast: 1, hour: 12, min: (12)), duration: (0, 22), distance: 2.2)
-        mainPage().assertWorkout(0, cycleDate, "  22 min", "2.2", "0")
+        mainPage().createWorkout(activity: "Cycling (distance + energy)", setNow: true, (daysPast: 1, hour: 12, min: (12)), duration: (0, 22), distance: 2.2, energy: 0)
+        mainPage().assertWorkout(0, cycleDate, "  22 min", "2.2", nil)
         
         mainPage().createWorkout(activity: "Energy only", setNow: true, duration: (1, 11), energy: 33)
-        mainPage().assertWorkout(0, energyDate, "1 h  11 min", "0.0", "33")
+        mainPage().assertWorkout(0, energyDate, "1 h  11 min", nil, "33")
         
         XCTAssertEqual(mainPage().workoutCount(), 3)
     }

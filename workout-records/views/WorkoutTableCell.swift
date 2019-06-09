@@ -21,8 +21,7 @@ class WorkoutTableCell: UITableViewCell {
         super.awakeFromNib()
         distanceView.create([0.67, 0.72, 1])
         energyView.create([0.55, 0.6, 1])
-        distanceView.setUnitText(WRFormat.isMetric ? "km" : "mi", size: 11)
-        energyView.setUnitText("kcal", size: 11)
+        resetUnitLabels()
         dateLabel.accessibilityIdentifier = "date"
         durationLabel.accessibilityIdentifier = "duration"
         distanceView.setAccessibilityIdentifier("distance")
@@ -36,19 +35,39 @@ class WorkoutTableCell: UITableViewCell {
         lbl.text = text
     }
     
+    private func resetUnitLabels() {
+        distanceView.setUnitText(WRFormat.isMetric ? "km" : "mi")
+        energyView.setUnitText("kcal")
+    }
+    
     func setWorkout(_ workout: WorkoutData) {
         setTextOn(dateLabel, text: WRFormat.formatDate(workout.date), size: 16)
         setTextOn(durationLabel, text: WRFormat.formatDuration(workout.duration), size: 12)
-        distanceView.setText(WRFormat.formatDistance(workout.distance ?? 0.0))
-        energyView.setText(WRFormat.formatEnergy(workout.energy ?? 0))
         typeImage.image = UIImage(named: workout.activity.icon)
         if WRFormat.isDistanceActivity(workout.activity) && workout.energy != nil {
             subtypeImage.image = UIImage(named: WRFormat.energyActivity.icon)
         } else {
             subtypeImage.image = nil
         }
+        setUnitViews(workout)
         
         cellView.backgroundColor = WorkoutTableColors.defaultBackgroundColor
+    }
+    
+    func setUnitViews(_ workout: WorkoutData) {
+        resetUnitLabels()
+        if let distance = workout.distance {
+            distanceView.setText(WRFormat.formatDistance(distance))
+        } else {
+            distanceView.setText("")
+            distanceView.setUnitText("")
+        }
+        if let energy = workout.energy {
+            energyView.setText(WRFormat.formatEnergy(energy))
+        } else {
+            energyView.setText("")
+            energyView.setUnitText("")
+        }
     }
     
     func mark(forDeletion markForDeletion: Bool) {
@@ -87,7 +106,7 @@ class WorkoutUnitView: UIView {
         textLabel!.accessibilityIdentifier = identifier
     }
     
-    func setUnitText(_ text: String, size: Int) {
+    func setUnitText(_ text: String) {
         unitLabel!.text = text
     }
     

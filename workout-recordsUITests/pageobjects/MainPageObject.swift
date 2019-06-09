@@ -62,16 +62,24 @@ class MainPageObject {
     }
     
     static func formatDateHour(_ date: Date) -> String {
-        return String(WRFormat.formatDate(date).prefix(14))
+        return String(WRFormat.formatDate(date).prefix(13))
     }
     
     func assertWorkout(_ index: Int, _ datePrefix: String, _ duration: String,
-                       _ distance: String, _ energy: String) {
+                       _ distance: String?, _ energy: String?) {
         let wopo = WorkoutPageObject(getWorkoutCell(index))
         XCTAssertTrue(wopo.getDate().starts(with: datePrefix), "date mismatch (expected prefix / actual date)\n\(datePrefix)\n\(wopo.getDate())")
         XCTAssertEqual(wopo.getDuration(), duration)
-        XCTAssertEqual(wopo.getDistance(), distance)
-        XCTAssertEqual(wopo.getEnergy(), energy)
+        if let distance = distance {
+            XCTAssertEqual(wopo.getDistance(), distance)
+        } else {
+            XCTAssertFalse(wopo.distanceExists())
+        }
+        if let energy = energy {
+            XCTAssertEqual(wopo.getEnergy(), energy)
+        } else {
+            XCTAssertFalse(wopo.energyExists())
+        }
     }
     
     func getWorkout(_ index: Int) -> WorkoutPageObject {

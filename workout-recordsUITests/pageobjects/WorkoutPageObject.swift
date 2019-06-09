@@ -8,22 +8,34 @@ class WorkoutPageObject {
     }
     
     func getDate() -> String {
-        return getLabel("date")
+        return getLabelOf("date")
     }
     
     func getDuration() -> String {
-        return getLabel("duration")
+        return getLabelOf("duration")
     }
     
     func getDistance() -> String {
-        return getLabel("distance")
+        return getLabelOf("distance")
+    }
+    
+    func distanceExists() -> Bool {
+        return getTextElement("distance").exists
     }
     
     func getEnergy() -> String {
-        return getLabel("energy")
+        return getLabelOf("energy")
     }
     
-    private func getLabel(_ identifier: String) -> String {
-        return cell.staticTexts[identifier].label
+    func energyExists() -> Bool {
+        return getTextElement("energy").exists
+    }
+    
+    private func getLabelOf(_ identifier: String) -> String {
+        return getTextElement(identifier).label
+    }
+    
+    private func getTextElement(_ identifier: String) -> XCUIElement {
+        return cell.staticTexts[identifier]
     }
 }
