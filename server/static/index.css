@@ -1,7 +1,13 @@
+html {
+  background-color: #6b6b6b;
+}
+
 body {
   background-color: #fffdf2;
   font-family: 'Helvetica';
   overscroll-behavior: none;
+  max-width: 950px;
+  margin: 0 auto;
 }
 
 img {
