@@ -3,13 +3,15 @@ const PROD_ENV = 'PROD'
 
 const defaultEnv = {
   port: 9100,
-  interface: '0.0.0.0'
+  interface: '0.0.0.0',
+  staticOptions: {}
 }
 
 const prodEnv = {
   port: 8002,
   interface: '127.0.0.1',
-  requestslog: 'wr.requests.log'
+  requestslog: 'wr.requests.log',
+  staticOptions: { maxAge: 31536000 }
 }
 
 const message = environment => `using ${environment} environment configuration`
