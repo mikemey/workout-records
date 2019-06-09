@@ -5,6 +5,7 @@ const iosHealthUrl = 'x-apple-health://'
 const highlightCurrentPageLink = () => {
   const url = $(location).attr('href')
   const page = url.substring(url.lastIndexOf('/') + 1)
+  $(`#header a.nav-link[href='${page}']`).addClass('active')
   $(`#footer a[href='${page}']`).addClass('selected')
 }
 

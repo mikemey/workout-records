@@ -1,6 +1,7 @@
 body {
   background-color: #fffdf2;
   font-family: 'Helvetica';
+  overscroll-behavior: none;
 }
 
 img {
@@ -8,13 +9,17 @@ img {
   width: 310px;
 }
 
-.title {
+.app-title {
   font-weight: bold;
   letter-spacing: 2pt;
   background-color: #fdefdb;
 }
 
-h5.page-title {
+#header a.nav-link {
+  padding: 0.2rem 2rem;
+}
+
+.page-title {
   font-weight: bold;
   margin-top: 1rem;
   letter-spacing: 1.3pt;
@@ -24,7 +29,8 @@ h5.page-title {
   margin-top: 1rem;
 }
 
-.main-content>ul, .main-content > ol {
+.main-content>ul,
+.main-content>ol {
   padding-left: 1.25rem;
 }
 
@@ -38,6 +44,10 @@ h5.page-title {
   margin-top: 0.1rem;
   font-size: 90%;
   text-align: left;
+}
+
+ul>li {
+  margin-top: 0.8rem;
 }
 
 .card * button {
@@ -60,7 +70,20 @@ h5.page-title {
   font-size: 85%;
 }
 
+.site-content {
+  color: black;
+  background-color: darkgray;
+}
+
+.site-content a {
+  color: rgb(66, 126, 255);
+}
+
+
 a.selected {
-  color: white;
-  background-color: #ff8851;
+  color: gray;
+}
+
+.credit {
+  font-size: 70%;
 }
