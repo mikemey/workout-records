@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4N-i7-1Sw">
-                                <rect key="frame" x="0.0" y="0.0" width="277.5" height="65"/>
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="65"/>
                                 <color key="backgroundColor" red="0.90895463298955947" green="0.81213773733856143" blue="0.77073930136806446" alpha="0.33951400162337664" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="Tdr-Uk-KIT"/>
@@ -254,7 +254,7 @@
                                 <rect key="frame" x="7" y="65" width="341" height="427"/>
                                 <color key="backgroundColor" red="0.90895463298955947" green="0.81213773733856143" blue="0.77073930136806446" alpha="0.33951400162337664" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" id="5Dm-VI-Xbh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" focusStyle="custom" id="5Dm-VI-Xbh">
                                         <rect key="frame" x="0.0" y="55.5" width="341" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Dm-VI-Xbh" id="2cx-hQ-7ya">
@@ -274,10 +274,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oia-pm-4C3" userLabel="InfoView">
-                                <rect key="frame" x="277.5" y="0.0" width="77.5" height="65"/>
+                                <rect key="frame" x="290" y="0.0" width="65" height="65"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMD-L2-FjW" userLabel="InfoActivities Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="77.5" height="65"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                         <connections>
                                             <action selector="onInfoActivitiesClick:" destination="h4c-xA-oxm" eventType="touchUpInside" id="RS3-lk-NYr"/>
                                         </connections>
@@ -302,7 +302,7 @@
                             <constraint firstItem="bmd-JM-zJX" firstAttribute="leading" secondItem="lTW-C6-BzM" secondAttribute="leading" id="9hb-8o-8F6"/>
                             <constraint firstItem="TB4-yv-Gqh" firstAttribute="width" secondItem="bmd-JM-zJX" secondAttribute="width" id="E6b-wy-JZ2"/>
                             <constraint firstItem="1mp-NM-RIk" firstAttribute="top" secondItem="Oia-pm-4C3" secondAttribute="bottom" id="ERd-nl-9zL"/>
-                            <constraint firstItem="Oia-pm-4C3" firstAttribute="width" secondItem="t4N-i7-1Sw" secondAttribute="width" constant="-200" id="EuG-au-IvL"/>
+                            <constraint firstItem="Oia-pm-4C3" firstAttribute="width" secondItem="t4N-i7-1Sw" secondAttribute="width" constant="-225" id="EuG-au-IvL"/>
                             <constraint firstItem="t4N-i7-1Sw" firstAttribute="top" secondItem="utm-gL-9cS" secondAttribute="top" id="Hgt-d0-ZM9"/>
                             <constraint firstItem="TB4-yv-Gqh" firstAttribute="top" secondItem="1mp-NM-RIk" secondAttribute="bottom" id="MYQ-5X-tLK"/>
                             <constraint firstItem="bmd-JM-zJX" firstAttribute="leading" secondItem="lTW-C6-BzM" secondAttribute="leading" id="NAt-dV-Isq"/>

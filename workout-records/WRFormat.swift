@@ -165,6 +165,9 @@ class WRFormat {
         individualSportsActivities + teamSportsActivities + exerciseFitnessActivities + studioActivities +
         racketSportsActivities + outdoorActivities + snowIceSportsActivities + waterActivities + martialArtsActivities + otherActivities
     
+    static func activitiesIcon(_ activity: Activity) -> String {
+        return "\(activity.icon)-black"
+    }
     static func findActivity(with workoutType: HKWorkoutActivityType) -> Activity {
         return allWorkoutActivities.first(where: { activity in
             switch (activity.type) {

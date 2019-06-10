@@ -5,7 +5,6 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
     private static let defaultTextColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
     private static let tableBackgroundColor = UIColor(red: 255/255, green: 245/255, blue: 240/255, alpha: 1)
     private static let borderColor = UIColor(red: 105/255, green: 62/255, blue: 50/255, alpha: 1).cgColor
-    private static let selectionColor = UIColor(red: 128/255, green: 200/255, blue: 255/255, alpha: 1)
     
     @IBOutlet var selectButton: UIButton!
     @IBOutlet var activitiesTableView: UITableView!
@@ -80,8 +79,10 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
             cell = UITableViewCell(style: .value1, reuseIdentifier: "activityCell")
         }
         let activity = findActivity(at: indexPath)
-        cell?.imageView?.image = UIImage(named: "\(activity.icon)-black")
         setTextOn(cell!.textLabel!, text: activity.hrName, size: 14)
+        
+        let imgView = UIImageView(image: UIImage(named: WRFormat.activitiesIcon(activity)))
+        cell!.accessoryView = imgView
         cell!.backgroundColor = ActivitiesViewController.tableBackgroundColor
         return cell!
     }
@@ -90,7 +91,6 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         if let prevPath = previousIndexPath, prevPath == indexPath {
             return onSelectClick(self)
         }
-        tableView.cellForRow(at: indexPath)?.contentView.backgroundColor = ActivitiesViewController.selectionColor
         previousIndexPath = indexPath
         selectButton.isEnabled = true
         selectButton.alpha = 1
