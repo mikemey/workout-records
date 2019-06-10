@@ -50,6 +50,12 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         endView(with: nil)
     }
     
+    @IBAction func onInfoActivitiesClick(_ sender: Any) {
+        if let url = URL(string: WRFormat.activitiesURL) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
     private func endView(with activity: Activity?) {
         if let selectAction = selectAction {
             selectAction(activity)

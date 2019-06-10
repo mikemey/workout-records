@@ -23,6 +23,8 @@ struct Activity: Equatable {
 }
 
 class WRFormat {
+    static let documentationURL = "https://msm-itc.com/workout-records"
+    static let activitiesURL = "https://msm-itc.com/workout-records/activities"
     static let isMetric = Locale.current.usesMetricSystem
     static let dateTimeFormatter: DateFormatter = {
         let fmt = DateFormatter()

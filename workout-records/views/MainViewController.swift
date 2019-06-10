@@ -243,6 +243,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    @IBAction func onInfoButton(_ sender: Any) {
+        if let url = URL(string: WRFormat.documentationURL) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
     // ================= table-view methods ========================
     // =============================================================
 
