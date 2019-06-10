@@ -21,6 +21,7 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         W.singleActivities, W.individualSportsActivities, W.teamSportsActivities, W.exerciseFitnessActivities, W.studioActivities,
         W.racketSportsActivities, W.outdoorActivities, W.snowIceSportsActivities, W.waterActivities, W.martialArtsActivities, W.otherActivities
     ]
+    private let imageCache = ImageCache()
     
     private func findActivity(at index: IndexPath) -> Activity { return activities[index.section][index.row] }
     
@@ -35,6 +36,7 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         view.layer.shadowColor = ActivitiesViewController.borderColor
         view.layer.shadowOffset = CGSize(width: 0,height: 5)
         view.layer.shadowRadius = 12
+        imageCache.preload(activities.flatMap { $0 })
     }
     
     @IBAction func onBackToTopClick(_ sender: Any) {
@@ -81,8 +83,7 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         let activity = findActivity(at: indexPath)
         setTextOn(cell!.textLabel!, text: activity.hrName, size: 14)
         
-        let imgView = UIImageView(image: UIImage(named: WRFormat.activitiesIcon(activity)))
-        cell!.accessoryView = imgView
+        cell!.accessoryView = UIImageView(image: imageCache.getFor(activity))
         cell!.backgroundColor = ActivitiesViewController.tableBackgroundColor
         return cell!
     }
@@ -106,5 +107,19 @@ class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableV
         lbl.textAlignment = .center
         lbl.textColor = ActivitiesViewController.defaultTextColor
         lbl.text = text
+    }
+}
+
+class ImageCache {
+    var cache = [String: UIImage]()
+    
+    func preload(_ activities: [Activity]) {
+        for activity in activities {
+            self.cache[activity.icon] = UIImage(named: WRFormat.activitiesIcon(activity))
+        }
+    }
+    
+    func getFor(_ activity: Activity) -> UIImage {
+        return cache[activity.icon]!
     }
 }

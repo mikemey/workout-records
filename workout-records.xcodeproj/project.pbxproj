@@ -644,6 +644,7 @@
 			isa = PBXGroup;
 			children = (
 				4CB6090922905C6A00B683E0 /* Main.storyboard */,
+				4CB6090E22905C6A00B683E0 /* LaunchScreen.storyboard */,
 				4CAEDB8D229063B6007D07B2 /* WorkoutTableCell.xib */,
 				4CAEDB8F229063B6007D07B2 /* ShowMoreTableCell.xib */,
 				4CD1FD402290A2F100EFEF81 /* views */,
@@ -653,7 +654,6 @@
 				4CAEDB90229063B6007D07B2 /* WRFormat.swift */,
 				4CB6093E22905D1700B683E0 /* workout-records.entitlements */,
 				4CB6090C22905C6A00B683E0 /* Assets.xcassets */,
-				4CB6090E22905C6A00B683E0 /* LaunchScreen.storyboard */,
 				4CB6091122905C6A00B683E0 /* Info.plist */,
 			);
 			path = "workout-records";

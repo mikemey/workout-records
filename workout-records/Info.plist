@@ -26,6 +26,10 @@
 	<string>${ADMOB_APP_ID}</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Allow Workout Records to read workouts from the Health application.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Allow Workout Records to write workouts to the Health application.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -46,9 +50,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSHealthShareUsageDescription</key>
-	<string>Allow Workout Records to read workouts from the Health application.</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Allow Workout Records to write workouts to the Health application.</string>
 </dict>
 </plist>
