@@ -10,7 +10,7 @@ const defaultEnv = {
 const prodEnv = {
   port: 8002,
   interface: '127.0.0.1',
-  requestslog: 'wr.requests.log',
+  requestslog: 'wr-server.requests.log',
   staticOptions: { maxAge: 31536000 }
 }
 
