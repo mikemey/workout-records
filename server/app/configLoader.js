@@ -11,7 +11,7 @@ const prodEnv = {
   port: 8002,
   interface: '127.0.0.1',
   requestslog: 'wr-server.requests.log',
-  staticOptions: { maxAge: 31536000 }
+  staticOptions: { maxAge: 86400000 }
 }
 
 const message = environment => `using ${environment} environment configuration`
