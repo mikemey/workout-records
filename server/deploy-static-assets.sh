@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [[ ! ${WR_SERVER_STATIC_DIR} ]]; then
     echo "Environment variable '\$WR_SERVER_STATIC_DIR' not set!"
     exit
