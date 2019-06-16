@@ -18,5 +18,8 @@ echo -e "\nadd line to apache2 configuration:"
 printf "CacheFile"
 while read -r COPY_OUTPUT; do
   COPY_TARGET="${COPY_OUTPUT##*-> }"
+  COPY_TARGET="${COPY_TARGET//\'/}"
   [[ -f "$COPY_TARGET" ]] && printf " $COPY_TARGET"
 done <<< "$OUTPUT"
+printf "\n"
+
