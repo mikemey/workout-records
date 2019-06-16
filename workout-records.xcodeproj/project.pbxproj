@@ -16,6 +16,7 @@
 		4C43820D22929B89009613C6 /* WRFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB90229063B6007D07B2 /* WRFormat.swift */; };
 		4C4382122292A15D009613C6 /* MainPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382112292A15D009613C6 /* MainPageObject.swift */; };
 		4C4382142292CAF8009613C6 /* WorkoutPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */; };
+		4C6B0A0722B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C6B0A0622B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle */; };
 		4C942B1422A3DBFB002778A6 /* icon-bowling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1322A3DBFA002778A6 /* icon-bowling.png */; };
 		4C942B1C22A3E2ED002778A6 /* icon-individual-cycling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */; };
 		4C942B1E22A3E3D0002778A6 /* icon-energy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1D22A3E3D0002778A6 /* icon-energy.png */; };
@@ -186,6 +187,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4C6B0A0222B679EF00D3F9F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5A92D29F2076961800FFE51D;
+			remoteInfo = PersonalizedAdConsent;
+		};
+		4C6B0A0422B67A4700D3F9F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5A92D29E2076961800FFE51D;
+			remoteInfo = PersonalizedAdConsent;
+		};
 		4CB6092222905C6B00B683E0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CB608FA22905C6A00B683E0 /* Project object */;
@@ -202,6 +217,8 @@
 		4C38B77C2299984000A417FF /* UnitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTextField.swift; sourceTree = "<group>"; };
 		4C4382112292A15D009613C6 /* MainPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageObject.swift; sourceTree = "<group>"; };
 		4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageObject.swift; sourceTree = "<group>"; };
+		4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PersonalizedAdConsent.xcodeproj; path = Frameworks/PersonalizedAdConsent/PersonalizedAdConsent.xcodeproj; sourceTree = "<group>"; };
+		4C6B0A0622B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PersonalizedAdConsent.bundle; path = Frameworks/PersonalizedAdConsent/PersonalizedAdConsent/PersonalizedAdConsent.bundle; sourceTree = "<group>"; };
 		4C942B1322A3DBFA002778A6 /* icon-bowling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-bowling.png"; sourceTree = "<group>"; };
 		4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-cycling.png"; sourceTree = "<group>"; };
 		4C942B1D22A3E3D0002778A6 /* icon-energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-energy.png"; sourceTree = "<group>"; };
@@ -406,6 +423,14 @@
 				4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */,
 			);
 			path = pageobjects;
+			sourceTree = "<group>";
+		};
+		4C6B09FF22B679EF00D3F9F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C6B0A0322B679EF00D3F9F0 /* PersonalizedAdConsent.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		4C942B0922A3B70D002778A6 /* icons-individual-sports */ = {
@@ -623,6 +648,7 @@
 		4CB608F922905C6A00B683E0 = {
 			isa = PBXGroup;
 			children = (
+				4C6B0A0622B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle */,
 				4CD1FD532290A38700EFEF81 /* Images */,
 				4CB6090422905C6A00B683E0 /* workout-records */,
 				4CB6092422905C6B00B683E0 /* workout-recordsUITests */,
@@ -673,6 +699,7 @@
 		4CB6093322905CCE00B683E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */,
 				4CB6094022905E6B00B683E0 /* GoogleAppMeasurement.framework */,
 				4CB6094122905E6B00B683E0 /* GoogleMobileAds.framework */,
 				4CB6093F22905E6B00B683E0 /* GoogleUtilities.framework */,
@@ -733,6 +760,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4C6B0A0522B67A4700D3F9F0 /* PBXTargetDependency */,
 			);
 			name = "workout-records";
 			productName = "workout-records";
@@ -792,6 +820,12 @@
 			mainGroup = 4CB608F922905C6A00B683E0;
 			productRefGroup = 4CB6090322905C6A00B683E0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4C6B09FF22B679EF00D3F9F0 /* Products */;
+					ProjectRef = 4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4CB6090122905C6A00B683E0 /* workout-records */,
@@ -799,6 +833,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4C6B0A0322B679EF00D3F9F0 /* PersonalizedAdConsent.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PersonalizedAdConsent.framework;
+			remoteRef = 4C6B0A0222B679EF00D3F9F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4CB6090022905C6A00B683E0 /* Resources */ = {
@@ -874,6 +918,7 @@
 				4C942BB822A4675C002778A6 /* icon-bench-press-black.png in Resources */,
 				4C2F7D10229AF56900A09FBC /* icon-archery.png in Resources */,
 				4C942C0C22A471DC002778A6 /* icon-play-black.png in Resources */,
+				4C6B0A0722B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle in Resources */,
 				4C942BA722A44A7A002778A6 /* icon-boxing.png in Resources */,
 				4C942C4E22A47214002778A6 /* icon-soccer-black.png in Resources */,
 				4C942BDD22A471AB002778A6 /* icon-fencing-black.png in Resources */,
@@ -1006,6 +1051,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4C6B0A0522B67A4700D3F9F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PersonalizedAdConsent;
+			targetProxy = 4C6B0A0422B67A4700D3F9F0 /* PBXContainerItemProxy */;
+		};
 		4CB6092322905C6B00B683E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4CB6090122905C6A00B683E0 /* workout-records */;
@@ -1153,6 +1203,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADMOB_APP_ID = "ca-app-pub-3940256099942544~1458002511";
+				ADMOB_PUBLISHER_ID = "pub-5765803665103285";
 				ADMOB_UNIT_ID = "ca-app-pub-3940256099942544/2934735716";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workout-records/workout-records.entitlements";
@@ -1180,6 +1231,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ADMOB_APP_ID = "";
+				ADMOB_PUBLISHER_ID = "";
 				ADMOB_UNIT_ID = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workout-records/workout-records.entitlements";
