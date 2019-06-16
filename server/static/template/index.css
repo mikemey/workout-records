@@ -10,6 +10,10 @@ body {
   margin: 0 auto;
 }
 
+p, li {
+  color: rgb(90, 90, 90);
+}
+
 img {
   margin-bottom: 16px;
   width: 310px;
