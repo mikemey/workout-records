@@ -18,16 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading activites..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-7T-huo">
-                                <rect key="frame" x="81" y="321.5" width="213" height="24.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading activites ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4N-7T-huo">
+                                <rect key="frame" x="81" y="441.5" width="213.5" height="24.5"/>
                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
-                                <color key="textColor" red="0.25992451309999998" green="0.25833138480000001" blue="0.26659660530000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.534935309281515" green="0.53165658589478404" blue="0.54866674869826848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99805980920791626" green="0.76858395986148309" blue="0.61200236698443233" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="B4N-7T-huo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="KiP-ZX-B0B"/>
+                            <constraint firstItem="B4N-7T-huo" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="120" id="KiP-ZX-B0B"/>
                             <constraint firstItem="B4N-7T-huo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UdX-pj-m2C"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
