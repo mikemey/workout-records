@@ -10,12 +10,12 @@ Create a workout activity with separate records for the distance covered and act
 3. Energy-only workout
 Create a single record for your active energy burned without a specific activity type.
 
->>> Get started
+• Get started
 
 To allow Workout Records to save and read your health records, select either "Turn All Categories On" or choose the permissions in your iOS Health App.
 You can change these permissions anytime in iOS Settings > Privacy > Health.
 
->>> 1. Combined workout
+• Combined workout
 
 Tap the activities field on top of the screen to show all available activities. For combined workouts select an activity from one of the "Workout" sections.
 
@@ -23,7 +23,7 @@ Add the start date and duration of your workout - you can also add the distance 
 
 By default Workout Records will show your workouts for the past 7 days. To list previous records, tap "show more".
 
->>> 2. Individual workouts
+• Individual workouts
 
 Tap the activities field on top of the screen to show all available activities. If you like to record your workout as individual records for the distance and energy, select an activity from section "Record individual activities".
 
@@ -31,7 +31,7 @@ Set the start date and duration of your workout and add the distance and/or acti
 
 By default Workout Records will show your workouts for the past 7 days. To list previous records, tap "show more".
 
->>> 3. Energy-only workout
+• Energy-only workout
 
 Tap the activities field on top of the screen to show all available Activities. You can choose to save only your active energy burned by selecting "Energy-only".
 
@@ -39,11 +39,11 @@ Add the start date, duration and active energy burned of your training and tap "
 
 By default Workout Records will show your workouts for the past 7 days. To list previous records, tap "show more".
 
->>> Delete workout
+• Delete workout
 
 To delete a workout in Workout Records and your iOS Health App, swipe left on the entry in your workout list and tap "Delete" to confirm.
 
->>> Known issues
+• Known issues
 
 - Duration picker: have to pick a duration twice to update field (default duration-picker bug)
 
