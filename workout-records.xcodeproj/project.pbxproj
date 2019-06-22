@@ -178,7 +178,6 @@
 		4CD1FD4B2290A34C00EFEF81 /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD422290A34C00EFEF81 /* ActivitiesViewController.swift */; };
 		4CD1FD4C2290A34C00EFEF81 /* ShowMoreTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD432290A34C00EFEF81 /* ShowMoreTableCell.swift */; };
 		4CD1FD4D2290A34C00EFEF81 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD442290A34C00EFEF81 /* AlertBuilder.swift */; };
-		4CD1FD4E2290A34C00EFEF81 /* TypePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD452290A34C00EFEF81 /* TypePickerView.swift */; };
 		4CD1FD4F2290A34C00EFEF81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD462290A34C00EFEF81 /* MainViewController.swift */; };
 		4CD1FD502290A34C00EFEF81 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD472290A34C00EFEF81 /* DatePickerController.swift */; };
 		4CD1FD512290A34C00EFEF81 /* ToolbarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD482290A34C00EFEF81 /* ToolbarBuilder.swift */; };
@@ -385,7 +384,6 @@
 		4CD1FD422290A34C00EFEF81 /* ActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		4CD1FD432290A34C00EFEF81 /* ShowMoreTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMoreTableCell.swift; sourceTree = "<group>"; };
 		4CD1FD442290A34C00EFEF81 /* AlertBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
-		4CD1FD452290A34C00EFEF81 /* TypePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypePickerView.swift; sourceTree = "<group>"; };
 		4CD1FD462290A34C00EFEF81 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4CD1FD472290A34C00EFEF81 /* DatePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		4CD1FD482290A34C00EFEF81 /* ToolbarBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarBuilder.swift; sourceTree = "<group>"; };
@@ -716,7 +714,6 @@
 				4CD1FD422290A34C00EFEF81 /* ActivitiesViewController.swift */,
 				4CD1FD442290A34C00EFEF81 /* AlertBuilder.swift */,
 				4CD1FD482290A34C00EFEF81 /* ToolbarBuilder.swift */,
-				4CD1FD452290A34C00EFEF81 /* TypePickerView.swift */,
 				4CD1FD472290A34C00EFEF81 /* DatePickerController.swift */,
 				4CD1FD412290A34C00EFEF81 /* DurationPickerController.swift */,
 				4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */,
@@ -1022,7 +1019,6 @@
 				4CAEDB91229063B6007D07B2 /* WorkoutData.swift in Sources */,
 				4CAEDB98229063C5007D07B2 /* HealthKitManager.swift in Sources */,
 				4CD1FD512290A34C00EFEF81 /* ToolbarBuilder.swift in Sources */,
-				4CD1FD4E2290A34C00EFEF81 /* TypePickerView.swift in Sources */,
 				4CD1FD4D2290A34C00EFEF81 /* AlertBuilder.swift in Sources */,
 				4CD1FD522290A34C00EFEF81 /* WorkoutTableCell.swift in Sources */,
 				4C38B77D2299984000A417FF /* UnitTextField.swift in Sources */,
