@@ -19,7 +19,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var queryFromDate = Date()
     private var selectedActivity: Activity = WRFormat.singleActivities[0]
     private var selectedDate = Date()
-    private var selectedDuration: TimeInterval = 0.0
+    private var selectedDuration: TimeInterval = 0
     private var tapGesture: UITapGestureRecognizer? = nil
     private let transitionDuration = 0.2
     private let recBtnDefaultInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
