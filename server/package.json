@@ -1,6 +1,6 @@
 {
   "name": "workout-records",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Workout Records help page",
   "engines": {
     "node": "10"
@@ -9,25 +9,36 @@
     "prestart": "npm install",
     "start": "node index.js",
     "production": "NODE_ENV=PROD npm start",
-    "lint": "standard && eslint --ignore-path .gitignore ."
+    "lint": "standard && eslint --ignore-path ../.gitignore .",
+    "be-test": "mocha 'test/**/**.spec.js' -r chai/register-should",
+    "test": "npm run lint -s && npm run be-test -s",
+    "test-watch": "nodemon -x 'npm run be-test -s'"
   },
   "repository": {},
   "author": "mikemey",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
+    "fs-extra": "^8.0.1",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "eslint": "^5.11.1",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
     "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-mocha": "^5.3.0",
     "eslint-plugin-standard": "^4.0.0",
-    "standard": "^12.0.1"
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
+    "standard": "^12.0.1",
+    "supertest": "^4.0.2"
   },
   "standard": {
-    "env": [],
+    "env": [
+      "mocha"
+    ],
     "globals": [
       "$"
     ]

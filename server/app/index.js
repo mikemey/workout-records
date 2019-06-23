@@ -1,11 +1,13 @@
 const express = require('express')
 
 const { createRequestLogger } = require('./requestsLogger')
+const { createMetadataRouter } = require('./metadata')
 
 const createServer = (config, logger) => new Promise((resolve, reject) => {
   const app = express()
   app.use(createRequestLogger(config))
-  app.use('/workout-records', express.static('static/', config.staticOptions))
+  app.use(`${config.serverPath}`, express.static('static/', config.staticOptions))
+  app.use(`${config.serverPath}/api`, createMetadataRouter(config, logger))
 
   const server = app.listen(config.port, config.interface, () => {
     logger.info(`Started on port ${server.address().port}`)

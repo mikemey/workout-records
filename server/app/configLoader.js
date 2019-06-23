@@ -4,7 +4,8 @@ const PROD_ENV = 'PROD'
 const defaultEnv = {
   port: 9100,
   interface: '0.0.0.0',
-  staticOptions: {}
+  staticOptions: {},
+  serverPath: '/workout-records'
 }
 
 const prodEnv = {
