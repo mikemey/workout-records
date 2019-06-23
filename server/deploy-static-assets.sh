@@ -14,7 +14,7 @@ OUTPUT+="$(cp -v -r static/img $WR_SERVER_STATIC_DIR)"
 OUTPUT+="$(cp -v -r static/template $WR_SERVER_STATIC_DIR)"
 OUTPUT+="$(cp -v -r static/vendor $WR_SERVER_STATIC_DIR)"
 
-echo -e "\nadd line to apache2 configuration:"
+echo -e "\nadd line to /etc/apache2/apache2.conf configuration:"
 printf "CacheFile"
 while read -r COPY_OUTPUT; do
   COPY_TARGET="${COPY_OUTPUT##*-> }"
