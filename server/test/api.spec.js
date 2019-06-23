@@ -5,7 +5,7 @@ const TestServer = require('./utils/testServer')
 describe('api metadata endpoints', () => {
   const server = TestServer()
 
-  const requestApi = () => server.request().get(`${server.config.serverPath}/api`)
+  const requestApi = () => server.request().get(`${server.config.serverPath}/api/version`)
   const requestMetadata = () => server.request().get(`${server.config.serverPath}/api/metadata`)
 
   before(() => server.start())

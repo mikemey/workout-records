@@ -10,7 +10,7 @@ const createMetadataRouter = (config, logger) => {
   const version = `v${pjson.version} (${now})`
   logger.info(`server version: ${version}`)
 
-  router.get('/', (_, res) => res.status(200).send(version))
+  router.get('/version', (_, res) => res.status(200).send(version))
 
   router.get('/metadata', (_, res) => {
     const metadata = {
