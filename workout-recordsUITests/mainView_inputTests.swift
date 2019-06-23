@@ -15,26 +15,39 @@ class mainView_inputTests: XCTestCase {
         checkRecordButton_initialState()
         allowOnlyOneComma_in_distanceField()
         allowOnlyUpToMaximum_in_energyField()
+        checkDurationField()
         checkFields_when_singleDistanceActivity()
         checkFields_when_energyOnlyActivity()
         checkFields_when_workoutActivity()
     }
     
-    func checkRecordButton_initialState() {
+    private func checkRecordButton_initialState() {
         XCTAssertFalse(mainPage().getRecordButton().isEnabled)
     }
     
-    func allowOnlyOneComma_in_distanceField() {
+    private func allowOnlyOneComma_in_distanceField() {
         mainPage().sendToDistanceField(["1", ".", "1", "."])
         XCTAssertEqual(mainPage().getDistanceValue(), "1.1")
     }
     
-    func allowOnlyUpToMaximum_in_energyField() {
+    private func allowOnlyUpToMaximum_in_energyField() {
         mainPage().sendToEnergyField(["1", "0", "1", "0", "0"])
         XCTAssertEqual(mainPage().getEnergyValue(), "1010")
     }
     
-    func checkFields_when_singleDistanceActivity() {
+    private func checkDurationField() {
+        let expectedDefaultDuration = "1 h   0 min"
+        XCTAssertEqual(mainPage().getDurationValue(), expectedDefaultDuration)
+        mainPage().getDurationField().tap()
+        mainPage().setDurationHours(0)
+        XCTAssertEqual(mainPage().getDurationValue(), "   0 min")
+        mainPage().setDurationHours(2)
+        mainPage().setDurationMinutes(55)
+        mainPage().tapDone()
+        XCTAssertEqual(mainPage().getDurationValue(), "2 h  55 min")
+    }
+    
+    private func checkFields_when_singleDistanceActivity() {
         mainPage().selectActivity("Walking, Running (distance + energy)")
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
         mainPage().clearDistanceField()
@@ -48,7 +61,7 @@ class mainView_inputTests: XCTestCase {
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
     }
     
-    func checkFields_when_energyOnlyActivity() {
+    private func checkFields_when_energyOnlyActivity() {
         mainPage().selectActivity("Energy only")
         XCTAssertFalse(mainPage().getRecordButton().isEnabled)
         XCTAssertFalse(mainPage().getDistanceField().isEnabled)
@@ -56,7 +69,7 @@ class mainView_inputTests: XCTestCase {
         XCTAssertTrue(mainPage().getRecordButton().isEnabled)
     }
     
-    func checkFields_when_workoutActivity() {
+    private func checkFields_when_workoutActivity() {
         mainPage().selectActivity("Strength training (free/body weights)")
         mainPage().clearDistanceField()
         mainPage().clearEnergyField()

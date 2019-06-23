@@ -53,6 +53,7 @@ class MainPageObject {
     private func getActivityButton() -> XCUIElement { return app.buttons["activity"] }
     private func getActivitySelect() -> XCUIElement { return app.buttons["activity_select"] }
     private func getActivityClose() -> XCUIElement { return app.buttons["activity_close"] }
+    func getDurationField() -> XCUIElement { return app.textFields["duration"] }
     func getDistanceField() -> XCUIElement { return app.textFields["distance"] }
     func getEnergyField() -> XCUIElement { return app.textFields["energy"] }
     func getRecordButton() -> XCUIElement { return app.buttons["Record"] }
@@ -106,14 +107,14 @@ class MainPageObject {
             app.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: String(date.min))
             tapDone()
         }
-
+        
         if let duration = duration {
-            app.textFields["duration"].tap()
-            app.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: String(duration.0))
-            app.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: String(duration.1))
+            getDurationField().tap()
+            setDurationHours(duration.0)
+            setDurationMinutes(duration.1)
             tapDone()
         }
-
+        
         let distanceField = getDistanceField()
         if distanceField.isEnabled {
             if let distance = distance {
@@ -123,7 +124,7 @@ class MainPageObject {
             }
             tapDone()
         }
-
+        
         let energyField = getEnergyField()
         if energyField.isEnabled {
             if let energy = energy {
@@ -133,7 +134,7 @@ class MainPageObject {
             }
             tapDone()
         }
-
+        
         getRecordButton().tap()
         let recBtnEnabled = test.expectation(for: enabled, evaluatedWith: app.buttons["Record"])
         test.wait(for: [ recBtnEnabled ], timeout: 5)
@@ -178,8 +179,16 @@ class MainPageObject {
         waitFor(alertTitle: deleteWorkoutTitle, to: notExist)
     }
     
-    func showMore() {
-        app.buttons["showMore"].tap()
+    func getDurationValue() -> String {
+        return getDurationField().value as! String
+    }
+    
+    func setDurationHours(_ hours: Int) {
+        app.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: String(hours))
+    }
+    
+    func setDurationMinutes(_ minutes: Int) {
+        app.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: String(minutes))
     }
     
     func getDistanceValue() -> String {
@@ -206,6 +215,12 @@ class MainPageObject {
         getEnergyField().clear()
     }
     
+    func showMore() {
+        app.buttons["showMore"].tap()
+    }
+    
+    func tapDone() { app.buttons["Done"].tap() }
+    
     private func keysIntoField(_ field: XCUIElement, keys: [String]) {
         field.tap()
         for key in keys {
@@ -218,7 +233,6 @@ class MainPageObject {
         return app.cells.element(matching: .cell, identifier: "WorkoutTableCell_\(index)")
     }
     
-    private func tapDone() { app.buttons["Done"].tap() }
     private func getAlert(_ title: String) -> XCUIElement { return app.alerts[title] }
     
     private func waitFor(alertTitle title: String, to predicate: NSPredicate) {
