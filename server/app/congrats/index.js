@@ -2,12 +2,20 @@ const express = require('express')
 const moment = require('moment')
 const mongoConn = require('../utils/mongoConnection')
 
-const createCongratulationsRouter = (config, logger) => {
+const createCongratulationsRouter = () => {
   const router = express.Router()
   const congratsRepo = CongratulationsRepo()
 
-  router.get('/', (_, res) => congratsRepo.getRandomMessage()
-    .then(message => res.status(200).send(message))
+  router.get('/', (req, res) => congratsRepo.getRandomMessage()
+    .then(message => {
+      const msgRequest = {
+        m: message.m,
+        ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+        date: moment.utc().toDate()
+      }
+      return congratsRepo.storeMessageRequest(msgRequest)
+        .then(() => res.status(200).send(message))
+    })
   )
 
   return router
@@ -15,6 +23,7 @@ const createCongratulationsRouter = (config, logger) => {
 
 const CongratulationsRepo = () => {
   const congratsCollection = mongoConn.collection(mongoConn.congratsCollectionName)
+  const congratsRequestCollection = mongoConn.collection(mongoConn.congratsReguestCollectionName)
 
   const getRandomMessage = () => congratsCollection
     .aggregate([
@@ -24,8 +33,11 @@ const CongratulationsRepo = () => {
     .toArray()
     .then(docs => docs[0])
 
+  const storeMessageRequest = messageRequest => congratsRequestCollection.insertOne(messageRequest)
+
   return {
-    getRandomMessage
+    getRandomMessage,
+    storeMessageRequest
   }
 }
 

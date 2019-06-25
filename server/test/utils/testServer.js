@@ -50,16 +50,21 @@ const TestServer = () => {
 }
 
 const DatabaseHelper = () => {
+  const dropDatabase = () => mongoConn.dropDatabase()
   const dbCollection = collectionName => mongoConn.collection(collectionName)
   const insertData = (collectionName, data) => dbCollection(collectionName).insertMany(data)
+  const getData = (collectionName, find) => dbCollection(collectionName).find(find).toArray()
 
   const insertCongratulations = data => insertData(mongoConn.congratsCollectionName, data)
 
-  const dropDatabase = () => mongoConn.dropDatabase()
+  const getCongratsRequests = () => getData(mongoConn.congratsReguestCollectionName)
+  const deleteCongratsRequests = () => dbCollection(mongoConn.congratsReguestCollectionName).drop()
 
   return {
+    dropDatabase,
     insertCongratulations,
-    dropDatabase
+    getCongratsRequests,
+    deleteCongratsRequests
   }
 }
 
