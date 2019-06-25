@@ -2,12 +2,13 @@ const express = require('express')
 const moment = require('moment')
 const mongoConn = require('../utils/mongoConnection')
 
-const createCongratulationsRouter = () => {
+const createCongratulationsRouter = logger => {
   const router = express.Router()
   const congratsRepo = CongratulationsRepo()
 
   router.get('/', (req, res) => congratsRepo.getRandomMessage()
     .then(message => {
+      if (!message) return res.status(501).send()
       const msgRequest = {
         m: message.m,
         ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
@@ -15,6 +16,10 @@ const createCongratulationsRouter = () => {
       }
       return congratsRepo.storeMessageRequest(msgRequest)
         .then(() => res.status(200).send(message))
+    })
+    .catch(error => {
+      logger.error('error getting congratulations message', error)
+      res.status(500).send('server error')
     })
   )
 

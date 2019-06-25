@@ -11,7 +11,7 @@ const createServer = (config, logger) => mongoConn.connect(config, logger)
     app.use(createRequestLogger(config))
     app.use(`${config.serverPath}`, express.static('static/', config.staticOptions))
     app.use(`${config.serverPath}/api`, createMetadataRouter(config, logger))
-    app.use(`${config.serverPath}/api/congrats`, createCongratulationsRouter())
+    app.use(`${config.serverPath}/api/congrats`, createCongratulationsRouter(logger))
 
     const server = app.listen(config.port, config.interface, () => {
       logger.info(`Started on port ${server.address().port}`)

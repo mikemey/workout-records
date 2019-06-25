@@ -56,6 +56,7 @@ const DatabaseHelper = () => {
   const getData = (collectionName, find) => dbCollection(collectionName).find(find).toArray()
 
   const insertCongratulations = data => insertData(mongoConn.congratsCollectionName, data)
+  const deleteCongratulations = () => dbCollection(mongoConn.congratsCollectionName).drop()
 
   const getCongratsRequests = () => getData(mongoConn.congratsReguestCollectionName)
   const deleteCongratsRequests = () => dbCollection(mongoConn.congratsReguestCollectionName).drop()
@@ -63,6 +64,7 @@ const DatabaseHelper = () => {
   return {
     dropDatabase,
     insertCongratulations,
+    deleteCongratulations,
     getCongratsRequests,
     deleteCongratsRequests
   }

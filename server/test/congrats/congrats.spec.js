@@ -14,10 +14,11 @@ describe('congratulations message', () => {
     { m: 'message #4' }
   ]
 
-  before(() => server.start()
-    .then(() => server.dropDatabase())
+  before(() => server.start().then(resetTestdata))
+
+  const resetTestdata = () => server.dropDatabase()
     .then(() => server.insertCongratulations(testData))
-  )
+
   after(() => server.stop())
 
   it('returns one random message', () => requestCongratsMessage()
@@ -27,9 +28,13 @@ describe('congratulations message', () => {
     })
   )
 
+  it('returns 501 when no data', () => server.deleteCongratulations()
+    .then(() => requestCongratsMessage().expect(501))
+  )
+
   it('stores message returned', () => {
     let congratsMessage = ''
-    return server.deleteCongratsRequests()
+    return resetTestdata()
       .then(() => requestCongratsMessage().expect(200))
       .then(response => {
         congratsMessage = response.body.m
