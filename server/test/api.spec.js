@@ -8,7 +8,12 @@ describe('api metadata endpoints', () => {
   const requestApi = () => server.request().get(`${server.config.serverPath}/api/version`)
   const requestMetadata = () => server.request().get(`${server.config.serverPath}/api/metadata`)
 
-  before(() => server.start())
+  const testRequests = [{ some: 'testdata' }, { some: 'more' }, { some: 'even more' }]
+
+  before(() => server.start().then(server.dropDatabase)
+    .then(() => server.insertCongratsRequests(testRequests))
+  )
+
   after(() => server.stop())
 
   describe('api version', () => {
@@ -25,7 +30,7 @@ describe('api metadata endpoints', () => {
   })
 
   describe('metadata', () => {
-    it('responds with size of requests-log-file', () => {
+    it('responds with size of requests-log-file and congrats-requests count', () => {
       const fileData = 'request \n request \n request \n request'
       fsextra.writeFileSync(server.config.requestslog, fileData)
       return requestMetadata()
@@ -33,6 +38,7 @@ describe('api metadata endpoints', () => {
         .then(response => {
           const metadata = response.body
           metadata.requestLogSize.should.equal(fileData.length)
+          metadata.congratsMessages.should.equal(testRequests.length)
         })
     })
 

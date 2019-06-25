@@ -1,7 +1,7 @@
 const TestServer = require('../utils/testServer')
 const should = require('chai').should()
 
-describe('congratulations message', () => {
+describe('congratulations message endpoint', () => {
   const server = TestServer()
   const testIp = '123.123.123.123'
   const requestCongratsMessage = () => server.request().get(`${server.config.serverPath}/api/congrats`)
@@ -14,37 +14,38 @@ describe('congratulations message', () => {
     { m: 'message #4' }
   ]
 
-  before(() => server.start().then(resetTestdata))
-
-  const resetTestdata = () => server.dropDatabase()
+  before(() => server.start())
+  beforeEach(() => server.dropDatabase()
     .then(() => server.insertCongratulations(testData))
+  )
 
   after(() => server.stop())
 
-  it('returns one random message', () => requestCongratsMessage()
-    .expect(200)
-    .then(response => {
-      should.exist(testData.find(dbTestMsg => dbTestMsg.m === response.body.m))
-    })
-  )
-
-  it('returns 501 when no data', () => server.deleteCongratulations()
-    .then(() => requestCongratsMessage().expect(501))
-  )
-
-  it('stores message returned', () => {
-    let congratsMessage = ''
-    return resetTestdata()
-      .then(() => requestCongratsMessage().expect(200))
+  describe('responds', () => {
+    it('with one random message', () => requestCongratsMessage()
+      .expect(200)
       .then(response => {
-        congratsMessage = response.body.m
-        return server.getCongratsRequests()
+        should.exist(testData.find(dbTestMsg => dbTestMsg.m === response.body.m))
       })
-      .then(requests => {
-        requests.should.have.length(1)
-        requests[0].m.should.equal(congratsMessage)
-        requests[0].ip.should.equal(testIp)
-        should.exist(requests[0].date)
-      })
+    )
+
+    it('with 501 when no data', () => server.deleteCongratulations()
+      .then(() => requestCongratsMessage().expect(501))
+    )
+
+    it('and stores message returned', () => {
+      let congratsMessage = ''
+      return requestCongratsMessage().expect(200)
+        .then(response => {
+          congratsMessage = response.body.m
+          return server.getCongratsRequests()
+        })
+        .then(requests => {
+          requests.should.have.length(1)
+          requests[0].m.should.equal(congratsMessage)
+          requests[0].ip.should.equal(testIp)
+          should.exist(requests[0].date)
+        })
+    })
   })
 })
