@@ -18,7 +18,7 @@ const defaultIndexOptions = { background: true, unique: true }
 const ALL_INDEX_SPECS = [{
   collection: congratsReguestCollectionName,
   fields: { ip: 1 },
-  options: { name: 'ix_ip' }
+  options: { name: 'ix_ip', unique: false }
 }]
 
 const connection = {
