@@ -3,6 +3,7 @@ const express = require('express')
 const mongoConn = require('./utils/mongoConnection')
 const { createRequestLogger } = require('./requestsLogger')
 const { createMetadataRouter } = require('./metadata')
+const { createCongratulationsRouter } = require('./congrats')
 
 const createServer = (config, logger) => mongoConn.connect(config, logger)
   .then(() => new Promise((resolve, reject) => {
@@ -10,10 +11,7 @@ const createServer = (config, logger) => mongoConn.connect(config, logger)
     app.use(createRequestLogger(config))
     app.use(`${config.serverPath}`, express.static('static/', config.staticOptions))
     app.use(`${config.serverPath}/api`, createMetadataRouter(config, logger))
-    app.use(`${config.serverPath}/api/congrats`, (request, response) => {
-      console.log('COOOOOOOOOOOOOOOONNNNNNNGGGGRRRAAAAATTTTUUUUUULLLLAAAAAITIOONSSSSSS')
-      response.status(200).send('heyho')
-    })
+    app.use(`${config.serverPath}/api/congrats`, createCongratulationsRouter(config, logger))
 
     const server = app.listen(config.port, config.interface, () => {
       logger.info(`Started on port ${server.address().port}`)

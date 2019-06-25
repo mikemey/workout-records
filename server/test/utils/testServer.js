@@ -55,8 +55,11 @@ const DatabaseHelper = () => {
 
   const insertCongratulations = data => insertData(mongoConn.congratsCollectionName, data)
 
+  const dropDatabase = () => mongoConn.dropDatabase()
+
   return {
-    insertCongratulations
+    insertCongratulations,
+    dropDatabase
   }
 }
 
