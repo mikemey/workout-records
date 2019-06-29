@@ -173,6 +173,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    private func storeWorkout(_ workout: WorkoutData) {
+        HealthKitManager.sharedInstance().writeWorkout(workout) { error in
+            if let error = error {
+                AlertBuilder.showErrorAlert(on: self, title: "Error writing workout", error: error)
+            } else {
+                WRFormat.congratsMessage() { message in
+                    let msg = message ?? ""
+                    AlertBuilder.showOKAlert(on: self, title: "Congratulations!", message: msg)
+                }
+                self.reloadWorkouts(nil)
+            }
+        }
+    }
+    
     private func deleteWorkout(_ workout: WorkoutData) {
         HealthKitManager.sharedInstance().deleteWorkout(workout) { error in
             if let error = error {
@@ -255,25 +269,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let newWorkout = WorkoutData(selectedDate, selectedDuration, selectedActivity)
         newWorkout.distance = distanceField.text.flatMap(Double.init)
         newWorkout.energy = energyField.text.flatMap(Int.init)
-        
-        let storeHandler: (_ action: UIAlertAction?) -> Void = { action in
-            HealthKitManager.sharedInstance().writeWorkout(newWorkout) { error in
-                if let error = error {
-                    AlertBuilder.showErrorAlert(on: self, title: "Error writing workout", error: error)
-                } else {
-                    self.reloadWorkouts(nil)
-                }
-            }
-        }
 
         if newWorkout.distance == nil && WRFormat.isDistanceActivity(selectedActivity) {
             let message = "No distance set.\nRecord as \"\(WRFormat.energyActivity.hrName)\"?"
             let alertBuilder = AlertBuilder("", message: message)
             alertBuilder.addCancelAction(nil)
-            alertBuilder.addDefaultAction("Record", handler: storeHandler)
+            alertBuilder.addDefaultAction("Record", handler: { _ in
+                self.storeWorkout(newWorkout)
+            })
             alertBuilder.show(self)
         } else {
-            storeHandler(nil)
+            self.storeWorkout(newWorkout)
         }
     }
     

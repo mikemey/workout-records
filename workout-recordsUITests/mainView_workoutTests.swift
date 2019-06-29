@@ -3,7 +3,7 @@ import XCTest
 class mainView_workoutTests: XCTestCase {
     private var mpOpt: MainPageObject?
     private func mainPage() -> MainPageObject { return mpOpt! }
-
+    
     override func setUp() {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -22,6 +22,7 @@ class mainView_workoutTests: XCTestCase {
     private let weeksPastDate = { return MainPageObject.formatDateTime(pastDate(8, 10, 14)) }()
     
     func testCreateWorkouts() {
+        mainPage().showMore()
         mainPage().deleteAllRecords()
         mainPage().createWorkout(activity: "Swimming (distance + energy)", (daysPast: 2, hour: 11, min: (11)), distance: 1.1, energy: 11)
         mainPage().assertWorkout(0, swimDate, "1 h   0 min", "1.1", "11")

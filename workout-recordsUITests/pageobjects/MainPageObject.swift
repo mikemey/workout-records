@@ -43,6 +43,7 @@ class MainPageObject {
     private let notExist = NSPredicate(format: "exists == FALSE")
     private let enabled = NSPredicate(format: "enabled == TRUE")
     
+    private let congratsTitle = "Congratulations!"
     private let deleteWorkoutTitle = "Delete workout?"
     
     init(_ app: XCUIApplication, _ test: XCTestCase) {
@@ -136,8 +137,10 @@ class MainPageObject {
         }
         
         getRecordButton().tap()
-        let recBtnEnabled = test.expectation(for: enabled, evaluatedWith: app.buttons["Record"])
-        test.wait(for: [ recBtnEnabled ], timeout: 5)
+        waitFor(alertTitle: congratsTitle, to: exist)
+        let alert = getAlert(congratsTitle)
+        alert.buttons["OK"].tap()
+        waitFor(alertTitle: congratsTitle, to: notExist)
     }
     
     func selectActivity(_ activity: String) {

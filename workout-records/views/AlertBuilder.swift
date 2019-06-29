@@ -14,6 +14,12 @@ class AlertBuilder {
         alertBuilder.show(delegate)
     }
     
+    class func showOKAlert(on delegate: UIViewController, title: String, message: String) {
+        let alertBuilder = AlertBuilder(title, message: message)
+        alertBuilder.addOKAction()
+        alertBuilder.show(delegate)
+    }
+    
     init(_ title: String, message: String) {
         alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     }
