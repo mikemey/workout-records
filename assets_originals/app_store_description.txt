@@ -44,4 +44,4 @@ By default Workout Records will show your workouts for the past 7 days. To list 
 To delete a workout in Workout Records and your iOS Health App, swipe left on the entry in your workout list and tap "Delete" to confirm.
 
 • Support/Issues
-If you experience an issue/bug or would like to submit a feature request, please visit our support page.
+If you experience an issue/bug or would like to submit a feature request, please visit my support page.
