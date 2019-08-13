@@ -130,7 +130,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         activitiesButton.setTitle(selectedActivity.hrName, for: .normal)
         activitiesButton.setTitleColor(UIColor.black, for: .normal)
         activitiesButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 40)
-        let imgView = UIImageView(frame: CGRect(x: activitiesButton.frame.width - 60, y: 0, width: 25, height: activitiesButton.frame.height))
+        let imgView = UIImageView(frame: CGRect(x: view.frame.width - 60, y: 0, width: 25, height: activitiesButton.frame.height))
         imgView.contentMode = .scaleAspectFit
         imgView.image = UIImage(named: "\(selectedActivity.icon)-black")
         
