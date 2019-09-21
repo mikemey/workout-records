@@ -230,19 +230,21 @@ class WRFormat {
     static func congratsMessage(handler: @escaping (_ congratsMessage: String?) -> Void) {
         if let url = URL(string: congratsURL) {
             URLSession.shared.dataTask(with: url) { data, response, error in
-                if let error = error {
-                    print("ERROR requesting congrats message: \(error)")
-                    handler(nil)
-                    return
-                }
-                if let data = data {
-                    do {
-                        let res = try JSONDecoder().decode(CongratsMessage.self, from: data)
-                        handler(res.m)
-                    } catch let error {
-                        print("ERROR decoding congrats message: \(error)")
-                        print("raw message: \(data)")
+                DispatchQueue.main.async {
+                    if let error = error {
+                        print("ERROR requesting congrats message: \(error)")
                         handler(nil)
+                        return
+                    }
+                    if let data = data {
+                        do {
+                            let res = try JSONDecoder().decode(CongratsMessage.self, from: data)
+                            handler(res.m)
+                        } catch let error {
+                            print("ERROR decoding congrats message: \(error)")
+                            print("raw message: \(data)")
+                            handler(nil)
+                        }
                     }
                 }
             }.resume()

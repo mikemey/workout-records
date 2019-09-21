@@ -147,7 +147,7 @@ class MainPageObject {
         getActivityButton().tap()
         let activityOpen = test.expectation(for: exist, evaluatedWith: getActivitySelect())
         test.wait(for: [ activityOpen ], timeout: 5)
-        app.staticTexts[activity].tap()
+        app.tables.staticTexts[activity].tap()
         getActivitySelect().tap()
         XCTAssertEqual(getActivityButton().label, activity)
     }
