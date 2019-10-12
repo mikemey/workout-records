@@ -2,9 +2,9 @@ import HealthKit
 import UIKit
 
 class WorkoutTableColors {
-    static let defaultTextColor = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 1)
-    static let defaultBackgroundColor = UIColor(red: 205/255, green: 120/255, blue: 95/255, alpha: 1)
-    static let deleteBackgroundColor = UIColor(red: 255/255, green: 59/255, blue: 48/255, alpha: 1)
+    static let defaultTextColor = UIColor(named: "workouts_text")
+    static let defaultBackgroundColor = UIColor(named: "workouts_bg")
+    static let deleteBackgroundColor = UIColor(named: "workouts_delete_bg")
 }
 
 

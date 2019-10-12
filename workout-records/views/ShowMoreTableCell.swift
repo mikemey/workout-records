@@ -1,7 +1,7 @@
 import UIKit
 
 class ShowMoreTableCell: UITableViewCell {
-    private static var defaultTextColor = UIColor(red: 180/255, green: 180/255, blue: 180/255, alpha: 1)
+    private static var defaultTextColor = UIColor(named: "showMore_text")
     private var callbackHandler: (() -> Void)?
     
     @IBOutlet var dateLabel: UILabel!

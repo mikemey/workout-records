@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,16 +14,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAj-rS-OSy">
-                        <rect key="frame" x="207.5" y="0.0" width="167.5" height="44.5"/>
+                        <rect key="frame" x="207.5" y="0.0" width="167.5" height="45"/>
                         <color key="backgroundColor" red="0.57019841670000004" green="0.45901176690000001" blue="0.3865528848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <accessibility key="accessibilityConfiguration" identifier="showMore"/>
                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                         <state key="normal" title="... show more ...">
-                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="titleColor" name="showMore_text"/>
                         </state>
                         <state key="highlighted">
                             <color key="titleColor" red="0.75706342653626924" green="0.76834015879802309" blue="0.78064875638356168" alpha="0.81619220889999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,25 +33,25 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5RI-qj-wLy">
-                        <rect key="frame" x="0.0" y="0.0" width="207.5" height="44.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="207.5" height="45"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="since:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Iv-Ar-lYy">
-                                <rect key="frame" x="24" y="10.5" width="36" height="14"/>
+                                <rect key="frame" x="24" y="11" width="36" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="HWV-YY-U5K"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
-                                <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" name="showMore_text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun 22 May 33:33 pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBp-2k-tEF">
-                                <rect key="frame" x="24" y="24.5" width="160" height="18"/>
+                                <rect key="frame" x="24" y="25" width="160" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="Qyx-ix-BDl"/>
                                     <constraint firstAttribute="height" constant="18" id="tjp-aZ-f9N"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
-                                <color key="textColor" red="0.70588235294117641" green="0.70588235294117641" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" name="showMore_text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -85,4 +83,9 @@
             <point key="canvasLocation" x="80.434782608695656" y="44.53125"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="showMore_text">
+            <color red="0.70588235294117652" green="0.70588235294117652" blue="0.70588235294117652" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -62,7 +62,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     private func createBorders() {
-        let borderColor = UIColor.lightGray
+        let borderColor = UIColor.opaqueSeparator
         let outerWidth: CGFloat = 2
         activitiesButton.layer.addBorder([.top], borderColor, 1)
         activitiesButton.layer.addBorder([.left, .right], borderColor, outerWidth)
@@ -128,7 +128,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         activitiesButton.titleLabel?.font = .systemFont(ofSize: 16)
         activitiesButton.setTitle(selectedActivity.hrName, for: .normal)
-        activitiesButton.setTitleColor(UIColor.black, for: .normal)
+        activitiesButton.setTitleColor(UIColor.label, for: .normal)
         activitiesButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 40)
         let imgView = UIImageView(frame: CGRect(x: view.frame.width - 60, y: 0, width: 25, height: activitiesButton.frame.height))
         imgView.contentMode = .scaleAspectFit

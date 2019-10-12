@@ -2,10 +2,10 @@ import UIKit
 
 class ActivitiesViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     private typealias W = WRFormat
-    private static let defaultTextColor = UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1)
-    private static let tableBackgroundColor = UIColor(red: 255/255, green: 245/255, blue: 240/255, alpha: 1)
-    private static let borderColor = UIColor(red: 105/255, green: 62/255, blue: 50/255, alpha: 1).cgColor
-    
+    private static let defaultTextColor = UIColor.label
+    private static let tableBackgroundColor = UIColor(named: "activities_bg")
+    private static let borderColor = UIColor(named: "activities_border")?.cgColor
+
     @IBOutlet var selectButton: UIButton!
     @IBOutlet var activitiesTableView: UITableView!
     

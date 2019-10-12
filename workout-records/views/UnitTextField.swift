@@ -3,8 +3,8 @@ import UIKit
 class UnitTextField: UITextField, UITextFieldDelegate {
     private static let maxValue: Double = 10000
     private static let maxFractionLen: Int = 3
-    private static let enabledBGColor = UIColor(white: 0.97, alpha: 1)
-    private static let disabledBGColor = UIColor(white: 0.80, alpha: 1)
+    private static let enabledBGColor = UIColor(named: "workout_form_bg")
+    private static let disabledBGColor = UIColor(named: "workout_form_disabled_bg")
     private static let widthRatios: [CGFloat] = [0.55, 0.6, 1]
     private var fractions = false
     
@@ -41,7 +41,7 @@ class UnitTextField: UITextField, UITextFieldDelegate {
     
     private func setPlaceholder(_ placeholder: String) {
         let placeholderAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+            NSAttributedString.Key.foregroundColor: UIColor.placeholderText,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),
             NSAttributedString.Key.baselineOffset: NSNumber(-1)
         ]

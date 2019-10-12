@@ -9,7 +9,6 @@ class DurationPickerController: UIView {
             initialDuration, callback
         )
         
-        field.tintColor = UIColor.clear
         field.inputAccessoryView = toolbar
         field.inputView = durationPicker
     }

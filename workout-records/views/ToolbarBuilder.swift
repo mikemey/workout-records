@@ -25,7 +25,7 @@ class ToolbarBuilder {
     
     private func create(with items: [UIBarButtonItem]) -> UIToolbar {
         let toolBar = UIToolbar(frame: frame)
-        toolBar.tintColor = UIColor.gray
+        toolBar.tintColor = UIColor.secondaryLabel
         toolBar.items = items
         return toolBar
     }

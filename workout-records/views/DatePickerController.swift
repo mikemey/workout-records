@@ -12,7 +12,6 @@ class DatePickerController {
         toolbarBuilder.addButton(toolbarBuilder.spacer)
         toolbarBuilder.addButton(toolbarBuilder.doneButton)
         
-        field.tintColor = UIColor.clear
         field.inputAccessoryView = toolbarBuilder.create()
         field.inputView = picker
         
