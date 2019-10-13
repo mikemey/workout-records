@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C071AE72353E03500ECB0A0 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C071AE32353E03400ECB0A0 /* GoogleAppMeasurement.framework */; };
+		4C071AE82353E03500ECB0A0 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C071AE42353E03400ECB0A0 /* GoogleMobileAds.framework */; };
+		4C071AE92353E03500ECB0A0 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C071AE52353E03400ECB0A0 /* GoogleUtilities.framework */; };
+		4C071AEA2353E03500ECB0A0 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C071AE62353E03500ECB0A0 /* nanopb.framework */; };
 		4C2F7D10229AF56900A09FBC /* icon-archery.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D0D229AF56900A09FBC /* icon-archery.png */; };
 		4C34A041229DE07700F76308 /* record_btn_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C34A040229DE07700F76308 /* record_btn_highlight.png */; };
 		4C38B77B2299908500A417FF /* mainView_inputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77A2299908500A417FF /* mainView_inputTests.swift */; };
 		4C38B77D2299984000A417FF /* UnitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38B77C2299984000A417FF /* UnitTextField.swift */; };
-		4C3D019223365B9900B89655 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3D018E23365B9900B89655 /* GoogleUtilities.framework */; };
-		4C3D019323365B9900B89655 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3D018F23365B9900B89655 /* nanopb.framework */; };
-		4C3D019423365B9900B89655 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3D019023365B9900B89655 /* GoogleAppMeasurement.framework */; };
-		4C3D019523365B9900B89655 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3D019123365B9900B89655 /* GoogleMobileAds.framework */; };
 		4C3D019723365BA600B89655 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3D019623365BA600B89655 /* HealthKit.framework */; };
 		4C43820B22929A52009613C6 /* WorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */; };
 		4C43820C22929B89009613C6 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */; };
@@ -210,14 +210,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C071AE32353E03400ECB0A0 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		4C071AE42353E03400ECB0A0 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		4C071AE52353E03400ECB0A0 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		4C071AE62353E03500ECB0A0 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Frameworks/nanopb.framework; sourceTree = "<group>"; };
 		4C2F7D0D229AF56900A09FBC /* icon-archery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-archery.png"; sourceTree = "<group>"; };
 		4C34A040229DE07700F76308 /* record_btn_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_btn_highlight.png; sourceTree = "<group>"; };
 		4C38B77A2299908500A417FF /* mainView_inputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainView_inputTests.swift; sourceTree = "<group>"; };
 		4C38B77C2299984000A417FF /* UnitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTextField.swift; sourceTree = "<group>"; };
-		4C3D018E23365B9900B89655 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
-		4C3D018F23365B9900B89655 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Frameworks/nanopb.framework; sourceTree = "<group>"; };
-		4C3D019023365B9900B89655 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		4C3D019123365B9900B89655 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		4C3D019623365BA600B89655 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		4C4382112292A15D009613C6 /* MainPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageObject.swift; sourceTree = "<group>"; };
 		4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageObject.swift; sourceTree = "<group>"; };
@@ -396,10 +396,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C3D019323365B9900B89655 /* nanopb.framework in Frameworks */,
-				4C3D019223365B9900B89655 /* GoogleUtilities.framework in Frameworks */,
-				4C3D019523365B9900B89655 /* GoogleMobileAds.framework in Frameworks */,
-				4C3D019423365B9900B89655 /* GoogleAppMeasurement.framework in Frameworks */,
+				4C071AE82353E03500ECB0A0 /* GoogleMobileAds.framework in Frameworks */,
+				4C071AE72353E03500ECB0A0 /* GoogleAppMeasurement.framework in Frameworks */,
+				4C071AEA2353E03500ECB0A0 /* nanopb.framework in Frameworks */,
+				4C071AE92353E03500ECB0A0 /* GoogleUtilities.framework in Frameworks */,
 				4C3D019723365BA600B89655 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,11 +697,11 @@
 		4CB6093322905CCE00B683E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C071AE32353E03400ECB0A0 /* GoogleAppMeasurement.framework */,
+				4C071AE42353E03400ECB0A0 /* GoogleMobileAds.framework */,
+				4C071AE52353E03400ECB0A0 /* GoogleUtilities.framework */,
+				4C071AE62353E03500ECB0A0 /* nanopb.framework */,
 				4C3D019623365BA600B89655 /* HealthKit.framework */,
-				4C3D019023365B9900B89655 /* GoogleAppMeasurement.framework */,
-				4C3D019123365B9900B89655 /* GoogleMobileAds.framework */,
-				4C3D018E23365B9900B89655 /* GoogleUtilities.framework */,
-				4C3D018F23365B9900B89655 /* nanopb.framework */,
 				4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */,
 			);
 			name = Frameworks;
