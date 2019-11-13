@@ -229,7 +229,6 @@ class MainPageObject {
         for key in keys {
             app.keys[key].tap()
         }
-        tapDone()
     }
     
     private func getWorkoutCell(_ index: Int) -> XCUIElement {
