@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 if [[ ! ${WR_SERVER_STATIC_DIR} ]]; then
-    echo "Environment variable '\$WR_SERVER_STATIC_DIR' not set!"
-    exit
-  fi
+  echo "Environment variable '\$WR_SERVER_STATIC_DIR' not set!"
+  exit
+fi
 
 echo "cleaning static-asset directory $WR_SERVER_STATIC_DIR"
 rm -rf $WR_SERVER_STATIC_DIR/*
