@@ -14,7 +14,7 @@ p, li {
   color: rgb(90, 90, 90);
 }
 
-img {
+img.screenshot {
   margin-bottom: 16px;
   width: 310px;
 }
@@ -38,6 +38,11 @@ img {
   font-weight: bold;
   margin-top: 1rem;
   letter-spacing: 1pt;
+}
+
+.iphone-badge {
+  width: 100px; 
+  height: 36px;
 }
 
 .breadcrumb {
