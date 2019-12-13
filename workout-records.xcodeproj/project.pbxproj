@@ -17,7 +17,7 @@
 		4C43820D22929B89009613C6 /* WRFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB90229063B6007D07B2 /* WRFormat.swift */; };
 		4C4382122292A15D009613C6 /* MainPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382112292A15D009613C6 /* MainPageObject.swift */; };
 		4C4382142292CAF8009613C6 /* WorkoutPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */; };
-		4C6B0A0722B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C6B0A0622B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle */; };
+		4C5A706723A38E3A00A8B04D /* PersonalizedAdConsent.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C5A706623A38E3A00A8B04D /* PersonalizedAdConsent.bundle */; };
 		4C942B1422A3DBFB002778A6 /* icon-bowling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1322A3DBFA002778A6 /* icon-bowling.png */; };
 		4C942B1C22A3E2ED002778A6 /* icon-individual-cycling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */; };
 		4C942B1E22A3E3D0002778A6 /* icon-energy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1D22A3E3D0002778A6 /* icon-energy.png */; };
@@ -186,16 +186,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4C6B0A0222B679EF00D3F9F0 /* PBXContainerItemProxy */ = {
+		4C5A705D23A38D8B00A8B04D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */;
+			containerPortal = 4C5A705923A38D8B00A8B04D /* PersonalizedAdConsent.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5A92D29F2076961800FFE51D;
 			remoteInfo = PersonalizedAdConsent;
 		};
-		4C6B0A0422B67A4700D3F9F0 /* PBXContainerItemProxy */ = {
+		4C5A706423A38E0D00A8B04D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */;
+			containerPortal = 4C5A705923A38D8B00A8B04D /* PersonalizedAdConsent.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 5A92D29E2076961800FFE51D;
 			remoteInfo = PersonalizedAdConsent;
@@ -217,8 +217,8 @@
 		4C3D019623365BA600B89655 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		4C4382112292A15D009613C6 /* MainPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageObject.swift; sourceTree = "<group>"; };
 		4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageObject.swift; sourceTree = "<group>"; };
-		4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PersonalizedAdConsent.xcodeproj; path = Frameworks/PersonalizedAdConsent/PersonalizedAdConsent.xcodeproj; sourceTree = "<group>"; };
-		4C6B0A0622B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PersonalizedAdConsent.bundle; path = Frameworks/PersonalizedAdConsent/PersonalizedAdConsent/PersonalizedAdConsent.bundle; sourceTree = "<group>"; };
+		4C5A705923A38D8B00A8B04D /* PersonalizedAdConsent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PersonalizedAdConsent.xcodeproj; path = Frameworks/PersonalizedAdConsent/PersonalizedAdConsent.xcodeproj; sourceTree = "<group>"; };
+		4C5A706623A38E3A00A8B04D /* PersonalizedAdConsent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PersonalizedAdConsent.bundle; path = Frameworks/PersonalizedAdConsent/PersonalizedAdConsent/PersonalizedAdConsent.bundle; sourceTree = "<group>"; };
 		4C942B1322A3DBFA002778A6 /* icon-bowling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-bowling.png"; sourceTree = "<group>"; };
 		4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-cycling.png"; sourceTree = "<group>"; };
 		4C942B1D22A3E3D0002778A6 /* icon-energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-energy.png"; sourceTree = "<group>"; };
@@ -423,10 +423,10 @@
 			path = pageobjects;
 			sourceTree = "<group>";
 		};
-		4C6B09FF22B679EF00D3F9F0 /* Products */ = {
+		4C5A705A23A38D8B00A8B04D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C6B0A0322B679EF00D3F9F0 /* PersonalizedAdConsent.framework */,
+				4C5A705E23A38D8B00A8B04D /* PersonalizedAdConsent.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -646,7 +646,7 @@
 		4CB608F922905C6A00B683E0 = {
 			isa = PBXGroup;
 			children = (
-				4C6B0A0622B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle */,
+				4C5A705923A38D8B00A8B04D /* PersonalizedAdConsent.xcodeproj */,
 				4CD1FD532290A38700EFEF81 /* Images */,
 				4CB6090422905C6A00B683E0 /* workout-records */,
 				4CB6092422905C6B00B683E0 /* workout-recordsUITests */,
@@ -697,12 +697,12 @@
 		4CB6093322905CCE00B683E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C5A706623A38E3A00A8B04D /* PersonalizedAdConsent.bundle */,
 				4CDC9CF723A34E4F00285411 /* GoogleAppMeasurement.framework */,
 				4CDC9CF523A34E4F00285411 /* GoogleMobileAds.framework */,
 				4CDC9CF623A34E4F00285411 /* GoogleUtilities.framework */,
 				4CDC9CF423A34E4F00285411 /* nanopb.framework */,
 				4C3D019623365BA600B89655 /* HealthKit.framework */,
-				4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -757,7 +757,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4C6B0A0522B67A4700D3F9F0 /* PBXTargetDependency */,
+				4C5A706523A38E0D00A8B04D /* PBXTargetDependency */,
 			);
 			name = "workout-records";
 			productName = "workout-records";
@@ -819,8 +819,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 4C6B09FF22B679EF00D3F9F0 /* Products */;
-					ProjectRef = 4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */;
+					ProductGroup = 4C5A705A23A38D8B00A8B04D /* Products */;
+					ProjectRef = 4C5A705923A38D8B00A8B04D /* PersonalizedAdConsent.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -832,11 +832,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		4C6B0A0322B679EF00D3F9F0 /* PersonalizedAdConsent.framework */ = {
+		4C5A705E23A38D8B00A8B04D /* PersonalizedAdConsent.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = PersonalizedAdConsent.framework;
-			remoteRef = 4C6B0A0222B679EF00D3F9F0 /* PBXContainerItemProxy */;
+			remoteRef = 4C5A705D23A38D8B00A8B04D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -915,7 +915,7 @@
 				4C942BB822A4675C002778A6 /* icon-bench-press-black.png in Resources */,
 				4C2F7D10229AF56900A09FBC /* icon-archery.png in Resources */,
 				4C942C0C22A471DC002778A6 /* icon-play-black.png in Resources */,
-				4C6B0A0722B67ABF00D3F9F0 /* PersonalizedAdConsent.bundle in Resources */,
+				4C5A706723A38E3A00A8B04D /* PersonalizedAdConsent.bundle in Resources */,
 				4C942BA722A44A7A002778A6 /* icon-boxing.png in Resources */,
 				4C942C4E22A47214002778A6 /* icon-soccer-black.png in Resources */,
 				4C942BDD22A471AB002778A6 /* icon-fencing-black.png in Resources */,
@@ -1047,10 +1047,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4C6B0A0522B67A4700D3F9F0 /* PBXTargetDependency */ = {
+		4C5A706523A38E0D00A8B04D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PersonalizedAdConsent;
-			targetProxy = 4C6B0A0422B67A4700D3F9F0 /* PBXContainerItemProxy */;
+			targetProxy = 4C5A706423A38E0D00A8B04D /* PBXContainerItemProxy */;
 		};
 		4CB6092322905C6B00B683E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
