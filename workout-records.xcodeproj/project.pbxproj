@@ -159,10 +159,6 @@
 		4C942C5622A47214002778A6 /* icon-softball-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4B22A47214002778A6 /* icon-softball-black.png */; };
 		4C942C5722A47214002778A6 /* icon-volleyball-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4C22A47214002778A6 /* icon-volleyball-black.png */; };
 		4C942C5822A47214002778A6 /* icon-american-football-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942C4D22A47214002778A6 /* icon-american-football-black.png */; };
-		4CADD16A237C44AA009AC921 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADD166237C44AA009AC921 /* GoogleMobileAds.framework */; };
-		4CADD16B237C44AA009AC921 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADD167237C44AA009AC921 /* nanopb.framework */; };
-		4CADD16C237C44AA009AC921 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADD168237C44AA009AC921 /* GoogleAppMeasurement.framework */; };
-		4CADD16D237C44AA009AC921 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CADD169237C44AA009AC921 /* GoogleUtilities.framework */; };
 		4CAEDB91229063B6007D07B2 /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */; };
 		4CAEDB93229063B6007D07B2 /* WorkoutTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8D229063B6007D07B2 /* WorkoutTableCell.xib */; };
 		4CAEDB95229063B6007D07B2 /* ShowMoreTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAEDB8F229063B6007D07B2 /* ShowMoreTableCell.xib */; };
@@ -183,6 +179,10 @@
 		4CD1FD512290A34C00EFEF81 /* ToolbarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD482290A34C00EFEF81 /* ToolbarBuilder.swift */; };
 		4CD1FD522290A34C00EFEF81 /* WorkoutTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */; };
 		4CD1FD632290A3A000EFEF81 /* record_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CD1FD5B2290A39F00EFEF81 /* record_btn.png */; };
+		4CDC9CF923A34E4F00285411 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDC9CF423A34E4F00285411 /* nanopb.framework */; };
+		4CDC9CFA23A34E4F00285411 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDC9CF523A34E4F00285411 /* GoogleMobileAds.framework */; };
+		4CDC9CFB23A34E4F00285411 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDC9CF623A34E4F00285411 /* GoogleUtilities.framework */; };
+		4CDC9CFC23A34E4F00285411 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDC9CF723A34E4F00285411 /* GoogleAppMeasurement.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -360,10 +360,6 @@
 		4C942C4B22A47214002778A6 /* icon-softball-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-softball-black.png"; sourceTree = "<group>"; };
 		4C942C4C22A47214002778A6 /* icon-volleyball-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-volleyball-black.png"; sourceTree = "<group>"; };
 		4C942C4D22A47214002778A6 /* icon-american-football-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-american-football-black.png"; sourceTree = "<group>"; };
-		4CADD166237C44AA009AC921 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
-		4CADD167237C44AA009AC921 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Frameworks/nanopb.framework; sourceTree = "<group>"; };
-		4CADD168237C44AA009AC921 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		4CADD169237C44AA009AC921 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
 		4CAEDB8B229063B6007D07B2 /* WorkoutData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		4CAEDB8D229063B6007D07B2 /* WorkoutTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutTableCell.xib; sourceTree = "<group>"; };
 		4CAEDB8F229063B6007D07B2 /* ShowMoreTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowMoreTableCell.xib; sourceTree = "<group>"; };
@@ -389,6 +385,10 @@
 		4CD1FD482290A34C00EFEF81 /* ToolbarBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarBuilder.swift; sourceTree = "<group>"; };
 		4CD1FD492290A34C00EFEF81 /* WorkoutTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableCell.swift; sourceTree = "<group>"; };
 		4CD1FD5B2290A39F00EFEF81 /* record_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_btn.png; sourceTree = "<group>"; };
+		4CDC9CF423A34E4F00285411 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Frameworks/nanopb.framework; sourceTree = "<group>"; };
+		4CDC9CF523A34E4F00285411 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		4CDC9CF623A34E4F00285411 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
+		4CDC9CF723A34E4F00285411 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,10 +396,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CADD16A237C44AA009AC921 /* GoogleMobileAds.framework in Frameworks */,
-				4CADD16B237C44AA009AC921 /* nanopb.framework in Frameworks */,
-				4CADD16C237C44AA009AC921 /* GoogleAppMeasurement.framework in Frameworks */,
-				4CADD16D237C44AA009AC921 /* GoogleUtilities.framework in Frameworks */,
+				4CDC9CFA23A34E4F00285411 /* GoogleMobileAds.framework in Frameworks */,
+				4CDC9CF923A34E4F00285411 /* nanopb.framework in Frameworks */,
+				4CDC9CFC23A34E4F00285411 /* GoogleAppMeasurement.framework in Frameworks */,
+				4CDC9CFB23A34E4F00285411 /* GoogleUtilities.framework in Frameworks */,
 				4C3D019723365BA600B89655 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -697,10 +697,10 @@
 		4CB6093322905CCE00B683E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4CADD168237C44AA009AC921 /* GoogleAppMeasurement.framework */,
-				4CADD166237C44AA009AC921 /* GoogleMobileAds.framework */,
-				4CADD169237C44AA009AC921 /* GoogleUtilities.framework */,
-				4CADD167237C44AA009AC921 /* nanopb.framework */,
+				4CDC9CF723A34E4F00285411 /* GoogleAppMeasurement.framework */,
+				4CDC9CF523A34E4F00285411 /* GoogleMobileAds.framework */,
+				4CDC9CF623A34E4F00285411 /* GoogleUtilities.framework */,
+				4CDC9CF423A34E4F00285411 /* nanopb.framework */,
 				4C3D019623365BA600B89655 /* HealthKit.framework */,
 				4C6B09FE22B679EF00D3F9F0 /* PersonalizedAdConsent.xcodeproj */,
 			);
