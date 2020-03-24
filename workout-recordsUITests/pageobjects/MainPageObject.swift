@@ -7,7 +7,7 @@ extension XCUIElement {
             XCTFail("Tried to clear and enter text into a non string value")
             return
         }
-        self.tap()
+        self.tap(withNumberOfTaps: 2, numberOfTouches: 2)
         
         let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
         self.safeTypeText(deleteString)
