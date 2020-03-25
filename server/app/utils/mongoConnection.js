@@ -54,7 +54,7 @@ const initializeDirectConnection = (url, dbName) => {
 }
 
 const checkProductionEnvironment = dbName => new Promise((resolve, reject) => {
-  if (dbName === 'workoutRecords') {
+  if (dbName === 'workout-records') {
     if (process.env.NODE_ENV !== PRODUCTION_ENV) {
       const msg = `Access to production database with invalid NODE_ENV: ${process.env.NODE_ENV}`
       reject(new MongoConnectionError(msg))
