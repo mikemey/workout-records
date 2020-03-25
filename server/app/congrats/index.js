@@ -12,6 +12,7 @@ const createCongratulationsRouter = logger => {
       const msgRequest = {
         m: message.m,
         ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+        v: req.query.v || '',
         date: moment.utc().toDate()
       }
       return congratsRepo.storeMessageRequest(msgRequest)

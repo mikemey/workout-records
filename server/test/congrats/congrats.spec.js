@@ -4,8 +4,12 @@ const should = require('chai').should()
 describe('congratulations message endpoint', () => {
   const server = TestServer()
   const testIp = '123.123.123.123'
-  const requestCongratsMessage = () => server.request().get(`${server.config.serverPath}/api/congrats`)
-    .set('X-FORWARDED-FOR', testIp)
+  const requestCongratsMessage = versionParam => {
+    const versionQuery = versionParam ? `?v=${versionParam}` : ''
+    return server.request()
+      .get(`${server.config.serverPath}/api/congrats${versionQuery}`)
+      .set('X-FORWARDED-FOR', testIp)
+  }
 
   const testData = [
     { m: 'message #1' },
@@ -35,7 +39,8 @@ describe('congratulations message endpoint', () => {
 
     it('and stores message returned', () => {
       let congratsMessage = ''
-      return requestCongratsMessage().expect(200)
+      const clientVersion = '1.2.2'
+      return requestCongratsMessage(clientVersion).expect(200)
         .then(response => {
           congratsMessage = response.body.m
           return server.getCongratsRequests()
@@ -44,8 +49,17 @@ describe('congratulations message endpoint', () => {
           requests.should.have.length(1)
           requests[0].m.should.equal(congratsMessage)
           requests[0].ip.should.equal(testIp)
+          requests[0].v.should.equal(clientVersion)
           should.exist(requests[0].date)
         })
     })
+
+    it('and stores message without client-version', () =>
+      requestCongratsMessage().expect(200)
+        .then(() => server.getCongratsRequests())
+        .then(requests => {
+          requests.should.have.length(1)
+          requests[0].v.should.equal('')
+        }))
   })
 })
