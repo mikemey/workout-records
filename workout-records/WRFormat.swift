@@ -26,7 +26,7 @@ class WRFormat {
     static let privacyURL = "https://msm-itc.com/workout-records/privacy-policy.html"
     static let documentationURL = "https://msm-itc.com/workout-records/index.html"
     static let activitiesURL = "https://msm-itc.com/workout-records/activities.html"
-    static let congratsURL = "https://msm-itc.com/workout-records/api/congrats"
+    static let congratsURL = "https://msm-itc.com/workout-records/api/congrats?v="
     static let isMetric = Locale.current.usesMetricSystem
     static let dateTimeFormatter: DateFormatter = {
         let fmt = DateFormatter()
@@ -228,7 +228,8 @@ class WRFormat {
     }
 
     static func congratsMessage(handler: @escaping (_ congratsMessage: String?) -> Void) {
-        if let url = URL(string: congratsURL) {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        if let url = URL(string: congratsURL + version) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 DispatchQueue.main.async {
                     if let error = error {
