@@ -3,15 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C1F6C33242AA01C00C1DAE1 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F6C2D242AA01C00C1DAE1 /* GoogleUtilities.framework */; };
-		4C1F6C34242AA01C00C1DAE1 /* Licenses in Resources */ = {isa = PBXBuildFile; fileRef = 4C1F6C2E242AA01C00C1DAE1 /* Licenses */; };
-		4C1F6C35242AA01C00C1DAE1 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F6C2F242AA01C00C1DAE1 /* nanopb.framework */; };
-		4C1F6C37242AA01C00C1DAE1 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F6C31242AA01C00C1DAE1 /* GoogleMobileAds.framework */; };
-		4C1F6C38242AA01C00C1DAE1 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F6C32242AA01C00C1DAE1 /* GoogleAppMeasurement.framework */; };
 		4C1F6C42242AA12A00C1DAE1 /* PersonalizedAdConsent.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4C1F6C41242AA12A00C1DAE1 /* PersonalizedAdConsent.bundle */; };
 		4C1F6C44242AA1E400C1DAE1 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F6C43242AA1E300C1DAE1 /* HealthKit.framework */; };
 		4C2F7D10229AF56900A09FBC /* icon-archery.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F7D0D229AF56900A09FBC /* icon-archery.png */; };
@@ -23,6 +18,11 @@
 		4C43820D22929B89009613C6 /* WRFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB90229063B6007D07B2 /* WRFormat.swift */; };
 		4C4382122292A15D009613C6 /* MainPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382112292A15D009613C6 /* MainPageObject.swift */; };
 		4C4382142292CAF8009613C6 /* WorkoutPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */; };
+		4C70518E24767C1E0040877A /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C70518924767C1E0040877A /* nanopb.xcframework */; };
+		4C70518F24767C1E0040877A /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C70518A24767C1E0040877A /* GoogleMobileAds.framework */; };
+		4C70519024767C1E0040877A /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C70518B24767C1E0040877A /* GoogleAppMeasurement.framework */; };
+		4C70519124767C1E0040877A /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C70518C24767C1E0040877A /* GoogleUtilities.xcframework */; };
+		4C70519224767C1E0040877A /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C70518D24767C1E0040877A /* PromisesObjC.xcframework */; };
 		4C942B1422A3DBFB002778A6 /* icon-bowling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1322A3DBFA002778A6 /* icon-bowling.png */; };
 		4C942B1C22A3E2ED002778A6 /* icon-individual-cycling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */; };
 		4C942B1E22A3E3D0002778A6 /* icon-energy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1D22A3E3D0002778A6 /* icon-energy.png */; };
@@ -211,11 +211,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C1F6C2D242AA01C00C1DAE1 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
-		4C1F6C2E242AA01C00C1DAE1 /* Licenses */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Licenses; path = Frameworks/Licenses; sourceTree = "<group>"; };
-		4C1F6C2F242AA01C00C1DAE1 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Frameworks/nanopb.framework; sourceTree = "<group>"; };
-		4C1F6C31242AA01C00C1DAE1 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
-		4C1F6C32242AA01C00C1DAE1 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
 		4C1F6C39242AA0A600C1DAE1 /* PersonalizedAdConsent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PersonalizedAdConsent.xcodeproj; path = Frameworks/PersonalizedAdConsent/PersonalizedAdConsent.xcodeproj; sourceTree = "<group>"; };
 		4C1F6C41242AA12A00C1DAE1 /* PersonalizedAdConsent.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PersonalizedAdConsent.bundle; path = Frameworks/PersonalizedAdConsent/PersonalizedAdConsent/PersonalizedAdConsent.bundle; sourceTree = "<group>"; };
 		4C1F6C43242AA1E300C1DAE1 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -225,6 +220,11 @@
 		4C38B77C2299984000A417FF /* UnitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTextField.swift; sourceTree = "<group>"; };
 		4C4382112292A15D009613C6 /* MainPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageObject.swift; sourceTree = "<group>"; };
 		4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageObject.swift; sourceTree = "<group>"; };
+		4C70518924767C1E0040877A /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = Frameworks/nanopb.xcframework; sourceTree = "<group>"; };
+		4C70518A24767C1E0040877A /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		4C70518B24767C1E0040877A /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		4C70518C24767C1E0040877A /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleUtilities.xcframework; path = Frameworks/GoogleUtilities.xcframework; sourceTree = "<group>"; };
+		4C70518D24767C1E0040877A /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromisesObjC.xcframework; path = Frameworks/PromisesObjC.xcframework; sourceTree = "<group>"; };
 		4C942B1322A3DBFA002778A6 /* icon-bowling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-bowling.png"; sourceTree = "<group>"; };
 		4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-cycling.png"; sourceTree = "<group>"; };
 		4C942B1D22A3E3D0002778A6 /* icon-energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-energy.png"; sourceTree = "<group>"; };
@@ -398,11 +398,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C1F6C37242AA01C00C1DAE1 /* GoogleMobileAds.framework in Frameworks */,
-				4C1F6C35242AA01C00C1DAE1 /* nanopb.framework in Frameworks */,
-				4C1F6C38242AA01C00C1DAE1 /* GoogleAppMeasurement.framework in Frameworks */,
-				4C1F6C33242AA01C00C1DAE1 /* GoogleUtilities.framework in Frameworks */,
+				4C70519124767C1E0040877A /* GoogleUtilities.xcframework in Frameworks */,
+				4C70518F24767C1E0040877A /* GoogleMobileAds.framework in Frameworks */,
 				4C1F6C44242AA1E400C1DAE1 /* HealthKit.framework in Frameworks */,
+				4C70519224767C1E0040877A /* PromisesObjC.xcframework in Frameworks */,
+				4C70519024767C1E0040877A /* GoogleAppMeasurement.framework in Frameworks */,
+				4C70518E24767C1E0040877A /* nanopb.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,13 +700,13 @@
 		4CB6093322905CCE00B683E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C70518B24767C1E0040877A /* GoogleAppMeasurement.framework */,
+				4C70518A24767C1E0040877A /* GoogleMobileAds.framework */,
+				4C70518C24767C1E0040877A /* GoogleUtilities.xcframework */,
+				4C70518924767C1E0040877A /* nanopb.xcframework */,
+				4C70518D24767C1E0040877A /* PromisesObjC.xcframework */,
 				4C1F6C43242AA1E300C1DAE1 /* HealthKit.framework */,
 				4C1F6C41242AA12A00C1DAE1 /* PersonalizedAdConsent.bundle */,
-				4C1F6C32242AA01C00C1DAE1 /* GoogleAppMeasurement.framework */,
-				4C1F6C31242AA01C00C1DAE1 /* GoogleMobileAds.framework */,
-				4C1F6C2D242AA01C00C1DAE1 /* GoogleUtilities.framework */,
-				4C1F6C2E242AA01C00C1DAE1 /* Licenses */,
-				4C1F6C2F242AA01C00C1DAE1 /* nanopb.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -937,7 +938,6 @@
 				4C942C5122A47214002778A6 /* icon-cricket-black.png in Resources */,
 				4C942B4E22A413A4002778A6 /* icon-basketball.png in Resources */,
 				4C942C3C22A47204002778A6 /* icon-strength-free-black.png in Resources */,
-				4C1F6C34242AA01C00C1DAE1 /* Licenses in Resources */,
 				4C942C3722A47204002778A6 /* icon-walking-black.png in Resources */,
 				4CB6090D22905C6A00B683E0 /* Assets.xcassets in Resources */,
 				4C942B6222A413C6002778A6 /* icon-strength-free.png in Resources */,
@@ -1134,7 +1134,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1189,7 +1189,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1208,19 +1208,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workout-records/workout-records.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.6.0_20200325;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = Z75BGAKHT6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "workout-records/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mmi.workout-records";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1239,19 +1239,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workout-records/workout-records.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.6.0_20200325;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = Z75BGAKHT6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "workout-records/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.6.1;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mmi.workout-records";
 				PRODUCT_NAME = "$(TARGET_NAME)";
