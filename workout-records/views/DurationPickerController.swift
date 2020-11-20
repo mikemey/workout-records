@@ -5,7 +5,7 @@ class DurationPickerController: UIView {
     static func wrap(_ field: UITextField, _ initialDuration: TimeInterval, _ toolbar: UIToolbar,
                      callback: @escaping (TimeInterval) -> Void) {
         let durationPicker = DurationPickerController(
-            field, CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height:  UIDatePicker().frame.height),
+            field, CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height:  200),
             initialDuration, callback
         )
         

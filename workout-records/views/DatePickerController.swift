@@ -16,6 +16,7 @@ class DatePickerController {
         field.inputView = picker
         
         picker.datePickerMode = .dateAndTime
+        picker.preferredDatePickerStyle = .wheels
         picker.addTarget(target, action: #selector(PickerTarget.updateNewDate(_:)), for: .valueChanged)
         target.setDateNow()
     }
