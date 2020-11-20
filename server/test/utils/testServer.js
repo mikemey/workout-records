@@ -36,7 +36,10 @@ const TestServer = () => {
   const stop = () => (server
     ? new Promise(resolve => server.close(resolve))
     : Promise.resolve()
-  ).then(() => fsextra.remove(testConfig.requestslog))
+  ).then(() => Promise.all([
+    fsextra.remove(testConfig.requestslog),
+    mongoConn.close()
+  ]))
 
   const request = () => supertest(app)
 
