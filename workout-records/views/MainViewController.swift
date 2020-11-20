@@ -1,7 +1,6 @@
 import UIKit
 import HealthKit
 import GoogleMobileAds
-import PersonalizedAdConsent
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var bannerView: GADBannerView!
@@ -79,43 +78,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func createAdbanner() {
-        adConsent()
         bannerView.adUnitID = Bundle.main.object(forInfoDictionaryKey: "AdUnitId")! as? String
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
-    }
-    
-    private func adConsent() {
-        let publisherId = Bundle.main.object(forInfoDictionaryKey: "AdPublisherId") as! String
-        PACConsentInformation.sharedInstance
-            .requestConsentInfoUpdate(forPublisherIdentifiers: [publisherId])
-            {(_ error: Error?) -> Void in
-                if let error = error {
-                    print("error: \(error)")
-                } else  {
-                    if PACConsentInformation.sharedInstance.isRequestLocationInEEAOrUnknown &&
-                        PACConsentInformation.sharedInstance.consentStatus == .unknown {
-                        self.openConsentForm()
-                    }
-                }
-        }
-    }
-    
-    private func openConsentForm() {
-        guard let privacyUrl = URL(string: WRFormat.privacyURL),
-            let form = PACConsentForm(applicationPrivacyPolicyURL: privacyUrl) else {
-                print("incorrect privacy URL.")
-                return
-        }
-        form.shouldOfferPersonalizedAds = true
-        form.shouldOfferNonPersonalizedAds = true
-        form.load {(_ error: Error?) -> Void in
-            if let error = error {
-                print("error: \(error)")
-            } else  {
-                form.present(from: self) { (error, userPrefersAdFree) in }
-            }
-        }
     }
 
     private func newToolbarBuilder() -> ToolbarBuilder {

@@ -32,6 +32,13 @@
 	<string>Allow Workout Records to read workouts from the Health application.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Allow Workout Records to write workouts to the Health application.</string>
+	<key>SKAdNetworkItems</key>
+	<array>
+		<dict>
+			<key>SKAdNetworkIdentifier</key>
+			<string>cstr6suwn9.skadnetwork</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
