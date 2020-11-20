@@ -105,7 +105,8 @@ class WRFormat {
     static let studioLabel = "Workout - Studio Activities"
     static let studioActivities: [Activity] = [
         Activity(type: .Workout(.barre), hrName: "Barre", icon: "icon-barre"),
-        Activity(type: .Workout(.dance), hrName: "Dancing", icon: "icon-dancing"),
+        Activity(type: .Workout(.cardioDance), hrName: "Cardio dancing", icon: "icon-dancing"),
+        Activity(type: .Workout(.socialDance), hrName: "Social dancing", icon: "icon-dancing"),
         Activity(type: .Workout(.mindAndBody), hrName: "Mind + body, meditation", icon: "icon-mindful"),
         Activity(type: .Workout(.pilates), hrName: "Pilates", icon: "icon-pilates"),
         Activity(type: .Workout(.yoga), hrName: "Practicing yoga", icon: "icon-yoga")
