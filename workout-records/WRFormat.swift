@@ -28,6 +28,7 @@ class WRFormat {
     static let activitiesURL = "https://msm-itc.com/workout-records/activities.html"
     static let congratsURL = "https://msm-itc.com/workout-records/api/congrats"
     static let isMetric = Locale.current.usesMetricSystem
+    static let decimalSeparator = Locale.current.decimalSeparator!
     static let dateTimeFormatter: DateFormatter = {
         let fmt = DateFormatter()
         fmt.dateFormat = "eee d LLL hh:mm a"

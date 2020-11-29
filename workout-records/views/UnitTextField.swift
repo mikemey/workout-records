@@ -7,6 +7,7 @@ class UnitTextField: UITextField, UITextFieldDelegate {
     private static let disabledBGColor = UIColor(named: "workout_form_disabled_bg")
     private static let widthRatios: [CGFloat] = [0.55, 0.6, 1]
     private var fractions = false
+    private static let zeroDot = "0" + WRFormat.decimalSeparator
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -63,12 +64,12 @@ class UnitTextField: UITextField, UITextFieldDelegate {
         let currentText = textField.text ?? ""
         let newtext = (currentText as NSString).replacingCharacters(in: range, with: string)
         
-        if self.fractions && currentText == "" && newtext == "." {
-            textField.text = "0."
+        if self.fractions && currentText == "" && newtext == WRFormat.decimalSeparator {
+            textField.text = UnitTextField.zeroDot
             return false
         }
         
-        let newnum = Double(newtext)
+        let newnum = Double(newtext.replacingOccurrences(of: ",", with: "."))
         return newnum != nil
             && newnum! < UnitTextField.maxValue
             && (self.fractions
@@ -77,13 +78,13 @@ class UnitTextField: UITextField, UITextFieldDelegate {
     }
     
     private func checkFractions(_ textField: UITextField, _ newtext: String, _ currentText: String) -> Bool {
-        if let dotIndex = newtext.firstIndex(of: ".") {
+        if let dotIndex = newtext.firstIndex(of: Character.init(WRFormat.decimalSeparator)) {
             let fractionLen = newtext.count - dotIndex.utf16Offset(in: newtext)
             if fractionLen > UnitTextField.maxFractionLen {
                 return false
             }
         }
-        if currentText == "0" && newtext != "0." {
+        if currentText == "0" && newtext != UnitTextField.zeroDot {
             return false
         }
         return true
