@@ -26,7 +26,7 @@ class WRFormat {
     static let privacyURL = "https://msm-itc.com/workout-records/privacy-policy.html"
     static let documentationURL = "https://msm-itc.com/workout-records/index.html"
     static let activitiesURL = "https://msm-itc.com/workout-records/activities.html"
-    static let congratsURL = "https://msm-itc.com/workout-records/api/congrats?v="
+    static let congratsURL = "https://msm-itc.com/workout-records/api/congrats"
     static let isMetric = Locale.current.usesMetricSystem
     static let dateTimeFormatter: DateFormatter = {
         let fmt = DateFormatter()
@@ -230,30 +230,28 @@ class WRFormat {
 
     static func congratsMessage(handler: @escaping (_ congratsMessage: String?) -> Void) {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-        if let url = URL(string: congratsURL + version) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        print("ERROR requesting congrats message: \(error)")
+        var urlComponents = URLComponents(string: congratsURL)!
+        urlComponents.queryItems = [ URLQueryItem(name: "v", value: version) ]
+        let request = URLRequest(url: urlComponents.url!)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("ERROR requesting congrats message: \(error)")
+                    handler(nil)
+                    return
+                }
+                if let data = data {
+                    do {
+                        let res = try JSONDecoder().decode(CongratsMessage.self, from: data)
+                        handler(res.m)
+                    } catch let error {
+                        print("ERROR decoding congrats message: \(error)")
+                        print("raw message: \(data)")
                         handler(nil)
-                        return
-                    }
-                    if let data = data {
-                        do {
-                            let res = try JSONDecoder().decode(CongratsMessage.self, from: data)
-                            handler(res.m)
-                        } catch let error {
-                            print("ERROR decoding congrats message: \(error)")
-                            print("raw message: \(data)")
-                            handler(nil)
-                        }
                     }
                 }
-            }.resume()
-        } else {
-            print("ERROR creating URL: \(congratsURL)")
-            handler(nil)
-        }
+            }
+        }.resume()
     }
     
     struct CongratsMessage: Codable {
