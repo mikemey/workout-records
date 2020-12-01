@@ -207,9 +207,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc private func checkRecordButtonState() {
         if WRFormat.isDistanceActivity(selectedActivity) {
-           disableButtonIf((distanceField.text == "") && (energyField.text == ""))
+            disableButtonIf((distanceField.getValue() ?? 0 == 0) && (energyField.getValue() ?? 0 == 0))
         } else if WRFormat.energyActivity == selectedActivity {
-            disableButtonIf((energyField.text == ""))
+            disableButtonIf((energyField.getValue() ?? 0 == 0))
         } else {
             disableButtonIf(false)
         }
@@ -232,8 +232,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func onWriteWorkoutAction(_ sender: Any) {
         self.endEditing(nil)
         let newWorkout = WorkoutData(selectedDate, selectedDuration, selectedActivity)
-        newWorkout.distance = distanceField.text.flatMap(Double.init)
-        newWorkout.energy = energyField.text.flatMap(Int.init)
+        newWorkout.distance = distanceField.getValue().flatMap(Double.init)
+        newWorkout.energy = energyField.getValue().flatMap(Int.init)
 
         if newWorkout.distance == nil && WRFormat.isDistanceActivity(selectedActivity) {
             let message = "No distance set.\nRecord as \"\(WRFormat.energyActivity.hrName)\"?"

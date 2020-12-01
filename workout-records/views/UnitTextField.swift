@@ -69,12 +69,17 @@ class UnitTextField: UITextField, UITextFieldDelegate {
             return false
         }
         
-        let newnum = Double(newtext.replacingOccurrences(of: ",", with: "."))
+        let newnum = self.getValue(newtext)
         return newnum != nil
             && newnum! < UnitTextField.maxValue
             && (self.fractions
             ? checkFractions(textField, newtext, currentText)
             : checkInteger(newnum!))
+    }
+    
+    func getValue(_ text: String? = nil) -> Double? {
+        let input = text ?? self.text ?? ""
+        return Double(input.replacingOccurrences(of: ",", with: "."))
     }
     
     private func checkFractions(_ textField: UITextField, _ newtext: String, _ currentText: String) -> Bool {
