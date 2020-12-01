@@ -2,7 +2,7 @@ import UIKit
 
 class UnitTextField: UITextField, UITextFieldDelegate {
     private static let maxValue: Double = 10000
-    private static let maxFractionLen: Int = 3
+    private static let maxFractionLen: Int = 2
     private static let enabledBGColor = UIColor(named: "workout_form_bg")
     private static let disabledBGColor = UIColor(named: "workout_form_disabled_bg")
     private static let widthRatios: [CGFloat] = [0.55, 0.6, 1]
@@ -84,7 +84,7 @@ class UnitTextField: UITextField, UITextFieldDelegate {
     
     private func checkFractions(_ textField: UITextField, _ newtext: String, _ currentText: String) -> Bool {
         if let dotIndex = newtext.firstIndex(of: Character.init(WRFormat.decimalSeparator)) {
-            let fractionLen = newtext.count - dotIndex.utf16Offset(in: newtext)
+            let fractionLen = newtext.count - dotIndex.utf16Offset(in: newtext) - 1
             if fractionLen > UnitTextField.maxFractionLen {
                 return false
             }
