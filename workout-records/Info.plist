@@ -26,6 +26,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GADApplicationIdentifier</key>
 	<string>${ADMOB_APP_ID}</string>
+	<key>GADDelayAppMeasurementInit</key>
+	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -34,6 +36,8 @@
 	<string>Allow Workout Records to read workouts from the Health application.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Allow Workout Records to write workouts to the Health application.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This identifier will be used to deliver personalized ads to you.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

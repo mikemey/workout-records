@@ -17,12 +17,13 @@
 		4C43820D22929B89009613C6 /* WRFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEDB90229063B6007D07B2 /* WRFormat.swift */; };
 		4C4382122292A15D009613C6 /* MainPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382112292A15D009613C6 /* MainPageObject.swift */; };
 		4C4382142292CAF8009613C6 /* WorkoutPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */; };
-		4C8FC8172567AC8B0082A9ED /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FC8112567AC8B0082A9ED /* UserMessagingPlatform.xcframework */; };
-		4C8FC8182567AC8B0082A9ED /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FC8122567AC8B0082A9ED /* GoogleUtilities.xcframework */; };
-		4C8FC8192567AC8B0082A9ED /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FC8132567AC8B0082A9ED /* GoogleMobileAds.xcframework */; };
-		4C8FC81A2567AC8B0082A9ED /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FC8142567AC8B0082A9ED /* GoogleAppMeasurement.framework */; };
-		4C8FC81B2567AC8B0082A9ED /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FC8152567AC8B0082A9ED /* nanopb.xcframework */; };
-		4C8FC81C2567AC8B0082A9ED /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FC8162567AC8B0082A9ED /* PromisesObjC.xcframework */; };
+		4C4B545326501DB60053FA66 /* GoogleAppMeasurement.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4B544D26501DB50053FA66 /* GoogleAppMeasurement.xcframework */; };
+		4C4B545426501DB60053FA66 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4B544E26501DB50053FA66 /* GoogleUtilities.xcframework */; };
+		4C4B545526501DB60053FA66 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4B544F26501DB50053FA66 /* GoogleMobileAds.xcframework */; };
+		4C4B545626501DB60053FA66 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4B545026501DB50053FA66 /* PromisesObjC.xcframework */; };
+		4C4B545726501DB60053FA66 /* UserMessagingPlatform.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4B545126501DB50053FA66 /* UserMessagingPlatform.xcframework */; };
+		4C4B545826501DB60053FA66 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4B545226501DB60053FA66 /* nanopb.xcframework */; };
+		4C4B545A26501E770053FA66 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C4B545926501E770053FA66 /* AppTrackingTransparency.framework */; };
 		4C942B1422A3DBFB002778A6 /* icon-bowling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1322A3DBFA002778A6 /* icon-bowling.png */; };
 		4C942B1C22A3E2ED002778A6 /* icon-individual-cycling.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */; };
 		4C942B1E22A3E3D0002778A6 /* icon-energy.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C942B1D22A3E3D0002778A6 /* icon-energy.png */; };
@@ -204,12 +205,13 @@
 		4C38B77C2299984000A417FF /* UnitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTextField.swift; sourceTree = "<group>"; };
 		4C4382112292A15D009613C6 /* MainPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageObject.swift; sourceTree = "<group>"; };
 		4C4382132292CAF8009613C6 /* WorkoutPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPageObject.swift; sourceTree = "<group>"; };
-		4C8FC8112567AC8B0082A9ED /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Frameworks/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
-		4C8FC8122567AC8B0082A9ED /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleUtilities.xcframework; path = Frameworks/GoogleUtilities.xcframework; sourceTree = "<group>"; };
-		4C8FC8132567AC8B0082A9ED /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = Frameworks/GoogleMobileAds.xcframework; sourceTree = "<group>"; };
-		4C8FC8142567AC8B0082A9ED /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Frameworks/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		4C8FC8152567AC8B0082A9ED /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = Frameworks/nanopb.xcframework; sourceTree = "<group>"; };
-		4C8FC8162567AC8B0082A9ED /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromisesObjC.xcframework; path = Frameworks/PromisesObjC.xcframework; sourceTree = "<group>"; };
+		4C4B544D26501DB50053FA66 /* GoogleAppMeasurement.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleAppMeasurement.xcframework; path = Frameworks/GoogleAppMeasurement.xcframework; sourceTree = "<group>"; };
+		4C4B544E26501DB50053FA66 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleUtilities.xcframework; path = Frameworks/GoogleUtilities.xcframework; sourceTree = "<group>"; };
+		4C4B544F26501DB50053FA66 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = Frameworks/GoogleMobileAds.xcframework; sourceTree = "<group>"; };
+		4C4B545026501DB50053FA66 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = PromisesObjC.xcframework; path = Frameworks/PromisesObjC.xcframework; sourceTree = "<group>"; };
+		4C4B545126501DB50053FA66 /* UserMessagingPlatform.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = UserMessagingPlatform.xcframework; path = Frameworks/UserMessagingPlatform.xcframework; sourceTree = "<group>"; };
+		4C4B545226501DB60053FA66 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = nanopb.xcframework; path = Frameworks/nanopb.xcframework; sourceTree = "<group>"; };
+		4C4B545926501E770053FA66 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		4C942B1322A3DBFA002778A6 /* icon-bowling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-bowling.png"; sourceTree = "<group>"; };
 		4C942B1B22A3E2ED002778A6 /* icon-individual-cycling.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-individual-cycling.png"; sourceTree = "<group>"; };
 		4C942B1D22A3E3D0002778A6 /* icon-energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-energy.png"; sourceTree = "<group>"; };
@@ -383,13 +385,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C8FC8172567AC8B0082A9ED /* UserMessagingPlatform.xcframework in Frameworks */,
+				4C4B545326501DB60053FA66 /* GoogleAppMeasurement.xcframework in Frameworks */,
+				4C4B545A26501E770053FA66 /* AppTrackingTransparency.framework in Frameworks */,
 				4C1F6C44242AA1E400C1DAE1 /* HealthKit.framework in Frameworks */,
-				4C8FC81A2567AC8B0082A9ED /* GoogleAppMeasurement.framework in Frameworks */,
-				4C8FC81C2567AC8B0082A9ED /* PromisesObjC.xcframework in Frameworks */,
-				4C8FC81B2567AC8B0082A9ED /* nanopb.xcframework in Frameworks */,
-				4C8FC8182567AC8B0082A9ED /* GoogleUtilities.xcframework in Frameworks */,
-				4C8FC8192567AC8B0082A9ED /* GoogleMobileAds.xcframework in Frameworks */,
+				4C4B545426501DB60053FA66 /* GoogleUtilities.xcframework in Frameworks */,
+				4C4B545526501DB60053FA66 /* GoogleMobileAds.xcframework in Frameworks */,
+				4C4B545726501DB60053FA66 /* UserMessagingPlatform.xcframework in Frameworks */,
+				4C4B545626501DB60053FA66 /* PromisesObjC.xcframework in Frameworks */,
+				4C4B545826501DB60053FA66 /* nanopb.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,12 +680,13 @@
 		4CB6093322905CCE00B683E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4C8FC8142567AC8B0082A9ED /* GoogleAppMeasurement.framework */,
-				4C8FC8132567AC8B0082A9ED /* GoogleMobileAds.xcframework */,
-				4C8FC8122567AC8B0082A9ED /* GoogleUtilities.xcframework */,
-				4C8FC8152567AC8B0082A9ED /* nanopb.xcframework */,
-				4C8FC8162567AC8B0082A9ED /* PromisesObjC.xcframework */,
-				4C8FC8112567AC8B0082A9ED /* UserMessagingPlatform.xcframework */,
+				4C4B545926501E770053FA66 /* AppTrackingTransparency.framework */,
+				4C4B544D26501DB50053FA66 /* GoogleAppMeasurement.xcframework */,
+				4C4B544F26501DB50053FA66 /* GoogleMobileAds.xcframework */,
+				4C4B544E26501DB50053FA66 /* GoogleUtilities.xcframework */,
+				4C4B545226501DB60053FA66 /* nanopb.xcframework */,
+				4C4B545026501DB50053FA66 /* PromisesObjC.xcframework */,
+				4C4B545126501DB50053FA66 /* UserMessagingPlatform.xcframework */,
 				4C1F6C43242AA1E300C1DAE1 /* HealthKit.framework */,
 			);
 			name = Frameworks;
@@ -1164,7 +1168,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workout-records/workout-records.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = Z75BGAKHT6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1195,7 +1199,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "workout-records/workout-records.entitlements";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = Z75BGAKHT6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

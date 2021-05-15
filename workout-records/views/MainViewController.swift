@@ -1,6 +1,7 @@
 import UIKit
 import HealthKit
 import GoogleMobileAds
+import UserMessagingPlatform
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var bannerView: GADBannerView!
@@ -78,9 +79,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func createAdbanner() {
-        bannerView.adUnitID = Bundle.main.object(forInfoDictionaryKey: "AdUnitId")! as? String
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        let parameters = UMPRequestParameters()
+        UMPConsentInformation.sharedInstance.requestConsentInfoUpdate(
+            with: parameters,
+            completionHandler: { error in
+                if error == nil {
+                    let formStatus = UMPConsentInformation.sharedInstance.formStatus
+                    if formStatus == UMPFormStatus.available {
+                        self.loadForm()
+                    }
+                    
+                }
+            })
     }
 
     private func newToolbarBuilder() -> ToolbarBuilder {
@@ -312,5 +322,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             alertBuilder.addDefaultAction("Delete", handler: { action in self.deleteWorkout(workout) })
             alertBuilder.show(self)
         }
+    }
+    
+    func loadForm() {
+        UMPConsentForm.load(completionHandler: { form, loadError in
+            if loadError == nil {
+                if UMPConsentInformation.sharedInstance.consentStatus == UMPConsentStatus.required {
+                    form?.present(
+                        from: self,
+                        completionHandler: { dismissError in
+                            if UMPConsentInformation.sharedInstance.consentStatus == UMPConsentStatus.obtained {
+                                self.bannerView.adUnitID = Bundle.main.object(forInfoDictionaryKey: "AdUnitId")! as? String
+                                self.bannerView.rootViewController = self
+                                self.bannerView.load(GADRequest())
+                            }
+                        })
+                }
+            }
+        })
     }
 }
